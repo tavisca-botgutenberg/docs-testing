@@ -1,0 +1,22 @@
+# Get roles mapped to an application [/nextgeniam/api/v1.0/applications/{applicationId}/clientRoles?pageNumber={pageNumber}&pageSize={pageSize}]
+ 
+## Get roles mapped to an application [GET]
+ 
++ Parameters
+    + applicationId: `01i052ghbkmwz` (string, required) - Application id of the application.
+    + pageNumber: 1 (number, optional) - Page number.
+    + pageSize: 10 (number, optional) - Page size.
+   
+ 
++ Request getRolesMappedToApplicationReq (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationId: ab400bf5-7e20-481d-ae8a-be3ec12f0514
+      cnx-TenantId: 2o9o3ae99ts
+         
+ 
++ Response 200 (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationId: ab400bf5-7e20-481d-ae8a-be3ec12f0514 
+    + attributes (getRolesMappedToApplicationResponse)
