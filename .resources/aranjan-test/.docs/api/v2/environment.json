@@ -3,7 +3,7 @@
     {
       "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com",
       "type": "qa",
-      "isAuthorized": true
+      "isAuthorized": false
     },
     {
       "baseUrl": "https://chatbot-skills-bff.stage.cnxloyalty.com",
