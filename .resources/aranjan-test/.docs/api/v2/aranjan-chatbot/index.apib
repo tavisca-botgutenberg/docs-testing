@@ -1,9 +1,16 @@
-# Sample Post [/api/v2/sample]
-## Sample Post [POST]
+# Get booking list [/api/v2/Booking/{itineraryType}]
+## Get booking list [POST]
 
++ Parameters
+  + itineraryType: `upcoming`(enum, required) - Possible value can be "upcoming", "cancelled", "completed" 
+    + upcoming
+    + cancelled
+    + completed
+  
 + Request sampleRequest (application/json)
   + Headers
     + Content-Type:application/json
+    + cnx-correlationId: `xyz` (string, required) - should be GUID/uuid string used to log all event in one session
   + Attributes (sampleRequest)
 
 + Response 200 (application/json)
