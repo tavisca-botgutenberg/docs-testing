@@ -1,17 +1,17 @@
 {
   "environments": [
     {
-      "baseUrl": "https://private-nextgen-serviceauth.qa.cnxloyalty.com",
+      "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com",
       "type": "qa",
       "isAuthorized": true
     },
     {
-      "baseUrl": "https://private-nextgen-serviceauth.stage.cnxloyalty.com",
+      "baseUrl": "https://chatbot-skills-bff.stage.cnxloyalty.com",
       "type": "stage",
       "isAuthorized": true
     },
     {
-      "baseUrl": "https://private-nextgen-serviceauth.cnxloyalty.com",
+      "baseUrl": "https://chatbot-skills-bff.cnxloyalty.com",
       "type": "prod",
       "isAuthorized": true
     }
