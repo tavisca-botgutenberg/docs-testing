@@ -1,9 +1,22 @@
-# Sample Post [/api/v2/sample]
-## Sample Post [POST]
+# Polls
 
-+ Request sampleRequest (application/json)
-  + Headers
-    + Content-Type:application/json
-  + Attributes (sampleRequest)
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/questions]
+
+### List All Questions [GET]
 
 + Response 200 (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                {
+                    "choice": "Swift",
+                    "votes": 2048
+                }, {
+                    "choice": "Python",
+                    "votes": 1024
+                }
+            ]
+        }
