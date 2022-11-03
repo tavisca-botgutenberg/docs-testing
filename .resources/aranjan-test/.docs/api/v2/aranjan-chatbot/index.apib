@@ -1,9 +1,11 @@
-# Get booking list [/api/v2/chatbot/{cartId}]
+# Get booking list [/api/v2/chatbot]
 ## Get booking list [POST]
 
 + Parameters
-    + cartId: `1gxyupie2` - Unique I
-    
+  + itineraryType: (enum, required) - Possible value can be "upcoming", "cancelled", "completed" 
+    + upcoming (string)
+    + cancelled (string)
+    + completed(string)
 + Request sampleRequest (application/json)
   + Headers
     + Content-Type: application/json
