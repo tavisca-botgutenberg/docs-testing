@@ -1,16 +1,22 @@
-# Get booking list [/api/v2/chatbot/{itineraryType}]
+# Get booking list [/api/v2/booking/{itineraryType}]
 ## Get booking list [POST]
 
 + Parameters
-  + itineraryType: `Completed` (enum)
-    + Completed
-    + Faulted
-    + InProgress
-      
-+ Request sampleRequest (application/json)
+  + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
+ 
+  + Request sampleRequest (application/json)
   + Headers
     + Content-Type: application/json
     + cnx-correlationId: `xyz` (string, required) - should be GUID/uuid string used to log all event in one session
+    + cnx-tenantid: `xyz` (string, required) - TenantId should be agency tenantId
+    + cnx-userip: `xyz` (string) - requesting users machine Ip
+    + cnx-environment-token: `xyz` (string, required) - CBTS environment
+    + source: `xyz` (string) - origin of request / source application name
+    + x-date: `xyz` (string, required) - request datetime object
+    + nonce: `xyz` (string, required) - nonce value
   + Attributes (sampleRequest)
 
 + Response 200 (application/json)
+  + Headers
+    + Content-Type: application/json
+  + Attributes (sampleResponse)
