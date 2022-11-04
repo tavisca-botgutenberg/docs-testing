@@ -1,11 +1,17 @@
-# Get roles mapped to an application [/api/v1/applications]
-## Get roles mapped to an application [GET]
+# Get List of bookings [/api/v1/applications]
+## Get bookings [GET]
 + Parameters
-  + applicationId: `01i052ghbkmwz` (string, required) - Application id of the application.
-  + pageNumber: 1 (number) - Page number.
+  + itineraryType: `upcoming` (string, required) - Possible value can be "upcoming", "cancelled", "completed".
+  + cnx-correlationId: 'ab400bf5-7e20-481d-ae8a-be3ec12f0514' (string, required) - should be GUID/uuid string used to log all event in one session.
+  + cnx-tenantid: 'ab400bf5-7e20-481d-ae8a-be3ec12f0514' (string, required) - should be GUID/uuid string used to log all event in one session.
+  + cnx-userip: '127.0.0.0' (string, required) - requesting users machine Ip.
+  + cnx-environment-token: '-7e20-481d-' (string, required) - CBTS environment.
+  + source: 'app' (string, required) - origin of request / source application name.
+  + x-date: '11 nov 2022' (string, required) - request datetime object.
+  + nonce: 'a' (string, required) - nonce value.
+  + traceId: 'ab400bf5' (string, required) - traceId for for one utterance.
 
-    
-   
+      
  
 + Request getRolesMappedToApplicationReq (application/json)
   + Headers
