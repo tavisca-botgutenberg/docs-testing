@@ -1,8 +1,7 @@
-# Get booking list [/api/v2/booking/{itineraryType}]
+# Get booking list [/api/v1/booking/detail}]
 ## Get booking list [POST]
 
 + Parameters
-  + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
 
 + Request sampleRequest (application/json)
   + Headers
@@ -14,6 +13,7 @@
     source: appname
     x-date: 11-11-22
     nonce: a
+    traceId: tId
   + Attributes (sampleRequest)
 
 + Response 200 (application/json)
