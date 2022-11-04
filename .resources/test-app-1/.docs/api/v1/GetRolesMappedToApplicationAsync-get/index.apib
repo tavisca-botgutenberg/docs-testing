@@ -1,4 +1,4 @@
-# Get List of bookings [/api/v1/applications]
+# Get List of bookings [/api/v1/booking/{itineraryType}]
 ## Get bookings [GET]
 + Parameters
   + itineraryType: `upcoming` (string, required) - Possible value can be "upcoming", "cancelled", "completed".
@@ -15,6 +15,7 @@
     x-date: 11 nov 2022
     nonce: a
     traceId: ab400bf5
+  + Attributes (sampleRequest)
 
          
  
@@ -22,4 +23,4 @@
   + Headers
     Content-Type: application/json
     cnx-correlationId: ab400bf5-7e20-481d-ae8a-be3ec12f0514 
-    Attributes (getRolesMappedToApplicationResponse)
+  + Attributes (getRolesMappedToApplicationResponse)
