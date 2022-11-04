@@ -7,13 +7,13 @@
 + Request sampleRequest (application/json)
   + Headers
     + Content-Type: application/json
-    + cnx-correlationId: `xyz` (string, required) - should be GUID/uuid string used to log all event in one session
-    + cnx-tenantid: `xyz` (string, required) - TenantId should be agency tenantId
-    + cnx-userip: `xyz` (string) - requesting users machine Ip
-    + cnx-environment-token: `xyz` (string, required) - CBTS environment
-    + source: `xyz` (string) - origin of request / source application name
-    + x-date: `xyz` (string, required) - request datetime object
-    + nonce: `xyz` (string, required) - nonce value
+    + cnx-correlationId: (string, required) - should be GUID/uuid string used to log all event in one session
+    + cnx-tenantid: (string, required) - TenantId should be agency tenantId
+    + cnx-userip: (string) - requesting users machine Ip
+    + cnx-environment-token: (string, required) - CBTS environment
+    + source: (string) - origin of request / source application name
+    + x-date: (string, required) - request datetime object
+    + nonce: xyz (string, required) - nonce value
   + Attributes (sampleRequest)
 
 + Response 200 (application/json)
