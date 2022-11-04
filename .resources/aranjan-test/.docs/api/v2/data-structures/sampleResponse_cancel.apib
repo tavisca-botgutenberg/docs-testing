@@ -1,0 +1,21 @@
+## sampleResponse_cancel
++ include bookings
+
+## bookings
++ isCancelled: true (boolean)
++ itemId: `string` (string)
++ confirmationNumber: `string` (string)
++ settlementType: `Refund` (string)
++ include settlementInfo
++ emailId: `string` (string)
++ myTripsUrl: `string` (string)
+
+## settlementInfo
++ cash: 0 (number)
++ validBy: `2022-11-04T08:07:09.451Z` (string)
++ currency: `string` (string)
++ points: 0 (number)
++ pointsCurrency: `string` (string)
++ platingCarrier: `string` (string)
++ perPassangerCredit: `string` (string)
++ processingFee: 0 (number)
