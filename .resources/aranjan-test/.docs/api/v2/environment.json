@@ -9,11 +9,6 @@
       "baseUrl": "https://chatbot-skills-bff.stage.cnxloyalty.com",
       "type": "stage",
       "isAuthorized": true
-    },
-    {
-      "baseUrl": "https://chatbot-skills-bff.cnxloyalty.com",
-      "type": "prod",
-      "isAuthorized": true
     }
   ]
 }
