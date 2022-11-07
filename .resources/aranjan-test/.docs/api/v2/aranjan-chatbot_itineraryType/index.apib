@@ -6,17 +6,15 @@
 
 + Request sampleRequest (application/json)
   + Headers
-    cnx-correlationId: cnx-correlationId - should be GUID/uuid string used to log all event in one session
-    cnx-tenantid: cnx-tenantid - TenantId should be agency tenantId
-    cnx-userip: cnx-userip - requesting users machine Ip
-    cnx-environment-token: cnx-environment-token - CBTS environment
-    source: source - origin of request / source application name
-    x-date: x-date - request datetime object
-    nonce: nonce - nonce value
-    traceId: traceId - traceId for for one utterance
+    cnx-correlationId: cnx-correlationId : should be GUID/uuid string used to log all event in one session
+    cnx-tenantid: cnx-tenantid : TenantId should be agency tenantId
+    cnx-userip: cnx-userip : requesting users machine Ip
+    cnx-environment-token: cnx-environment-token : CBTS environment
+    source: source : origin of request / source application name
+    x-date: x-date : request datetime object
+    nonce: nonce : nonce value
+    traceId: traceId : traceId for for one utterance
   + Attributes (sampleRequest)
 
 + Response 200 (application/json)
   + Attributes (sampleResponse)
-+ Response 400 (application/json)
-  + Attributes (sampleResponse400)
