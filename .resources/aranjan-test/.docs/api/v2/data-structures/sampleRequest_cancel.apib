@@ -2,7 +2,7 @@
 + client (clientDetails2, required)
 + user (userDetails2, required)
 + configurations (configurationsDetails2, required)
-+ item (array[itemDetails2])
++ item (itemDetails2)
 + bookingId: `string` (string)
 + tripFolderId: `3fa85f64-5717-4562-b3fc-2c963f66afa6` (string)
 + transitCode: `string` (string)
@@ -24,9 +24,5 @@
 + additionalProp3: `string` (string)
 
 ## itemDetails2
-+ itemType: (enum)
- + Air
- + Hotel
- + Car
- + Activity
++ itemType: `Air`, `Hotel`, `Car`, `Activity` (array)
 + confirmationNumber: `string` (string)
