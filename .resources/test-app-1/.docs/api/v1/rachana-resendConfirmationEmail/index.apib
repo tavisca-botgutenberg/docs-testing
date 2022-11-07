@@ -1,10 +1,9 @@
-# Resend Confirmation Email [/api/v2/booking/{itineraryType}]
+# Resend Confirmation Email [/api/v2/booking/resendConfirmationEmail}]
 ## Recend Confirmation Email [POST]
 
 + Parameters
-  + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
-
-+ Request sampleRequest (application/json)
+ 
++ Request sampleRequest_resendConfirmationEmail (application/json)
   + Headers
     Content-Type: application/json
     cnx-correlationId: should be GUID/uuid string used to log all event in one session
@@ -14,7 +13,16 @@
     source: appname
     x-date: 11-11-22
     nonce: a
-  + Attributes (sampleRequest)
+  + Attributes (sampleRequest_resendConfirmationEmail)
 
 + Response 200 (application/json)
-  + Attributes (sampleResponse)
+  + Attributes (sampleResponse_resensConfirmationEmail_200)
+  
++ Response 400 (application/json)
+  + Attributes (sampleResponse_resensConfirmationEmail_400)
+  
++ Response 401 (application/json)
+  + Attributes (sampleResponse_resensConfirmationEmail_401)
+  
++ Response 500 (application/json)
+  + Attributes (sampleResponse_resensConfirmationEmail_500)
