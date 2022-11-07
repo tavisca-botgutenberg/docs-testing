@@ -1,10 +1,12 @@
 # Get booking list [/api/v2/booking/{itineraryType}]
 ## Get booking list [POST]
 
+### This contains Client, User and Configurations.
+
 + Parameters
   + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
 
-+ Request sampleRequest (application/json)
++ Request sampleRequest_Itinerary (application/json)
   + Headers
     cnx-correlationId: cnx-correlationId
     cnx-tenantid: cnx-tenantid
@@ -14,7 +16,7 @@
     x-date: x-date
     nonce: nonce
     traceId: traceId
-  + Attributes (sampleRequest)
+  + Attributes (sampleRequest_Itinerary)
 
 + Response 200 (application/json)
-  + Attributes (sampleResponse)
+  + Attributes (sampleResponse_Itinerary)
