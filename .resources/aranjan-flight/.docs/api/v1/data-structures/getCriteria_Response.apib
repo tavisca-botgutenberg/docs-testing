@@ -1,0 +1,58 @@
+## sampleResponse_cancel
++ maximumResults: 700 (number) - Number of maximum results that must be returned in the response, allowed values : Min: 1, Max: 500
++ currency: `USD` (string) - currency to be displayed to the end user
++ passengers (array[passergersInfo]) - Passenger information, mandatory
++ itineraryType: `RoundTrip` (enum)
+ + OneWay (string)
+ + RoundTrip (string)
+ + MultiCity (string)
++ journeys (array[departure1, departure2])
++ travelPreference (travelPreferenceInfo) - travel preference of the customer
+
+## passergersInfo
++ type: `adult`(enum) - types of passenger
+ + adult
+ + child
+ + infantInLap
++ count: 1 (number) - Number of passengers of a type, mandatory, must be greater than 0
+
+## departure1
++ departure (object)
+ + code: `BIL`(string) - airport or city IATA code of the departure airport
+ + type: (enum) - describes the type of the departure location
+  + airport
+  + city
++ arrival
+ + code: `MFR`(string) - airport or city IATA code of the departure airport
+ + type: (enum) - describes the type of the departure location
+  + airport
+  + city
++ travelDateTime
+ + date:`2021-04-30`(string)
+ + time: null
+ + timeWindow:0 (number)
+ + allowed values: 1 (number) - Min: 0, Max: 12
+
+
+## departure2
++ departure (object)
+ + code: `BIL`(string) - airport or city IATA code of the departure airport
+ + type: (enum) - describes the type of the departure location
+  + airport
+  + city
++ arrival
+ + code: `MFR`(string) - airport or city IATA code of the departure airport
+ + type: (enum) - describes the type of the departure location
+  + airport
+  + city
++ travelDateTime
+ + date:`2021-04-30`(string)
+ + time: null
+ + timeWindow:0 (number)
+ + allowed values: 1 (number) - Min: 0, Max: 12
+
+## travelPreferenceInfo
++ preferredCabinType: `Economy`(string) - Type of cabin. Allowed values are: all, first, business, premiumEconomy, economy. If this is null, then search will be made for all cabin types
++ enableBrandedFares: true (boolean) - If set true, retrieve flights with Branded fares, default: false
++ refundableFareOnly: false (boolean) - If set to true, retrieve flights only with refundable fares, default: false
++ unRestrictedFare: false (boolean) - allowed value true. return results which are open for post booking modification with/without some penalty. default: false
