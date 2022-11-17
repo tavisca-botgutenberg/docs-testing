@@ -1,0 +1,14 @@
+{
+  "environments": [
+    {
+      "baseUrl": "https://orxe-simulator.qa.cnxloyalty.com",
+      "type": "qa",
+      "isAuthorized": true
+    },
+    {
+      "baseUrl": "https://orxe-simulator.stage.cnxloyalty.com",
+      "type": "stage",
+      "isAuthorized": true
+    }
+  ]
+}
