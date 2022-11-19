@@ -1,6 +1,7 @@
 ## getPrice_Response
-+ currency: `USD` (string) - sample description
-+ airlines (array[airlinesInfo1,airlinesInfo2],fixed-type) -sample description
++ currency: `USD` (string) - the currency code for all fareOptions present in the response.
++ airlines (array[airlinesInfo1,airlinesInfo2],fixed-type) -List of all the airlines available in the response identified by airline's code.
++ airports (array[airportsInfo1,airportsInfo2],fixed-type) -List of all the airports available in the response identified by airport's code
 
 ## airlinesInfo1
 + code: `UA` (string)
@@ -11,3 +12,29 @@
 + code: `AA` (string)
 + name: `American Airlines` (string)
 + logoUrl: `https://cdn/logo.com/brandlogo22.png` (string)
+
+## airportsInfo1
++ code: `EWR`
++ name: `Newark Liberty Intl Arpt`
++ type: `Airport`
++ city (cityInfo1)
+
+## cityInfo1
++ code: `EWR`
++ name: `Newark`
++ type: `City`
++ stateCode: `NJ`
++ countryCode: `US`
+
+## airportsInfo2
++ code: `BWI`
++ name: `Baltimore Washington Intl Arpt`
++ type: `Airport`
++ city (cityInfo2)
+
+## cityInfo2
++ code: `BWI`
++ name: `Baltimore`
++ type: `City`
++ stateCode: `MD`
++ countryCode: `US`
