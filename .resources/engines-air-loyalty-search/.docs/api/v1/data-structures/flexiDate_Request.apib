@@ -20,7 +20,7 @@
     + time: `14:00`(string)
     + timeWindow: 2(number)
     + dateWindow: 3 (number)
-+ anchoredSegments (array[anchoredSegmentsInfo])
++ anchoredSegments (array[anchoredSegmentsInfo], fixed-type)
 
 ## anchoredSegmentsInfo
 + airlineCode: `AA` (string)
@@ -36,23 +36,23 @@
     + time: `14:00` 9(string)
 
 ## passengersInfo1
-+ age: 1,2,3 (array)
++ age: `1`,`2`,`3` (array(number), fixed-type)
 + type: `adult`(string)
 + count: 2 (number)
 
 ## passengersInfo2
-+ age: 1,2,3 (array)
++ age: `1`,`2`,`3` (array(number), fixed-type)
 + type: `child`(string)
 + count: 23 (number)
 
 ## passengersInfo3
-+ age: 1,2,3 (array)
++ age: `1`,`2`,`3` (array(number), fixed-type)
 + type: `infantInLap`(string)
 + count: 1 (number)
 
 ## filtersDetails
 + airlines (object)
-    + allow: 1,2,3 (array)
+    + age: `1`,`2`,`3` (array(number), fixed-type)
     + allowType: `only` (string)
     + onlineConnectionOnly: false (boolean)
 + connection (object)
