@@ -26,24 +26,15 @@
  + stateCode: `NJ`(string) - State code
  + countryCode: `US`(string) - Country code
 
-// ## cityInfo1
-// + code: `EWR`(string) - IATA city code
-// + name: `Newark`(string) - Name of the city
-// + type: `City`(string) - Type must be city
-// + stateCode: `NJ`(string) - State code
-// + countryCode: `US`(string) - Country code
-
 ## airportsInfo2
 + code: `BWI`(string) - IATA Airport code
 + name: `Baltimore Washington Intl Arpt`(string) - Name of the airport
 + type: `City`(enum) - Type must be airport or city
  + Airport (string)
  + City(string)
-+ city (cityInfo2) - City information
-
-## cityInfo2
-+ code: `BWI`(string) - IATA city code
-+ name: `Baltimore`(string) - Name of the city
-+ type: `City`(string) - Type must be city
-+ stateCode: `MD`(string) - State code
-+ countryCode: `US`(string) - Country code
++ city (object) - City information
+ + code: `BWI`(string) - IATA city code
+ + name: `Baltimore`(string) - Name of the city
+ + type: `City`(string) - Type must be city
+ + stateCode: `MD`(string) - State code
+ + countryCode: `US`(string) - Country code
