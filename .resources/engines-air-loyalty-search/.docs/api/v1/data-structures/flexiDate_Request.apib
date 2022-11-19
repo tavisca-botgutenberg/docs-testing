@@ -1,3 +1,17 @@
 ## flexiDate_Request
 + programId: `303ynydtn9xx`(string)
 + currency: `USD` (string)
++ journeys (array(journeysInfo), fixed-type)
+
+## journeysInfo
++ departure (object)
+ + code: `LAS` (string)
+ + type: `City` (string)
++ arrival (object)
+ + code: `LAX`(string)
+ + type: `airport`(string)
++ travelDate (object)
+ + date: `2018-12-03`(string)
+ + time: `14:00`(string)
+ + timeWindow: 2(number)
+ + dateWindow: 3 (number)
