@@ -9,13 +9,13 @@
 + maxResults: 500 (number)
 
 ## journeysInfo
-+ departure
++ departure (object)
     + code: `LAS` (string)
     + type: `City` (string)
-+ arrival
++ arrival (object)
     + code: `LAX`(string)
     + type: `airport`(string)
-+ travelDate
++ travelDate (object)
     + date: `2018-12-03`(string)
     + time: `14:00`(string)
     + timeWindow: 2(number)
@@ -25,13 +25,13 @@
 ## anchoredSegmentsInfo
 + airlineCode: `AA` (string)
 + flightNumber: 234 (number)
-+ departure
++ departure (object)
     + code: `LAS`(string)
     + type: `city`(string)
-+ arrival
++ arrival (object)
     + code: `LAX`(string)
     + type: `airport`(string)
-+ travelDate
++ travelDate (object)
     + date: `2018-12-03`(string)
     + time: `14:00` 9(string)
 
@@ -51,16 +51,19 @@
 + count: 1 (number)
 
 ## filtersDetails
-+ airlines (arrat[airlinesDetails])
-+ connection
++ airlines (object)
+    + allow: 1,2,3 (array)
+    + allowType: `only` (string)
+    + onlineConnectionOnly: false (boolean)
++ connection (object)
     + maxConnectionTime: 30 (number)
     + maxConnectingPoints: 1 (number)
     + nonStopOnly: ture (boolean)
     + isDirectFlight: ture (boolean)
-    + allow
+    + allow (object)
         + codes: `SEA` (string)
         + type: `airport` (string)
-    + desAllow
+    + desAllow (object)
         + codes: `PDX` (string)
         + type: `airport` (string)
 + unrestrictedFaresOnly: ture (boolean)
@@ -73,7 +76,7 @@
 + id: 12345 (number)
 + transitCode: `77bf396b-b170-4ede-9f64-f83bfa6b1e3f`(string)
 + availablePointBalance: 50000.0 (number)
-+ eligibilityInfo
++ eligibilityInfo (object)
     + programCurrency: `points` (string)
     + purchaseAllowed: ture (boolean)
     + redemptionAllowed: ture (boolean)
