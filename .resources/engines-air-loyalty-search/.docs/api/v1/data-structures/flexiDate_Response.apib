@@ -1,1 +1,21 @@
 ## flexiDate_Response
++ fareOptions (array[fareOptionsDetails],fixed-type) - Minimum fare available for given onward & return departure date combination. There will be one fare for every unique onward & return departure date combination.
+For example, if flexible date search is for +/- 3 days for onward(total 7 days including search date) and +/- 3 days for return then total number of combinations will be 49.
++ errors (array[errorsDetails],fixed-type)
++ warnings (array[warningsDetails],fixed-type)
+
+## fareOptionsDetails
++ onwardDate: `2015-12-04` (string)
++ returnDate: `2015-12-11` (string)
++ perpassengerfare (object)
+    + baseAmount: 204.66 (number)
+    + totalAmount: 211.48 (number)
+    + currency: `USD` (string) - the currency code for all ammounts in the fare
+
+## errorsDetails
++ code: 3434 (number)
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string)
+
+## warningsDetails
++ code: 1111 (number)
++ message: `Warning: Fare not available for given class` (string)
