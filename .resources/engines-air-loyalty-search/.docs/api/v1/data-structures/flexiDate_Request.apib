@@ -1,1 +1,82 @@
 ## flexiDate_Request
++ programId: `303ynydtn9xx`(string)
++ currency: `USD` (string)
++ journeys (array(journeysInfo), fixed-type)
++ cabinType: `economy` (string)
++ passengers (array(passengersInfo1, passengersInfo2, passengersInfo3), fixed-type)
++ filters (filtersDetails)
++ customerInfo (customerInfoDetails)
++ maxResults: 500 (number)
+
+## journeysInfo
++ departure
+    + code: `LAS` (string)
+    + type: `City` (string)
++ arrival
+    + code: `LAX`(string)
+    + type: `airport`(string)
++ travelDate
+    + date: `2018-12-03`(string)
+    + time: `14:00`(string)
+    + timeWindow: 2(number)
+    + dateWindow: 3 (number)
++ anchoredSegments (array[anchoredSegmentsInfo])
+
+## anchoredSegmentsInfo
++ airlineCode: `AA` (string)
++ flightNumber: 234 (number)
++ departure
+    + code: `LAS`(string)
+    + type: `city`(string)
++ arrival
+    + code: `LAX`(string)
+    + type: `airport`(string)
++ travelDate
+    + date: `2018-12-03`(string)
+    + time: `14:00` 9(string)
+
+## passengersInfo1
++ age: 1,2,3 (array)
++ type: `adult`(string)
++ count: 2 (number)
+
+## passengersInfo2
++ age: 1,2,3 (array)
++ type: `child`(string)
++ count: 23 (number)
+
+## passengersInfo3
++ age: 1,2,3 (array)
++ type: `infantInLap`(string)
++ count: 1 (number)
+
+## filtersDetails
++ airlines (arrat[airlinesDetails])
++ connection
+    + maxConnectionTime: 30 (number)
+    + maxConnectingPoints: 1 (number)
+    + nonStopOnly: ture (boolean)
+    + isDirectFlight: ture (boolean)
+    + allow
+        + codes: `SEA` (string)
+        + type: `airport` (string)
+    + desAllow
+        + codes: `PDX` (string)
+        + type: `airport` (string)
++ unrestrictedFaresOnly: ture (boolean)
++ refundableOnly: false (boolean)
++ excludeBasicEconomy: false (boolean)
++ brandedFares: false (boolean)
++ upsell: ture (boolean)
+
+## customerInfo
++ id: 12345 (number)
++ transitCode: `77bf396b-b170-4ede-9f64-f83bfa6b1e3f`(string)
++ availablePointBalance: 50000.0 (number)
++ eligibilityInfo
+    + programCurrency: `points` (string)
+    + purchaseAllowed: ture (boolean)
+    + redemptionAllowed: ture (boolean)
+    + displayProgramCurrencyAsDecimal: false (boolean)
+    + useVariableMilesFormula: false (boolean)
+    + shortfallAllowed: ture (boolean)
