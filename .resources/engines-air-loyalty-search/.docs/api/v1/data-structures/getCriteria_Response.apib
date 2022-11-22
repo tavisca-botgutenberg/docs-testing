@@ -17,8 +17,8 @@
 + count: 1 (number) - Number of passengers of a type, mandatory, must be greater than 0
 
 ## journeys1
-+ departure1
-+ arrival1
++ departure (departure1)
++ arrival (arrival1)
 + travelDateTime (object)
  + date:`2021-04-30`(string)
  + time: null
@@ -26,24 +26,22 @@
  + allowed values: 1 (number) - Min: 0, Max: 12
 
 ## departure1
-+ departure (object)
-  + code: `BIL`(string) - airport or city IATA code of the departure airport
-  + type:`airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string)
++ code: `BIL`(string) - airport or city IATA code of the departure airport
++ type:`airport`(enum) - describes the type of the departure location
+  + airport (string)
+  + city (string)
 
 ## arrival1
-+ arrival (object)
-  + code: `MFR`(string) - airport or city IATA code of the departure airport
-  + type:`airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string)
++ code: `MFR`(string) - airport or city IATA code of the departure airport
++ type:`airport`(enum) - describes the type of the departure location
+  + airport (string)
+  + city (string)
 
 
 
 ## journeys2
-+ departure2
-+ arrival2
++ departure2 (object)
++ arrival2 (object)
 + travelDateTime (object)
   + date:`2021-04-30`(string)
   + time: null
@@ -57,7 +55,6 @@
     + airport (string)
     + city (string) 
 
-## arrival2
 + arrival (object)
   + code: `MFR2`(string) - airport or city IATA code of the departure airport
   + type `airport`(enum) - describes the type of the departure location
