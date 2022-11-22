@@ -40,8 +40,8 @@
 
 
 ## journeys2
-+ departure2 (object)
-+ arrival2 (object)
++ departure (departure2)
++ arrival (arrival2)
 + travelDateTime (object)
   + date:`2021-04-30`(string)
   + time: null
@@ -49,17 +49,16 @@
   + allowed values: 1 (number) - Min: 0, Max: 12
 
 ## departure2
-+ departure (object)
-  + code: `BIL2`(string) - airport or city IATA code of the departure airport
-  + type `airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string) 
++ code: `BIL2`(string) - airport or city IATA code of the departure airport
++ type `airport`(enum) - describes the type of the departure location
+  + airport (string)
+  + city (string) 
 
-+ arrival (object)
-  + code: `MFR2`(string) - airport or city IATA code of the departure airport
-  + type `airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string)
++ arrival2 (object)
++ code: `MFR2`(string) - airport or city IATA code of the departure airport
++ type `airport`(enum) - describes the type of the departure location
+  + airport (string)
+  + city (string)
 
 
 ## travelPreferenceInfo
