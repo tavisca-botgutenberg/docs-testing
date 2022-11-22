@@ -6,7 +6,7 @@
   + OneWay (string)
   + RoundTrip (string)
   + MultiCity (string)
-+ journeys (array[Departure1, Departure2],fixed-type)
++ journeys (array[journeys1, journeys2],fixed-type)
 + travelPreference (travelPreferenceInfo) - travel preference of the customer
 
 ## passergersInfo
@@ -16,12 +16,13 @@
   + InfantInLap (string)
 + count: 1 (number) - Number of passengers of a type, mandatory, must be greater than 0
 
-## Departure1
+## journeys1
 + departure (object)
   + code: `BIL`(string) - airport or city IATA code of the departure airport
-  + type:`airport` (enum) - describes the type of the departure location
-    + airport (string)
-    + city (string)
+  + itineraryType: `RoundTrip` (enum) - type of journey. Allowed values: OneWay, RoundTrip, MultiCity
+    + OneWay (string)
+    + RoundTrip (string)
+    + MultiCity (string)
 + arrival (object)
   + code: `MFR`(string) - airport or city IATA code of the departure airport
   + type:`airport`(enum) - describes the type of the departure location
@@ -34,7 +35,7 @@
  + allowed values: 1 (number) - Min: 0, Max: 12
 
 
-## Departure2
+## journeys2
 + departure (object)
   + code: `BIL2`(string) - airport or city IATA code of the departure airport
   + type `airport`(enum) - describes the type of the departure location
