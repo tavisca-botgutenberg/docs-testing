@@ -17,40 +17,53 @@
 + count: 1 (number) - Number of passengers of a type, mandatory, must be greater than 0
 
 ## journeys1
-+ departure (object)
-  + code: `BIL`(string) - airport or city IATA code of the departure airport
-  + itineraryType: `RoundTrip` (enum) - type of journey. Allowed values: OneWay, RoundTrip, MultiCity
-    + OneWay (string)
-    + RoundTrip (string)
-    + MultiCity (string)
-+ arrival (object)
-  + code: `MFR`(string) - airport or city IATA code of the departure airport
-  + type:`airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string)
++ departure1
++ arrival1
 + travelDateTime (object)
  + date:`2021-04-30`(string)
  + time: null
  + timeWindow:0 (number)
  + allowed values: 1 (number) - Min: 0, Max: 12
 
-
-## journeys2
+## departure1
 + departure (object)
-  + code: `BIL2`(string) - airport or city IATA code of the departure airport
-  + type `airport`(enum) - describes the type of the departure location
-    + airport (string)
-    + city (string) 
-+ arrival (object)
-  + code: `MFR2`(string) - airport or city IATA code of the departure airport
-  + type `airport`(enum) - describes the type of the departure location
+  + code: `BIL`(string) - airport or city IATA code of the departure airport
+  + type:`airport`(enum) - describes the type of the departure location
     + airport (string)
     + city (string)
+
+## arrival1
++ arrival (object)
+  + code: `MFR`(string) - airport or city IATA code of the departure airport
+  + type:`airport`(enum) - describes the type of the departure location
+    + airport (string)
+    + city (string)
+
+
+
+## journeys2
++ departure2
++ arrival2
 + travelDateTime (object)
   + date:`2021-04-30`(string)
   + time: null
   + timeWindow:0 (number)
   + allowed values: 1 (number) - Min: 0, Max: 12
+
+## departure2
++ departure (object)
+  + code: `BIL2`(string) - airport or city IATA code of the departure airport
+  + type `airport`(enum) - describes the type of the departure location
+    + airport (string)
+    + city (string) 
+
+## arrival2
++ arrival (object)
+  + code: `MFR2`(string) - airport or city IATA code of the departure airport
+  + type `airport`(enum) - describes the type of the departure location
+    + airport (string)
+    + city (string)
+
 
 ## travelPreferenceInfo
 + preferredCabinType: `Economy`(string) - Type of cabin. Allowed values are: all, first, business, premiumEconomy, economy. If this is null, then search will be made for all cabin types
