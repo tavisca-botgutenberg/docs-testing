@@ -62,7 +62,12 @@
 
 
 ## travelPreferenceInfo
-+ preferredCabinType: `Economy`(string) - Type of cabin. Allowed values are: all, first, business, premiumEconomy, economy. If this is null, then search will be made for all cabin types
++ preferredCabinType: `Economy`(enum) - Type of cabin. Allowed values are: all, first, business, premiumEconomy, economy. If this is null, then search will be made for all cabin types
+  + All (string)
+  + Business (string)
+  + Economy (string)
+  + Premium Economy (string)
+  + First (string)
 + enableBrandedFares: true (boolean) - If set true, retrieve flights with Branded fares, default: false
 + refundableFareOnly: false (boolean) - If set to true, retrieve flights only with refundable fares, default: false
 + unRestrictedFare: false (boolean) - allowed value true. return results which are open for post booking modification with/without some penalty. default: false

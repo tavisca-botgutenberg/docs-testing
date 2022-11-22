@@ -2,7 +2,12 @@
 + programId: `303ynydtn9xx`(string) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. The programId is used to retrieve all the rewards mapped to it.
 + currency: `USD` (string)
 + journeys (array[journeysInfo],fixed-type)
-+ cabinType: `economy` (string)
++ cabinType: `economy` (enum)
+ + All (string)
+ + Business (string)
+ + Economy (string)
+ + First (string)
+ + Premium Economy (string)
 + passengers (array[passengersInfo1, passengersInfo2, passengersInfo3],fixed-type)
 + filters (filtersDetails)
 + customerInfo (customerInfoDetails)
