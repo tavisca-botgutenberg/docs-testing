@@ -1,12 +1,12 @@
 ## flexiDate_Request
-+ programId: `303ynydtn9xx`(string)
++ programId: `303ynydtn9xx`(string) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. The programId is used to retrieve all the rewards mapped to it.
 + currency: `USD` (string)
 + journeys (array[journeysInfo],fixed-type)
 + cabinType: `economy` (string)
 + passengers (array[passengersInfo1, passengersInfo2, passengersInfo3],fixed-type)
 + filters (filtersDetails)
 + customerInfo (customerInfoDetails)
-+ maxResults: 500 (number)
++ maxResults: 500 (number) - Maximum number of results to be returned. Min: 1. Max: 500.
 
 ## journeysInfo
 + departrue (object)
@@ -69,8 +69,8 @@
 ## customerInfoDetails
 + id: 12345 (number)
 + transitCode: `77bf396b-b170-4ede-9f64-f83bfa6b1e3f`(string)
-+ availablePointBalance: 50000.0 (number)
-+ eligibilityInfo (object)
++ availablePointBalance: 50000.0 (number) - Number of loyalty points available in the customer's credit card account.
++ eligibilityInfo (object) - Contains information for internal use only.
     + programCurrency: `points` (string)
     + purchaseAllowed: true (boolean)
     + redemptionAllowed: true (boolean)
