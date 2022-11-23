@@ -1,16 +1,12 @@
 {
     "environments": [
       {
-        "baseUrl": "https://order-api.qa.cnxloyalty.com",
+        "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com/",
         "type": "qa"
       },
       {
-        "baseUrl": "https://order-api.stage.cnxloyalty.com",
+        "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com/",
         "type": "stage"
       },
-      {
-        "baseUrl": "https://order-api.cnxloyalty.com",
-        "type": "prod"
-      }
     ]
 }
