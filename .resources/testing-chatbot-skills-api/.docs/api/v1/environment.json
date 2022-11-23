@@ -1,0 +1,12 @@
+{
+    "environments": [
+      {
+        "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com/",
+        "type": "qa"
+      },
+      {
+        "baseUrl": "https://chatbot-skills-bff.qa.cnxloyalty.com/",
+        "type": "stage"
+      },
+    ]
+}
