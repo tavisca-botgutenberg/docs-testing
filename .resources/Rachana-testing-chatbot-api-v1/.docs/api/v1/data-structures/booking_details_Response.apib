@@ -46,7 +46,35 @@
 + airInfo (airInfo-details)
 
 ## airInfo-details
-+ air: 'test' (string)
++ type: 'OneWay'	(enum)
+  + OneWay
+  + RoundTrip
+  + MultiCity
+  + MixAndMatch_Outbound
+  + MixAndMatch_Inbound
++ journeys (journeys-info)
++ departure (dep-info)
++ arrival (arr-info)
+
+## journeys-info
++ index: 0 (number)
++ segment (array[segment-info], nullable)  
+
+## segment-info
++ departure (dep-info)
++ arrival (arr-info)
++ airlineName: `string` (string, nullable)
++ airlineLogo: `string` (string, nullable)
+
+## arr-info
++ city: `string` (string, nullable)
++ airPortCode: `string` (string, nullable)
++ date: `string` (string)
+
+## dep-info
++ city: `string` (string, nullable)
++ airPortCode: `string` (string, nullable)
++ date: `string` (string)
 
 ## activityInfo-details
 + airportName: `string` (string, nullable)
