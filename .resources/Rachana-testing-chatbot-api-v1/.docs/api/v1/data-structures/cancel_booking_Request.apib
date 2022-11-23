@@ -2,9 +2,18 @@
 + client (clientDetails2, required)
 + user (userDetails2, required)
 + configurations (configurationsDetails2, required)
++ item (itemDetails2)
 + bookingId: `string` (string, nullable)
 + tripFolderId: `3fa85f64-5717-4562-b3fc-2c963f66afa6` (string)
 + transitCode: `string` (string, nullable)
+
+## itenDetails2
++ itemType: `Air` (enum)
+  + Air
+  + Hotel
+  + Car
+  + Activity
++ confirmationNumber: `string` (string, nullable)
 
 ## clientDetails2
 + clientId: 2147483647 (number, required)
