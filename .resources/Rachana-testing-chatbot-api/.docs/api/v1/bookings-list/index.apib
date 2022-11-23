@@ -4,7 +4,7 @@
 + Parameters
   + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
 
-+ Request sampleRequest (application/json)
++ Request booking_list_Request (application/json)
   + Headers
     Content-Type: application/json
     cnx-correlationId: should be GUID/uuid string used to log all event in one session
@@ -12,11 +12,11 @@
     cnx-userip: 127.0.0.0
     cnx-environment-token: token-1
     source: appname
-    x-date: 11-11-22
+    x-date: 
     nonce: a
     traceId: tId
-  + Attributes (sampleRequest)
+  + Attributes (booking_list_Request)
 
 + Response 200 (application/json)
-  + Attributes (sampleResponse)
+  + Attributes (booking_list_Response)
   
