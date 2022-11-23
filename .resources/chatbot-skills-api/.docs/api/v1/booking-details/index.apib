@@ -1,20 +1,20 @@
-# Get booking details [/api/v1.0/booking/detail]
-## Get booking details [POST]
+# Get booking Details [/api/v1.0/booking/detail]
+## Get booking Details [POST]
 
 + Parameters
 
-+ Request booking_details_Request (application/json)
++ Request sampleRequest_detail (application/json)
   + Headers
     Content-Type: application/json
     cnx-correlationId: should be GUID/uuid string used to log all event in one session
     cnx-tenantid: TenantId should be agency tenantId
     cnx-userip: 127.0.0.0
-    cnx-environment-token: 
+    cnx-environment-token: token-1
     source: appname
-    x-date: 
+    x-date: 11-11-22
     nonce: a
     traceId: tId
-  + Attributes (booking_details_Request)
+  + Attributes (sampleRequest_detail)
 
 + Response 200 (application/json)
-  + Attributes (booking_details_Response)
+  + Attributes (sampleResponse_detail)
