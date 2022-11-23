@@ -26,7 +26,6 @@
 + paxCount: `string` (string, nullable)
 + productUniqueId: `string` (string, nullable)
 + productImage: `string` (string, nullable)
-
 + cancellationInfo (cancellationInfo-details)
 + status: `Planned` (enum)
   + Planned
@@ -37,10 +36,32 @@
   + Split 
   + Unknown
   
-## hotel-info-details
-+ hotelName: `string` (string, nullable)
-+ nights: 0 (number)
-+ checkInDate: `2022-11-16T10:56:15.580Z` (string)
-+ checkOutDate: `2022-11-16T10:56:15.580Z` (string)
-+ roomType: (string, nullable)
-+ bedInfo: (string, nullable)
+## cancellationInfo-details
++ cancellationAllowed: `true` (boolean)
++ cancellationType: `Void` (enum)
+  + Void
+  + PostVoid
+  + CovidCancellation 
+  + Cancel
++ settlementType: `Refund` (enum)
+  + Refund 
+  + Credit 
++ settlementInfo (settlementInfo-details)
++ penaltyAmount (penaltyAmount-details)
+        
+## settlementInfo-details
++ cash: 0 (number)
++ validBy: (string, nullable)
++ currency: (string, nullable)
++ points: 0 (number)
++ pointsCurrency: (string, nullable)
++ platingCarrier: (string, nullable)
++ perPassangerCredit: (string, nullable)
++ processingFee: 0 (number, nullable)
+       
+## penaltyAmount-details 
++ type: `Fees` (enum)
++ cash: 0 (number)
++ currency: (string, nullable)
++ points: 0 (number)
++ pointsCurrency: (string, nullable)
