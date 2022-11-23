@@ -1,16 +1,17 @@
 {
-    "environments": [
-      {
-        "baseUrl": "https://order-api.qa.cnxloyalty.com",
-        "type": "qa"
-      },
-      {
-        "baseUrl": "https://order-api.stage.cnxloyalty.com",
-        "type": "stage"
-      },
-      {
-        "baseUrl": "https://order-api.cnxloyalty.com",
-        "type": "prod"
-      }
-    ]
+  "environments": [
+    {
+      "baseUrl": "https://order-api.qa.cnxloyalty.com",
+      "type": "qa"
+    },
+    {
+      "baseUrl": "https://order-api.stage.cnxloyalty.com",
+      "type": "stage"
+    },
+    {
+      "baseUrl": "https://order-api.cnxloyalty.com",
+      "type": "prod"
+    }
+  ]
 }
+
