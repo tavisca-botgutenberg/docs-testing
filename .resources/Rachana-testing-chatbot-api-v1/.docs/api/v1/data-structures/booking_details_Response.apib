@@ -46,4 +46,22 @@
 + settlementType: `Refund` (enum)
   + Refund 
   + Credit 
-
++ settlementInfo (settlementInfo-details)
++ penaltyAmount (penaltyAmount-details)
+        
+## settlementInfo-details
++ cash: 0 (number)
++ validBy: (string, nullable)
++ currency: (string, nullable)
++ points: 0 (number)
++ pointsCurrency: (string, nullable)
++ platingCarrier: (string, nullable)
++ perPassangerCredit: (string, nullable)
++ processingFee: 0 (number, nullable)
+       
+## penaltyAmount-details 
++ type: `Fees` (enum)
++ cash: 0 (number)
++ currency: (string, nullable)
++ points: 0 (number)
++ pointsCurrency: (string, nullable)
