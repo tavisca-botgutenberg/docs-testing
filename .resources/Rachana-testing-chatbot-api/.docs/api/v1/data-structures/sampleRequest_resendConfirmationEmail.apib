@@ -1,22 +1,22 @@
-## booking_details_Request
-+ client (c1, required)
-+ user (u1, required)
-+ configurations (con1, required)
-+ bookingId: 'string' (string, required)
+## sampleRequest_resendConfirmationEmail 
++ client (client2, required)
++ user (user2, required)
++ configurations (configurations2, required)
++ bookingId: 'string' (string, nullable)
++ email: 'string' (string, nullable)
 
-
-## c1 (object)
+## client2 (object)
 + clientId: 2147483647 (number, required)
 + programId: 2147483647 (number, required)
 + clientTenantId: `string` (string)
 
-## u1 (object)
+## user2 (object)
 + firstName: `string` (string, nullable)
 + lastName: `string` (string, nullable)
 + userId: 1 (number)
 + userName: `string` (string, required)
 
-## con1 (object)
+## configurations2 (object)
 + additionalProp1: `string` (string)
 + additionalProp2: `string` (string)
 + additionalProp3: `string` (string)

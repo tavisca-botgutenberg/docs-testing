@@ -1,21 +1,22 @@
-## booking_list_Request 
-+ client (client_info, required)
-+ user (user_info, required)
-+ configurations (configurations_info, required)
+## sampleRequest_detail
++ client (c1, required)
++ user (u1, required)
++ configurations (con1, required)
++ bookingId: 'string' (string, required)
 
 
-## client_info (object)
+## c1 (object)
 + clientId: 2147483647 (number, required)
 + programId: 2147483647 (number, required)
-+ clientTenantId: `string` (string, nullable)
++ clientTenantId: `string` (string)
 
-## user_info (object)
+## u1 (object)
 + firstName: `string` (string, nullable)
 + lastName: `string` (string, nullable)
 + userId: 1 (number)
 + userName: `string` (string, required)
 
-## configurations_info (object)
+## con1 (object)
 + additionalProp1: `string` (string)
 + additionalProp2: `string` (string)
 + additionalProp3: `string` (string)
