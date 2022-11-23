@@ -28,7 +28,7 @@
 + paxCount: `string` (string, nullable)
 + productUniqueId: `string` (string, nullable)
 + productImage: `string` (string, nullable)
-+ itineraryInfo: 'test' (string)
++ itineraryInfo: (itineraryInfo-details)
 + cancellationInfo (cancellationInfo-details)
 + status: `Planned` (enum)
   + Planned
@@ -38,6 +38,10 @@
   + Past 
   + Split 
   + Unknown
+  
+## itineraryInfo-details
++ hotel: 'test' (string)
++ car: 'test1' (string)
 
 ## cancellationInfo-details
 + cancellationAllowed: `true` (boolean)
