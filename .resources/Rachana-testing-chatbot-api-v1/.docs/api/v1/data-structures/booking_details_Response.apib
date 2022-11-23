@@ -42,13 +42,29 @@
 ## itineraryInfo-details
 + hotel-info (hotel-info-details)
 + car-info (car-info-details)
++ activity-info (activity-info-details)
++ air-info (air-info-details)
 
 ## hotel-info-details
 + hotelName: `string` (string, nullable)
++ nights: 0 (number)
++ checkInDate: `2022-11-16T10:56:15.580Z` (string)
++ checkOutDate: `2022-11-16T10:56:15.580Z` (string)
++ roomType: (string, nullable)
++ bedInfo: (string, nullable)
 
 ## car-info-details
 + companyName: `string` (string, nullable)
++ carCategory: `string` (string, nullable)
++ providerName: `string` (string, nullable)
++ providerImage: `string` (string, nullable)
++ pickUpInfo	(pickUpInfo-details) 
++ dropOffInfo (dropOffInfo-details)
 
+## pickUpInfo-details
++ locationType: `string` (string, nullable)
++ locationName: `string` (string, nullable)
++ date: (string)
 
 ## dropOffInfo-details
 + locationType: `string` (string, nullable)
