@@ -28,7 +28,7 @@
 + paxCount: `string` (string, nullable)
 + productUniqueId: `string` (string, nullable)
 + productImage: `string` (string, nullable)
-+ itineraryInfo (itineraryInfo-details)
++ itineraryInfo (itineraryInfo-details, nullable)
 + cancellationInfo (cancellationInfo-details)
 + status: `Planned` (enum)
   + Planned
@@ -45,18 +45,10 @@
 
 ## hotel-info-details
 + hotelName: `string` (string, nullable)
-+ nights: 0 (number)
-+ checkInDate: `2022-11-16T10:56:15.580Z` (string)
-+ checkOutDate: `2022-11-16T10:56:15.580Z` (string)
-+ roomType: (string, nullable)
-+ bedInfo: (string, nullable)
 
 ## car-info-details
 + companyName: `string` (string, nullable)
-+ carCategory: `string` (string, nullable)
-+ providerName: `string` (string, nullable)
-+ providerImage: `string` (string, nullable)
-+ dropOffInfo (dropOffInfo-details)
+
 
 ## dropOffInfo-details
 + locationType: `string` (string, nullable)
