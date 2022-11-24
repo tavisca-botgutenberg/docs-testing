@@ -6,15 +6,14 @@
 + Request booking_details_Request (application/json)
   + Headers
     Content-Type: application/json
-    cnx-correlationId: Unique ID that is used to track API calls made in the same session. It is recommended that, as an API consumer, you assign a new correlation ID for the first API call in a session and use the same ID for all subsequent APIs. If you encounter any issue in your API calls, you must provide this ID to our support executive.
-    cnx-tenantid: A unique tenant ID assigned for each API client. It used to identify and differentiate API request calls made by different API clients. If you do not know the tenant ID, please contact cxLoyalty business Team.
-    cnx-userip: IP address of the customer. The customer is the end-user who is making the booking. 
-    Ensure that your integration passes the customer's IP address instead of your own IP address. The customer's IP address helps determine their location and assigns the correct payment gateway. The IP address can also be used for fraud recovery and other analytics.
+    cnx-correlationId: q4587f0f-c74e-428f-99fc-66d10be8cb15
+    cnx-tenantid: xcxloyalty
+    cnx-userip: 
     cnx-environment-token: CBTS environment token.
-    source: Origin of request / source application name.
-    x-date: Request datetime object.
-    nonce: nonce value.
-    traceId: traceId for one utterance.
+    source: nextgen-chatbot-UI
+    x-date: Sun, 19 Sep 2021 12:25:09 GMT
+    nonce: 5fb22c71-7876-4db3-964f-407b880cb7cc
+    traceId: traceId1
   + Attributes (booking_details_Request)
 
 + Response 200 (application/json)
