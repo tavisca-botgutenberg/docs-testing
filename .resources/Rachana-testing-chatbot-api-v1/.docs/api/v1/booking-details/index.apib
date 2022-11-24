@@ -5,7 +5,7 @@
 
 + Request booking_details_Request (application/json)
   + Headers
-    Content-Type: application/json - Indicates the media type (MIME type) for the request body. Chatbot APIs only support media type application/json.
+    Content-Type: 'application/json' - Indicates the media type (MIME type) for the request body. Chatbot APIs only support media type application/json.
     cnx-correlationId: Unique ID that is used to track API calls made in the same session. It is recommended that, as an API consumer, you assign a new correlation ID for the first API call in a session and use the same ID for all subsequent APIs. If you encounter any issue in your API calls, you must provide this ID to our support executive.
     cnx-tenantid: A unique tenant ID assigned for each API client. It used to identify and differentiate API request calls made by different API clients. If you do not know the tenant ID, please contact cxLoyalty business Team.
     cnx-userip: IP address of the customer. The customer is the end-user who is making the booking. 
