@@ -1,0 +1,20 @@
+# Update Booking Info [/api/v1.0/Booking/hotel/updateGuestInfo]
+## Update Booking Info [POST]
+
++ Parameters
+  + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
+
++ Request sampleRequest_bookingInfo (application/json)
+  + Headers
+    cnx-correlationId: cnx-correlationId
+    cnx-tenantid: cnx-tenantid
+    cnx-userip: cnx-userip
+    cnx-environment-token: cnx-environment-token
+    source: source
+    x-date: x-date
+    nonce: nonce
+    traceId: traceId
+  + Attributes (sampleRequest_bookingInfo)
+
++ Response 200 (application/json)
+  + Attributes (sampleResponse_bookingInfo)

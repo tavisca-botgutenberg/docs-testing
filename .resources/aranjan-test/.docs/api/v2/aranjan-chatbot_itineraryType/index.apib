@@ -1,0 +1,24 @@
+# Get booking list [/api/v1.0/Booking/{itineraryType}]
+This is an HTTP POST method that return list of bookins of user for requested "itinerary Type".
+
+## Get booking list [POST]
+
+This contains Client, User and Configurations.
+
++ Parameters
+  + itineraryType: `upcoming`(number, required) - Possible value can be "upcoming", "cancelled", "completed".
+
++ Request sampleRequest_Itinerary (application/json)
+  + Headers
+    cnx-correlationId: cnx-correlationId
+    cnx-tenantid: cnx-tenantid
+    cnx-userip: cnx-userip
+    cnx-environment-token: cnx-environment-token
+    source: source
+    x-date: x-date
+    nonce: nonce
+    traceId: traceId
+  + Attributes (sampleRequest_Itinerary)
+
++ Response 200 (application/json)
+  + Attributes (sampleResponse_Itinerary)
