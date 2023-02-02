@@ -1,10 +1,4 @@
 ## createOrderResp
 + orderId: `CA20199` - Unique ID assigned to the order by cxLoyalty system.<br><br>
-<b>Notes:</b>
-    + You must use the order ID as an identifier in other API calls at a later point in time. For example, you need the order ID to process the payment for the cruise booking using the <a href="../manage-order#processpaymentapi" target="_blank">Process Payment</a> API or to update the order using the <a href="../manage-order#updateorderapi" target="_blank">Update Order</a> API.
-    + To perform <@ post_sale_transactions @> on this order, you must use the order ID to generate a new transit code using the <a href="../generate-transit-code#generatetransitcodeapi" target="_blank">Generate Transit Code</a> API. This newly-generated transit code can be used to process the payment and update the order. 
-   
 + externalTripId: `cruisetest34ee4abb` - Unique ID assigned for the cruise booking by third-party system before the booking is confirmed.<br><br>
-<Notes:> 
-    + You must use this external trip ID in other API calls at a later point in time.  For example, you need the external trip ID to process the payment for the cruise booking using the <a href="../manage-order#processpaymentapi" target="_blank">Process Payment</a> API or to update the order using the <a href="../manage-order#updateorderapi" target="_blank">Update Order</a> API.
-    + To perform  <@ post_sale_transactions @> on this order, you must use the external trip ID to generate a new transit code using the <a href="../generate-transit-code#generatetransitcodeapi" target="_blank">Generate Transit Code</a> API. This newly-generated transit code can be used to process the payment and update the order. 
+
