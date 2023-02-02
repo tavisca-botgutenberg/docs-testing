@@ -117,17 +117,6 @@
 + loyaltyCurrencyFareQuote: 0.0 (number, required) - Total <@ loyaltypoints_popup @> that must be redeemed to book the cruise.<br><br><b>Format:</b> Decimal
 + depositAmount: 80.00 (number) - Deposit amount that must be paid to book the cruise. This amount is adjusted against the `fareQuote` amount.<br><br><b>Format:</b> Decimal 
 + rateOptionCode: `RM1` (string, required) - Rate code assigned by the cruise line. The `rateOptionCode` can be used to identify the pricing program and the benefits associated with the rate option. 
-+ rateType: `Standard` (enum, required) - Type of rate. 
-    + <@ group @>
-    + <@ interline @>
-    + <@ member @> 
-    + <@ netRate @>
-    + <@ occupation @>
-    + <@ pastguest @>
-    + <@ promotion @>
-    + <@ resident @>
-    + <@ senior @>
-    + <@ standard @>
 + netRateAmount: 488.00 (number, required) - Total amount payable for the cruise booking to the cruise line.<br><br><b>Note:</b> This amount does not include the `markupAmount`.<br><br><b>Format:</b> Decimal
 + markupAmount: 0.0 (number, required) - Markup (MUP) amount. A markup indicates the amount of money added on top of what a cruise line charges so that <a href='#' data-toggle='popover' title='OTA' data-content='An online travel agency is a web-based travel company that allows you to book hotel rooms, flights, train tickets, cruise, or rent a car.'>OTAs</a> can make money off of travel bookings.<br><br><b>Format:</b> Decimal 
 + commissionAmount: 40.00 (number, required) - <@ Commission_popup @> amount that is provided to cxLoyalty system when a cruise is booked on a <@ standard @> rate. This amount is not include in the `fareQuote` amount.<br><br><b>Format:</b> Decimal 
