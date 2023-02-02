@@ -1,0 +1,19 @@
+{
+  "environments": [
+    {
+      "baseUrl": "https://loyalty-gateway.stage.cnxloyalty.com",
+      "type": "qa",
+      "isAuthorized": true
+    },
+    {
+      "baseUrl": "https://loyalty-gateway.stage.cnxloyalty.com",
+      "type": "stage",
+      "isAuthorized": true
+    },
+    {
+      "baseUrl": "https://loyalty-gateway.stage.cnxloyalty.com",
+      "type": "prod",
+      "isAuthorized": true
+    }
+  ]
+}
