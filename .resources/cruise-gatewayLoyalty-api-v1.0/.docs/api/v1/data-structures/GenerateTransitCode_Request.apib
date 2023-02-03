@@ -1,3 +1,4 @@
 ## GenerateTransitCode_Request
-+ sessionId: `a58e3b97-c272-4c7a-81f5-0f9a041f2b96`(string, required) - sample description
-+ fareOptionId: `435fdsfd1` (string, optional) - Ref Id of fare option selected for pricing from Air search response.
++ orderId: `CA20199`(string, required) - Unique ID assigned to the order by cxLoyalty system. <br><bold>Note</bold>To perform post-sale transactions on an existing order, you must generate a new transit code using this API. In order to do so, you must use the order ID that is returned when the order was created (using the Create Order API).
++ externalTripId: `cruisetest34ee4abb` (string, optional) - Unique ID assigned to the cruise booking by third-party system before the booking is confirmed. <br><bold>Note</bold>To perform post-sale transactions on an existing order, you must generate a new transit code using this API. In order to do so, you must use the external trip ID that is returned when the order was created (using the Create Order API).
++ requestedBy: `Online` - Contains the username or the identifier for the user who has logged into the system. <br><bold>Note</bold>The requestedBy field must be set to Online when you are attempting to book a cruise using the post booking workflow.
