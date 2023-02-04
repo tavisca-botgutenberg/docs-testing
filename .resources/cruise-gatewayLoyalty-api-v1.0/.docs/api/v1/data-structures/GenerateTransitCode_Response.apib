@@ -21,3 +21,27 @@
 + emailAddress: `abc@xyz.com` (string)  - Email address (recipient ID) that must be used when any email communication needs to be made with the customer.
 + birthdate: `1991-08-22` (string) - Date of birth of the customer. Format: YYYY-MM-DD
 + createDate: `2023-03-07T10:10:00.947Z` (string) - Date and time when the account is created. Format: YYYY-MM-DDTHH:MM:SS.SSSZ ISO 8601
++ enrolledProgramDetails (object) - Contains information about the loyalty program that the customer is associated with.
+    + programID: `1153` (string) - Unique ID for the loyalty program.
+    + programName: `Sapphire Flex Rewards` (string) - Name of the loyalty program.
+    + programDescription: `Flexible Rewards Card` (string) - Description of the loyalty program
+    + programPhoneNumber: `1-800-867-5309` (string) - Phone number of the customer support for queries and issued related to the loyalty program.
+    + programCurrencyMinimum: 1500 (number) - Indicates the minimum number of loyalty points required to use the loyalty program.
+    + programBookingFee: 20 (number) - Indicates the applicable fee amount for booking using the loyalty program.
+    + pointsConversionFactor: 0.01 (number) - Conversion factor that is used to convert loyalty points to cash.
+    + programCurrencyBalance: 564897 (number) - Number of loyalty points available in the customer's credit card account.
+    + programCurrencyLabel: `Points` (string) - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+    + programCurrency: 0 (number) - Number of loyalty points that the customer must redeem to pay for the cruise booking. Format: Decimal
+    + tiers (array[tiers_info],fixed-type) - Contains information about the various tiers of the enrolled loyalty program.
+    + tiers_info(object)
+        + name: `Tier 1` (string) - Name of the tier.
+        + netRateAmountFrom: 50 (number) - Minimum amount for the tier net rate of the loyalty program.
+        + netRateAmountTo: 150 (number) - Maximum amount for the tier net rate of the loyalty program.
+        + pointConversionFactor: 0.1 (number) - Contains information about the conversion factor that is used to convert points to cash in case of a payment by points for the tier for the loyalty program.
+
+
+// ## tiers_info
+// + name: `Tier 1` (string) - Name of the tier.
+// + netRateAmountFrom: 50 (number) - Minimum amount for the tier net rate of the loyalty program.
+// + netRateAmountTo: 150 (number) - Maximum amount for the tier net rate of the loyalty program.
+// + pointConversionFactor: 0.1 (number) - Contains information about the conversion factor that is used to convert points to cash in case of a payment by points for the tier for the loyalty program.
