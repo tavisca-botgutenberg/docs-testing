@@ -8,20 +8,9 @@
         + Online
         + Participant
         + QC
-    + mode: `Live`(enum, optional)
+    + mode: `Live`(enum, optional) - Indicates whether the customer's account information should be live or simulated. If the mode is set to Live, the actual customer's account information, obtained from the bank, is returned in the API response. If the mode is set to Simulator, the customer's account information is not obtained from the bank; instead, a mock customer account information is returned in the response. Note: By default, the mode field is set to Live.
         + Live
         + Simulator
         + None
-// ## userAuthenticationData_info
-// + requestedBy: `Online`(string, required)
-// + userType: `Online`(enum, optional) - Indicates the type of user who has logged into the system. Currently, we only support Online user type. Notes: If the userType is set to Online, then you must set the requestedBy to Online. By default, the userType field is set to Online.
-//     + Agent
-//     + Offline
-//     + Online
-//     + Participant
-//     + QC
-// + mode: `Live`(enum, optional)
-//     + Live
-//     + Simulator
-//     + None
+
 
