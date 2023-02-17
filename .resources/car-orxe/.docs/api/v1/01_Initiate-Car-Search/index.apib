@@ -1,0 +1,94 @@
+# Initiate Car Search [/car/v1.0/search/init]
+
+## Initiate Car Search - Pick up and drop off at the same on-airport location - round trip [POST]
+
++ Request initiateSearchAirportCode (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US: description 
+    + Attributes (searchInitRQPickUpDropOffAirportCode)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
+
+
+## Initiate Car Search - Pick up at an on-airport location and drop off at a different on-airport location - one-way trip [POST]
+
++ Request initiateSearchAirportCode (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (searchInitRQPickUpDropOffAirportCodeDiff)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
+
+
+## Initiate Car Search - Pick up at an on-airport location and drop off at an off-airport location - one-way trip [POST]
+
++ Request initiateSearchAirportCode (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (searchInitRQPickUpAirportCodeDropOffCircle)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
+
+## Initiate Car Search - Pick up at an off-airport location and drop off at an on-airport location - one-way trip [POST]
+
++ Request initiateSearchAirportCode (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (searchInitRQPickUpCircleDropOffAirportCode)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
+
+
+## Initiate Car Search - Pick up and drop off at the same off-airport location - round trip [POST]
+
++ Request initiateSearchCircle (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (searchInitRQPickUpCircleDropOffCircle)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
+
+## Initiate Car Search - Pick up at an off-airport location and drop off at a different off-airport location - one-way trip [POST]
+
++ Request initiateSearchCircle (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (searchInitRQPickUpCircleDropOffCircleDiffOff)
+
++ Response 200 (application/json)
+    + Attributes (sessionIdRS)
