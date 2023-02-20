@@ -1,0 +1,32 @@
+## cancel_booking_Request
++ client (clientDetails2, required)
++ user (userDetails2, required)
++ configurations (configurationsDetails2, required)
++ item (item-info)
++ bookingId: `string` (string, nullable)
++ tripFolderId: `3fa85f64-5717-4562-b3fc-2c963f66afa6` (string)
++ transitCode: `string` (string, nullable)
+
+## item-info
++ itemType: `Air` (enum)
+  + Air
+  + Hotel
+  + Car
+  + Activity
+
+## clientDetails2
++ clientId: 2147483647 (number, required) - Unique client id.
++ programId: 2147483647 (number, required) - Unique ID for the loyalty program.
++ clientTenantId: `string` (string, nullable)
+
+## userDetails2
++ firstName: `string` (string, nullable) - Contains information about first name of customer.
++ lastName: `string` (string, nullable) - Contains information about last name of customer.
++ userId: 1 (number) - Contains information about userId of customer.
++ userName: `string` (string, required) - Contains information about username of customer.
+
+## configurationsDetails2
++ additionalProp1: `string` (string) - Additional property information.
++ additionalProp2: `string` (string) - Additional property information.
++ additionalProp3: `string` (string) - Additional property information.
+
