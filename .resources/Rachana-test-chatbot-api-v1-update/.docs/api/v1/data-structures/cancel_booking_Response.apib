@@ -3,21 +3,21 @@
 
 ## bookingsCancel
 + isCancelled: true (boolean)
-+ itemId: `string` (string, nullable)
-+ confirmationNumber: `string` (string, nullable)
++ itemId: `string` (string, nullable) - Unique item id.
++ confirmationNumber: `string` (string, nullable) - Bookinf cancellation confirmation number.
 + settlementType: `Refund` (enum)
  + Refund (string)
  + Credit (string)
-+ settlementInfo (settlementInfoDetails)
-+ emailId: `string` (string, nullable)
-+ myTripsUrl: `string` (string, nullable)
++ settlementInfo (settlementInfoDetails) - Additional information about settlement. 
++ emailId: `string` (string, nullable) - User email id.
++ myTripsUrl: `string` (string, nullable) - Trip url.
 
 ## settlementInfoDetails
-+ cash: 0 (number)
-+ validBy: `2022-11-04T08:07:09.451Z` (string, nullable)
-+ currency: `string` (string, nullable)
++ cash: 0 (number) - Cash amount.
++ validBy: `2022-11-04T08:07:09.451Z` (string, nullable) - ValidBy date.
++ currency: `string` (string, nullable) - Type of currency.
 + points: 0 (number, nullable)
 + pointsCurrency: `string` (string, nullable)
 + platingCarrier: `string` (string, nullable)
 + perPassangerCredit: `string` (string, nullable)
-+ processingFee: 0 (number, nullable)
++ processingFee: 0 (number, nullable) - Procesing fee.

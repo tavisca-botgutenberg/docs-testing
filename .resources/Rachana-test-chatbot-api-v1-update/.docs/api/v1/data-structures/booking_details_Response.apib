@@ -2,24 +2,24 @@
 + include bookings1
 
 ## bookings1 (object)
-+ tripId: `xyz` (string, nullable)
-+ superPNR: `string` (string, nullable)
++ tripId: `xyz` (string, nullable)  - Unique ID for trip.
++ superPNR: `Text` (string, nullable) - Passanger name record.
 + tripFolderId: `3fa85f64-5717-4562-b3fc-2c963f66afa6` (string)
-+ bookingConfirmationUrl: `url` (string, nullable)
++ bookingConfirmationUrl: `url` (string, nullable) - Contains booking confirmation url.
 + user (userDetails3, required)
 + items (array[itemDetails2], nullable)
 + source: `string` (string, nullable)
 + isLHRCBooking: true (boolean)
 
 ## userDetails3
-+ firstName: `f-name` (string, nullable)
-+ lastName: `l-name` (string, nullable)
-+ userId: 3721203 (number)
-+ userName: `31_2987481311` (string, required)
++ firstName: `f-name` (string, nullable) - Users first name.
++ lastName: `l-name` (string, nullable) - Users last name.
++ userId: 3721203 (number) - Unique user id.
++ userName: `31_2987481311` (string, required) - User name.
 
 ## itemDetails2
-+ itemId:  `string` (string, nullable)
-+ confirmationNumber: `string` (string, nullable)
++ itemId:  `string` (string, nullable) - Unique item id.
++ confirmationNumber: `string` (string, nullable) - Booking confirmation number.
 + type: `Air` (enum)
   + Air
   + Hotel
