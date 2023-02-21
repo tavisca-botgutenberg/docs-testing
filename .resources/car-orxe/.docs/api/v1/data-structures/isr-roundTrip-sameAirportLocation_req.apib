@@ -1,13 +1,18 @@
 ## isr-roundTrip-sameAirportLocation_req
 + currency: `USD` (string) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD the car fare, discount, taxes, and other monetary amounts are returned in their USD amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. <br> Consider a scenario where you set the currency field value to USD and the car vendor's currency is in AUD. The API calculates the AUD to USD amount equivalents and displays monetary amounts in USD. <br> Note: If you do not set a value for the currency field, the currency value will automatically be set based on the default account configuration.
-+ searchQuery (object)
-    + criteria (object)
-        + pickUp (object)
-            + airportCode: `LAX`
-            + date: `2023-03-12`
-            + time: `10:30`
-        + dropOff (object)
-        + driverInfo (object)
++ searchQuery (object, required)
+    + criteria (object, required)
+        + pickUp (object, required)
+            + airportCode: `LAX` (string, required)
+            + date: `2023-03-12` (string, required)
+            + time: `10:30` (string, required)
+        + dropOff (object, required)
+            + sameAsPickup: `true` (boolean)
+            + date: `2023-03-16` (string, required)
+            + time: `17:30` (string, required)
+        + driverInfo (object, required)
+            + age: `25` (number, required)
+            + nationality: `US` (string, required)
     + filters (object)
     + vendorSpecificOptions (array[vendorSpecificOptionsInfo])
 + customerInfo (object)
