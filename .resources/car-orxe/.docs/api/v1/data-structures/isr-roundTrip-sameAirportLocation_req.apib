@@ -17,35 +17,8 @@
         + vendor: 
         + vehicleType: 
         + vehicleCategory (object)
-            + allow (array, fixed-type)
-                + AllTerrain
-                + CarOrSedan
-                + Coach
-                + CommercialVanOrTruck
-                + Convertible
-                + Coupe
-                + Crossover
-                + ExtendedCabPickup
-                + FourToFiveDoorVehicle
-                + Limo
-                + Monospace
-                + Motorcycle
-                + MotorHome
-                + Pickup
-                + Recreational
-                + RegularCabPickup
-                + Roadster
-                + Special
-                + SpecialOfferCar
-                + Sport
-                + StationWagon
-                + Suv
-                + Truck
-                + TwoOrFourDoorVehicle
-                + TwoToThreeDoorVehicle
-                + TwoWheelVehicle
-                + Van
-            + disallow (object)
+            + allow (array[vehicleCategoryAllow], fixed-type)
+            + disallow (array[vehicleCategoryDisallow], fixed-type)
         + price (object)
             + min: 20 (number)
             + max: 10000 (number)
@@ -58,3 +31,33 @@
 + programId: `docs` (string)
 
 ## vendorSpecificOptionsInfo
+
+## vehicleCategoryAllow
++ allow (enum)
+    + AllTerrain
+    + CarOrSedan
+    + Coach
+    + CommercialVanOrTruck
+    + Convertible
+    + Coupe
+    + Crossover
+    + ExtendedCabPickup
+    + FourToFiveDoorVehicle
+    + Limo
+    + Monospace
+    + Motorcycle
+    + MotorHome
+    + Pickup
+    + Recreational
+    + RegularCabPickup
+    + Roadster
+    + Special
+    + SpecialOfferCar
+    + Sport
+    + StationWagon
+    + Suv
+    + Truck
+    + TwoOrFourDoorVehicle
+    + TwoToThreeDoorVehicle
+    + TwoWheelVehicle
+    + Van
