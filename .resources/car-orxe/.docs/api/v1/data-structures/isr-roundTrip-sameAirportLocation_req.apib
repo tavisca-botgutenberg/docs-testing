@@ -33,8 +33,8 @@
     + vendorSpecificOptions (array[vendorSpecificOptionsInfo], fixed-type)
 + customerInfo (object, required)
     + id: `TestUser` (string, required)
-    + availablePointBalance: 90000 (number)
-    + transitCode: `72e87c86-c240-45eb-8d96-b46c52e56782` (string)
+    + availablePointBalance: 90000 (number, required)
+    + transitCode: `72e87c86-c240-45eb-8d96-b46c52e56782` (string, required)
     + eligibilityInfo (object)
         + programCurrency: `Points` (string)
         + purchaseAllowed: true (boolean)
@@ -42,7 +42,7 @@
         + displayProgramCurrencyAsDecimal: false (boolean)
         + useVariableMilesFormula: false (boolean)
         + shortfallAllowed: true (boolean)
-+ programId: `docs` (string)
++ programId: `docs` (string, required)
 
 ## vendorAllow (enum)
 + ^^empty^^
