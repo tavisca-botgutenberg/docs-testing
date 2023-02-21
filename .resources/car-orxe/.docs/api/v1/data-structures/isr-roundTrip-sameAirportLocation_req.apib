@@ -7,15 +7,87 @@
             + date: `2023-03-12` (string, required)
             + time: `10:30` (string, required)
         + dropOff (object, required)
-            + sameAsPickup: `true` (boolean)
+            + sameAsPickup: true (boolean)
             + date: `2023-03-16` (string, required)
             + time: `17:30` (string, required)
         + driverInfo (object, required)
             + age: `25` (number, required)
             + nationality: `US` (string, required)
     + filters (object)
+        + vendor: 
+        + vehicleType: 
+        + vehicleCategory (object)
+            + allow (array[vehicleCategoryAllow])
+            + disallow (array[vehicleCategoryDisallow])
+        + price (object)
+            + min: 20 (number)
+            + max: 10000 (number)
+        + transmission (enum)
+            + Automatic
+            + Manual
+        + airConditionedOnly: true (boolean)
     + vendorSpecificOptions (array[vendorSpecificOptionsInfo])
 + customerInfo (object)
 + programId: `docs` (string)
 
 ## vendorSpecificOptionsInfo
+
+## vehicleCategoryAllow (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
+
+## vehicleCategoryDisallow (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
