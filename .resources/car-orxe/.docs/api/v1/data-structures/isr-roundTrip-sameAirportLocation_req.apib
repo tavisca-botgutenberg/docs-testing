@@ -15,8 +15,8 @@
             + nationality: `US`(string, required)
     + filters (object)
         + vendor (object) 
-            + allow `HZ`, `ZE`, `ZI` (array, fixed-type)
-            + disallow `HZ`, `ZE`, `ZI` (array, fixed-type)
+            + allow: `HZ`, `ZE`, `ZI` (array, fixed-type)
+            + disallow: `HZ`, `ZE`, `ZI` (array, fixed-type)
         + vehicleType: 
         + vehicleCategory (object)
             + allow (array[vehicleCategoryAllow], fixed-type)
@@ -31,11 +31,6 @@
     + vendorSpecificOptions (array[vendorSpecificOptionsInfo], fixed-type)
 + customerInfo (object)
 + programId: `docs` (string)
-
-## filtersVendorAllow
-
-## filtersVendorDisallow
-
 
 ## vendorSpecificOptionsInfo
 
