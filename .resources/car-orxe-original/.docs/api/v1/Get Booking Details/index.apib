@@ -1,0 +1,19 @@
+# Get Booking Details [/car/v1.0/book/details/{bookingId}]
+
+## Get Booking Details [GET]
++ Parameters
+    + bookingId: `2gbxku3lmgw` (string, required) - Unique ID for the booking. You must obtain the booking ID from the `/items[]/bookingId` field returned in the `Get Booking Status` API response.
+ 
++ Request getBookDetails (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US@@description: Language in which you want to retrieve the car content attributes. At present, the car content is available only in English (US) (en-US). If you want to have a language other than `en-US` configured, then please contact cxLoyalty Business Team.
+      
+    + Attributes (getBookDetailsRequest)
++ Response 200 (application/json)
+    + Attributes (bookingDetailsPickUpAirportCodeDropOffCircleRS-)
