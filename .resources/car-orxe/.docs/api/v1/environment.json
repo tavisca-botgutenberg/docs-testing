@@ -1,12 +1,8 @@
 {
-    "environments": [
-      {
-        "baseUrl": "https://car-loyalty.qa.cnxloyalty.com",
-        "type": "qa"
-      },
-      {
-        "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
-        "type": "stage"
-      }
-    ]
+  "environments": [
+    {
+      "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
+      "type": "stage"
+    }
+  ]
 }
