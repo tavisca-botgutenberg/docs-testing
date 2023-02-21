@@ -3,10 +3,6 @@
     {
       "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
       "type": "stage"
-    },
-    {
-      "baseUrl": "https://car-loyalty.qa.cnxloyalty.com",
-      "type": "qa"
     }
   ]
 }
