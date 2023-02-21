@@ -12,9 +12,11 @@
             + time: `17:30` (string, required)
         + driverInfo (object, required)
             + age: `25` (number, required)
-            + nationality: `US` (string, required)
+            + nationality: `US`(string, required)
     + filters (object)
-        + vendor: 
+        + vendor (object) 
+            + allow `HZ`, `ZE`, `ZI` (array, fixed-type)
+            + disallow `HZ`, `ZE`, `ZI` (array, fixed-type)
         + vehicleType: 
         + vehicleCategory (object)
             + allow (array[vehicleCategoryAllow], fixed-type)
@@ -26,9 +28,14 @@
             + Automatic
             + Manual
         + airConditionedOnly: true (boolean)
-    + vendorSpecificOptions (array[vendorSpecificOptionsInfo])
+    + vendorSpecificOptions (array[vendorSpecificOptionsInfo], fixed-type)
 + customerInfo (object)
 + programId: `docs` (string)
+
+## filtersVendorAllow
+
+## filtersVendorDisallow
+
 
 ## vendorSpecificOptionsInfo
 
@@ -63,3 +70,30 @@
 + Van
 
 ## vehicleCategoryDisallow (enum)
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
