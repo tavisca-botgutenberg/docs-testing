@@ -15,9 +15,11 @@
             + nationality: `US`(string, required)
     + filters (object)
         + vendor (object) 
-            + allow: `HZ`, `ZE`, `ZI` (array, fixed-type)
-            + disallow: `HZ`, `ZE`, `ZI` (array, fixed-type)
-        + vehicleType: 
+            + allow: (array[vendorAllow], fixed-type)
+            + disallow: (array[vendorDisallow], fixed-type)
+        + vehicleType (object)
+            + allow: (array[vehicleTypeAllow], fixed-type)
+            + disallow: (array[vehicleTypeDisallow], fixed-type)
         + vehicleCategory (object)
             + allow (array[vehicleCategoryAllow], fixed-type)
             + disallow (array[vehicleCategoryDisallow], fixed-type)
@@ -29,10 +31,129 @@
             + Manual
         + airConditionedOnly: true (boolean)
     + vendorSpecificOptions (array[vendorSpecificOptionsInfo], fixed-type)
-+ customerInfo (object)
++ customerInfo (object, required)
+    + id: `TestUser` (string, required)
+    + availablePointBalance: 90000 (number)
+    + transitCode: `72e87c86-c240-45eb-8d96-b46c52e56782`
+    + eligibilityInfo (object)
+        + programCurrency: `Points` (string)
+        + purchaseAllowed: true (boolean)
+        + redemptionAllowed: true (boolean)
+        + displayProgramCurrencyAsDecimal: false (boolean)
+        + useVariableMilesFormula: false (boolean)
+        + shortfallAllowed: true (boolean)
 + programId: `docs` (string)
 
-## vendorSpecificOptionsInfo
+## vendorAllow (enum)
++ HZ
++ ZE
++ ZI
+
+## vendorDisallow (enum)
++ HZ
++ ZE
++ ZI
+
+## vehicleCategoryAllow (enum)
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
+## vehicleCategoryDisallow (enum)
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
 
 ## vehicleCategoryAllow (enum) 
 + ^^empty^^
@@ -92,3 +213,8 @@
 + TwoToThreeDoorVehicle
 + TwoWheelVehicle
 + Van
+
+## vendorSpecificOptionsInfo
++ vendorCode: `ZI` (string, required)
++ promoCode: `HzXMas16` (string)
++ corporateCode: `K836600` (string)
