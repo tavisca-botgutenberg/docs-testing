@@ -1,0 +1,27 @@
+# Initiate Car Search [/car/v1.0/search/init]
+
+## Initiate Car Search - Pick up and drop off at the same on-airport location - round trip [POST]
+
++ Request  (application/json)
+    + Headers
+      cnx-correlationid: car-stage-docs-4721-a408-c3daed984c50
+      <!--Unique ID that is used to track API calls made in the same session. It is recommended that, as an ORXe API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (search to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.-->  
+
+      cnx-userip: 127.0.0.1
+      <!--IP address of the customer. The customer is the end-user who is making the booking. Ensure that your integration passes the customer's IP address instead of your own IP address. This is required for suppliers who have IP-restricted access to their inventory. The customer's IP address helps determine their location and assign the correct payment gateway. The IP address can also be used for fraud recovery and other analytics.--> 
+
+      cnx-tenantid: 2ql3bti6juo
+      <!--Tenant ID is used to identify the tenant that is making the request. If you do not know your tenant ID, please contact cxLoyalty Business Team.-->     
+      
+      Content-Type: Content-Type
+      <!--MIME type of the body of the request. This is used to identify the type of request. Currently, ORXe APIs support only application/json.-->   
+
+      Accept-Encoding: gzip, deflate
+      <!--List of acceptable encodings. This restricts the content-codings that are acceptable in the response. Currently, ORXe APIs support only gzip and deflate. See HTTP compression for more information.--> 
+      Accept-Language: en-US 
+      <!--Language in which you want to retrieve the car content attributes. At present, the car content is available only in English (US) (en-US). If you want to have a language other than en-US configured, then please contact cxLoyalty Business Team.--> 
+
+    + Attributes (isr-roundTrip-sameAirportLocation_req)
+
++ Response 200 (application/json)
+    + Attributes (isr-roundTrip-sameAirportLocation_res)
