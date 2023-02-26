@@ -252,12 +252,12 @@
 + airConditionedOnly: true (boolean) - If you want to include only air-conditioned cars in the car search results, set this field to `true`.<br><br> Default: `false`
 
 ## vendorFilter
-+ allow (array[string]) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify `HZ`, `ZI` as the value of the `allow` array, the car search results will include only car inventory that are from the `HZ` and `ZI` vendors.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vendor` object. You cannot send both the `allow` array and the `disallow` array in the `vendor` object. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a><br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
-+ disallow (array[string]) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify `HZ`, `ZI` as the value of the `disallow` array, the car search results will exclude (not include) all car inventory that are from the `HZ` and `ZI` vendors.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vendor` object. You cannot send both the `allow` array and the `disallow` array in the `vendor` object. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a><br><br><b>Example:</b> `ZT`
++ allow (array[string], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify `HZ`, `ZI` as the value of the `allow` array, the car search results will include only car inventory that are from the `HZ` and `ZI` vendors.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vendor` object. You cannot send both the `allow` array and the `disallow` array in the `vendor` object. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a><br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
++ disallow (array[string], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify `HZ`, `ZI` as the value of the `disallow` array, the car search results will exclude (not include) all car inventory that are from the `HZ` and `ZI` vendors.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vendor` object. You cannot send both the `allow` array and the `disallow` array in the `vendor` object. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a><br><br><b>Example:</b> `ZT`
 
 ## vehicleTypeFilter
-+ allow (array[vehicleTypeRequestEnum]) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `allow` array, the car search results will include only cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
-+ disallow (array[vehicleTypeRequestEnumDisallow]) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `disallow` array, the car search results will exclude (not include) all cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
++ allow (array[vehicleTypeRequestEnum], fixed-type) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `allow` array, the car search results will include only cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
++ disallow (array[vehicleTypeRequestEnumDisallow], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `disallow` array, the car search results will exclude (not include) all cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
 
 ## vehicleTypeRequestEnum (enum)
 + ^^empty^^
@@ -363,7 +363,7 @@
 
 ## vehicleCategoryFilter
 + allow (array[vehicleCategoryRequestEnum]) - Contains the list of vehicle categories that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle categories specified in this list. For example, if you specify `limo`, `SUV` as the value of the `allow` array, the car search results will include only cars that are of the `limo` and `SUV` vehicle categories.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleCategory` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleCategory` object.<br><br> <b>Example:</b> `special`, `compact`
-+ disallow (array[vehicleCategoryRequestEnumDisallow]) - Contains the list of vehicle categories that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle categories specified in this list. For example, if you specify `limo`, `SUV` as the value of the `disallow` array, the car search results will exclude (not include) all cars that are of the `limo` and `SUV` vehicle categories.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleCategory` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleCategory` object.<br><br> <b>Example:</b> `luxuryElite`
++ disallow (array[vehicleCategoryRequestEnumDisallow], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle categories specified in this list. For example, if you specify `limo`, `SUV` as the value of the `disallow` array, the car search results will exclude (not include) all cars that are of the `limo` and `SUV` vehicle categories.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleCategory` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleCategory` object.<br><br> <b>Example:</b> `luxuryElite`
 
 ## vehicleCategoryRequestEnum (enum)
 + ^^empty^^
@@ -439,7 +439,7 @@
   + The value for this field must be a positive number.
 
 ## vendorSpecificOptions
-+ vendorSpecificOptions (array[vendorSpecificOption], optional) - Contains vendor-specific options to narrow down the car search results. The search results will include only those cars that match all the vendor-specific criteria specified. Note that `vendorCode` is mandatory and you must ensure that each object has a unique `vendorCode`. Additionally, either the `promoCode` or the `corporateCode` must be provided in the `vendorSpecificOptions` array. You can also provide both the `promoCode` and the `corporateCode`. Contact your Account Manager for more information.
++ vendorSpecificOptions (array[vendorSpecificOption], optional, fixed-type) - Contains vendor-specific options to narrow down the car search results. The search results will include only those cars that match all the vendor-specific criteria specified. Note that `vendorCode` is mandatory and you must ensure that each object has a unique `vendorCode`. Additionally, either the `promoCode` or the `corporateCode` must be provided in the `vendorSpecificOptions` array. You can also provide both the `promoCode` and the `corporateCode`. Contact your Account Manager for more information.
 
 ## vendorSpecificOption
 + vendorCode: `ZI` (string, required) - Vendor code for which the vendor-specific options must be applied. Each object must have a unique `vendorCode`. You cannot have two objects with the same `vendorCode`. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a>
@@ -498,7 +498,7 @@
   + Completed
   + Faulted
 + resultsCount: 97 (number) - Total number of car search results that are available in the result set at the time when the status request is made.
-+ errors (array[error]) - Contains the list of errors that have occurred during the car search process. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the errors array lists the appropriate error message.
++ errors (array[error], fixed-type) - Contains the list of errors that have occurred during the car search process. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the errors array lists the appropriate error message.
 
 ## error
 + code: `3434` - Code for the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
@@ -518,7 +518,7 @@
 + orderBy: `price asc` (string) - Indicates the sort criteria/order in which the response must return the search results.<br><br>You can sort the search results by:<br>- `price asc` (Ascending order of total fare)<br>- `price desc` (Descending order of total fare)<br><br><b>Default value:</b> `price asc`.
 
 ## contentPrefs
-+ contentPrefs (array[contentPrefsEnum]) - Indicates the different types of car content that you want to retrieve. By default, the `contentPrefs` field is set to return all basic car content, which includes rental location information and vehicle content.<br><br>Consider a scenario where you want to retrieve only the policies for the car. In this scenario, you must set the `contentPrefs` field to `Policies`.<br><br> The `contentPrefs` field ensures that the API consumers can choose what content they want the API to return based on their use case without compromising on the response size or latency. The static content for a car can be a large volume of data. Retrieving all this information at once can cause high latencies in e-commerce applications and low bandwidth devices. As a result, OTAs need to ensure that they only retrieve content that they want to use or display on their application. The `contentPrefs` field takes care of this need. To make it even easier to retrieve car content, we have categorized information into predefined groups of information that have common properties or related data to get rid of the need to specify each field when retrieving the car content.<br><br>The options include:<br>- `All` retrieves all the information about the rental location and vehicle available with the content provider.<br>- `Equipment` retrieves, in addition to the basic information, the information about the equipments available for the vehicle.<br>- `Policies` retrieves, in addition to the basic information, the information about the rental policies.
++ contentPrefs (array[contentPrefsEnum], fixed-type) - Indicates the different types of car content that you want to retrieve. By default, the `contentPrefs` field is set to return all basic car content, which includes rental location information and vehicle content.<br><br>Consider a scenario where you want to retrieve only the policies for the car. In this scenario, you must set the `contentPrefs` field to `Policies`.<br><br> The `contentPrefs` field ensures that the API consumers can choose what content they want the API to return based on their use case without compromising on the response size or latency. The static content for a car can be a large volume of data. Retrieving all this information at once can cause high latencies in e-commerce applications and low bandwidth devices. As a result, OTAs need to ensure that they only retrieve content that they want to use or display on their application. The `contentPrefs` field takes care of this need. To make it even easier to retrieve car content, we have categorized information into predefined groups of information that have common properties or related data to get rid of the need to specify each field when retrieving the car content.<br><br>The options include:<br>- `All` retrieves all the information about the rental location and vehicle available with the content provider.<br>- `Equipment` retrieves, in addition to the basic information, the information about the equipments available for the vehicle.<br>- `Policies` retrieves, in addition to the basic information, the information about the rental policies.
 
 ## contentPrefsEnum (enum)
 + All
@@ -537,15 +537,15 @@
 
 ## searchResultsRS
 + include sessionIdSearchResults
-+ carRentals (array[carRentals]) - Contains the list of cars along with other car-related information, such as the fare, car rental policies, rental locations, car equipment, and the available purchase options.
-+ vendors (array[vendor]) - Contains the list of vendors from which the cars are available.
-+ rentalLocations (array[rentalLocationInfo]) - Contains the list of all available rental locations.
-+ vehicles (array[vehicle]) - Contains the list of information related to the vehicle.
++ carRentals (array[carRentals], fixed-type) - Contains the list of cars along with other car-related information, such as the fare, car rental policies, rental locations, car equipment, and the available purchase options.
++ vendors (array[vendor], fixed-type) - Contains the list of vendors from which the cars are available.
++ rentalLocations (array[rentalLocationInfo], fixed-type) - Contains the list of all available rental locations.
++ vehicles (array[vehicle], fixed-type) - Contains the list of information related to the vehicle.
 + paging (pagingresponse) - Contains information about the pagination manner in which the response has returned the search results. Note that the response returns the search results based on paging field values provided in the `Initiate Car Search` API's request.
 + include warningsSearchResultsRS
 
 ## warningsSearchResultsRS
-+ warnings (array [warningsSearchResultsDetailsRS]) - Contains the list of warnings that appear during the search process.
++ warnings (array [warningsSearchResultsDetailsRS], fixed-type) - Contains the list of warnings that appear during the search process.
 
 ## warningsSearchResultsDetailsRS
 + code: 1 (number) - Code for the warning.
@@ -575,7 +575,7 @@
   + To configure the loyalty program to return the <a href="../reference-reads#fareBasedRewardOption" target="_blank">fare-based reward options</a>, please contact cxLoyalty Business Team.
 + optionalCharges (optionalCharges) - Optional charges are a list of incidental, additional charges, which if incurred is payable over and above the car rental booking amount, usually at the rental location. Optional charges can include fees, taxes, charges, equipment, and <@ coverages @> that are required to be paid at the rental location. For example, if there is an additional charge such as a one-way drop fee that comes along with the car rental, the information about the charges related to the one-way drop fee will be returned in the `fare/optionalCharges/charges` object within the `/carRental` array in the API response.
 Note that the list of additional charges provided in the `optionalCharges` object are <b>not included</b> in the calculation of the total cost of the car rental provided in the `fare/displayFare/totalFare` field within the `/carRental` array in the response.
-+ policies (array[carRentalPolicy]) - Contains the list of information about the applicable policies for the car rental.
++ policies (array[carRentalPolicy], fixed-type) - Contains the list of information about the applicable policies for the car rental.
 + cancellationPolicy (cancellationPolicies) - Contains the list of applicable cancellation policies, including information such as the window determining the penalty period and the penalties incurred for the cancellation.
 + freeCancellationEndDate: `{dateTime|YYYY-MM-DDT10:29:59|17 0}` (string) - Date and time up to which the car rental can be canceled without incurring any penalty. If the car rental is canceled after this date and time, the cancellation penalty is applied as per the `/carRentals[]/cancellationPolicy[]`.
 + mileage (mileage) - Contains mileage-related information that is applicable for the car rental.
@@ -623,13 +623,13 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## breakup
 + baseFare: 217.8 (number) - The base fare amount.
-+ fees (array[fee]) - Contains the list of applicable fees for the car rental.
-+ taxes (array[tax]) - Contains the list of applicable taxes for the car rental.
-+ discounts (array[discounts]) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.
-+ markups (array[markup]) - Contains the list of applicable markup for the car rental.
-+ charges (array[vehicleCharge]) - Contains the list of applicable charges for the car rental, other than taxes and fees.
-+ coverages (array[coverageCharge]) - Contains the list of coverage or insurance-related charges. For example, the `breakup/coverages` array will contain information about the accident protection insurance, if applicable. Note that these charges are already included in the calculation of the `displayFare/totalFare` amount.
-+ equipments (array[equipment]) - Contains the list of car equipments and their charges.
++ fees (array[fee], fixed-type) - Contains the list of applicable fees for the car rental.
++ taxes (array[tax], fixed-type) - Contains the list of applicable taxes for the car rental.
++ discounts (array[discounts], fixed-type) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.
++ markups (array[markup], fixed-type) - Contains the list of applicable markup for the car rental.
++ charges (array[vehicleCharge], fixed-type) - Contains the list of applicable charges for the car rental, other than taxes and fees.
++ coverages (array[coverageCharge], fixed-type) - Contains the list of coverage or insurance-related charges. For example, the `breakup/coverages` array will contain information about the accident protection insurance, if applicable. Note that these charges are already included in the calculation of the `displayFare/totalFare` amount.
++ equipments (array[equipment], fixed-type) - Contains the list of car equipments and their charges.
 
 ## fee
 + source: `vendorFee` - Indicates the source of the fee that is applied.
@@ -944,11 +944,11 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 + desc: `Flat rate commission for the agency` (string) - Description for the commission.
 
 ## optionalCharges
-+ fees (array[feeOptionalCharges]) - Contains the list of optional fees for the car rental.
-+ taxes (array[taxOptionalCharges]) - Contains the list of optional taxes for the car rental.
-+ charges (array[vehicleChargeOptionalCharges]) - Contains the list of optional charges for the car rental, other than taxes and fees.
-+ coverages (array[coverageChargeOptionalCharges]) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount. For example, the `optionalCharges/coverages` array will contain information about the accident protection insurance, if applicable. Note that these charges are not included in the calculation of the `displayFare/totalFare` amount, which means that these amounts are over and above the `displayFare/totalFare` amount.
-+ equipments (array[equipmentoptionalcharges]) - Contains the list of car equipments and their charges.
++ fees (array[feeOptionalCharges], fixed-type) - Contains the list of optional fees for the car rental.
++ taxes (array[taxOptionalCharges], fixed-type) - Contains the list of optional taxes for the car rental.
++ charges (array[vehicleChargeOptionalCharges], fixed-type) - Contains the list of optional charges for the car rental, other than taxes and fees.
++ coverages (array[coverageChargeOptionalCharges], fixed-type) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount. For example, the `optionalCharges/coverages` array will contain information about the accident protection insurance, if applicable. Note that these charges are not included in the calculation of the `displayFare/totalFare` amount, which means that these amounts are over and above the `displayFare/totalFare` amount.
++ equipments (array[equipmentoptionalcharges], fixed-type) - Contains the list of car equipments and their charges.
 
 ## feeOptionalCharges
 + source: `supplier` - Indicates the  source of the fee that is applied.
@@ -1239,7 +1239,7 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## cancellationPolicies
 + text: `Free cancellation up to 48 hours before your pickup date and time, $10 chargeable if more than 24 hours' notice, $50 if less than 24 hours' notice.` - Textual description of the policy.
-+ penaltyRules (array[penaltyRules]) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.
++ penaltyRules (array[penaltyRules], fixed-type) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.
 
 ## penaltyRules
 + value: 15.50 (number) - Applicable penalty amount for the cancellation if the cancellation is made within the given cancellation window. This amount is applicable only when the `valueType` field is set to `Amount`.<br><br><b>Format:</b> Decimal
@@ -1262,7 +1262,7 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## mileage
 + isUnlimited: false (boolean) - Indicates whether the car rental comes with unlimited <@ mileage @> usage.
-+ allowed (array [mileageAllowed]) - Contains information about the <@ mileage @> allowed with the car rental. Note that any additional mileage usage might incur extra charges.
++ allowed (array [mileageAllowed], fixed-type) - Contains information about the <@ mileage @> allowed with the car rental. Note that any additional mileage usage might incur extra charges.
 
 ## mileageAllowed
 + distance (distance) - Contains information about the <@ mileage @> included with the car rental rate. Note that any additional mileage used might incur additional charges.<br><br><b>Format:</b> Decimal
@@ -1305,7 +1305,7 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 + code: `ZI` (string) - Code for the vendor. <a target="_blank" href="../reference-reads/#vendorcodes">See the list of vendor codes and their descriptions.</a>
 + name: `Avis` (string) - Name of the vendor.
 + logo: `http://vendor.com/logo.jpg` - URL for the logo image of the vendor.
-+ policies (array[vendorPolicy]) - Contains the list of applicable vendor policies.
++ policies (array[vendorPolicy], fixed-type) - Contains the list of applicable vendor policies.
 
 ## vendorPolicy
 + type: `Prepay` (string) - Indicates the type of the vendor policy.
@@ -1325,13 +1325,13 @@ Note that the list of additional charges provided in the `optionalCharges` objec
   + OnCall
   + Unavailable
   + Unknown
-+ hoursOfOperation (array[hoursOfOperation]) - Contains information about the operating hours of the rental location.
++ hoursOfOperation (array[hoursOfOperation]), fixed-type - Contains information about the operating hours of the rental location.
 + contactInfo (contactInfoRentalLoc) - Contains the contact information for the rental location.
 + geoCode (geoCodeRentalLocation) - Contains the latitude and longitude coordinates of the rental location.
 
 ## hoursOfOperation
 + include dayOfWeekEnum
-+ workingHours (array[workingHour]) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
++ workingHours (array[workingHour], fixed-type) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
 
 ## dayOfWeekEnum
 + dayOfWeek (enum) - Indicates the day of the week when the working hours (workingHours) are applicable.
@@ -1350,7 +1350,7 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 ## contactInfoRentalLoc
 + address (addressbook) - Contains information about the address.
 + email: `john.doe@abc.com` (string, required) - Email address that must be used when any email communication needs to be made with the car rental provider.
-+ phone (array[phoneRentalLoc]) - Contains the contact numbers for the rental location.
++ phone (array[phoneRentalLoc], fixed-type) - Contains the contact numbers for the rental location.
 
 ## addressbook
 + line1: `3077 ACME Street` (string, required)- Street number and street name.
@@ -1396,8 +1396,8 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 + passengerCapacity: `5` (string) - Indicates the passenger capacity of the vehicle. The value can be returned as a whole number, such as `5`, or in a range format, such as `2-3` or `2/3`.
 + doorCount: `4` (string) - Indicates the number of doors on the vehicle. The value can be returned as a whole number, such as `5`, or in a range format, such as `2-3` or `2/3`.
 + include vehicleDriveTypeEnum
-+ policies (array[vehiclePolicy]) - Contains the list of applicable vehicle policies.
-+ specialEquipment (array[specialEquipment]) - Contains the list of special equipments that can be opted with the car rental. Note that equipments can incur additional cost. For more information on the equipment costing, see the `breakup/equipment` array or the `optionalCharges/equipment` array. Note that the `Get Car Search Results` API response provides the `specialEquipment` information only if the `/contentPrefs` field value includes `All` or `Equipment`.
++ policies (array[vehiclePolicy], fixed-type) - Contains the list of applicable vehicle policies.
++ specialEquipment (array[specialEquipment], fixed-type) - Contains the list of special equipments that can be opted with the car rental. Note that equipments can incur additional cost. For more information on the equipment costing, see the `breakup/equipment` array or the `optionalCharges/equipment` array. Note that the `Get Car Search Results` API response provides the `specialEquipment` information only if the `/contentPrefs` field value includes `All` or `Equipment`.
 
 ## vehicleCategoryEnum
 + category (enum) - Indicates the vehicle category.
@@ -1521,7 +1521,7 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 + totalPurchaseUnits: 1 (number) - Total number of <@ rewards_popup @> that the customer can avail to pay for the car booking.
 + include cashCurrency
 + include pointsCurrency
-+ rewards (array[reward]) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br><br><b>Note:</b> If the configuration for earnings is not enabled, then the `earnings` object is not returned in the response. To enable the configuration, please contact the cxLoyalty Business team.
++ rewards (array[reward], fixed-type) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br><br><b>Note:</b> If the configuration for earnings is not enabled, then the `earnings` object is not returned in the response. To enable the configuration, please contact the cxLoyalty Business team.
 
 ## cashCurrency
 + cashCurrency: `USD` (string, required) - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. For example, if the `cashCurrency` returns `USD`, then the `cash` amounts are returned in the `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads/#supported-currencies">ISO currencies</a>.
@@ -1568,7 +1568,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 + actualValue (actualValue) - Contains the <@ actual_fare_popup @> for the car booking in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.
 
 ## stateBagInfo
-+ stateBag (array[stateBagSearchResultsRS]) - For internal use only.
++ stateBag (array[stateBagSearchResultsRS], fixed-type) - For internal use only.
 
 ## recommendationReward
 + recommendation (recommendationRewardBurn) - Contains information about the recommended combination of cash and points that can be used to pay for the car booking. The recommendation is calculated based on the type of <@ reward_popup @>, customer's <@ point_balance_popup @>, and the customer's eligibility information. If this field returns `null`, this means that the customer is not eligible for the reward returned in the `rewards[]/redemption/type` field.
@@ -1576,7 +1576,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 ## recommendationRewardBurn
 + cash: 72.61 (number) - Recommended cash component of the <@ actual_fare_popup @> that can be paid to book the car rental option.<br><br><b>Format:</b> Decimal
 + points: 20000.0 (number) - Recommended number of points that can be redeemed by the <@ customer_popup @> in the `pointsCurrency`.<br><br><b>Note:</b> If the type of reward returned in the `rewards[]/redemption/type` field is `Purchase`, then the `points` field will always return value as `0`.<br><br><b>Format:</b> Decimal
-+ fees (array[feesRecommendations]) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/redemption/recommendation/fees` array is returned empty in the API response.
++ fees (array[feesRecommendations], fixed-type) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/redemption/recommendation/fees` array is returned empty in the API response.
 + maxQuantity: 1 (number) - Maximum number of times that this <@ reward_popup @> can be used to make payment for the car booking, based on the customer's <@ point_balance_popup @>.
 
 ## recommendation
@@ -1634,7 +1634,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 + include ruleSetInfo
 + include strikeoutValueReward
 + include actualValueReward
-+ stateBag (array[stateBagSearchResultsRS]) - For internal use only.
++ stateBag (array[stateBagSearchResultsRS], fixed-type) - For internal use only.
 
 ## earnDetails
 + id: `1783u340i` - Unique ID to identify the <@ earncomponent @> that is applicable for this reward.
@@ -1732,7 +1732,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 + amountWithoutTax: 8.0 (number, required) - Total fare of the car rental after considering the `baseFare`, `discount`, `fees`, `markups`, and any other additional cost. The `amountWithoutTax` does not include the taxes.<br><br><b>Format:</b> Decimal
 
 ## paymentOptionsPriceRQ
-+ paymentOptions (array[paymentOptionsPriceObjectRQ], required) - Contains the list of reward options that you want to avail to pay for the car rental.
++ paymentOptions (array[paymentOptionsPriceObjectRQ], required, fixed-type) - Contains the list of reward options that you want to avail to pay for the car rental.
 <b>Notes:</b>
   + In case of car rental, you can only provide only one reward option within the `/paymentOptions` array.
   + Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
@@ -1794,7 +1794,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 
 
 ## itemsPriceRS
-+ items (array[itemPriceDetailsRS]) - Contains the list of the items in the cart.
++ items (array[itemPriceDetailsRS], fixed-type) - Contains the list of the items in the cart.
 
 ## itemPriceDetailsRS
 + include itemIdPriceRS
@@ -1836,7 +1836,7 @@ based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare
 + include paymentOptionsPriceRS
 
 ## paymentOptionsPriceRS
-+ paymentOptions (array[paymentOptionsObjectPriceRS]) - Contains the list of <@ reward_popup @> options that are availed to pay for the car rental.<br><br>
++ paymentOptions (array[paymentOptionsObjectPriceRS], fixed-type) - Contains the list of <@ reward_popup @> options that are availed to pay for the car rental.<br><br>
 <b>Notes:</b>
   + In case of car rental, only one reward option is returned within the `/paymentOptions` array.
   + Depending on the selected reward option, either the amount in cash, points, or a combination of both the amount in cash and points is returned within the `/paymentOptions` array.
@@ -1895,7 +1895,7 @@ Consider a scenario where you want to check out a cart. You pass a new, unique v
 Consider a scenario where you want to check out the same cart again and you pass the same `idempotencyToken` field value that was used in the earlier booking request. In this scenario, the booking request is considered as a duplicate, regardless of whether the booking request contains new booking field values or the same booking field values as of the previous booking request. The API returns the same `orderID` that was returned for the previous booking request and not a new `orderID`. If you want to reattempt the booking, you must provide a new and unique value for the `idempotencyToken` field for the same cart.
 
 ## itemsBookRQ
-+ items (array [itemDetailsBookRQ], required) - Contains the list of the items in the <@ cart_popup @> that you want to book.
++ items (array [itemDetailsBookRQ], required, fixed-type) - Contains the list of the items in the <@ cart_popup @> that you want to book.
 
 ## itemDetailsBookRQ
 + include itemIdBookRQ
@@ -1967,7 +1967,7 @@ Consider a scenario where you want to check out the same cart again and you pass
 + nationality: `US` (string, required) - 2-character ISO code that indicates the nationality of the driver. <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements">Read more about valid nationality codes.</a>
 
 ## paymentOptionsBookRQ
-+ paymentOptions (array[paymentOptionsBookObjectRQ], required) - Contains the list of reward options that you want to avail to pay for the car rental.
++ paymentOptions (array[paymentOptionsBookObjectRQ], required, fixed-type) - Contains the list of reward options that you want to avail to pay for the car rental.
 <b>Notes:</b>
   + You must provide either the payment option returned within the `/items[]/paymentOptions` array in the <a href="../price#GetPriceUsingCart" target="_blank">Get Price Using Cart</a> API response or one of the payment options returned within the `purchaseOption/rewards` array
 in the <a href="../price#getproductdetails" target="_blank">Get Product Details</a> API response.
@@ -2142,7 +2142,7 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
   + CompletedWithFailure
   + Failed
   + Inprogress
-+ items (array [itemsInfoBookStatusRS]) - Contains the list of the items that are booked.
++ items (array [itemsInfoBookStatusRS], fixed-type) - Contains the list of the items that are booked.
 + include errorsOrderBookStatusRS
 + include warningsOrderBookStatusRS
 + include statebagBookRS
@@ -2186,7 +2186,7 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
 + key1: `value1` (string) - For internal use only.
 
 ## errorsItemBookStatusRS
-+ errors (array [errorsItemBookStatusDetailsRS]) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
++ errors (array [errorsItemBookStatusDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
 
 ## errorsItemBookStatusDetailsRS
 + code: 001 (number) - Code of the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
@@ -2197,17 +2197,17 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
 + message: `Min age 20 - Most Car Classes. 20-24 Rate Differential Applies` - Text of the warning message.
 
 ## warningsItemBookStatusRS
-+ warnings (array [warningsItemBookStatusDetailsRS]) - Contains the list of warnings that appear during the booking process.
++ warnings (array [warningsItemBookStatusDetailsRS], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## errorsOrderBookStatusRS
-+ errors (array [errorsOrderBookStatusDetailsRS]) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
++ errors (array [errorsOrderBookStatusDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
 
 ## errorsOrderBookStatusDetailsRS
 + code: 003 (number) - Code of the error.
 + message: `Unable to process the order as the credit card has insufficient balance.` (string) - Text of the error message.
 
 ## warningsOrderBookStatusRS
-+ warnings (array [warningsOrderBookStatusDetailsRS]) - Contains the list of warnings that appear during the order booking process.
++ warnings (array [warningsOrderBookStatusDetailsRS], fixed-type) - Contains the list of warnings that appear during the order booking process.
 
 ## warningsOrderBookStatusDetailsRS
 + code: 002 (number) - Code for the warning.
@@ -2377,7 +2377,7 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
 + include reportingFieldsBookRQ
 
 ## paymentOptionsBookRS
-+ paymentOptions (array[paymentOptionsBookObjectRS], required) - Contains the list of <@ reward_popup @> options that was availed to pay for the car rental.<br>
++ paymentOptions (array[paymentOptionsBookObjectRS], required, fixed-type) - Contains the list of <@ reward_popup @> options that was availed to pay for the car rental.<br>
 <b>Notes:</b>
   + In case of car rental, only one reward option is returned within the `/paymentOptions` array.
   + Depending on the selected reward option, either the amount in cash, points, or a combination of both the amount in cash and points is returned within the `/paymentOptions` array.
@@ -2410,8 +2410,8 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
     + The `vendorConfirmationNumber` is required when you contact cxLoyalty Customer Service. If the `vendorConfirmationNumber` is not available, you must provide the `supplierConfirmationNumber`.
     + The `vendorConfirmationNumber` and the `supplierConfirmationNumber` must be used as confirmation numbers for the car rental reservation. If the `vendorConfirmationNumber` is not available, the `supplierConfirmationNumber` must be used as the confirmation number for the car rental reservation.
 + bookingTimestamp: `2018-03-21T06:35:10` (string) - Date and time when the booking is confirmed.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
-+ errors (array [errorsItemBookInfoDetailsRS]) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
-+ warnings (array [warningsItemBookInfoDetailsRS]) - Contains the list of warnings that appear during the booking process.
++ errors (array [errorsItemBookInfoDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
++ warnings (array [warningsItemBookInfoDetailsRS], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## errorsItemBookInfoDetailsRS
 + code: 001 (number) - Code of the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
@@ -2434,8 +2434,8 @@ in the <a href="../price#getproductdetails" target="_blank">Get Product Details<
     + The `vendorCancellationNumber` is required when you contact cxLoyalty Customer Service. If the `vendorCancellationNumber` is not available, you must provide the `supplierCancellationNumber`.
     + The `vendorCancellationNumber` and the `supplierCancellationNumber` must be used as confirmation numbers for the car rental reservation cancellation. If the `vendorCancellationNumber` is not available, the `supplierCancellationNumber` must be used as the cancellation number for the car rental reservation cancellation.
 + cancellationTimestamp: `2018-03-21T08:35:10` (string) - Date and time when the booking is canceled.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
-+ errors (array [errorsItemBookInfoDetailsRS]) - Contains the list of errors that have occurred during the booking cancellation process. For example, if the cancellation fails, the errors array lists the appropriate error message.
-+ warnings (array [warningsItemBookInfoDetailsRS]) - Contains the list of warnings that appear during the cancellation process.
++ errors (array [errorsItemBookInfoDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking cancellation process. For example, if the cancellation fails, the errors array lists the appropriate error message.
++ warnings (array [warningsItemBookInfoDetailsRS], fixed-type) - Contains the list of warnings that appear during the cancellation process.
 
 ## bookingDetailsPickUpAirportCodeDropOffCircleRS-
 + include bookingIdRS
@@ -2660,22 +2660,22 @@ Contains the list of search criteria that were used to search the car rental opt
 + vendor (vendorFilterDetailsOrderRS) - Contains the list of vendors that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vendorFilterDetailsOrderRS
-+ allow (array[string]) - Contains the list of vendors from whom you want to search for the car inventory.<br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
-+ disallow (array[string]) - Contains the list of vendors that you want to exclude in the search for car inventory. <br><br><b>Example:</b> `ZT`
++ allow (array[string], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory.<br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
++ disallow (array[string], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. <br><br><b>Example:</b> `ZT`
 
 ## vehicleTypeFilterOrderRS
 + vehicleType (vehicleTypeFilterDetailsOrderRS) - Contains the types of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vehicleTypeFilterDetailsOrderRS
-+ allow (array[vehicleTypeRequestEnum]) - Contains the list of vehicle types that you want to include in the car search.
-+ disallow (array[vehicleTypeRequestEnumDisallow]) - Contains the list of vehicle types that you want to exclude in the car search.
++ allow (array[vehicleTypeRequestEnum], fixed-type) - Contains the list of vehicle types that you want to include in the car search.
++ disallow (array[vehicleTypeRequestEnumDisallow], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search.
 
 ## vehicleCategoryFilterOrderRS
 + vehicleCategory (vehicleCategoryFilterDetailsOrderRS) - Contains the categories of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vehicleCategoryFilterDetailsOrderRS
-+ allow (array[vehicleCategoryRequestEnum]) - Contains the list of vehicle categories that you want to include in the car search.<br><br> <b>Example:</b> `special`, `compact`
-+ disallow (array[vehicleCategoryRequestEnumDisallow]) - Contains the list of vehicle categories that you want to exclude in the car search.<br><br> <b>Example:</b> `luxuryElite`
++ allow (array[vehicleCategoryRequestEnum], fixed-type) - Contains the list of vehicle categories that you want to include in the car search.<br><br> <b>Example:</b> `special`, `compact`
++ disallow (array[vehicleCategoryRequestEnumDisallow], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search.<br><br> <b>Example:</b> `luxuryElite`
 
 ## priceFilterOrderRS
 + price (priceFilterDetailsOrderRS) - Contains the minimum and maximum price range for the car rental.
@@ -2711,7 +2711,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + rentalIds: 1221, 1222 (array) - Include only those car rental options with `rentalId` specified in this list.
 
 ## vendorSpecificOptionsOrderRS
-+ vendorSpecificOptions (array[vendorSpecificOptionsDetailsOrderRS]) - Contains vendor specific filter options such as vendor code, promo code, and corporate code.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `vendorSpecificOptions` array is not returned in the API response.
++ vendorSpecificOptions (array[vendorSpecificOptionsDetailsOrderRS], fixed-type) - Contains vendor specific filter options such as vendor code, promo code, and corporate code.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `vendorSpecificOptions` array is not returned in the API response.
 
 ## vendorSpecificOptionsDetailsOrderRS
 + vendorCode: `ZI` (string, required) - Vendor code for which the vendor-specific options must be applied.
@@ -2785,8 +2785,8 @@ Contains the list of search criteria that were used to search the car rental opt
 + passengerCapacity: `5` (string) - Indicates the passenger capacity of the vehicle.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `passengerCapacity` field is not returned in the API response.
 + doorCount: `4` (string) - Indicates the number of doors on the vehicle.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `doorCount` field is not returned in the API response.
 + driveType: `allWheelDrive` (string) - Indicates the drive type of the vehicle.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `driveType` field is not returned in the API response.
-+ policies (array[vehiclePolicy]) - Contains the list of applicable vehicle policies.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response.
-+ specialEquipment (array[specialEquipment]) - Contains the list of special equipments that can be opted with the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `specialEquipment` array is not returned in the API response.
++ policies (array[vehiclePolicy], fixed-type) - Contains the list of applicable vehicle policies.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response.
++ specialEquipment (array[specialEquipment], fixed-type) - Contains the list of special equipments that can be opted with the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `specialEquipment` array is not returned in the API response.
 
 ## vendorOrderRS
 + vendor (vendorDetailsOrderRS) -  Contains information about the vendor from which the rental car option is selected.
@@ -2795,10 +2795,10 @@ Contains the list of search criteria that were used to search the car rental opt
 + code: `ZI` (string) - Code for the vendor.
 + name: `Avis` (string) - Name of the vendor.
 + logo: `http://vendor.com/logo.jpg` - URL for the logo image of the vendor.
-+ policies (array[vendorPolicy]) - Contains the list of applicable vendor policies.
++ policies (array[vendorPolicy], fixed-type) - Contains the list of applicable vendor policies.
 
 ## rentallocationsOrderRS
-+ rentalLocations (array[rentalLocationDetailsOrderRS]) - Contains information about the rental location.
++ rentalLocations (array[rentalLocationDetailsOrderRS], fixed-type) - Contains information about the rental location.
 
 ## rentalLocationDetailsOrderRS
 + id: `c10917a19cb5acb4710120e072665267` - Unique ID that is used to refer to this rental location.
@@ -2814,7 +2814,7 @@ Contains the list of search criteria that were used to search the car rental opt
   + OnCall
   + Unavailable
   + Unknown
-+ hoursOfOperation (array[hoursOfOperationOrderRS]) - Contains information about the operating hours of the rental location.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `hoursOfOperation` array is not returned in the API response.
++ hoursOfOperation (array[hoursOfOperationOrderRS], fixed-type) - Contains information about the operating hours of the rental location.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `hoursOfOperation` array is not returned in the API response.
 + contactInfo (contactInfoRentalLocOrderRS) - Contains the contact information for the rental location.
 + geoCode (geoCodeRentalLocationOrderRS) - Contains the latitude and longitude coordinates of the rental location.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `geoCode` object is not returned in the API response.
 
@@ -2827,7 +2827,7 @@ Contains the list of search criteria that were used to search the car rental opt
   + Fri
   + Sat
   + Sun
-+ workingHours (array[workingHourOrderRS]) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
++ workingHours (array[workingHourOrderRS], fixed-type) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
 
 ## workingHourOrderRS
 + openTime: `08:00` (string) - Indicates the opening time applicable for the day of the week (dayOfWeek).
@@ -2836,7 +2836,7 @@ Contains the list of search criteria that were used to search the car rental opt
 ## contactInfoRentalLocOrderRS
 + address (addressDetailsRentalLocationOrderRS) - Contains information about the address. <br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `address` object is not returned in the API response.
 + email: `john.doe@abc.com` (string, required) - Email address that must be used when any email communication needs to be made with the car rental provider.
-+ phones (array[phoneDetailsRentalLocationOrderRS]) - Contains the contact numbers for the rental location.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `phones` array is not returned in the API response.
++ phones (array[phoneDetailsRentalLocationOrderRS], fixed-type) - Contains the contact numbers for the rental location.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `phones` array is not returned in the API response.
 
 ## addressDetailsRentalLocationOrderRS
 + line1: `3077 ACME Street` (string, required)- Street number and street name.
@@ -2906,13 +2906,13 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## breakupDetailsOrderRS
 + baseFare: 217.8 (number) - The base fare amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `baseFare` field value is returned as `0`.
-+ fees (array[feeOrderRS]) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
-+ taxes (array[taxOrderRS]) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
-+ discounts (array[discountsOrderRS]) - Contains information about the applicable discount for the given car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is not returned in the API response.
-+ markups (array[markupOrderRS]) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is not returned in the API response.
-+ charges (array[vehicleChargeOrderRS]) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
-+ coverages (array[coverageChargeOrderRS]) - Contains the list of coverage or insurance-related charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `coverages` array is not returned in the API response.
-+ equipments (array[equipmentOrderRS]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipments` array is not returned in the API response.
++ fees (array[feeOrderRS], fixed-type) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
++ taxes (array[taxOrderRS], fixed-type) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
++ discounts (array[discountsOrderRS], fixed-type) - Contains information about the applicable discount for the given car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is not returned in the API response.
++ markups (array[markupOrderRS], fixed-type) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is not returned in the API response.
++ charges (array[vehicleChargeOrderRS], fixed-type) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
++ coverages (array[coverageChargeOrderRS], fixed-type) - Contains the list of coverage or insurance-related charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `coverages` array is not returned in the API response.
++ equipments (array[equipmentOrderRS], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipments` array is not returned in the API response.
 
 ## feeOrderRS
 + source: `vendorFee` - Indicates the source of the fee that is applied.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `source` field is not returned in the API response.
@@ -3192,18 +3192,18 @@ Contains the list of search criteria that were used to search the car rental opt
 + amount: 10 (number) - Indicates the charge per unit. For example, if the amount is chargeable on a `PerWeek` `unitType` and the `amount` field returns `15`, the chargeable amount per week is `15`.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `amount` field value is returned as `0`.<br><br><b>Format:</b> Decimal
 
 ## commissionsDisplayFareOrderRS
-+ commissions (array[commissionDetailsOrderRS]) - Contains information about the commission for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `commissions` array is not returned in the API response.
++ commissions (array[commissionDetailsOrderRS], fixed-type) - Contains information about the commission for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `commissions` array is not returned in the API response.
 
 ## commissionDetailsOrderRS
 + amount: 10.5 (number) - Applicable amount for the commission.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `amount` field value is returned as `0`.<br><br><b>Format:</b> Decimal
 + desc: `Flat rate commission for the agency` (string) - Description for the commission.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `desc` field is not returned in the API response.
 
 ## optionalChargesDetailsOrderRS
-+ fees (array[feeOptionalChargesOrderRS]) - Contains the list of optional fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
-+ taxes (array[taxOptionalChargesOrderRS]) - Contains the list of optional taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
-+ charges (array[vehicleChargeOptionalChargesOrderRS]) - Contains the list of optional charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
-+ coverages (array[coverageChargeOptionalChargesOrderRS]) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `coverages` array is not returned in the API response.
-+ equipments (array[equipmentOptionalChargesOrderRS]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipments` array is not returned in the API response.
++ fees (array[feeOptionalChargesOrderRS], fixed-type) - Contains the list of optional fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
++ taxes (array[taxOptionalChargesOrderRS], fixed-type) - Contains the list of optional taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
++ charges (array[vehicleChargeOptionalChargesOrderRS], fixed-type) - Contains the list of optional charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
++ coverages (array[coverageChargeOptionalChargesOrderRS], fixed-type) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `coverages` array is not returned in the API response.
++ equipments (array[equipmentOptionalChargesOrderRS], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipments` array is not returned in the API response.
 
 ## feeOptionalChargesOrderRS
 + source: `supplier` - Indicates the  source of the fee that is applied.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `source` field is not returned in the API response.
@@ -3344,7 +3344,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + totalPurchaseUnits: 1 (number) - Total number of <@ rewards_popup @> that the customer can avail to pay for the car booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `totalPurchaseUnits` field is returned as `0`.
 + cashCurrency: `USD` (string, required) - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. For example, if the `cashCurrency` returns `USD`, then the `cash` amounts are returned in the `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads/#supported-currencies">ISO currencies</a>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cashCurrency` field is not returned in the API response.
 + pointsCurrency: `Points` (string, required) - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles. Note that the `points` field value is represented by this currency.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `pointsCurrency` field is not returned in the API response.
-+ rewards (array[rewardOrderRS]) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br>
++ rewards (array[rewardOrderRS], fixed-type) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br>
 <b>Notes:</b>
   + If the configuration for earnings is not enabled, then the `earnings` object is not returned in the response. To enable the configuration, please contact the cxLoyalty Business team.
   + If you do not provide this field, at the time of order creation, then the `rewards` array is not returned in the API response.
@@ -3369,7 +3369,7 @@ Contains the list of search criteria that were used to search the car rental opt
 <b>Notes:</b>
   + If the type of reward returned in the `rewards[]/type` field is `Purchase`, then the `points` field will always return value as `0`.
   + If you do not provide this field, at the time of order creation, then the `points` field value is returned as `0`.
-+ fees (array[feesRecommendationsOrderRS]) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
++ fees (array[feesRecommendationsOrderRS], fixed-type) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
 + maxQuantity: 1 (number) - Maximum number of times that this <@ reward_popup @> can be used to make payment for the car booking, based on the customer's <@ point_balance_popup @>. <br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `maxQuantity` field is not returned in the API response.
 
 ## feesRecommendationsOrderRS
@@ -3392,7 +3392,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + ruleSet (ruleSet) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `ruleSet` object is not returned in the API response.
 + strikeOutValue (strikeOutValueDetailsOrderRS) - Contains the <@ pre-discounted_fare_popup @> for the car booking in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `strikeOutValue` object is not returned in the API response.
 + actualValue (actualValueOrderRS) - Contains the <@ actual_fare_popup @> for the car booking in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `actualValue` field is not returned in the API response.
-+ stateBag (array[stateBagSearchResultsRS]) - For internal use only.
++ stateBag (array[stateBagSearchResultsRS], fixed-type) - For internal use only.
 
 ## strikeOutValueDetailsOrderRS
 + cash: 250.0 (number) - Cash component of the <@ pre-discounted_fare_popup @> amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cash` field value is returned as `0`.<br><br><b>Format:</b> Decimal
@@ -3444,11 +3444,11 @@ Contains the list of search criteria that were used to search the car rental opt
 ## supplierRateDetailsOrderRS
 + baseAmount: 217.8 (number) - The base fare amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `baseAmount` field value is returned as `0`.
 + include currencyOrderRS
-+ charges (array[vehicleChargeOrderRS]) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
-+ taxes (array[taxOrderRS]) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
-+ fees (array[feeOrderRS]) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
-+ discounts (array[discountsOrderRS]) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is not returned in the API response.
-+ markups (array[markupOrderRS]) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is not returned in the API response.
++ charges (array[vehicleChargeOrderRS], fixed-type) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `charges` array is not returned in the API response.
++ taxes (array[taxOrderRS], fixed-type) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is not returned in the API response.
++ fees (array[feeOrderRS], fixed-type) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is not returned in the API response.
++ discounts (array[discountsOrderRS], fixed-type) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is not returned in the API response.
++ markups (array[markupOrderRS], fixed-type) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is not returned in the API response.
 + paymentMode: `Card` (enum) - Indicates the mode of payment for the `cash/amount`.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `paymentMode` field is not returned in the API response.
   + Card
   + Cash
@@ -3515,14 +3515,14 @@ Contains the list of search criteria that were used to search the car rental opt
 + countryCode: `1` - Country code for the phone number.
 
 ## equipmentBookingInfoOrderRS
-+ equipment (array[equipmentBookingInfoDetailsOrderRS]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipment` array is not returned in the API response.
++ equipment (array[equipmentBookingInfoDetailsOrderRS], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `equipment` array is not returned in the API response.
 
 ## equipmentBookingInfoDetailsOrderRS
 + code: `9` (string) - Code for the equipment.
 + quantity: 1 (number) - Number of equipments of the selected code booked.
 
 ## selectedPaymentOptionsBookingInfoOrderRS
-+ selectedPaymentOptions (array[selectedPaymentOptionsBookingInfoDetailsOrderRS]) - Contains information about the selected payment options.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `selectedPaymentOptions` array is not returned in the API response.
++ selectedPaymentOptions (array[selectedPaymentOptionsBookingInfoDetailsOrderRS], fixed-type) - Contains information about the selected payment options.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `selectedPaymentOptions` array is not returned in the API response.
 
 ## selectedPaymentOptionsBookingInfoDetailsOrderRS
 + rewardId: `123` (string) - Unique ID for the <@ reward_popup @> that was availed to pay for the car rental.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `rewardId` field is not returned in the API response.
@@ -3544,7 +3544,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + unit: `points` (string) - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `unit` field is not returned in the API response.
 
 ## paymentMethodsOrderRS
-+ paymentMethods (array[paymentMethodsDetailsOrderRS]) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `paymentMethods` array is not returned in the API response. To set a new payment method or to update the existing payment method, you must call the `Set Payment Methods` API.
++ paymentMethods (array[paymentMethodsDetailsOrderRS], fixed-type) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `paymentMethods` array is not returned in the API response. To set a new payment method or to update the existing payment method, you must call the `Set Payment Methods` API.
 
 ## paymentMethodsDetailsOrderRS
 + type: `Card` (enum) - Indicates the mode of payment.<br><br><b>Notes:</b><ul><li>If  the `/paymentMethods[]/type` returns as `Card` or `OUC`, then the card details are returned within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` returns as `Cash`, then the `/paymentMethods[]/card` object is optional.</li></ul>
@@ -3605,10 +3605,10 @@ Contains the list of search criteria that were used to search the car rental opt
 + include warningsOrderRS
 
 ## errorsOrderRS
-+ errors (array [errorsItemBookStatusDetailsRS]) - Contains the list of errors that have occurred during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` field is not returned in the API response.
++ errors (array [errorsItemBookStatusDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` field is not returned in the API response.
 
 ## warningsOrderRS
-+ warnings (array [warningsItemBookStatusDetailsRS]) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` field is not returned in the API response.
++ warnings (array [warningsItemBookStatusDetailsRS], fixed-type) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` field is not returned in the API response.
 
 ## cancellationDetailsOrderRS
 + cancellationDetails (cancellationDetailsInfoOrderRS) - Contains the cancellation details for the car rental booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cancellationDetails` object is not returned in the API response.
@@ -3761,22 +3761,22 @@ Contains the list of search criteria that were used to search the car rental opt
 + vendor (vendorFilterDetailsOrderRQ) - Contains the list of vendors that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vendorFilterDetailsOrderRQ
-+ allow (array[string]) - Contains the list of vendors from whom you want to search for the car inventory.<br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
-+ disallow (array[string]) - Contains the list of vendors that you want to exclude in the search for car inventory. <br><br><b>Example:</b> `ZT`
++ allow (array[string], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory.<br><br><b>Example:</b> `HZ`, `ZE`, `ZI`
++ disallow (array[string], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. <br><br><b>Example:</b> `ZT`
 
 ## vehicleTypeFilterOrderRQ
 + vehicleType (vehicleTypeFilterDetailsOrderRQ) - Contains the types of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vehicleTypeFilterDetailsOrderRQ
-+ allow (array[vehicleTypeRequestEnum]) - Contains the list of vehicle types that you want to include in the car search.
-+ disallow (array[vehicleTypeRequestEnumDisallow]) - Contains the list of vehicle types that you want to exclude in the car search.
++ allow (array[vehicleTypeRequestEnum], fixed-type) - Contains the list of vehicle types that you want to include in the car search.
++ disallow (array[vehicleTypeRequestEnumDisallow], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search.
 
 ## vehicleCategoryFilterOrderRQ
 + vehicleCategory (vehicleCategoryFilterDetailsOrderRQ) - Contains the categories of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory.
 
 ## vehicleCategoryFilterDetailsOrderRQ
-+ allow (array[vehicleCategoryRequestEnum]) - Contains the list of vehicle categories that you want to include in the car search.<br><br> <b>Example:</b> `special`, `compact`
-+ disallow (array[vehicleCategoryRequestEnumDisallow]) - Contains the list of vehicle categories that you want to exclude in the car search.<br><br> <b>Example:</b> `luxuryElite`
++ allow (array[vehicleCategoryRequestEnum], fixed-type) - Contains the list of vehicle categories that you want to include in the car search.<br><br> <b>Example:</b> `special`, `compact`
++ disallow (array[vehicleCategoryRequestEnumDisallow], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search.<br><br> <b>Example:</b> `luxuryElite`
 
 ## priceFilterOrderRQ
 + price (priceFilterDetailsOrderRQ) - Contains the minimum and maximum price range for the car rental.
@@ -3812,7 +3812,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + rentalIds: 1221, 1222 (array) - Include only those car rental options whose `rentalId` is specified in this field.
 
 ## vendorSpecificOptionsOrderRQ
-+ vendorSpecificOptions (array[vendorSpecificOptionsDetailsOrderRQ]) - Contains vendor specific filter options such as vendor code, promo code, and corporate code.<br><br><b>Note:</b> If you do not provide this field, then the `vendorSpecificOptions` array is not returned in the API response.
++ vendorSpecificOptions (array[vendorSpecificOptionsDetailsOrderRQ], fixed-type) - Contains vendor specific filter options such as vendor code, promo code, and corporate code.<br><br><b>Note:</b> If you do not provide this field, then the `vendorSpecificOptions` array is not returned in the API response.
 
 ## vendorSpecificOptionsDetailsOrderRQ
 + vendorCode: `ZI` (string) - Vendor code for which the vendor-specific options must be applied.
@@ -3890,8 +3890,8 @@ Contains the list of search criteria that were used to search the car rental opt
 + passengerCapacity: `5` (string) - Indicates the passenger capacity of the vehicle.<br><br><b>Note:</b> If you do not provide this field, then the `passengerCapacity` field is not returned in the API response.
 + doorCount: `4` (string) - Indicates the number of doors on the vehicle.<br><br><b>Note:</b> If you do not provide this field, then the `doorCount` field is not returned in the API response.
 + driveType: `allWheelDrive` (string) - ndicates the drive type of the vehicle.<br><br><b>Note:</b> If you do not provide this field, then the `driveType` field is not returned in the API response.
-+ policies (array[vehiclePolicy]) - Contains the list of applicable vehicle policies.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response.
-+ specialEquipment (array[specialEquipment]) - Contains the list of special equipments that can be opted with the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `specialEquipment` array is not returned in the API response.
++ policies (array[vehiclePolicy], fixed-type) - Contains the list of applicable vehicle policies.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response.
++ specialEquipment (array[specialEquipment], fixed-type) - Contains the list of special equipments that can be opted with the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `specialEquipment` array is not returned in the API response.
 
 ## vendorOrderRQ
 + vendor (vendorDetailsOrderRQ, required) -  Contains information about the vendor from which the rental car option is selected.
@@ -3900,10 +3900,10 @@ Contains the list of search criteria that were used to search the car rental opt
 + code: `ZI` (string, required) - Code for the vendor.
 + name: `Avis` (string) - Name of the vendor.
 + logo: `http://vendor.com/logo.jpg` - URL for the logo image of the vendor.
-+ policies (array[vendorPolicy]) - Contains the list of applicable vendor policies.
++ policies (array[vendorPolicy], fixed-type) - Contains the list of applicable vendor policies.
 
 ## rentallocationsOrderRQ
-+ rentalLocations (array[rentalLocationDetailsOrderRQ], required) -  Contains information about the rental location.
++ rentalLocations (array[rentalLocationDetailsOrderRQ], required, fixed-type) -  Contains information about the rental location.
 
 ## rentalLocationDetailsOrderRQ
 + id: `c10917a19cb5acb4710120e072665267` (string, required) - Unique ID that is used to refer to this rental location.
@@ -3919,7 +3919,7 @@ Contains the list of search criteria that were used to search the car rental opt
   + OnCall
   + Unavailable
   + Unknown
-+ hoursOfOperation (array[hoursOfOperationOrderRQ]) - Contains information about the operating hours of the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `hoursOfOperation` array is not returned in the API response.
++ hoursOfOperation (array[hoursOfOperationOrderRQ], fixed-type) - Contains information about the operating hours of the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `hoursOfOperation` array is not returned in the API response.
 + contactInfo (contactInfoRentalLocOrderRQ, required) - Contains the contact information for the rental location.
 + geoCode (geoCodeRentalLocationOrderRQ) - Contains the latitude and longitude coordinates of the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `geoCode` object is not returned in the API response.
 
@@ -3932,7 +3932,7 @@ Contains the list of search criteria that were used to search the car rental opt
   + Fri
   + Sat
   + Sun
-+ workingHours (array[workingHourOrderRQ]) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
++ workingHours (array[workingHourOrderRQ], fixed-type) - Contains the opening and closing time applicable for the day of the week (dayOfWeek).
 
 ## workingHourOrderRQ
 + openTime: `08:00` (string) - Indicates the opening time applicable for the day of the week (dayOfWeek).
@@ -3941,7 +3941,7 @@ Contains the list of search criteria that were used to search the car rental opt
 ## contactInfoRentalLocOrderRQ
 + address (addressDetailsRentalLocationOrderRQ) - Contains information about the address.<br><br><b>Note:</b> If you do not provide this field, then the `address` object is not returned in the API response.
 + email: `john.doe@abc.com` (string) - Email address that must be used when any email communication needs to be made with the car rental provider.<br><br><b>Note:</b> If you do not provide this field, then the `email` field is not returned in the API response.
-+ phones (array[phoneDetailsRentalLocationOrderRQ]) - Contains the contact numbers for the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `phones` array is not returned in the API response.
++ phones (array[phoneDetailsRentalLocationOrderRQ], fixed-type) - Contains the contact numbers for the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `phones` array is not returned in the API response.
 
 ## addressDetailsRentalLocationOrderRQ
 + line1: `3077 ACME Street` (string)- Street number and street name.
@@ -3989,7 +3989,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + displayFare (displayFareDetailsOrderRQ) - Contains information about the total car rental fare, along with the various breakup components that make up the car rental fare.<br><br><b>Note:</b> If you do not provide this field, then the `displayFare` object is not returned in the API response.
 + optionalCharges (optionalChargesDetailsOrderRQ) - Optional charges are a list of incidental, additional charges, which if incurred is payable over and above the car rental booking amount, usually at the rental location.<br><br><b>Note:</b> If you do not provide this field, then the `optionalCharges` object is not returned in the API response.
 + purchaseOption (purchaseOptionDetailsOrderRQ) - Contains information about the different <@ reward_popup @> options that the <@ customer_popup @> can avail to pay for the car booking.<br><br><b>Note:</b> If you do not provide this field, then the `purchaseOption` object is not returned in the API response.
-+ policies (array[carRentalPolicy]) - Contains the list of information about the applicable policies for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response.
++ policies (array[carRentalPolicy], fixed-type) - Contains the list of information about the applicable policies for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response.
 + cancellationPolicy (cancellationPolicies) - Contains the list of applicable cancellation policies, including information such as the window determining the penalty period and the penalties incurred for the cancellation.<br><br><b>Note:</b> If you do not provide this field, then the `cancellationPolicy` array is not returned in the API response.
 + mileage (mileage) - Contains mileage-related information that is applicable for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `mileage` object is not returned in the API response.
 + freeCancellationEndDate: `{dateTime|YYYY-MM-DDT10:29:59|17 0}` (string) - Date and time up to which the car rental can be canceled without incurring any penalty. If the car rental is canceled after this date and time, the cancellation penalty is applied as per the `/carRentals[]/cancellationPolicy[]`.<br><br><b>Note:</b> If you do not provide this field, then the `freeCancellationEndDate` field is not returned in the API response.
@@ -4015,13 +4015,13 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## breakupDetailsOrderRQ
 + baseFare: 217.8 (number) - The base fare amount.<br><br><b>Note:</b> If you do not provide this field, then the `baseFare` field value is set to `0`.
-+ fees (array[feeOrderRQ]) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
-+ taxes (array[taxOrderRQ]) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
-+ discounts (array[discountsOrderRQ]) - Contains information about the applicable discount for the given car rental.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is not returned in the API response.
-+ markups (array[markupOrderRQ]) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is not returned in the API response.
-+ charges (array[vehicleChargeOrderRQ]) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
-+ coverages (array[coverageChargeOrderRQ]) - Contains the list of coverage or insurance-related charges.<br><br><b>Note:</b> If you do not provide this field, then the `coverages` array is not returned in the API response.
-+ equipments (array[equipmentOrderRQ]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipments` array is not returned in the API response.
++ fees (array[feeOrderRQ], fixed-type) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
++ taxes (array[taxOrderRQ], fixed-type) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
++ discounts (array[discountsOrderRQ], fixed-type) - Contains information about the applicable discount for the given car rental.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is not returned in the API response.
++ markups (array[markupOrderRQ], fixed-type) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is not returned in the API response.
++ charges (array[vehicleChargeOrderRQ], fixed-type) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
++ coverages (array[coverageChargeOrderRQ], fixed-type) - Contains the list of coverage or insurance-related charges.<br><br><b>Note:</b> If you do not provide this field, then the `coverages` array is not returned in the API response.
++ equipments (array[equipmentOrderRQ], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipments` array is not returned in the API response.
 
 ## feeOrderRQ
 + source: `vendorFee` - Indicates the source of the fee that is applied.<br><br><b>Note:</b> If you do not provide this field, then the `source` field is not returned in the API response.
@@ -4301,18 +4301,18 @@ Contains the list of search criteria that were used to search the car rental opt
 + amount: 10 (number) - Indicates the charge per unit. For example, if the amount is chargeable on a `PerWeek` `unitType` and the `amount` field returns `15`, the chargeable amount per week is `15`.<br><br><b>Note:</b> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
 
 ## commissionsDisplayFareOrderRQ
-+ commissions (array[commissionDetailsOrderRQ]) - Contains information about the commission for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `commissions` array is not returned in the API response.
++ commissions (array[commissionDetailsOrderRQ], fixed-type) - Contains information about the commission for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `commissions` array is not returned in the API response.
 
 ## commissionDetailsOrderRQ
 + amount: 10.5 (number) - Applicable amount for the commission.<br><br><b>Note:</b> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
 + desc: `Flat rate commission for the agency` (string) - Description for the commission.<br><br><b>Note:</b> If you do not provide this field, then the `desc` field is not returned in the API response.
 
 ## optionalChargesDetailsOrderRQ
-+ fees (array[feeOptionalChargesOrderRQ]) - Contains the list of optional fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
-+ taxes (array[taxOptionalChargesOrderRQ]) - Contains the list of optional taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
-+ charges (array[vehicleChargeOptionalChargesOrderRQ]) - Contains the list of optional charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
-+ coverages (array[coverageChargeOptionalChargesOrderRQ]) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount.<br><br><b>Note:</b> If you do not provide this field, then the `coverages` array is not returned in the API response.
-+ equipments (array[equipmentOptionalChargesOrderRQ]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipments` array is not returned in the API response.
++ fees (array[feeOptionalChargesOrderRQ], fixed-type) - Contains the list of optional fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
++ taxes (array[taxOptionalChargesOrderRQ], fixed-type) - Contains the list of optional taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
++ charges (array[vehicleChargeOptionalChargesOrderRQ], fixed-type) - Contains the list of optional charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
++ coverages (array[coverageChargeOptionalChargesOrderRQ], fixed-type) - Contains the list of optional coverage or insurance-related charges, which if incurred, is payable over and above the car rental booking amount.<br><br><b>Note:</b> If you do not provide this field, then the `coverages` array is not returned in the API response.
++ equipments (array[equipmentOptionalChargesOrderRQ], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipments` array is not returned in the API response.
 
 ## feeOptionalChargesOrderRQ
 + source: `supplier` - Indicates the  source of the fee that is applied.<br><br><b>Note:</b> If you do not provide this field, then the `source` field is not returned in the API response.
@@ -4453,7 +4453,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + totalPurchaseUnits: 1 (number) - Total number of <@ rewards_popup @> that the customer can avail to pay for the car booking.<br><br><b>Note:</b> If you do not provide this field, then the `totalPurchaseUnits` field value is set to `0`.
 + cashCurrency: `USD` (string) - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. For example, if the `cashCurrency` returns `USD`, then the `cash` amounts are returned in the `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads/#supported-currencies">ISO currencies</a>.<br><br><b>Note:</b> If you do not provide this field, then the `cashCurrency` field is not returned in the API response.
 + pointsCurrency: `Points` (string) - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles. Note that the `points` field value is represented by this currency.<br><br><b>Note:</b> If you do not provide this field, then the `pointsCurrency` field is not returned in the API response.
-+ rewards (array[rewardOrderRQ]) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br>
++ rewards (array[rewardOrderRQ], fixed-type) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the car booking. The API response also returns the redemption details and <@ earncomponent @> applicable for each reward option.<br>
 <b>Notes:</b>
   + If the configuration for earnings is not enabled, then the `earnings` object is not returned in the response. To enable the configuration, please contact the cxLoyalty Business team.
   + If you do not provide this field, then the `rewards` array is not returned in the API response.
@@ -4478,7 +4478,7 @@ Contains the list of search criteria that were used to search the car rental opt
 <b>Notes:</b>
   + If the type of reward returned in the `rewards[]/type` field is `Purchase`, then the `points` field will always return value as `0`.
   + If you do not provide this field, then the `points` field value is set to `0`.
-+ fees (array[feesRecommendationsOrderRQ]) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
++ fees (array[feesRecommendationsOrderRQ], fixed-type) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
 + maxQuantity: 1 (number) - Maximum number of times that this <@ reward_popup @> can be used to make payment for the car booking, based on the customer's <@ point_balance_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `maxQuantity` field is set to `0`.
 
 ## feesRecommendationsOrderRQ
@@ -4501,7 +4501,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + ruleSet (ruleSetRewardBurnOrderRQ) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.<br><br><b>Note:</b> If you do not provide this field, then the `ruleSet` object is not returned in the API response.
 + strikeOutValue (strikeOutValueDetailsOrderRQ) - Contains the <@ pre-discounted_fare_popup @> for the car booking in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `strikeOutValue` object is not returned in the API response.
 + actualValue (actualValueOrderRQ) - Contains the <@ actual_fare_popup @> for the car booking in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `actualValue` field is not returned in the API response.
-+ stateBag (array[stateBagSearchResultsRS]) - For internal use only.
++ stateBag (array[stateBagSearchResultsRS], fixed-type) - For internal use only.
 
 ## recommendationRewardBurnOrderRQ
 + cash: 72.61 (number) - Recommended cash component of the <@ actual_fare_popup @> that can be paid to book the car rental option.<br><br><b>Note:</b> If you do not provide this field, then the `cash` field value is set to `0`.<br><br><b>Format:</b> Decimal
@@ -4509,7 +4509,7 @@ Contains the list of search criteria that were used to search the car rental opt
 <b>Notes:</b>
   + If the type of reward returned in the `rewards[]/type` field is `Purchase`, then the `points` field will always return value as `0`.
   + If you do not provide this field, then the `points` field value is set to `0`.
-+ fees (array[feesRecommendationsOrderRQ]) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
++ fees (array[feesRecommendationsOrderRQ], fixed-type) - Contains the list of applicable fees that the <@ customer_popup @> must pay when this <@ reward_popup @> option (rewards[]/id field) is used. If additional fee is not applicable for this reward option, then the `rewards[]/recommendation/fees` array is returned empty in the API response.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
 + maxQuantity: 1 (number) - Maximum number of times that this <@ reward_popup @> can be used to make payment for the car booking, based on the customer's <@ point_balance_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `maxQuantity` field is set to `0`.
 
 ## ruleSetRewardBurnOrderRQ
@@ -4541,7 +4541,7 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## recommendationPointsOrderRQ
 + total: 15000.0 (number) - Recommended number of total points that the <@ customer_popup @> can earn in the `pointsCurrency`. If there are no <@ earncomponent @>, then the `total` field value is set to `0`.<br><br><b>Format:</b> Decimal
-+ breakUp (array [pointsEarnInfoOrderRQ]) -Contains the breakup of the points that can be earned by using this reward. If the `total` field returns `0`, then the `breakUp` array is returned as empty.
++ breakUp (array [pointsEarnInfoOrderRQ], fixed-type) -Contains the breakup of the points that can be earned by using this reward. If the `total` field returns `0`, then the `breakUp` array is returned as empty.
 
 ## pointsEarnInfoOrderRQ
 + type (enum) - Type of earn.
@@ -4594,11 +4594,11 @@ Contains the list of search criteria that were used to search the car rental opt
 ## supplierRateDetailsOrderRQ
 + baseAmount: 217.8 (number) - The base fare amount.<br><br><b>Note:</b> If you do not provide this field, then the `baseAmount` field value is set to `0`.
 + include currencyOrderRQ
-+ charges (array[vehicleChargeOrderRQ]) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
-+ taxes (array[taxOrderRQ]) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
-+ fees (array[feeOrderRQ]) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
-+ discounts (array[discountsOrderRQ]) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is not returned in the API response.
-+ markups (array[markupOrderRQ]) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is not returned in the API response.
++ charges (array[vehicleChargeOrderRQ], fixed-type) - Contains the list of applicable charges for the car rental, other than taxes and fees.<br><br><b>Note:</b> If you do not provide this field, then the `charges` array is not returned in the API response.
++ taxes (array[taxOrderRQ], fixed-type) - Contains the list of applicable taxes for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is not returned in the API response.
++ fees (array[feeOrderRQ], fixed-type) - Contains the list of applicable fees for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is not returned in the API response.
++ discounts (array[discountsOrderRQ], fixed-type) - Contains information about the applicable discount for the given car rental. This amount is not included in the `breakup/baseFare` amount. However, this amount is already included in the `displayFare/totalFare` amount.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is not returned in the API response.
++ markups (array[markupOrderRQ], fixed-type) - Contains the list of applicable markup for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is not returned in the API response.
 + paymentMode: `Card` (enum) - Indicates the mode of payment for the `cash/amount`.<br><br><b>Note:</b> If you do not provide this field, then the `paymentMode` field is not returned in the API response.
   + Cash
   + Card
@@ -4667,15 +4667,15 @@ Contains the list of search criteria that were used to search the car rental opt
 + countryCode: `1` - Country code for the phone number.
 
 ## equipmentBookingInfoOrderRQ
-+ equipment (array[equipmentBookingInfoDetailsOrderRS]) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipment` array is not returned in the API response.
-+ equipment (array[equipmentBookingInfoDetailsOrderRQ]) - Contains the list of car equipments and their charges.
++ equipment (array[equipmentBookingInfoDetailsOrderRS], fixed-type) - Contains the list of car equipments and their charges.<br><br><b>Note:</b> If you do not provide this field, then the `equipment` array is not returned in the API response.
++ equipment (array[equipmentBookingInfoDetailsOrderRQ], fixed-type) - Contains the list of car equipments and their charges.
 
 ## equipmentBookingInfoDetailsOrderRQ
 + code: `9` (string) - Code for the equipment.
 + quantity: 1 (number) - Number of equipments of the selected code booked.
 
 ## selectedPaymentOptionsBookingInfoOrderRQ
-+ selectedPaymentOptions (array[selectedPaymentOptionsBookingInfoDetailsOrderRQ]) - Contains information about the selected payment options.<br><br><b>Note:</b> If you do not provide this field, then the `selectedPaymentOptions` array is not returned in the API response.
++ selectedPaymentOptions (array[selectedPaymentOptionsBookingInfoDetailsOrderRQ], fixed-type) - Contains information about the selected payment options.<br><br><b>Note:</b> If you do not provide this field, then the `selectedPaymentOptions` array is not returned in the API response.
 
 ## selectedPaymentOptionsBookingInfoDetailsOrderRQ
 + rewardId: `123` (string) - Unique ID for the <@ reward_popup @> that was availed to pay for the car rental.<br><br><b>Note:</b> If you do not provide this field, then the `rewardId` field is not returned in the API response.
@@ -4701,7 +4701,7 @@ Contains the list of search criteria that were used to search the car rental opt
 + unit: `points` (string) - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles.<br><br><b>Note:</b> If you do not provide this field, then the `unit` field is not returned in the API response.
 
 ## paymentMethodsOrderRQ
-+ paymentMethods (array[paymentMethodsDetailsOrderRQ]) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC).<br><br><b>Note:</b> If you do not provide this field, then the `paymentMethods` array is not returned in the API response. To set a new payment method or to update the existing payment method, you must call the `Set Payment Methods` API.
++ paymentMethods (array[paymentMethodsDetailsOrderRQ], fixed-type) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC).<br><br><b>Note:</b> If you do not provide this field, then the `paymentMethods` array is not returned in the API response. To set a new payment method or to update the existing payment method, you must call the `Set Payment Methods` API.
 
 ## paymentMethodsDetailsOrderRQ
 + type: `Card` (enum, required) - Indicates the mode of payment.<br><br><b>Notes:</b><ul><li>If you set the `/paymentMethods[]/type` to `Card` or `OUC`, then then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If you set the `/paymentMethods[]/type` to `Cash`, then the `/paymentMethods[]/card` object is optional.</li></ul>
@@ -4765,10 +4765,10 @@ Contains the list of search criteria that were used to search the car rental opt
 + include warningsOrderRQ
 
 ## errorsOrderRQ
-+ errors (array [errorsItemBookStatusDetailsRS]) - Contains the list of errors that have occurred during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `errors` field is not returned in the API response.
++ errors (array [errorsItemBookStatusDetailsRS], fixed-type) - Contains the list of errors that have occurred during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `errors` field is not returned in the API response.
 
 ## warningsOrderRQ
-+ warnings (array [warningsItemBookStatusDetailsRS]) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` field is not returned in the API response.
++ warnings (array [warningsItemBookStatusDetailsRS], fixed-type) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` field is not returned in the API response.
 
 ## cancellationDetailsOrderRQ
 + cancellationDetails (cancellationDetailsInfoOrderRQ) - Contains the cancellation details for the car rental booking.<br><br><b>Note:</b> If you do not provide this field, then the `cancellationDetails` object is not returned in the API response.
