@@ -63,51 +63,51 @@
 ## segment-info
 + departure (dep-info)
 + arrival (arr-info)
-+ airlineName: `string` (string, nullable)
++ airlineName: `string` (string, nullable) - Name of the airlines.
 + airlineLogo: `string` (string, nullable)
 
 ## arr-info
-+ city: `string` (string, nullable)
-+ airPortCode: `string` (string, nullable)
++ city: `string` (string, nullable) - Name of city.
++ airPortCode: `string` (string, nullable) - Arrival airport code.
 + date: `string` (string)
 
 ## dep-info
-+ city: `string` (string, nullable)
-+ airPortCode: `string` (string, nullable)
++ city: `string` (string, nullable) - Name of city.
++ airPortCode: `string` (string, nullable) - Departure airport code.
 + date: `string` (string)
 
 ## activityInfo-details
-+ airportName: `string` (string, nullable)
-+ cityName: `string` (string, nullable)
++ airportName: `string` (string, nullable) - Name of airport.
++ cityName: `string` (string, nullable) - Name of airport city.
 + date: `string` (string, nullable)
 + details: `string` (string, nullable)
 + name: `string` (string, nullable)
 + duration: `string` (string, nullable)
 
 ## carInfo-details
-+ companyName: `string` (string, nullable)
-+ carCategory: `string` (string, nullable)
++ companyName: `string` (string, nullable) - Car company name.
++ carCategory: `string` (string, nullable) - Car category.
 + providerName: `string` (string, nullable)
 + providerImage: `string` (string, nullable)
 + pickUpInfo (pickUpInfo-details) 
 + dropOffInfo (dropOffInfo-details)
 
 ## pickUpInfo-details
-+ locationType: `string` (string, nullable)
-+ locationName: `string` (string, nullable)
-+ date: (string)
++ locationType: `string` (string, nullable) - Pickup location type.
++ locationName: `string` (string, nullable) - Pickup location name.
++ date: (string) - Pickup date.
 
 ## dropOffInfo-details
-+ locationType: `string` (string, nullable)
-+ locationName: `string` (string, nullable)
-+ date: (string)
++ locationType: `string` (string, nullable) - Dropoff location type.
++ locationName: `string` (string, nullable) - Dropoff location name.
++ date: (string) - Dropoff date.
 
 ## hotelInfo-details
-+ hotelName: `string` (string, nullable)
-+ nights: 0 (number)
-+ checkInDate: `2022-11-16T10:56:15.580Z` (string)
-+ checkOutDate: `2022-11-16T10:56:15.580Z` (string)
-+ roomType: (string, nullable)
++ hotelName: `string` (string, nullable) - Name of the hotel.
++ nights: 0 (number) - Number of nights booked.
++ checkInDate: `2022-11-16T10:56:15.580Z` (string) - Checkin date.
++ checkOutDate: `2022-11-16T10:56:15.580Z` (string) - Checkout date.
++ roomType: (string, nullable) - Type of the room.
 + bedInfo: (string, nullable)
 
 ## cancellationInfo-details
@@ -126,7 +126,7 @@
 ## settlementInfo-details
 + cash: 0 (number)
 + validBy: (string, nullable)
-+ currency: (string, nullable)
++ currency: (string, nullable) - Currancy of the cash.
 + points: 0 (number)
 + pointsCurrency: (string, nullable)
 + platingCarrier: (string, nullable)
@@ -136,6 +136,6 @@
 ## penaltyAmount-details 
 + type: `Fees` (enum)
 + cash: 0 (number)
-+ currency: (string, nullable)
++ currency: (string, nullable) - Currancy of the cash.
 + points: 0 (number)
 + pointsCurrency: (string, nullable)
