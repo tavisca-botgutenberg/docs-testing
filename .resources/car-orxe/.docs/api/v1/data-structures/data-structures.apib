@@ -247,8 +247,8 @@
 + vehicleCategory (vehicleCategoryFilter) - Contains the categories of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the `allow` array or the `disallow` array can be sent in the `vehicleCategory` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleCategory` object.
 + price (priceFilter) - Contains the minimum and maximum price range for the car rental.
 + transmission (enum, optional) - Indicates the required type of car transmission.
-  + <@ Automatic @>
-  + <@ Manual @>
+  + Automatic
+  + Manual
 + airConditionedOnly: true (boolean) - If you want to include only air-conditioned cars in the car search results, set this field to `true`.<br><br> Default: `false`
 
 ## vendorFilter
@@ -566,8 +566,8 @@
 + supplierId: `114` - Unique ID for the supplier who provided the car result. Note that one supplier can be associated with multiple vendors.
 + rateCode: `ASJKL` - Rate code provided by the car vendor. This indicates the rate code used for discounted rates based on the supplier relationship, if applicable.
 + inventoryType (enum) - Indicates whether the type of inventory is prepaid or postpaid.
-  + <@ prepaid @>
-  + <@ postpaid @>
+  + prepaid
+  + postpaid
   + Unknown
 + displayFare (fare) - Contains information about the total car rental fare, along with the various breakup components that make up the car rental fare. This car rental fare is displayed to the <@ customer_popup @> on the User Interface (UI).<br><br>
 <b>Notes:</b>
@@ -596,10 +596,10 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## fareType
 + type: `Corporate` (enum) - Indicates whether the type of rate is published, negotiated, corporate, or promotional.
-  + <@ corporate_type @>
-  + <@ negotiated_type @>
-  + <@ promotional_type @>
-  + <@ published_type @>
+  + corporate_type
+  + negotiated_type
+  + promotional_type
+  + published_type
   + Unknown
 
 ## guaranteeRequiredBool
@@ -1483,8 +1483,8 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## vehicleTransmissionEnum
 + transmission (enum) - Indicates the transmission type of the vehicle.
-    + <@ Automatic @>
-    + <@ Manual @>
+    + Automatic
+    + Manual
 
 ## fuelTypeEnum
 + fuelType: `Petrol` (enum) - Indicates the fuel type of the vehicle.
@@ -1500,8 +1500,8 @@ Note that the list of additional charges provided in the `optionalCharges` objec
 
 ## vehicleDriveTypeEnum
 + driveType: `AllWheelDrive` (enum) - Indicates the drive type of the vehicle.
-    + <@ AllWheelDrive @>
-    + <@ FourWheelDrive @>
+    + AllWheelDrive
+    + FourWheelDrive
     + Unknown
 
 ## vehiclePolicy
@@ -2535,10 +2535,10 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## orderStatusOrderRS
 + status: `Confirmed` (enum) - Indicates the order status of the car rental booking.
-  + <@ order_confirmed_popup @>
-  + <@ order_canceled_popup @>
-  + <@ order_failed_popup @>
-  + <@ order_planned_popup @>
+  + order_confirmed_popup
+  + order_canceled_popup
+  + order_failed_popup
+  + order_planned_popup
 
 ## createdOnOrderRS
 + createdOn: `{dateTime|YYYY-MM-DDTHH:mm:ss|-2 0}` (string) - Date and time when the order is created.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `lastUpdatedOn` field returns the current date and time.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SS<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
@@ -3641,10 +3641,10 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## orderStatusOrderRQ
 + status: `Confirmed` (enum) - Indicates the order status of the car rental booking. If the `status` field is not provided, then the order status is set depending on the information provided in the `confirmationDetails` and `cancellationDetails` objects:<ul><li><b>Planned:</b> Neither confirmation nor cancellation details are provided.</li><li><b>Confirmed:</b><ul><li>Only confirmation details are provided.</li><li>Cancellation details are provided, but it contains the `error` object.</li></ul></li><li><b>Canceled:</b><ul><li>Both confirmation and cancellation details are provided.</li><li>Only cancellation details are provided.</li></ul></li><li><b>Failed:</b> Confirmation details contains the `error` object.</li></ul>
-  + <@ order_confirmed_popup @>
-  + <@ order_canceled_popup @>
-  + <@ order_failed_popup @>
-  + <@ order_planned_popup @>
+  + order_confirmed_popup
+  + order_canceled_popup
+  + order_failed_popup
+  + order_planned_popup
 
 ## sessionIdOrderRQ
 + sessionId: `fb831286-9595-4a32-afd3-7af3210fbdba` (string, required) - Unique acknowledgement token that indicates that the request has been received and the processing has been initiated. The session ID is valid for 60 minutes from the time it is generated.<br><br><b>Notes:</b>
@@ -5023,10 +5023,10 @@ Contains the list of search criteria that were used to search the car rental opt
 
 ## fareTypeUpdateOrder
 + type: `Corporate` (enum) - Indicates whether the type of rate is published, negotiated, corporate, or promotional.<br><br><b>Note:</b> If you do not provide this field, then the `type` field is not returned in the `Get Order` API response.
-  + <@ corporate_type @>
-  + <@ negotiated_type @>
-  + <@ promotional_type @>
-  + <@ published_type @>
+  + 
+  + negotiated_type
+  + promotional_type
+  + published_type
   + Unknown
 
 ## currencyUpdateOrderRQ
