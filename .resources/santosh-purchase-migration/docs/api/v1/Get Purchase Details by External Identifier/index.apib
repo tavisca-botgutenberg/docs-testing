@@ -1,6 +1,6 @@
-# Get Purchase Details by External Identifier [/api/v1.0/purchases?{key}={value}]
+## Get Purchase Details by External Identifier [/api/v1.0/purchases?{key}={value}]
 
-## Get Purchase Details by External Identifier [GET]
+### Get Purchase Details by External Identifier [GET]
 
 + Parameters 
     + key: `superPNR` (string, required) - Contains an external identifier that is mapped to a purchase. You can use this external identifier to retrieve the purchase details from the Purchase database.<br><br> Consider a scenario where the superPNR number ABC123 is mapped to this purchase. In this case, you can retrieve the purchase details by this `superPNR`. All you need to do is set the `key` field as `SuperPNR` and its corresponding value `ABC123` in the `value` field. 
