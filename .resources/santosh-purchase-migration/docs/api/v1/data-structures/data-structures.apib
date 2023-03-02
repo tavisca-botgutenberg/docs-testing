@@ -1,0 +1,377 @@
+# Data Structures
+
+## getPurchaseInfoByResp
++ include purchases 
++ include pagination
+
+## purchases
++ purchases (array [purchasesInfo]) - Contains the list of customer purchases with the details of each purchase.
+
+## pagination
++ pagingInfo (array [pageInfo]) - Contains information about the <@ pagination @> manner in which you want the API to return the customer's purchase records. Note that the API can return maximum `200` records per page.
+
+## pageInfo 
++ pageSize: 5 (number) - Indicates the number of purchase records of a customer that the API must return per page. For example, if you want to retrieve five purchase records per page, you must set the <code>page-size</code> to <code>5</code>.
++ pageNumber: 1 (number) - Indicates the page number from where you want to retrieve the purchase records of a customer. The results include the records from a specified or default page number while considering the page size. For example, let us assume that the <code>page-size</code> is set to `5`, which means that the API will return 5 purchase records per page. If you want the API to return the 11th record and skip (ignore) records 1 to 10, then you must set the <code>page-number</code> to `3`.
++ totalRecords: 1 (number) - Indicates the total number of purchase records of a customer returned in the API response.
+
+## purchasesInfo 
++ include customerPurchaseId
++ include createdOnUTC 
++ include lastUpdatedOnUTC
++ include customer
++ include creator 
++ include status 
++ include paymentStatus
++ include currency 
++ include pointsType
++ include identifiers
++ include backwardCompatibilityInfoUrl
++ include purchasedItems 
+
+## customerPurchaseId
++ id: `5aiphxo7sf8` - Unique ID assigned to identify a purchase record. You can use this ID to retrieve the purchase details from the Purchase database.<br><br> The purchase details includes:<ul style="list-style-type:disc"><li>Information about the customer.</li><li>Information about the <@ creator_popup @>. Applicable in case of offline booking made by an agent.</li><li>Payment status of the purchase.</li><li>List of items, including the information about the item price, selected payment options, item-level payment status, earnings, confirmation details, and <@ consumer_popup @> details.</li><li>Additional information related to the purchase, if any.</li></ul>
+
+## purchaseId
++ id: `5aiphxo7sf8` - Unique ID assigned to identify a purchase record. You can use this ID to retrieve the purchase details from the Purchase database.<br><br> The purchase details includes:<ul style="list-style-type:disc"><li>Information about the customer.</li><li>Information about the <@ creator_popup @>. Applicable in case of offline booking made by an agent.</li><li>Payment status of the purchase.</li><li>Summary of charges.</li><li>Invoice summary.</li><li>List of items, including the information about the item price, selected payment options, item-level payment status, earnings, confirmation details, and <@ consumer_popup @> details.</li><li>Additional information related to the purchase, if any.</li></ul>
+
+## createdOnUTC 
++ createdOnUtc: `2020-02-1T14:34:345Z` - Data and time when the purchase record is created.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
+
+## lastUpdatedOnUTC
++ lastUpdatedOnUtc: `2020-02-1T15:70:345Z` - Date and time when the purchase record is updated.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
+
+## customer
++ customer (customerInfo) - Contains information about the <@ customer_popup @>.
+
+## customerInfo 
++ id: `230fkdkf2` - Unique ID of the customer. 
++ name (name) - Contains information about the name of the customer.<br><br><b>Note:</b> If this information is not provided at the time of purchase creation, the `middle` name, `title`, and `suffix` are not returned in the `name` object.  
++ accountId: `ACC1234` - Unique account ID of the customer. 
++ email: `john.doe@email.com` - Email address (recipient ID) of the customer for communication.
++ organization (organizationInfo) - Contains information about the organization to which the customer is mapped. For example, information about the client and the <@ loyalty_program_popup @> that the customer is associated with. 
++ metadata (metadataItem) - Contains custom key-value pairs to store additional information about the customer. For example, age, gender, date of birth, passport number, and phone number. <br><br>
+<b>Notes:</b> 
+  + If specified for the purchase, the API response returns maximum five custom key-value pairs in the `metadata` object.
+  + If not specified for the purchase, the `metadata` object is not returned in the API response. 
+
+## name 
++ first: `John` (string) - First name.
++ middle: `Alex` - Middle name.
++ last: `Smith` (string) - Last name.
++ title (enum) - Title before the name. 
+  + Mr
+  + Madam
+  + Master
+  + Miss
+  + Mrs
+  + Ms
+  + Mx
++ suffix: `Jr` - Suffix that follows the name. 
+
+## organizationInfo
++ clientId: `client123` - Unique ID of the client. 
++ programId: `1117` - Unique ID for the <@ loyalty_program_popup @>. 
+
+## creator
++ creator (creatorInfo) - Contains information about the <@ creator_popup @>. Note that `creator` object is returned only in case of offline bookings made by an agent. 
+
+## creatorInfo 
++ id: `23odk22` - Unqiue ID for the creator. 
++ name (name) - Contains information about the name of the creator. <br><br><b>Note:</b> If this information is not provided at the time of purchase creation, the `middle` name, `title`, and `suffix` are not returned in the `name` object.  
++ accountId: `ACC1234` - Unique account ID of the creator. 
++ email: `john.doe@email.com` - Email address (recipient ID) of the creator for communication.
++ organization (organizationInfo) - Contains information about the organization to which the creator is mapped. For example, information about the client and the <@ loyalty_program_popup @> that the creator is associated with. 
++ metadata (metadataItem) -  Contains custom key-value pairs to store additional information about the creator.You can store maximum five custom key-value pairs. For example, age, gender, date of birth, passport number, and phone number.<br><br>
+<b>Note:</b> If not specified for the purchase, the `metadata` object is not returned in the API response. 
+
+## status 
++ status: `Purchased` (enum) - Indicates the status of the purchase. 
+  + <@ purchasecanceled @>
+  + <@ purchasefailed @>
+  + <@ purchaseinprogress @>
+  + <@ purchased @>
+
+## currency
++ currency: `USD` - 3-character ISO code that indicates the currency in which the monetary amounts are returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. 
+<b>Notes:</b>
+  + This field is returned only when the payment is made by either using cash or combination of both cash and points. 
+  + If an amount is returned in a different currency, then the `currency` for that amount field is returned separately. For example, the currency for `/adjustments[]/amount` is returned in the `/adjustments[]/currency` field.
+
+## pointsType
++ pointsType: `Points` - Indicates the type of loyalty points that is associated with the <@ loyalty_program_popup @>. For example, points and miles.<br><br>
+<b>Note:</b> This field is returned only when the payment is made by either using points or combination of both cash and points. 
+
+## paymentStatus
++ paymentStatus: `Pending` (enum) - Indicates the status of the payment. 
+  + <@ Pending @>
+  + <@ PartiallyPaid @>
+  + <@ PaidInFull @> 
+  + <@ Refunded @>
+  + <@ PartiallyRefunded @>
+
+## purchasedItems
++ items (array [itemsInfo]) - Contains the list of items included in this purchase. 
+
+## itemsInfo 
++ id: `fnf33383` - Unique ID of the item. 
++ externalId: `423i323` - For internal use only.<br><br>Unique product ID assigned for the item by the Product Engine. 
++ name: `Taj Hotel` - Name of the item. 
++ type: `Hotel` - Type of product to which the items belong. 
++ quantity: 1 (number) - Indicates the quantity of the same item.
++ status: `BookingNotAttempted` (enum) - Indicates the booking status.  
+  + <@ BookingNotAttempted @>
+  + <@ Booked @>
+  + <@ Failed @> 
+  + <@ item_canceled_popup @>
++ paymentStatus: `Pending` (enum) - Indicates the payment status. 
+  + <@ Pending @>
+  + <@ PartiallyPaid @>
+  + <@ PaidInFull @> 
+  + <@ Refunded @>
+  + <@ PartiallyRefunded @>
++ productDetailsUrl: `https://product-details.com/PROD123455` - URL to view information about the product. For example, if the product is a hotel booking, then you can use the `productDetailsUrl` to view the latest fare details of the room and the room information such as room description, images, amenities, and policies.
++ thumbnailUrl: `https://images.cxloyalty.com/hotel/aa.png` - URL for the <@ thumbnail @> image of the item.
++ consumptionDatesInUtc (consumptionDatesInfo) - Contains information about the consumption window within which the item must be used by the <@ consumer_popup @>. 
++ price (priceInfo) - Contains information about the price of the item displayed to the <@ customer_popup @>. This includes the base amount and the breakup of the applicable adjustments such as fees, taxes, discount, and others. 
++ confirmationNumbers (array [confirmationNumberInfo]) - Contains the list of confirmation numbers. For example, the `supplierConfirmationNumber` is returned by the supplier for every successful hotel booking.<br><br><b>Note:</b> This field is returned only when the item is booked successfully.  
++ consumers (array [consumersInfo]) - Contains information about the <@ consumer_popup @>. 
++ reportingFields (reportingInfo) - Contains custom reporting fields that can be used for any business-related purposes, such as to pass the Order ID for reporting purpose. You can store maximum five custom key-value pairs.<br><br><b>Note:</b> If not specified for the purchase, the `reportingFields` object is not returned in the API response. 
++ include backwardCompatibilityInfoUrl
+
+## consumptionDatesInfo
++ start: `2020-02-29T14:34:345Z` - Start date and time of the consumption window.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ end: `2020-03-02T14:34:345Z` - End date and time of the consumption window.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
+
+## priceInfo 
++ quotedPrice (quotedPriceInfo) - Contains the price of the item, including the base amount and the list of applicable adjustments such as fees, taxes, discounts, and other additional charges, if any.
+
+## quotedPriceInfo
++ baseAmount: 343 (number) - Base price of the item.<br><br><b>Note:</b> The `baseAmount` does not include adjustments such as `discount`, `taxes`, `fees`, or any other additional cost.<br><br><b>Format:</b> Decimal   
++ adjustments (array [adjustmentsInfoOne, adjustmentsInfoTwo, adjustmentsInfoThree, adjustmentsInfoFour ]) - Contains the list of adjustments applicable to the price of the item such as fees, taxes, discounts, and other additional charges, if any.<br><br>
+<b>Notes:</b> 
+  + The object returned within the `/adjustments` array may differ depending on the type of adjustment. 
+  + The `feeType` field is returned only if the adjustment is of type `Fee`.
+  + The `code` field is returned only if the adjustment is of type `Tax`. 
+  + The `discountType` field is returned only if the adjustment is of type `Discount`. 
+
+## adjustmentsInfoOne
++ type: `Fee` (enum) - Indicates the type of the applicable adjustment. 
+  + Discount
+  + Fee
+  + Tax
+  + Other 
++ feeType: `reward fee` - Type of applicable fee.<br><br><b>Note:</b> The `feeType` field is returned only in case the adjustment is of type `Fee`.
++ amount: `10.0`  (number) - Applicable adjustment amount applied to the price of the item.<br><br>
+<b>Note:</b> If the type of adjustment is `Discount`, the `amount` is returned in minus.<br><br> Consider a scenario where a discount of $25 is applicable for the item. In this case, the `amount` field value is returned as `-25.0`.<br><br><b>Format:</b> Decimal   
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `adjustments[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ description: `additional fee from the customer` - Description or additional information for the applicable adjustment. 
++ additionalInfo (additionalInfo) - Contains custom key-value pairs to store additional information related to the applicable adjustment. You can store maximum five custom key-value pairs. 
+<b>Note:</b> If not specified for the purchase, the `additionalInfo` object is not returned in the API response.  
+
+## adjustmentsInfoTwo
++ type: `Tax` (enum) - Indicates the type of the applicable adjustment. 
+  + Discount
+  + Fee
+  + Tax
+  + Other 
++ code: `ABC123` - Unique code for the tax that is charged.<br><br><b>Note:</b> The `code` field is returned only if the adjustment is of type `Tax`.
++ amount: `20.0`  (number) - Applicable adjustment amount applied to the price of the item.<br><br>
+<b>Note:</b> If the type of adjustment is `Discount`, the `amount` is returned in minus.<br> Consider a scenario where a discount of $25 is applicable for the item. In this case, the `amount` field value is returned as `-25.0`.<br><br><b>Format:</b> Decimal   
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `adjustments[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ description: `additional fee from the customer` - Description or additional information for the applicable adjustment.<br><br><b>Note:</b> If this information is not provided at the time of purchase creation, this field is not returned in the API response.  
++ additionalInfo (additionalInfo) - Contains custom key-value pairs to store additional information related to the applicable adjustment.<br><br><b>Note:</b> If this information is not available for the purchase, this field is not returned in the API response.  
+
+## adjustmentsInfoThree
++ type: `Discount` (enum) - Indicates the type of the applicable adjustment.  
+  + Discount
+  + Fee
+  + Tax
+  + Other  
++ discountType: `Festive Discount` - Type of discount that is offered.<br><br><b>Note:</b> The `discountType` field is returned only if the adjustment is of type `Discount`.
++ amount: `-25.0`  (number) - Applicable adjustment amount applied to the price of the item.<br><br>
+<b>Note:</b> If the type of adjustment is `Discount`, the `amount` is returned in minus.<br> Consider a scenario where a discount of $25 is applicable for the item. In this case, the `amount` field value is returned as `-25.0`.<br><br><b>Format:</b> Decimal    
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `adjustments[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ description: `additional fee from the customer` - Description or additional information for the applicable adjustment.<br><br><b>Note:</b> If this information is not provided at the time of purchase creation, this field is not returned in the API response.  
++ additionalInfo (additionalInfo) - Contains custom key-value pairs to store additional information related to the applicable adjustment.<br><br><b>Note:</b> If this information is not available for the purchase, this field is not returned in the API response.   
+
+## adjustmentsInfoFour
++ type: `Other` (enum) - Indicates the type of the applicable adjustment.  
+  + Discount
+  + Fee
+  + Tax
+  + Other   
++ amount: 0  (number) - Applicable adjustment amount applied to the price of the item.<br><br>
+<b>Note:</b> If the type of adjustment is `Discount`, the `amount` is returned in minus.<br> Consider a scenario where a discount of $25 is applicable for the item. In this case, the `amount` field value is returned as `-25.0`.<br><br><b>Format:</b> Decimal     
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `adjustments[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ description: `additional fee from the customer` - Description or additional information for the applicable adjustment.<br><br><b>Note:</b> If this information is not provided at the time of purchase creation, this field is not returned in the API response.  
++ additionalInfo (additionalInfo) - Contains custom key-value pairs to store additional information related to the applicable adjustment.<br><br><b>Note:</b> If this information is not available for the purchase, this field is not returned in the API response.  
+
+## additionalInfo 
++ key1: `value1` - Contains value for custom key 1. You can specify a custom key-value pair to store additional information about the adjustment.<br><br> For example, you can store information about whether the adjustment amount is included in the base amount or not by specifying a custom key-value pair, where the `key` is `IncludedInBaseAmount` and `value` is either `true` or `false`.
+
+## confirmationNumberInfo
++ type: `Supplier Confirmation` - Type of confirmation number. For example, Supplier Confirmation.
++ number: `CONF12345678` - Confirmation number for the booking. For example, if the `type` field returns as `Supplier Confirmation`, the `number` field returns the confirmation number provided by the supplier. 
+
+## consumersInfo
++ include consumerId
++ include nameConsumer
++ include email 
+
+## consumerId
++ id: `consumerId222e4` - Unique ID for the <@ consumer_popup @>. 
+
+## nameConsumer 
++ name (name) - Contains information about the name of the consumer.<br><br><b>Note:</b> If this information is not provided at the time of purchase creation, the `middle` name, `title`, and `suffix` are not returned in the `name` object.  
+
+## email
++ email: `john@xyz.com` - Email address (recipient ID) of the consumer for communication.
+
+## metadataItem
++ key1: `Value1` - Contains value for custom key 1.<br><br>For example, you can store additional information such as Date of Birth by specifying a custom key value pair, where the `key` is `dateOfBirth` and `value` is date of birth of the person.
+
+## reportingInfo
++ key1: `value1` - Contains value for custom key 1.<br><br> For example, you can store booking token by specifying a custom key-value pair, where the `key` is `bookingToken` and `value` is the actual booking token value.
+
+## cancellationNumberInfo
++ type: `Supplier Cancellation` - Type of cancellation number. For example, Supplier Cancellation.
++ number: `CONF123433378` - Cancellation number for the booking. For example, if the `type` field returns as `Supplier Cancellation`, the `number` field returns the cancellation number provided by the supplier. 
+
+## identifiers 
++ identifiers (identifiersInfo) - Contains custom key-value pairs to store different external identifiers. You can store maximum five custom key-value pairs. You can use these identifiers to retrieve the purchase details by using `Get Purchase by External Identifiers` API.<br><br><b>Note:</b> If not specified for the purchase, this field is not returned in the API response.  
+
+## identifiersInfo
++ key1: `Value1` - Contains value for custom key 1.<br><br>For example, you can specify custom key-value pairs to store external identifiers such as super PNR in case of flights. In this case, `key1` is `superPNR` and `value` is the actual super PNR value.
+
+## getPurchaseInfoPIDResp
++ include purchaseId
++ include customer
++ include creator 
++ include status 
++ include paymentStatus
++ include currency 
++ include pointsType
++ include reportingFields
++ include identifiers
++ include chargeSummary 
++ include invoiceSummary
++ include backwardCompatibilityInfoUrl
++ include itemsPurchases
+
+## earningsInfo 
++ id: `Earn12345` - Unique ID to identify the <@ earncomponent @>. 
++ externalId: `externalID` - For internal use only.<br><br>Unique product ID assigned for the item by the Product Engine.
++ type: `Festive Earning` - Type of <@ earncomponent @>. 
++ amount: 10 (number) - Cash amount earned by the customer on the purchase of the item.<br><br><b>Note:</b> If no cash amount is earned, the field is returned as `0`. <br><br><b>Format:</b> Decimal   
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `earnings[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ points: 1000 (number) - Number of points earned by the customer on the purchase of the item.<br><br>
+<b>Notes:</b> 
+  + If no points are earned, the field is returned as `0`.
+  + The `points` field value is represented by the type of loyalty points returned in the `pointsType` field.<br><br><b>Format:</b> Decimal  
++ pointsType: `Miles` -  Indicates the type of loyalty points that is associated with the <@ loyalty_program_popup @>. For example, points and miles.
++ description: `Spend to Earn during festival period` - Description of the <@ earncomponent @>. 
+
+## reportingFields
++ reportingFields (reportingPurchaseInfo) - Contains custom reporting fields that can be used for any business-related purposes, such as to pass the Order ID for reporting purpose. You can store maximum five custom key-value pairs.<br><br><b>Note:</b> If not specified for the purchase, the `reportingFields` object is not returned in the API response. 
+
+## reportingPurchaseInfo
++ key1: `value1` - Contains value for custom key 1.<br><br> For example, you can store order ID by specifying a custom key-value pair, where the `key` is `orderID` and `value` is the actual order ID value.
+
+## chargeSummary 
++ chargeSummary (array [chargeSummaryInfoOne, chargeSummaryInfoTwo]) - Contains the list of charge transactions for the credit card that is used to make the payment. Depending on whether the payment made is by cash, points, or combination of both cash and points, the `chargeSummary` object returned for cash and points is different.<br><br><b>Scenario 1: Cash only</b><br><br>If the payment is made only by cash, only one `chargeSummary` object is returned containing the details of the charged amount and the merchant as either `Supplier` or `Agency`.<br><br><@ charge_scenario_one @>.<br><br><b>Scenario 2: Points only</b><br><br>If the payment is made only by points, only one `chargeSummary` object is returned containing the details of the number of points redeemed and the merchant as `pointsBank`.<br><br><@ charge_scenario_two @>.<br><br><b>Scenario 3: Cash + Points</b><br><br>If the payment is made by combination of both cash and points, two `chargeSummary` objects are returned, where one object contains the transaction details for cash and the other object contains the transactions details for points. <br><br><@ charge_scenario_three @>.
+
+## chargeSummaryInfoOne
++ id: `charge1` - Unique ID for the charge transaction of the credit card used to make the payment.   
++ amount: 100 (number) - Applicable charge amount.<br><br><b>Note:</b> In case the charge transaction details is for points, the `amount` field returns the number of points.<br><br><b>Format:</b> Decimal   
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `/chargeSummary[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.<br><br><b>Note:</b> In case the charge transaction details is for points, the `currency` field returns the type of loyalty points associated with the <@ loyalty_program_popup @>. For example, points and miles.
++ merchant: `Supplier` (enum) - Indicates the merchant who processes and maintains the record of card transactions related to the charged amount.<br><br><b>Notes</b><ul style="list-style-type:disc"><li>If the charge transaction details is for points, the `merchant` field is returned as `pointsBank`.</li><li>If the charge transaction details is for cash, the `merchant` field is returned either as `Supplier` or `Agency`.</li><li>The `merchant` field is returned either as `Supplier` or `Agency` depending on whether the payment is made using the supplier's one-use card or by an agent in case of offline bookings.</li></ul>
+  + pointsBank
+  + Supplier 
+  + Agency
++ status: `Charged` (enum) - Indicates whether the credit card used for payment is charged or not. Note that for charge transactions for points, the `status` field indicates whether the number of points are redeemed successfully or not. 
+  + Charged 
+  + NotCharged
++ url: `https://example/nextgen-order/chargeDetails` - URL to view the charge details. 
+
+## chargeSummaryInfoTwo
++ id: `charge1` - Unique ID for the charge transaction of the credit card used to make the payment.  
++ amount: 100 (number) - Applicable charge amount.<br><br><b>Note:</b> In case the charge transaction details is for points, the `amount` field returns the number of points.<br><br><b>Format:</b> Decimal   
++ currency: `Points` - 3-character ISO code that indicates the currency in which the `/chargeSummary[]/amount` is returned in the API response. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.<br><br><b>Note:</b> In case the charge transaction details is for points, the `currency` field returns the type of loyalty points associated with the <@ loyalty_program_popup @>. For example, points and miles.
++ merchant: `pointsBank` (enum) - Indicates the merchant who processes and maintains the record of card transactions related to the charged amount.<br><br><b>Notes</b><ul style="list-style-type:disc"><li>If the charge transaction details is for points, the `merchant` field is returned as `pointsBank`.</li><li>If the charge transaction details is for cash, the `merchant` field is returned either as `Supplier` or `Agency`.</li>
+  + pointsBank
+  + Supplier 
+  + Agency
++ status: `Charged` (enum) - Indicates whether the credit card used for payment is charged or not. Note that for charge transactions for points, the `status` field indicates whether the number of points are redeemed successfully or not. 
+  + Charged 
+  + NotCharged 
++ url: `https://example/nextgen-order/chargeDetails` - URL to view the charge details.
+
+## invoiceSummary
++ invoiceSummary (array [invoiceSummaryInfo]) - Contains the list of invoices applicable for the purchased items. Note that `invoiceSummary` array returns two invoices, one for the customer and the other for the client. For both the invoices, the invoice ID is different.  
+
+## invoiceSummaryInfo 
++ id: `invoice123` - Unique ID for the invoice. Note that the invoice ID is different for the customer and the client.  
++ status: `Draft` (enum) - Indicates the status of the invoice.  
+  + <@ Draft @> 
+  + <@ Open @> 
+  + <@ Paid @>
+  + <@ Void @>
++ url: `https://example/nextgen-order/invoiceDetails` - URL to view the invoice details. 
+
+## itemsPurchases
++ items (array [itemsPurchasesInfo]) - Contains the list of items included in this purchase. 
+
+## itemsPurchasesInfo
++ id: `fnf33383` - Unique ID of the item.  
++ externalId: `423i323` - For internal use only.<br><br>Unique product ID assigned for the item by the Product Engine.
++ name: `Taj Hotel` - Name of the item. 
++ type: `Hotel` - Type of product to which the items belong.  
++ quantity: 1 (number) - Indicates the quantity of the same item. 
++ status: `BookingNotAttempted` (enum) - Indicates the booking status.   
+  + <@ BookingNotAttempted @>
+  + <@ Booked @>
+  + <@ Failed @> 
+  + <@ item_canceled_popup @>
++ paymentStatus: `Pending` (enum) - Indicates the payment status. 
+  + <@ Pending @>
+  + <@ PartiallyPaid @>
+  + <@ PaidInFull @> 
+  + <@ Refunded @>
+  + <@ PartiallyRefunded @>
++ thumbnailUrl: `https://images.cxloyalty.com/hotel/aa.png` - URL for the <@ thumbnail @> image of the item. 
++ productDetailsUrl: `https://product-details.com/PROD123455` - URL to view information about the product. For example, if the product is a hotel booking, then you can use the `productDetailsUrl` to view the latest fare details of the room and the room information such as room description, images, amenities, and policies.
++ consumptionDatesInUtc (consumptionDatesInfo) - Contains information about the consumption window within which the item must be used by the <@ consumer_popup @>. 
++ addOnItemExternalIds: `6vr54tht` (array) - For internal use only.<br><br> Contains the list of product ID for the <@ add_on_popup @> items provided by the Product Engine. 
++ price (priceInfo) - Contains information about the price of the item displayed to the <@ customer_popup @>. This includes the base amount and the breakup of the applicable adjustments such as fees, taxes, discount, and other additional charges, if any.   
++ include paymentOptions
++ earnings (array [earningsInfo]) -  Contains the list of earnings applicable on the purchase of the item. Depending on the earnings configured, a customer can earn both points and cash on purchases.<br><br><b>Note:</b> If no earnings are applicable, then this field is not returned in the API response. 
++ confirmationNumbers (array [confirmationNumberInfo]) - Contains the list of confirmation numbers. For example, a supplier confirmation number is returned by the supplier for every successful hotel booking.<br><br><b>Note:</b> This field is returned only when the item is booked successfully.  
++ cancellationNumbers (array [cancellationNumberInfo]) - Contains the list of cancellation numbers. For example, a supplier cancellation number is returned by the supplier for every successful hotel cancellation. <br><br><b>Note:</b> This field is returned only when the item is canceled successfully. 
++ consumers (array [consumersInfo]) - Contains information about the <@ consumer_popup @>.
++ reportingFields (reportingInfo) - Contains custom reporting fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. You can store maximum five custom key-value pairs.<br><br><b>Note:</b> If not specified for the purchase, the `reportingFields` object is not returned in the API response. 
++ voucherSummary (array [voucherInfo]) - Contains the list of vouchers for the booking.<br><br><b>Note:</b> If not specified for the purchase, the field is not returned in the API response.   
++ include backwardCompatibilityInfoUrl
+
+## backwardCompatibilityInfoUrl
++ backwardCompatibilityInfoUrl: `https://example/nextgen-order/getBackwardCompatibilityInfo` - For internal use only. 
+
+## voucherInfo 
++ id: `voucher1` - Unique ID for the voucher. 
++ number: `voucher123` - Voucher number. 
++ url: `https://example/nextgen-order/voucherDetails/Voucher1` - URL to view the <@ voucher_popup @> details. 
++ status: `Confirmed` (enum) - Indicates the voucher status. 
+  + Confirmed
+  + Canceled
++ consumer: `Shane Warne` - Name of the consumer of the voucher. 
+
+## paymentOptions
++ paymentOptions (array [paymentOptionsInfo]) - Contains the list of selected payment options that is availed to pay for the item. Depending on the selected payment options, either the amount in cash, points, or a combination of both the amount in cash and points is returned within the `/paymentOptions` array. 
+
+## paymentOptionsInfo
++ points: 1000 (number) - Number of points that the customer must redeem to pay for the item. If the payment is made only by cash, then the `points` field is returned as `0`. <br><br><b>Format:</b> Decimal 
++ cash: 10 (number) - Cash component of the item price that the customer must pay to book the item. If the payment is made only by points, then the `cash` field is returned as `0`. <br><br><b>Format:</b> Decimal 
++ reportingFields (array [reportingPaymentInfo]) - Contains custom reporting fields that can be used for any business-related purposes. You can store maximum five custom key-value pairs.<br><br><b>Note:</b> If not specified for the purchase, the `reportingFields` object is not returned in the API response. 
+
+## reportingPaymentInfo
++ key1: `value1` - Contains value for custom key 1.
