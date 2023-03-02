@@ -1,0 +1,23 @@
+# Get Purchase Details by Purchase ID [/api/v1.0/purchases/{purchaseId}]
+
+
+## Get Purchase Details by Purchase ID [GET]
+
++ Parameters 
+    + purchaseId: `5664cjyceae` (string, required) - Unique ID assigned to identify a purchase record. You can use this ID to retrieve the purchase details from the Purchase database.<br><br> The purchase details includes:   
+     + Information about the customer.
+     + Information about the <@ creator_popup @>. Applicable in case of offline booking made by an agent.
+     + Payment status of the purchase.
+     + Summary of charges.
+     + Invoice summary. 
+     + List of items, including the information about the item price, selected payment options, item-level payment status, earnings, confirmation details, and <@ consumer_popup @> details. 
+     + Additional information about the purchase, if any. 
+
++ Request getPurchaseInfoPIDReq (application/json)
+    + Headers
+      cnx-correlationid: purchase-stage-doc-497c-b2e5-2e40b26a9bc2@@description: Unique ID that is used to track API calls made in the same session. It is recommended that, as an API consumer, you use a new correlation ID for each API call in a session. If you encounter any issue in your API calls, you must provide this ID to our support executive.
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 3smlq291nuo
+
++ Response 200 (application/json)
+    + Attributes (getPurchaseInfoPIDResp)
