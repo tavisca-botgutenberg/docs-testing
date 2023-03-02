@@ -259,7 +259,7 @@
 + allow (array[vehicleTypeRequestEnum], fixed-type) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `allow` array, the car search results will include only cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
 + disallow (array[vehicleTypeRequestEnumDisallow], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify `economy`, `premium` as the value of the `disallow` array, the car search results will exclude (not include) all cars that are of the `economy` and `premium` vehicle types.<br><br>Either the `allow` array or the `disallow` array can be sent in the `vehicleType` object. You cannot send both the `allow` array and the `disallow` array in the `vehicleType` object.
 
-## vehicleTypeRequestEnum (enum)
+## vehicleTypeRequestEnum (enum, fixed-type)
 + ^^empty^^
 + CargoVan
 + Compact
