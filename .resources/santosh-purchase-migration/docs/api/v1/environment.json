@@ -1,1 +1,8 @@
-
+{
+  "environments": [
+    {
+      "baseUrl": "https://purchase-api.stage.cnxloyalty.com",
+      "type": "stage"
+    }
+  ]
+}
