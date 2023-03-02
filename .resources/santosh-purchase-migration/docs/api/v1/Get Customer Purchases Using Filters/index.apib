@@ -1,0 +1,44 @@
+### Get Customer Purchases by using Filters [/api/v1.0/customers/{accountId}/purchases?{key1}={value1}&{key2}={value2}]
+
+#### Get Customer Purchases by using Filters [GET]
+
++ Parameters  
+    + accountId: `p1-customer` (string, required) - Unique account ID of the customer. You can use this ID to retrieve the list of purchases of a customer.
+    + key1: `consumption-start-date-utc-from` (string, required) - Contains the filter parameter that you want to apply to retrieve the customer purchases. As an example, we have set the filter parameter <@ consumptionstartdateutcfrom @> in the `key1` field and its corresponding filter value in the `value1` field. <br><br>
+    <b>Note:</b> Depending on your business use case, you can pass up to 11 filter parameters as key-value pairs. As shown in the sample request URL, if you want to pass more than one key-value pair, you must use ampersand (&) as a separator between each of the key-value pair. Currently, we support the following filter parameters:   
+      + <@ consumername @>
+      + <@ consumptionstartdateutc @>
+      + <@ consumptionstartdateutcfrom @>
+      + <@ consumptionstartdateutcto @>
+      + <@ createddateutc @>
+      + <@ createddateutcfrom @>
+      + <@ createddateutcto @>
+      + <@ producttypes @> 
+      + <@ pagenumber @> 
+      + <@ pagesize @>
+      + <@ trackingid @>
+    + value1: `2020-02-18 00:00:00` (string, required) - Contains the value for the filter parameter passed in `key1` field. As an example, we have set the filter parameter <@ consumptionstartdateutcfrom @> in the `key1` field and the filter value as `2020-02-18 00:00:00` in the `value1` field. 
+    + key2: `consumption-start-date-utc-to` (enum) - Contains the filter parameter that you want to apply to retrieve the customer purchases. As an example, we have set the filter parameter <@ consumptionstartdateutcto @> in the `key2` field and its corresponding filter value in the `value2` field.<br><br>
+    <b>Note:</b> Depending on your business use case, you can pass up to 11 filter parameters as key-value pairs. As shown in the sample request URL, if you want to pass more than one key-value pair, you must use ampersand (&) as a separator between each of the key-value pair. Currently, we support the following filter parameters:  
+      + <@ consumername @>
+      + <@ consumptionstartdateutc @>
+      + <@ consumptionstartdateutcfrom @>
+      + <@ consumptionstartdateutcto @>
+      + <@ createddateutc @>
+      + <@ createddateutcfrom @>
+      + <@ createddateutcto @>
+      + <@ producttypes @> 
+      + <@ pagenumber @> 
+      + <@ pagesize @>
+      + <@ trackingid @>
+    + value2: `2020-02-25 00:00:00` (string) -  Contains the value for the filter parameter passed in `key2` field. As an example, we have set the filter parameter <@ consumptionstartdateutcto @> in the `key2` field and the filter value as `2020-02-25 00:00:00` in the `value2` field. 
+
++ Request getCustomerPurchasesByFilters (application/json)
+
+    + Headers
+      cnx-correlationid: purchase-stage-doc-497c-b2e5-2e40b26a9bc2@@description: Unique ID that is used to track API calls made in the same session. It is recommended that, as an API consumer, you use a new correlation ID for each API call in a session. If you encounter any issue in your API calls, you must provide this ID to our support executive.
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 3smlq291nuo
+
++ Response 200 (application/json)
+    + Attributes (getPurchaseInfoByResp)
