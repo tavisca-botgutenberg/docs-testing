@@ -1,0 +1,19 @@
+# Initiate Activity Search [/activity/v1.0/search/init]
+
+## Initiate Search for Activities within a Radius [POST]
+A radial search allows you to easily find activities that are located within a specified distance (radius) from a given point of interest (location). This location is also called as the reference point or the center.<br>
+For example, with our API, you can easily search for all activities that are located within a 5-kilometer radius from the CDG (Paris Charles de Gaulle Airport) airport.
+
++ Request initiateSearchRadial (application/json)
+
+    + Headers
+
+      cnx-correlationid: activity-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+      
+    + Attributes (initiateSearchRadial)
+
++ Response 200 (application/json)
+    + Attributes (session)
