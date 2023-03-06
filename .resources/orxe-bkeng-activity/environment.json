@@ -1,7 +1,7 @@
 {
     "environments": [
       {
-        "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
+        "baseUrl": "https://activity-loyalty.stage.cnxloyalty.com",
         "type": "stage"
       }
     ]
