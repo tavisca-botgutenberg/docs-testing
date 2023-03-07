@@ -2464,8 +2464,8 @@ In this case, only one object for an adult traveler must be provided in the `pas
 
 ## searchTypeOrderReq
 + detailsSearchType: `Stateful` (enum) - Type of activity search. Depending on the type of search, the `searchQuery` object specified is different.<br><br><b>Note:</b> If you do not provide this field, then the `detailsSearchType` field is not returned in the API response. 
-  + <@ Stateful @> 
-  + <@ Stateless @>
+  + < Stateful > 
+  + < Stateless >
 
 ## searchRequestOrderReq
 + searchRequest (searchRequestInfoOrderReq, required) - Contains information about the search criteria that were provided in the <a href="..\search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the <a href="..\details#standalone" target="_blank">Initiate a Stand-Alone Activity Search</a>  API request at time of search.
@@ -2488,7 +2488,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
 
 
 ## searchQueryStatelessOrderReq
-+ passengerDetails (array [passengerDetailsOrderReq]) - Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br><b>Note:</b> If you do not provide this field, then the `passengerDetails` array is not returned in the API response.
++ passengerDetails (array [passengerDetailsOrderReq], fixed-type) - Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br><b>Note:</b> If you do not provide this field, then the `passengerDetails` array is not returned in the API response.
 + dateRange (dateRangeInfoOrderReq) - Contains the range of date between which the customer wants to search for activities.<br><br><b>Note:</b> If you do not provide this field, then the `dateRange` object is not returned in the API response. 
 + activityDate: `{dateTime|YYYY-MM-DDTHH:mm:ss|30 0}` (string) - Date that the traveler wants book the activity for.<br><br><b>Note:</b> If you do not provide this field, then the `activityDate` field is set to `0001-01-01T00:00:00`.<br><br><b>Format:</b> YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
 + activityId: `59521P1` (string) - Unique activity ID that identifies a specific activity for which you want to retrieve the activity details. You must specify the `activityId` in case of <@ stateless @> activity search.<br><br><b>Note:</b> If you do not provide this field, then the `activityId` field is not returned in the API response.  
@@ -2503,7 +2503,7 @@ Notes:</b>
 
 ## passengerDetailsOrderReq
 + count: 1 (number) - Number of travelers of a specific `type`.<br><br><b>Note:</b> If you do not provide this field, then the `count` field value is set to `0`.
-+ ages :`20` (array [number]) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array.<br><br><b>Note:</b> If you do not provide this field, then the `ages` array is not returned in the API response.
++ ages :`20` (array [number], fixed-type) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array.<br><br><b>Note:</b> If you do not provide this field, then the `ages` array is not returned in the API response.
 + type: `Adult` (enum) - Type of traveler.<br><br><b>Note:</b> If you do not provide this field, then the `type` field is not returned in the API response. 
     + Adult 
     + Child
