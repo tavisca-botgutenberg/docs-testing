@@ -99,7 +99,7 @@
     + Faulted
     + InProgress
 + resultCount: `10` (number) - Total number of activities that are available in the result set at the time when the status request is made.
-+ errors (array [errorInfo]) - Contains the list of errors that occur during the activity search. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the `errors` array lists the appropriate error message.
++ errors (array [errorInfo], fixed-type) - Contains the list of errors that occur during the activity search. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the `errors` array lists the appropriate error message.
 
 ## errorInfo
 + code: `14` - Code for the error.
@@ -189,7 +189,7 @@
 + pageSize: `10` (number) - Indicates the number of search results (records) per page, as returned in the response.<br><br>For example, if the response returned `10` search results per page, set the `pageSize` field returns `10`. <br><br><b>Default value:</b> `200`.
 
 ## activitiesRS
-+ activities (array [activityDetails]) - Contains the list of the activities, along with their content attributes, such as activity name, images, policies, reviews, and rating. The activity-related content attributes are obtained from the supplier.   
++ activities (array [activityDetails], fixed-type) - Contains the list of the activities, along with their content attributes, such as activity name, images, policies, reviews, and rating. The activity-related content attributes are obtained from the supplier.   
 
 ## activityDetails
 + include activityIdRS
@@ -209,7 +209,7 @@
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` - Name of the activity.  
 
 ## activityCategory
-+ categories (array [categoryInfo]) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>. 
++ categories (array [categoryInfo], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>. 
 
 ## categoryInfo
 + id: `20` - Unqiue ID for the category. 
@@ -239,7 +239,7 @@
 
 ## mediaInfo
 + primaryImage (primaryImageInfo) - Contains information about the primary image for the activity. 
-+ images (array [imagesResults]) - Contains the list of full-size images for the activity. 
++ images (array [imagesResults], fixed-type) - Contains the list of full-size images for the activity. 
 
 ## primaryImageInfo
 + url: `https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/71/c3/b5.jpg` - The content delivery network (CDN) URL for the full-size image. If this information is not available from the <@ supplier @>, this field is returned as `null`.
@@ -294,7 +294,7 @@
 + exclusions: `Hotel pickup and drop-off` (array) - Contains a list of services that are excluded from the activity. If this information is not provided by the supplier, then this field is returned as an empty array. 
 
 ## displayInfos
-+ displayInfos (array [display]) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI). If this information is not provided by the supplier, then this field is returned as an empty array. 
++ displayInfos (array [display], fixed-type) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI). If this information is not provided by the supplier, then this field is returned as an empty array. 
 
 
 ## display 
@@ -302,7 +302,7 @@
 + desc: `Family friendly. Multiple departure times and locations available. Flexibility to customize your itinerary to your own preferences.` - Display text. 
 
 ## policies
-+ policies (array [policiesInfo]) - Contains the list of information about the applicable policies for the activity. If this information is not provided by the supplier, then this field is returned as an empty array. 
++ policies (array [policiesInfo], fixed-type) - Contains the list of information about the applicable policies for the activity. If this information is not provided by the supplier, then this field is returned as an empty array. 
 
 
 ## policiesInfo
@@ -310,7 +310,7 @@
 + desc: `For a full refund, cancel at least 24 hours in advance of the start date of the experience.` - Textual description of the policy. 
 
 ## reviews
-+ reviews (array[reviewInfo]) - Contains the list of reviews, given by other customers, for the activity. If this information is not provided by the supplier, then this field is returned as an empty array. 
++ reviews (array[reviewInfo], fixed-type) - Contains the list of reviews, given by other customers, for the activity. If this information is not provided by the supplier, then this field is returned as an empty array. 
 
 
 ## reviewInfo
@@ -329,7 +329,7 @@
 
 
 ## offers
-+ offers (array[offerInfo]) - Contains details about supplier-specific promotional offers. If this information is not provided by the supplier, then this field is returned as an empty array. 
++ offers (array[offerInfo], fixed-type) - Contains details about supplier-specific promotional offers. If this information is not provided by the supplier, then this field is returned as an empty array. 
 
 ## offerInfo
 + format: `Text` (enum) - Indicates the format in which the offer is provided by the <@ supplier @>.  
@@ -338,7 +338,7 @@
 + desc: `10% off Tours & Activities` - Description of the promotional offer.  
 
 ## bookingQuestions
-+ bookingQuestions (array[questionInfo]) - Contains the list of questions that is displayed to the customer at the time of booking. The customer must provide a response for the mandatory questions for the booking to be successful. Note that if this information is not provided by the supplier, then this field is returned as an empty array. 
++ bookingQuestions (array[questionInfo], fixed-type) - Contains the list of questions that is displayed to the customer at the time of booking. The customer must provide a response for the mandatory questions for the booking to be successful. Note that if this information is not provided by the supplier, then this field is returned as an empty array. 
 
 ## questionInfo
 + question: `Please pick me up at` - Contains the question that is displayed to the <@ customer_popup @> on the User Interface (UI) at the time of booking. 
@@ -383,10 +383,10 @@
 + include markups
 
 ## taxes 
-+ taxes (array [taxesInfo]) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFromFare` field. If the supplier does not provide this information, the `taxes` array returns empty.
++ taxes (array [taxesInfo], fixed-type) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFromFare` field. If the supplier does not provide this information, the `taxes` array returns empty.
 
 ## taxesOptions
-+ taxes (array [taxesInfo]) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. If the supplier does not provide this information, the `taxes` array returns empty.
++ taxes (array [taxesInfo], fixed-type) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. If the supplier does not provide this information, the `taxes` array returns empty.
 
 ## taxesInfo
 + amount: `0.0` (number) - Tax amount.<br><br><b>Format:</b> Decimal
@@ -394,10 +394,10 @@
 + desc: `Luxury tax` - Description or additional information for the type of tax that is charged.
 
 ## fees 
-+ fees (array [feesInfo]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field. If the supplier does not provide this information, the `fees` array returns empty.
++ fees (array [feesInfo], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field. If the supplier does not provide this information, the `fees` array returns empty.
 
 ## feesOptions
-+ fees (array [feesInfo]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. If the supplier does not provide this information, the `fees` array returns empty.
++ fees (array [feesInfo], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. If the supplier does not provide this information, the `fees` array returns empty.
 
 ## feesInfo
 + amount: `0` (number) - Fee amount.<br><br><b>Format:</b> Decimal
@@ -405,10 +405,10 @@
 + source: `Supplier` - Indicates whether the fee is charged by the <@ supplier @> or the <@ OTA @> (system).
 
 ## discounts
-+ discounts (array [discountsInfo]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field.  If the supplier does not provide this information, the `discounts` array returns empty.
++ discounts (array [discountsInfo], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field.  If the supplier does not provide this information, the `discounts` array returns empty.
 
 ## discountsOptions
-+ discounts (array [discountsInfo]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.  If the supplier does not provide this information, the `discounts` array returns empty.
++ discounts (array [discountsInfo], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.  If the supplier does not provide this information, the `discounts` array returns empty.
 
 ## discountsInfo
 + amount: `0.0` (number) - Discount amount.<br><br><b>Format:</b> Decimal 
@@ -416,10 +416,10 @@
 + source: `supplier` - Indicates whether the discount is provided by the <@ supplier @> or the <@ OTA @> (system).
 
 ## markups
-+ markups (array [markupsInfo]) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field. 
++ markups (array [markupsInfo], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFareStartsFrom` field. However, this amount is already included in the `displayFare/totalFareStartsFrom` field. 
 
 ## markupsOptions
-+ markups (array [markupsInfo]) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. 
++ markups (array [markupsInfo], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field. 
 
 ## markupsInfo
 + amount: `1.19` (number) - <@ markup_two_popup @> (MUP) amount.<br><br><b>Format:</b> Decimal
@@ -454,7 +454,7 @@
 + pointsCurrency: `Points` - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles. Note that the `points` field value is represented by this currency.
 
 ## rewards 
-+ rewards (array[rewardInfo]) - Contains the list of <@ reward_popup @> options that the customer can avail to make the booking.
++ rewards (array[rewardInfo], fixed-type) - Contains the list of <@ reward_popup @> options that the customer can avail to make the booking.
 
 ## rewardInfo
 + id: `1482|1` - Unique ID for the <@ reward_popup @>.
@@ -471,10 +471,10 @@
 + ruleSet (ruleSetInfo) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.
 + strikeoutValue (strikeoutValueInfo) - Contains the <@ pre-discounted_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare that appears striked-out to the <@ customer_popup @> on the User Interface (UI).
 + actualValue (actualValueInfo) - Contains the <@ actual_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. 
-+ stateBag (array [stateBagInfoPurchase]) - For internal use only. 
++ stateBag (array [stateBagInfoPurchase], fixed-type) - For internal use only. 
 
 ## rewardsOptions 
-+ rewards (array[rewardOptionsInfo]) - Contains the list of <@ reward_popup @> options that the customer can avail to make the booking.
++ rewards (array[rewardOptionsInfo], fixed-type) - Contains the list of <@ reward_popup @> options that the customer can avail to make the booking.
 
 ## rewardOptionsInfo
 + id: `1482|1` - Unique ID for the <@ reward_popup @>.
@@ -491,7 +491,7 @@
 + ruleSet (ruleSetInfoOption) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.
 + strikeoutValue (strikeoutValueInfo) - Contains the <@ pre-discounted_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare that appears striked-out to the <@ customer_popup @> on the User Interface (UI).
 + actualValue (actualValueInfo) - Contains the <@ actual_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. 
-+ stateBag (array [stateBagInfoPurchase]) - For internal use only. 
++ stateBag (array [stateBagInfoPurchase], fixed-type) - For internal use only. 
 
 ## recommendationInfo
 + cash: `0.0` (number) - Recommended cash component of the <@ actual_fare_popup @> that can be paid to book the activity.<br><b>Format:</b> Decimal 
@@ -602,7 +602,7 @@
     + Completed 
     + Faulted
     + InProgress
-+ errors (array [errorInfo]) - Contains the list of errors that occur while retrieving the activity details. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the errors array lists the appropriate error message.
++ errors (array [errorInfo], fixed-type) - Contains the list of errors that occur while retrieving the activity details. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the errors array lists the appropriate error message.
 
 ## resultsRequest
 + include sessionIdStatusReq
@@ -667,7 +667,7 @@
 
 ## mediaInfoResults
 + primaryImage (primaryImageInfo) - Contains information about the primary image for the activity. This image can be used to advertise about the activity on the UI (User Interface).
-+ images (array [imagesResults]) - Contains the list of full-size images for the activity. 
++ images (array [imagesResults], fixed-type) - Contains the list of full-size images for the activity. 
 
 ## imagesResults
 + url: `https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/07/38/2b/fd.jpg` - The content delivery network (CDN) URL for the full-size image. If this information is not available from the <@ supplier @>, this field is returned as `null`.
@@ -707,14 +707,14 @@
 + schedule (scheduleResults) - Contains the schedule for the activity. The type of schedule may vary per activity and per <@ supplier @>. The schedule of an activity is always returned in a free text format, which includes the timing and the activity frequency.
 
 ## scheduleResults 
-+ freeText (array [freeTextResp]) - Contains the schedule of the activity in free text format. 
++ freeText (array [freeTextResp], fixed-type) - Contains the schedule of the activity in free text format. 
 
 ## freeTextResp
 + timing: `Valid from the time of first use, for the consecutive days selected.` - Contains the activity timing. 
 + frequency: `See Availability` - Contains the frequency of the activity. 
     
 ## displayInfo
-+ displayInfos (array [display]) - Contains information about the activity that can be used for displayed on the User Interface (UI).
++ displayInfos (array [display], fixed-type) - Contains information about the activity that can be used for displayed on the User Interface (UI).
 
 ## vouchers 
 + voucher (voucherInfo) - Contains information about the <@ voucher_popup @> that is provided for the activity. 
@@ -759,11 +759,11 @@
 + activityDate : `{date|YYYY-MM-DD|30}` (string, required) - Date for which the traveler wants to book the activity for. You must set the value for this field to one of the available dates for the activity returned within the `/activity[]/availableOn` array in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.<br><br><b>Format:</b>YYYY-MM-DD
 
 ## passengerActivityDetails
-+ passengerDetails (array [passengerDetails], required) - Contains the list of information about the travelers, based on which you want to retrieve the list of activity options.<br><br> Consider a scenario where you want to retrieve the list of activity options for 3 travellers, 2 Adults and 1 Child. In this scenario, you must provide two objects in the `passengerDetails` array, one object which provides the count and traveler information for both the `Adult` travelers and another object which provides the count and traveler information for the `Child` traveler.
++ passengerDetails (array [passengerDetails], required, fixed-type) - Contains the list of information about the travelers, based on which you want to retrieve the list of activity options.<br><br> Consider a scenario where you want to retrieve the list of activity options for 3 travellers, 2 Adults and 1 Child. In this scenario, you must provide two objects in the `passengerDetails` array, one object which provides the count and traveler information for both the `Adult` travelers and another object which provides the count and traveler information for the `Child` traveler.
 
 ## passengerDetails
 + count: 1 (number, required) - Number of travelers of a specific `type`.<br><br> Note that the count set for a specific traveler `type` must be between the `paxTypeInfo[]/minQty` and the `paxTypeInfo[]/maxQty` returned within the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.
-+ ages :`20` (array [number]) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array.<br><br>Note that the `ages` set for a specific traveler `type` must be between the `paxTypeInfo[]/minAge` and the `paxTypeInfo[]/maxAge` returned within the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response. 
++ ages :`20` (array [number], fixed-type) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array.<br><br>Note that the `ages` set for a specific traveler `type` must be between the `paxTypeInfo[]/minAge` and the `paxTypeInfo[]/maxAge` returned within the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response. 
 + type: `Adult` (enum, required) - Type of traveler. 
     + Adult 
     + Child
@@ -794,7 +794,7 @@
     + Faulted
     + InProgress
 + resultCount: `10` (number) - Total number of activity options that were available in the result set at the time when the status request is made.
-+ errors (array [errorsInfo]) - Contains the list of errors that occur during the activity options search. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the `errors` array lists the appropriate error message.
++ errors (array [errorsInfo], fixed-type) - Contains the list of errors that occur during the activity options search. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the `errors` array lists the appropriate error message.
 
 ## errorsInfo
 + code: 5 (string) - Code for the error. 
@@ -858,7 +858,7 @@
 + allPaxRequired: true (boolean) -  If the `allPaxRequired` field returns `true`, then the information for all the travelers is required within the `/bookingInfo/passengers` array of the <a href="../check-out#initiateBook" target="_blank">Initiate Booking</a> API request.<br><br>If `allPaxRequired` field returns `false`, then the traveler information for atleast one `Adult` traveler is required within the `/bookingInfo/passengers` array in the `Initiate Booking` API request.<br><br>For more information on how the `allPaxRequired` field value affects the `Initiate Booking` API request, see the scenarios provided in the `/bookingInfo/passengers` array in the `Initiate Booking` API request. 
 
 ## options 
-+ options (array [optionsResp]) - Contains the list of available options for the activity and their details, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
++ options (array [optionsResp], fixed-type) - Contains the list of available options for the activity and their details, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
 
 ## optionsResp
 + include optionId 
@@ -919,7 +919,7 @@
 
 ## Penalties 
 + text: `Cancellations received within three (3) days of activity date will be subject to a supplier cancellation fee equal to the total activity cost. Theater tickets, theme-park passes, and select sightseeing tours are completely non-refundable once booked.<br/> No shows are non-refundable.Please refer to the Terms and Conditions for more information.` - Textual description of the cancellation policy. If this information is not provided by the <@ supplier @>, then this field is returned as an empty array.
-+ penaltyRules (array [penaltyInfo]) - Contains the list of information related to the penalty, such as the start and end window and the penalty value. If this information is not provided by the <@ supplier @>, then this field is returned as an empty array.
++ penaltyRules (array [penaltyInfo], fixed-type) - Contains the list of information related to the penalty, such as the start and end window and the penalty value. If this information is not provided by the <@ supplier @>, then this field is returned as an empty array.
 + window (windowInfo) - Window during which the penalty is applicable.
 
 ## penaltyInfo
@@ -1182,7 +1182,7 @@
 Consider a scenario where you want to check out a cart. You pass a new, unique value for the `idempotencyToken` field in the booking request. In this scenario, the request is considered as a new booking request and the API returns a new and unique `orderID`.<br><br>
 <b>Scenario 2:</b><br>
 Consider a scenario where you want to check out the same cart again and you pass the same `idempotencyToken` field value that was used in the earlier booking request. In this scenario, the booking request is considered as a duplicate, regardless of whether the booking request contains new booking field values or the same booking field values as of the previous booking request. The API returns the same `orderID` that was returned for the previous booking request and not a new `orderID`. If you want to reattempt the booking, you must provide a new and unique value for the `idempotencyToken` field for the same cart.
-+ items (array [itemBookInfo], required) - Contains the list of the items in the <@ cart_popup @> that you want to book. 
++ items (array [itemBookInfo], required, fixed-type) - Contains the list of the items in the <@ cart_popup @> that you want to book. 
 + customer (customerBookInfo, required) - Contains information about the <@ customer_popup @>.
 + purchaseId: `123453` (string, required) - Unique ID for the booking. You must provide this ID to track all the booking-related transactions across different systems within cxLoyalty. The `purchaseId` is required when you contact the cxLoyalty Customer Service. 
 + agent (agentInfo, required) - Contains information about the <@ agent_popup @>.
@@ -1200,7 +1200,7 @@ Consider a scenario where you want to check out the same cart again and you pass
 + include reportingFieldsBook
 
 ## bookCartInfo
-+ passengers (array [passengerInfo], required) - Contains the list of information of travelers for whom the customer wants to book the activity option.<br><br>
++ passengers (array [passengerInfo], required, fixed-type) - Contains the list of information of travelers for whom the customer wants to book the activity option.<br><br>
 If the `allPaxRequired` field in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> API response returned `true`, the information for all the travelers is required within the `passengers` array of the `Initiate Booking` API request, which includes the traveler's type, name, and age. If you do not provide the required information, the booking fails. Note that the `age` field is mandatory for the child traveler and optional for the adult traveler.<br><br>If the `allPaxRequired` field returns `false`, then the traveler information must be provided for atleast one `Adult` traveler or for a traveler who belongs to a traveler type for which `treatAsAdult` field is returned `true` in the Get Activity Details Result API response.<br><br>
 The sample scenarios for the implementation of the `passengers` array are provided below.<br><br>
 <b>Scenario 1:</b><br>
@@ -1220,13 +1220,13 @@ If the `allPaxRequired` field returned `false`:<br>
 In this case, only one object for an adult traveler must be provided in the `passengers` array. You must provide the traveler `type` and `name` for adult. The traveler's `age` is optional for adults.<br><br>
 <@ book_traveler_scenario_two_partial @> with only the required fields.
 + bookingContact (bookingContactInfo, required) - Contains the name, contact information, nationality, and date of birth of the person who is making the booking.<br><br><b>Note:</b> The person who is making the booking must be an `Adult` traveler or must belong to a traveler `type` for which `treatAsAdult` field is returned `true` in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.
-+ paymentOptions (array [paymentOptionsBook], required) - Contains the list of <@ reward_popup @> options that you want to avail to pay for the activity.  
++ paymentOptions (array [paymentOptionsBook], required, fixed-type) - Contains the list of <@ reward_popup @> options that you want to avail to pay for the activity.  
 <br><br><b>Notes:</b> 
   + You must provide either the payment option returned within the `/items[]/paymentOptions` array in the <a href="../price#CreateCartWIthAnItem" target="_blank">Get Price Using Cart</a> API response or one of the payment options returned within the `purchaseOption/rewards` array in the <a href="../price#fetchapi" target="_blank">Get Product Details</a> API response.
   + In case of activity bookings, you must provide `only` one reward option within the `/paymentOptions` array.
   + Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
 + specialRequest: `Please arrange a wheelchair` - Contains information about any special requests that is made, with respect to the activity, at the time of booking. 
-+ questionAnswers (array [questionAnsInfo]) - Contains the list of optional and mandatory questions for the customer to answer, at the time of booking.<br><br> You must obtain the list of questions from the `bookingQuestions` array. To know whether the question is mandatory or not, see the `isMandatory` field returned within the `bookingQuestions` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> or the <a href="../price#fetchapi" target="_blank">Get Product Details</a> APIs response<br><br>
++ questionAnswers (array [questionAnsInfo], fixed-type) - Contains the list of optional and mandatory questions for the customer to answer, at the time of booking.<br><br> You must obtain the list of questions from the `bookingQuestions` array. To know whether the question is mandatory or not, see the `isMandatory` field returned within the `bookingQuestions` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> or the <a href="../price#fetchapi" target="_blank">Get Product Details</a> APIs response<br><br>
 <b>Note:</b> If the `bookingQuestions` array does not contain any mandatory questions, then the `questionAnswers` array is an optional field in the API request. 
 + include reportingFields
 
@@ -1461,9 +1461,9 @@ In this case, only one object for an adult traveler must be provided in the `pas
   + CompletedWithFailure
   + Failed
   + InProgress
-+ items (array [itemsInfo]) - Contains the list of items that are booked. 
-+ errors (array [errorsBookStatus]) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error message.
-+ warnings (array [warningsBookStatus]) - Contains the list of warnings that appear during the booking process.
++ items (array [itemsInfo], fixed-type) - Contains the list of items that are booked. 
++ errors (array [errorsBookStatus], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error message.
++ warnings (array [warningsBookStatus], fixed-type) - Contains the list of warnings that appear during the booking process.
 + statebag (stateBagInfo) - For internal use only. 
 
 ## itemsInfo
@@ -1476,8 +1476,8 @@ In this case, only one object for an adult traveler must be provided in the `pas
   + NotAttempted
 + productDetailsLink: `http://www.example-product.com/detail` - URL to view the activity booking details. To retrieve the booking details, you must make a GET call on the `productDetailsLink` by using the `Get Booking Details` API. 
 + statebag (stateBagInfo) - For internal use only.  
-+ errors (array [errorsBookStatus]) - Contains the list of errors that have occurred during the booking process. For example, if the  booking fails, the errors array lists the appropriate error message.
-+ warnings (array [warningsBookStatus]) - Contains the list of warnings that appear during the booking process.
++ errors (array [errorsBookStatus], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the  booking fails, the errors array lists the appropriate error message.
++ warnings (array [warningsBookStatus], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## bookingId
 + bookingId: `1gxyupie4-12z3-1234-8f12-1236374qwz1` -  Unique ID for the booking. You must use the `bookingId` as an identifier for the booking in other API calls at a later point in time. For example, you will need the `bookingId` when you want to retrieve the booking details (by using the `Get Booking Details` API).<br><br><b>Note:</b> The ORXe API generates the `bookingId`. This ID is not shared with the <@ supplier @>, which means that the `bookingId` cannot be used as a confirmation number for the booking.
@@ -1534,7 +1534,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
   + If you performed a <a href="../details#standalone" target="_blank">stand-alone activity search</a>, then the `searchQuery` object contains the activity ID and the date range between which the search for the activity is requested.<br><@ searchrequeststandalone @>.
 
 ## searchQueryInfo
-+ passengerDetails (array [passengerDetailsRS]) -  Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br> Consider a scenario where you retrieved activity options for three travellers, 2 Adults and 1 Child. In this scenario, the `passengerDetails` array contains two objects,one object which returns the count and traveler information for both the `Adult` travelers and another object which returns the count and traveler information for the `Child` traveler.
++ passengerDetails (array [passengerDetailsRS], fixed-type) -  Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br> Consider a scenario where you retrieved activity options for three travellers, 2 Adults and 1 Child. In this scenario, the `passengerDetails` array contains two objects,one object which returns the count and traveler information for both the `Adult` travelers and another object which returns the count and traveler information for the `Child` traveler.
 + dateRange (dateRangeRS) - Contains the range of date between which the customer wants to search for activities. 
 + activityDate: `{date|YYYY-MM-DD|30}` - Date that the traveler wants book the activity for.<br><br><b>Format:</b>YYYY-MM-DD
 + filters (filterRS) - Contains filters to narrow down the activity search results. The search results include only those activities that match all the filter criteria specified. Note that all the content related to an activity, such as the activity cancellation policies, location, address, and contact information are obtained from the <@ supplier @>.
@@ -1542,7 +1542,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
 
 ## passengerDetailsRS
 + count: 1 (number) - Number of travelers of a specfic `type`.
-+ ages: 20 (array [number]) -  Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, `ages` array contains two values. 
++ ages: 20 (array [number], fixed-type) -  Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, `ages` array contains two values. 
 + type: `Adult` (enum) - Type of traveler.
     + Adult
     + Child
@@ -1621,11 +1621,11 @@ In this case, only one object for an adult traveler must be provided in the `pas
 + bookingInfo (bookCartRetrieve) - Contains information about the booking details which includes the selected payment options, the traveler information, and the contact information of the person who is made the booking.
 
 ## bookCartRetrieve
-+ passengers (array [passengerInfoRS]) - Contains the traveler information for whom the activity is booked. 
++ passengers (array [passengerInfoRS], fixed-type) - Contains the traveler information for whom the activity is booked. 
 + bookingContact (bookingContactInfoRS) - Contains the name and the contact information of the person who made the booking.
-+ paymentOptions (array [paymentOptionsBookRS]) - Contains the list of <@ reward_popup @> options that are availed to pay for the activity.
++ paymentOptions (array [paymentOptionsBookRS], fixed-type) - Contains the list of <@ reward_popup @> options that are availed to pay for the activity.
 + specialRequest: `Please arrange a wheelchair` - Contains information about any special requests that is made, with respect to the activity, at the time of booking.
-+ questionAnswers (array [questionAnsInfoRS]) - Contains the list of questions that are answered at the time of booking. 
++ questionAnswers (array [questionAnsInfoRS], fixed-type) - Contains the list of questions that are answered at the time of booking. 
 + include reportingFields
 
 ## paymentOptionsBookRS
@@ -1787,14 +1787,14 @@ In this case, only one object for an adult traveler must be provided in the `pas
 + bookingTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is completed.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
 + include supplierConfirmationNumber
 + cancellationToken:`268063245` - Cancellation token received from the supplier that is required to cancel the activity booking. Note that this information is supplier-specific, which means that some suppliers might provide a `cancellationToken` while some suppliers do not provide a `cancellationToken`.
-+ errors (array [errorsBookings]) - Contains the list of errors that occur during the booking process. For example, if the booking fails, the `errors` array lists the appropriate error message.
-+ warnings (array [warningsBookings]) - Contains the list of warnings that appear during the booking process. 
++ errors (array [errorsBookings], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the booking fails, the `errors` array lists the appropriate error message.
++ warnings (array [warningsBookings], fixed-type) - Contains the list of warnings that appear during the booking process. 
 
 ## cancellationDetailsRS
 + cancellationTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is canceled.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> 
 + include supplierCancellationNumber
-+ errors (array [errorsCancel]) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error message.
-+ warnings (array [warningsCancel]) - Contains the list of warnings that appear during the cancellation process.
++ errors (array [errorsCancel], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error message.
++ warnings (array [warningsCancel], fixed-type) - Contains the list of warnings that appear during the cancellation process.
 
 ## supplierConfirmationNumber
 + supplierConfirmationNumber: `2356` - Supplier confirmation number for the booking.<br><br>
@@ -1828,7 +1828,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
 + include activitiesList 
 
 ## activitiesList
-+ activities (array [activitiesInfo]) - Contains the list of activity names returned based on query string specified in the query parameter. For example, if you set the query parameter as `tour`, the API returns all the activity names that contain the query string `tour`.<br><br>
++ activities (array [activitiesInfo], fixed-type) - Contains the list of activity names returned based on query string specified in the query parameter. For example, if you set the query parameter as `tour`, the API returns all the activity names that contain the query string `tour`.<br><br>
 <b>Notes:</b> 
   + By default, the API returns the list of activity names in alphabetical order. 
   + If you provide an invalid `sessionId`, the `/activities` array is returned as an empty array. 
@@ -1859,7 +1859,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
 + currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD, then the `minPrice` and `maxPrice` amounts are returned in their USD amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
 
 ## activityCategoriesFilter 
-+ items (array [itemCategoriesInfo]) - Contains the list of categories-related filter data. 
++ items (array [itemCategoriesInfo], fixed-type) - Contains the list of categories-related filter data. 
 
 ## itemCategoriesInfo 
 + name: `Outdoor Activities` (string) - Name of the activity category.
@@ -1871,7 +1871,7 @@ In this case, only one object for an adult traveler must be provided in the `pas
 + minPrice: 500.00 (number) - Fare of the lowest priced activity from the list of activities that belong to the category returned in the `categories/items[]/name` field.<br><br><b>Format:</b> Decimal
 
 ## tripAdvisorRatingFilter 
-+ items (array [itemtripAdvisorRatingInfo]) - Contains the list of <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a> rating filter data. 
++ items (array [itemtripAdvisorRatingInfo], fixed-type) - Contains the list of <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a> rating filter data. 
 
 ## itemtripAdvisorRatingInfo 
 + name: `5` (string) - Name of the TripAdvisor&reg; rating.  
@@ -2486,7 +2486,6 @@ In this case, only one object for an adult traveler must be provided in the `pas
   + If specified at the time of order creation, the `searchQuery` object provided can be different depending on the type of search performed. For better understanding, see the JSON samples for the following search use cases:<br><ul style="list-style-type:disc"><li><@ statefulorderreq @></li><li><@ statelessorderreq @></li></ul>
   + If you do not provide this field, then the `searchQuery` object is not returned in the API response.
 
-
 ## searchQueryStatelessOrderReq
 + passengerDetails (array [passengerDetailsOrderReq], fixed-type) - Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br><b>Note:</b> If you do not provide this field, then the `passengerDetails` array is not returned in the API response.
 + dateRange (dateRangeInfoOrderReq) - Contains the range of date between which the customer wants to search for activities.<br><br><b>Note:</b> If you do not provide this field, then the `dateRange` object is not returned in the API response. 
@@ -2612,7 +2611,7 @@ Notes:</b>
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` (string, required) - Name of the activity.
 
 ## activityCategoryOrderReq
-+ categories (array [categoryOrderReq]) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.<br><br><b>Note:</b> If you do not provide this field, then the `categories` array is not returned in the API response.
++ categories (array [categoryOrderReq], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.<br><br><b>Note:</b> If you do not provide this field, then the `categories` array is not returned in the API response.
 
 ## categoryOrderReq
 + id: `20` (string) - Unqiue ID for the category.<br><br><b>Note:</b> If you do not provide this field, then the `id` field is not returned in the API response. 
@@ -2645,7 +2644,7 @@ Notes:</b>
 
 ## mediaInfoOrderReq
 + primaryImage (primaryImageOrderReq) - Contains information about the primary image for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `primaryImage` object is not returned in the API response.  
-+ images (array [imagesOrderReq]) - Contains the list of full-size images for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `images` array is not returned in the API response.  
++ images (array [imagesOrderReq], fixed-type) - Contains the list of full-size images for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `images` array is not returned in the API response.  
 
 ## primaryImageOrderReq
 + url: `https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/71/c3/b5.jpg` (string) - The content delivery network (CDN) URL for the full-size image.<br><br><b>Note:</b> If you do not provide this field, then the `url` field is not returned in the API response. 
@@ -2728,7 +2727,7 @@ Notes:</b>
 + schedule (scheduleResultsOrderReq) - Contains the schedule for the activity. The type of schedule may vary per activity and per <@ supplier @>. The schedule of an activity is specified in a free text format, which includes the timing and the activity frequency.<br><br><b>Note:</b> If you do not provide this field, then the `schedule` object is not returned in the API response. 
 
 ## scheduleResultsOrderReq
-+ freeText (array [freeTextOrderReq]) - Contains the schedule of the activity in free text format.<br><br><b>Note:</b> If you do not provide this field, then the `freeText` array is not returned in the API response.  
++ freeText (array [freeTextOrderReq], fixed-type) - Contains the schedule of the activity in free text format.<br><br><b>Note:</b> If you do not provide this field, then the `freeText` array is not returned in the API response.  
 
 ## freeTextOrderReq
 + timing: `Valid from the time of first use, for the consecutive days selected.` (string) - Contains the activity timing.<br><br><b>Note:</b> If you do not provide this field, then the `timing` field is not returned in the API response.  
@@ -2744,7 +2743,7 @@ Notes:</b>
 + exclusions: `Hotel pickup and drop-off` (array) - Contains a list of services that are excluded from the activity.<br><br><b>Note:</b> If you do not provide this field, then the `exclusions` array is returned as an empty array in the API response.
 
 ## displayInfoOrderReq
-+ displayInfos (array [displayOrderReq]) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, then the `displayInfos` array is returned as an empty array in the API response.
++ displayInfos (array [displayOrderReq], fixed-type) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, then the `displayInfos` array is returned as an empty array in the API response.
 
 ## displayOrderReq
 + title: `Highlights` (string) - Title for the display information. 
@@ -2761,7 +2760,7 @@ Notes:</b>
 + desc: `You can present either a paper or an electronic voucher for this activity.` (string) - Description of the <@ voucher_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `desc` field is not returned in the API response. 
 
 ## policiesOrderReq
-+ policies (array [policiesInfoOrderReq]) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response. 
++ policies (array [policiesInfoOrderReq], fixed-type) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response. 
 
 ## policiesInfoOrderReq
 + type: `General` (string) - Type of policy.<br><br><b>Note:</b> If you do not provide this field, then the `type` field is not returned in the API response.  
@@ -2807,7 +2806,7 @@ Notes:</b>
 + voucher (voucherInfoOrderReq) - Contains information about the <@ voucher_popup @> that is provided for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `voucher` object is not returned in the API response. 
 
 ## policiesDetailsOrderReq
-+ policies (array [policiesInfoOrderReq]) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response. 
++ policies (array [policiesInfoOrderReq], fixed-type) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `policies` array is not returned in the API response. 
 
 ## bookingRequirementsOrderReq
 + bookingRequirements (ReqInfoOrderReq) - Contains information about the booking requirements, such as the booking questions that the customer must answer at the time of booking and the list of credit cards that can be used to pay for the booking.<br><br><b>Note:</b> If you do not provide this field, then the `bookingRequirements` object is not returned in the API response. 
@@ -2905,7 +2904,7 @@ Notes:</b>
 + include markupsOptionsOrderReq
 
 ## taxesOptionsOrderReq
-+ taxes (array [taxesInfoOrderReq]) -  Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is returned as an empty array in the API response.
++ taxes (array [taxesInfoOrderReq], fixed-type) -  Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `taxes` array is returned as an empty array in the API response.
 
 ## taxesInfoOrderReq
 + amount: `0.0` (number) - Tax amount.<br><br>Note:</b> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
@@ -2913,7 +2912,7 @@ Notes:</b>
 + desc: `Luxury tax` (string) - Description or additional information for the type of tax that is charged.<br><br><b>Note:</b> If you do not provide this field, then the `desc` field is not returned in the API response.
 
 ## feesOptionsOrderReq
-+ fees (array [feesInfoOrderReq]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is returned as an empty array in the API response.
++ fees (array [feesInfoOrderReq], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `fees` array is returned as an empty array in the API response.
 
 ## feesInfoOrderReq
 + amount: `0` (number) - Fee amount.<br><br>Note:</b> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
@@ -2921,7 +2920,7 @@ Notes:</b>
 + source: `Supplier` (string) - Indicates whether the fee is charged by the <@ supplier @> or the <@ OTA @> (system).<br><br><b>Note:</b> If you do not provide this field, then the `source` field is not returned in the API response.
 
 ## discountsOptionsOrderReq
-+ discounts (array [discountsInfoOrderReq]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is returned as an empty array in the API response.
++ discounts (array [discountsInfoOrderReq], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `discounts` array is returned as an empty array in the API response.
 
 ## discountsInfoOrderReq
 + amount: `0.0` (number) - Discount amount.<br><br>Note:</b> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal 
@@ -2929,7 +2928,7 @@ Notes:</b>
 + source: `supplier` (string) - Indicates whether the discount is provided by the <@ supplier @> or the <@ OTA @> (system).<br><br><b>Note:</b> If you do not provide this field, then the `source` field is not returned in the API response.
 
 ## markupsOptionsOrderReq
-+ markups (array [markupsInfoOrderReq]) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is returned as an empty array in the API response.
++ markups (array [markupsInfoOrderReq], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field.<br><br><b>Note:</b> If you do not provide this field, then the `markups` array is returned as an empty array in the API response.
 
 ## markupsInfoOrderReq
 + amount: `1.19` (number) - <@ markup_two_popup @> (MUP) amount.<br><br> If you do not provide this field, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
@@ -2937,7 +2936,7 @@ Notes:</b>
 + source: `Agency` (string) - Indicates the source that has applied the <@ markup_three_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `source` field is not returned in the API response. 
 
 ## paxTypeFareDetailsOrderReq
-+ paxTypeFareDetails (array [paxTypeFareInfoOrderReq], required) - Contains the fare details and fare breakup of each traveler for whom this activity is booked. 
++ paxTypeFareDetails (array [paxTypeFareInfoOrderReq], required, fixed-type) - Contains the fare details and fare breakup of each traveler for whom this activity is booked. 
 
 ## paxTypeFareInfoOrderReq
 + type: `Adult` (enum, required) - Type of traveler. 
@@ -2960,10 +2959,10 @@ Notes:</b>
 
 ## breakupPaxTypeFareOrderReq
 + baseFare: `4.40` (number, required)- Contains the base fare for the activity.<br><br><b>Note:</b> The `baseFare` amount does not include the discount, taxes, fees, <@ markup_one_popup @>, or any other additional cost.<br><br><b>Format:</b> Decimal
-+ taxes (array [taxesInfoOrderReq]) -  Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ fees (array [feesInfoOrderReq]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ discounts (array [discountsInfoOrderReq]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ markups (array [markupsInfoOrderReq]) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field.
++ taxes (array [taxesInfoOrderReq], fixed-type) -  Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ fees (array [feesInfoOrderReq], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ discounts (array [discountsInfoOrderReq], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ markups (array [markupsInfoOrderReq], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare. This amount is not included in the `breakup/baseFare` field.
 
 ## purchaseOptionsOrderReq
 + purchaseOption (purchaseOptionInfoOrderReq) - Contains information about the different <@ reward_popup @> options that the <@ customer_popup @> can avail to pay for the activity booking.<br><br><b>Note:</b> If you do not provide this field, then the `purchaseOption` object is not returned in the API response.   
@@ -3001,7 +3000,7 @@ Notes:</b>
 + ruleSet (ruleSetInfoOrderReq) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.<br><br><b>Note:</b> If you do not provide this field, then the `ruleSet` object is not returned in the API response.
 + strikeoutValue (strikeoutValueInfoOrderReq) - Contains the <@ pre-discounted_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare that appears striked-out to the <@ customer_popup @> on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, then the `strikeoutValue` object is not returned in the API response.
 + actualValue (actualValueInfoOrderReq) - Contains the <@ actual_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `actualValue` object is not returned in the API response. 
-+ stateBag (array [stateBagInfoOrderReq]) - For internal use only. 
++ stateBag (array [stateBagInfoOrderReq], fixed-type) - For internal use only. 
 
 ## recommendationInfoOrderReq
 + cash: `0.0` (number) - Recommended cash component of the <@ actual_fare_popup @> that can be paid to book the activity.<br><br><b>Note:</b> If you do not provide this field, then the `cash` field value is set to `0`.<br><br><b>Format:</b> Decimal  
@@ -3047,7 +3046,7 @@ Notes:</b>
 + value: 20.00 (number) - For internal use only. 
 
 ## cancellationPenaltiesOrderReq
-+ cancellationPenalties (array [cancellationPenaltiesInfoOrderReq]) - Contains the information about the list of applicable cancellation penalties, including information such as the window determining the penalty period and the penalties incurred for the cancellation.<br><br><b>Note:</b> If you do not provide this field, then the `cancellationPenalties` array is not returned in the API response. 
++ cancellationPenalties (array [cancellationPenaltiesInfoOrderReq], fixed-type) - Contains the information about the list of applicable cancellation penalties, including information such as the window determining the penalty period and the penalties incurred for the cancellation.<br><br><b>Note:</b> If you do not provide this field, then the `cancellationPenalties` array is not returned in the API response. 
 
 ## cancellationPenaltiesInfoOrderReq
 + text: `Cancellations received within three (3) days of activity date will be subject to a supplier cancellation fee equal to the total activity cost. Theater tickets, theme-park passes, and select sightseeing tours are completely non-refundable once booked.<br/> No shows are non-refundable.Please refer to the Terms and Conditions for more information.` - Textual description of the cancellation policy.<br><br><b>Note:</b> If you do not provide this field, then the `text` field is not returned in the API response. 
@@ -3066,7 +3065,7 @@ Notes:</b>
 
 ## penaltiesOrderReq 
 + text: `Cancellations received within three (3) days of activity date will be subject to a supplier cancellation fee equal to the total activity cost. Theater tickets, theme-park passes, and select sightseeing tours are completely non-refundable once booked.<br/> No shows are non-refundable.Please refer to the Terms and Conditions for more information.` - Textual description of the cancellation penalty.<br><br><b>Note:</b> If you do not provide this field, then the `text` field is not returned in the API response. 
-+ penaltyRules (array [penaltyInfoOrderReq]) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.<br><br><b>Note:</b> If you do not provide this field, then the `penaltyRules` array is not returned in the API response. 
++ penaltyRules (array [penaltyInfoOrderReq], fixed-type) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.<br><br><b>Note:</b> If you do not provide this field, then the `penaltyRules` array is not returned in the API response. 
 
 ## penaltyInfoOrderReq
 + include penaltyDetailsOrderReq
@@ -3091,7 +3090,7 @@ Notes:</b>
 + include reportingFieldsBookingInfoOrderReq
 
 ## passengersOrderReq
-+ passengers (array [passengerInfoOrderReq], required) - Contains the list of information of travelers for whom the customer wants to book the activity option.
++ passengers (array [passengerInfoOrderReq], required, fixed-type) - Contains the list of information of travelers for whom the customer wants to book the activity option.
 
 ## passengerInfoOrderReq
 + include passengerTypeOrderReq
@@ -3210,7 +3209,7 @@ Notes:</b>
 + specialRequest: `Wheelchair assistance is needed at time of drop-off.` - Description of the special request.<br><br><b>Note:</b> If you do not provide this field, then the `specialRequest` field is not returned in the API response.  
 
 ## questionAnswersOrderReq
-+ questionAnswers (array [questionAnsInfoOrderReq]) - Contains the list of questions that are answered at the time of booking. 
++ questionAnswers (array [questionAnsInfoOrderReq], fixed-type) - Contains the list of questions that are answered at the time of booking. 
 
 ## questionAnsInfoOrderReq 
 + questionId: 19 (string) - Unique ID for the question. 
@@ -3235,7 +3234,7 @@ Notes:</b>
 + field10: `Value10` - Indicates the value for field 10.
 
 ## paymentMethodsOrderReq
-+ paymentMethods (array [paymentMethodDetailsOrderReq]) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card. <br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If the `/paymentMethods[]/type` field is set to `Card`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` field is set to `Cash`, then you must not provide the `/paymentMethods[]/card` object.</li><li>If you do not provide this field, then the `paymentMethods` array is not returned in the API response.</li></ul>
++ paymentMethods (array [paymentMethodDetailsOrderReq], fixed-type) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card. <br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If the `/paymentMethods[]/type` field is set to `Card`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` field is set to `Cash`, then you must not provide the `/paymentMethods[]/card` object.</li><li>If you do not provide this field, then the `paymentMethods` array is not returned in the API response.</li></ul>
 
 ## paymentMethodDetailsOrderReq
 + type: `Card` (enum, required) - Indicates the mode of payment.<br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If you set the `/paymentMethods[]/type` to `Card`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If you set the `/paymentMethods[]/type` to `Cash`, then the `/paymentMethods[]/card` object is optional.</li></ul>
@@ -3297,9 +3296,9 @@ Notes:</b>
 + bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is completed.<br><br><b>Note:</b> If you do not provide this field, then the `bookingTimestamp` field value is set to `0001-01-01T00:00:00Z`.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
 + include supplierConfirmationNumberOrderReq
 + include cancellationTokenOrderReq
-+ alternateConfirmationDetails (array [alternateConfirmationInfo]) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> If you do not provide this field, then the `alternateConfirmationDetails` array is not returned in the API response.
-+ errors (array [errorsOrderReq]) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, then the `errors` array is not returned in the API response.
-+ warnings (array [warningsOrderReq]) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` array is not returned in the API response.
++ alternateConfirmationDetails (array [alternateConfirmationInfo], fixed-type) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> If you do not provide this field, then the `alternateConfirmationDetails` array is not returned in the API response.
++ errors (array [errorsOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, then the `errors` array is not returned in the API response.
++ warnings (array [warningsOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` array is not returned in the API response.
 
 ## supplierConfirmationNumberOrderReq
 + supplierConfirmationNumber: `309755104` (string, nullable) - Supplier confirmation number for the booking.<br><br><b>Note:</b> If you do not provide this field, then the `supplierConfirmationNumber` field is not returned in the API response.
@@ -3321,8 +3320,8 @@ Notes:</b>
 ## cancellationInfoOrderReq 
 + cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is canceled.<br><br><b>Note:</b> If you do not provide this field, then the `cancellationTimestamp` field value is set to `0001-01-01T00:00:00Z`.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>  
 + include supplierCancellationNumberOrderReq
-+ errors (array [errorsOrderReq]) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, then the `errors` array is not returned in the API response.
-+ warnings (array [warningsOrderReq]) - Contains the list of warnings that appear during the cancellation process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` array is not returned in the API response.
++ errors (array [errorsOrderReq], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, then the `errors` array is not returned in the API response.
++ warnings (array [warningsOrderReq], fixed-type) - Contains the list of warnings that appear during the cancellation process.<br><br><b>Note:</b> If you do not provide this field, then the `warnings` array is not returned in the API response.
 
 ## supplierCancellationNumberOrderReq
 + supplierCancellationNumber: `309755104` (string, nullable) - Supplier cancellation number for the booking.<br><br><b>Note:</b> If you do not provide this field, then the `supplierCancellationNumber` field is not returned in the API response.
@@ -3475,7 +3474,7 @@ Notes:</b>
   + If you do not provide this field, at the time of order creation, then the `searchQuery` object is not returned in the API response.
 
 ## searchQueryStatelessOrderResp
-+ passengerDetails (array [passengerDetailsOrderResp]) - Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `passengerDetails` array is not returned in the API response.
++ passengerDetails (array [passengerDetailsOrderResp], fixed-type) - Contains the list of information about the travelers based on which you want to retrieve the list of activity options.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `passengerDetails` array is not returned in the API response.
 + dateRange (dateRangeInfoOrderResp) - Contains the range of date between which the customer wants to search for activities.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `dateRange` object is not returned in the API response. 
 + activityDate: `{dateTime|YYYY-MM-DDTHH:mm:ss|30 0}` (string) - Date that the traveler wants book the activity for.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `activityDate` field is returned as `0001-01-01T00:00:00`.<br><br><b>Format:</b> YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
 + activityId: `59521P1` - Unique activity ID that identifies a specific activity for which you want to retrieve the activity details. The `activityId` is returned only in case of <@ stateless @> activity search, if specified.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `activityId` field is not returned in the API response.  
@@ -3490,7 +3489,7 @@ Notes:</b>
 
 ## passengerDetailsOrderResp
 + count: 1 (number) - Number of travelers of a specific `type`.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `count` field value is returned as `0`.
-+ ages :`20` (array [number]) -  Age of travelers of a specific `type`. For example, if the `count` field value is returned as `2` for traveler type `Adult`, then the `ages` array contains ages of two adult travelers.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `ages` array is not returned in the API response.
++ ages :`20` (array [number], fixed-type) -  Age of travelers of a specific `type`. For example, if the `count` field value is returned as `2` for traveler type `Adult`, then the `ages` array contains ages of two adult travelers.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `ages` array is not returned in the API response.
 + type: `Adult` (enum) - Type of traveler.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `type` field is not returned in the API response.  
     + Adult 
     + Child
@@ -3598,7 +3597,7 @@ Notes:</b>
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` (string) - Name of the activity.
 
 ## activityCategoryOrderResp
-+ categories (array [categoryOrderResp]) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `categories` array is not returned in the API response.
++ categories (array [categoryOrderResp], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `categories` array is not returned in the API response.
 
 ## categoryOrderResp
 + id: `20` - Unqiue ID for the category.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `id` field is not returned in the API response. 
@@ -3631,7 +3630,7 @@ Notes:</b>
 
 ## mediaInfoOrderResp
 + primaryImage (primaryImageOrderResp) - Contains information about the primary image for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `primaryImage` object is not returned in the API response.
-+ images (array [imagesOrderResp]) - Contains the list of full-size images for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `images` array is not returned in the API response.  
++ images (array [imagesOrderResp], fixed-type) - Contains the list of full-size images for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `images` array is not returned in the API response.  
 
 ## primaryImageOrderResp
 + url: `https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/71/c3/b5.jpg` (string) - The content delivery network (CDN) URL for the full-size image.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `url` field is not returned in the API response. 
@@ -3714,7 +3713,7 @@ Notes:</b>
 + schedule (scheduleResultsOrderResp) - Contains the schedule for the activity. The type of schedule may vary per activity and per <@ supplier @>. The schedule of an activity is specified in a free text format, which includes the timing and the activity frequency.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `schedule` object is not returned in the API response. 
 
 ## scheduleResultsOrderResp
-+ freeText (array [freeTextOrderResp]) - Contains the schedule of the activity in free text format.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `freeText` array is not returned in the API response.  
++ freeText (array [freeTextOrderResp], fixed-type) - Contains the schedule of the activity in free text format.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `freeText` array is not returned in the API response.  
 
 ## freeTextOrderResp
 + timing: `Valid from the time of first use, for the consecutive days selected.` (string) - Contains the activity timing.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `timing` field is not returned in the API response. 
@@ -3730,7 +3729,7 @@ Notes:</b>
 + exclusions: `Hotel pickup and drop-off` (array) - Contains a list of services that are excluded from the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `exclusions` array is returned as an empty array in the API response.
 
 ## displayInfoOrderResp
-+ displayInfos (array [displayOrderResp]) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `displayInfos` array is returned as an empty array in the API response.
++ displayInfos (array [displayOrderResp], fixed-type) - Contains the list of display information for the activity, which can be used for display or advertisement purpose on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `displayInfos` array is returned as an empty array in the API response.
 
 ## displayOrderResp
 + title: `Highlights` (string) - Title for the display information. 
@@ -3747,7 +3746,7 @@ Notes:</b>
 + desc: `You can present either a paper or an electronic voucher for this activity.` (string) - Description of the <@ voucher_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `desc` field is not returned in the API response.  
 
 ## policiesOrderResp
-+ policies (array [policiesInfoOrderResp]) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response. 
++ policies (array [policiesInfoOrderResp], fixed-type) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response. 
 
 ## policiesInfoOrderResp
 + type: `General` - Type of policy.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation,then the `type` field is not returned in the API response. 
@@ -3793,7 +3792,7 @@ Notes:</b>
 + voucher (voucherInfoOrderResp) - Contains information about the <@ voucher_popup @> that is provided for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `voucher` object is not returned in the API response. 
 
 ## policiesDetailsOrderResp
-+ policies (array [policiesInfoOrderResp]) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response. 
++ policies (array [policiesInfoOrderResp], fixed-type) - Contains the list of information about the applicable policies for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `policies` array is not returned in the API response. 
 
 ## bookingRequirementsOrderResp
 + bookingRequirements (ReqInfoOrderResp) - Contains information about the booking requirements, such as the booking questions that the customer must answer at the time of booking and the list of credit cards that can be used to pay for the booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `bookingRequirements` object is not returned in the API response. 
@@ -3891,7 +3890,7 @@ Notes:</b>
 + include markupsOptionsOrderResp
 
 ## taxesOptionsOrderResp
-+ taxes (array [taxesInfoOrderResp]) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is returned as an empty array in the API response.
++ taxes (array [taxesInfoOrderResp], fixed-type) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `taxes` array is returned as an empty array in the API response.
 
 ## taxesInfoOrderResp
 + amount: `0.0` (number) - Tax amount.<br><br>Note:</b> If you do not provide this field, at the time of order creation, then the `amount` field value is returned as `0`.<br><br><b>Format:</b> Decimal
@@ -3899,7 +3898,7 @@ Notes:</b>
 + desc: `Luxury tax` (string) - Description or additional information for the type of tax that is charged.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `desc` field is not returned in the API response.
 
 ## feesOptionsOrderResp
-+ fees (array [feesInfoOrderResp]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is returned as an empty array in the API response.
++ fees (array [feesInfoOrderResp], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `fees` array is returned as an empty array in the API response.
 
 ## feesInfoOrderResp
 + amount: `0` (number) - Fee amount.<br><br>Note:</b> If you do not provide this field, at the time of order creation, then the `amount` field value is set to `0`.<br><br><b>Format:</b> Decimal
@@ -3907,7 +3906,7 @@ Notes:</b>
 + source: `Supplier` (string) - Indicates whether the fee is charged by the <@ supplier @> or the <@ OTA @> (system).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `source` field is not returned in the API response.
 
 ## discountsOptionsOrderResp
-+ discounts (array [discountsInfoOrderResp]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is returned as an empty array in the API response.
++ discounts (array [discountsInfoOrderResp], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `displayFare/totalFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `discounts` array is returned as an empty array in the API response.
 
 ## discountsInfoOrderResp
 + amount: `0.0` (number) - Discount amount.<br><br>Note:</b> If you do not provide this field, at the time of order creation, then the `amount` field value is returned as `0`.<br><br><b>Format:</b> Decimal 
@@ -3915,7 +3914,7 @@ Notes:</b>
 + source: `supplier` (string) - Indicates whether the discount is provided by the <@ supplier @> or the <@ OTA @> (system).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `source` field is not returned in the API response.
 
 ## markupsOptionsOrderResp
-+ markups (array [markupsInfoOrderResp]) - Contains the list of applicable <@ markup_one_popup @> for the fare.  This amount is not included in the `breakup/baseFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is returned as an empty array in the API response.
++ markups (array [markupsInfoOrderResp], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare.  This amount is not included in the `breakup/baseFare` field.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `markups` array is returned as an empty array in the API response.
 
 ## markupsInfoOrderResp
 + amount: `1.19` (number) - <@ markup_two_popup @> (MUP) amount.<br><br> If you do not provide this field, at the time of order creation, then the `amount` field value is returned as `0`.<br><br><b>Format:</b> Decimal
@@ -3923,7 +3922,7 @@ Notes:</b>
 + source: `Agency` - Indicates the source that has applied the <@ markup_three_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `source` field is not returned in the API response.
 
 ## paxTypeFareDetailsOrderResp
-+ paxTypeFareDetails (array [paxTypeFareInfoOrderResp]) - Contains the fare details and fare breakup of each traveler for whom this activity is booked. 
++ paxTypeFareDetails (array [paxTypeFareInfoOrderResp], fixed-type) - Contains the fare details and fare breakup of each traveler for whom this activity is booked. 
 
 ## paxTypeFareInfoOrderResp
 + type: `Adult` (enum) - Type of traveler. 
@@ -3946,10 +3945,10 @@ Notes:</b>
 
 ## breakupPaxTypeFareOrderResp
 + baseFare: `4.40` (number)- Contains the base fare for the activity.<br><br><b>Note:</b> The `baseFare` amount does not include the discount, taxes, fees, <@ markup_one_popup @>, or any other additional cost.<br><br><b>Format:</b> Decimal
-+ taxes (array [taxesInfoOrderResp]) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ fees (array [feesInfoOrderResp]) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ discounts (array [discountsInfoOrderResp]) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
-+ markups (array [markupsInfoOrderResp]) - Contains the list of applicable <@ markup_one_popup @> for the fare.  This amount is not included in the `breakup/baseFare` field.
++ taxes (array [taxesInfoOrderResp], fixed-type) - Contains the list of all the applicable taxes for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ fees (array [feesInfoOrderResp], fixed-type) - Contains the list of all the applicable fees for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ discounts (array [discountsInfoOrderResp], fixed-type) - Contains the list of all the applicable discounts for the activity. This amount is not included in the `breakup/baseFare` field. However, this amount is already included in the `fare/totalFare` field.
++ markups (array [markupsInfoOrderResp], fixed-type) - Contains the list of applicable <@ markup_one_popup @> for the fare.  This amount is not included in the `breakup/baseFare` field.
 
 ## purchaseOptionsOrderResp
 + purchaseOption (purchaseOptionInfoOrderResp) - Contains information about the different <@ reward_popup @> options that the <@ customer_popup @> can avail to pay for the activity booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `purchaseOption` object is not returned in the API response.   
@@ -3987,7 +3986,7 @@ Notes:</b>
 + ruleSet (ruleSetInfoOrderResp) - Contains information about the rules based on which the `minimum` and `maximum` points that the <@ customer_popup @> can redeem is calculated.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `ruleSet` object is not returned in the API response.
 + strikeoutValue (strikeoutValueInfoOrderResp) - Contains the <@ pre-discounted_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>. Note that this is a pre-discounted fare that appears striked-out to the <@ customer_popup @> on the User Interface (UI).<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `strikeoutValue` object is not returned in the API response.
 + actualValue (actualValueInfoOrderResp) - Contains the <@ actual_fare_popup @> for the activity in cash, points, or a combination of cash and points based on the type of <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `actualValue` object is not returned in the API response. 
-+ stateBag (array [stateBagInfoOrderResp]) - For internal use only. 
++ stateBag (array [stateBagInfoOrderResp], fixed-type) - For internal use only. 
 
 ## recommendationInfoOrderResp
 + cash: `0.0` (number) - Recommended cash component of the <@ actual_fare_popup @> that can be paid to book the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cash` field value is returned as `0`.<br><br><b>Format:</b> Decimal   
@@ -4033,7 +4032,7 @@ Notes:</b>
 + value: 20.00 (number) - For internal use only. 
 
 ## cancellationPenaltiesOrderResp
-+ cancellationPenalties (array [cancellationPenaltiesInfoOrderResp]) -  Contains the information about the list of applicable cancellation penalties, including information such as the window determining the penalty period and the penalties incurred for the cancellation.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cancellationPenalties` array is not returned in the API response. 
++ cancellationPenalties (array [cancellationPenaltiesInfoOrderResp], fixed-type) -  Contains the information about the list of applicable cancellation penalties, including information such as the window determining the penalty period and the penalties incurred for the cancellation.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cancellationPenalties` array is not returned in the API response. 
 
 ## cancellationPenaltiesInfoOrderResp
 + text: `Cancellations received within three (3) days of activity date will be subject to a supplier cancellation fee equal to the total activity cost. Theater tickets, theme-park passes, and select sightseeing tours are completely non-refundable once booked.<br/> No shows are non-refundable.Please refer to the Terms and Conditions for more information.` - Textual description of the cancellation policy.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `text` field is not returned in the API response. 
@@ -4052,7 +4051,7 @@ Notes:</b>
 
 ## penaltiesOrderResp 
 + text: `Cancellations received within three (3) days of activity date will be subject to a supplier cancellation fee equal to the total activity cost. Theater tickets, theme-park passes, and select sightseeing tours are completely non-refundable once booked.<br/> No shows are non-refundable.Please refer to the Terms and Conditions for more information.` - Textual description of the cancellation penalty.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `text` field is not returned in the API response.
-+ penaltyRules (array [penaltyRulesOrderResp]) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `penaltyRules` array is not returned in the API response. 
++ penaltyRules (array [penaltyRulesOrderResp], fixed-type) - Contains the list of information related to the penalty, such as the start and end window and the penalty value.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `penaltyRules` array is not returned in the API response. 
 
 ## penaltyRulesOrderResp
 + include penaltyDetailsOrderResp
@@ -4077,7 +4076,7 @@ Notes:</b>
 + include reportingFieldsBookingInfoOrderResp
 
 ## passengersOrderResp
-+ passengers (array [passengerInfoOrderResp]) - Contains the list of information of travelers for whom the customer wants to book the activity option.
++ passengers (array [passengerInfoOrderResp], fixed-type) - Contains the list of information of travelers for whom the customer wants to book the activity option.
 
 ## passengerInfoOrderResp
 + include passengerTypeOrderResp
@@ -4196,7 +4195,7 @@ Notes:</b>
 + specialRequest: `Wheelchair assistance is needed at the time of drop-off.` (string) - Description of the special request.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `specialRequest` field is not returned in the API response.  
 
 ## questionAnswersOrderResp
-+ questionAnswers (array [questionAnsInfoOrderResp]) - Contains the list of questions that are answered at the time of booking. 
++ questionAnswers (array [questionAnsInfoOrderResp], fixed-type) - Contains the list of questions that are answered at the time of booking. 
 
 ## questionAnsInfoOrderResp 
 + questionId: 19 (string) - Unique ID for the question. 
@@ -4209,7 +4208,7 @@ Notes:</b>
   + If you do not provide this field, at the time of order creation, then the `reportingFields` field is not returned in the API response.
 
 ## paymentMethodsOrderResp
-+ paymentMethods (array [paymentMethodDetailsOrderResp]) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card. <br><br>
++ paymentMethods (array [paymentMethodDetailsOrderResp], fixed-type) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card. <br><br>
 <b>Note:</b> If you do not provide this field, at the time of order creation, then the `paymentMethods` array is not returned in the API response. To update a new payment method, you must call the `Set Payment Methods` API.
 
 ## paymentMethodDetailsOrderResp
@@ -4277,9 +4276,9 @@ Notes:</b>
 + bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `bookingTimestamp` field value is returned as `0001-01-01T00:00:00Z`.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
 + include supplierConfirmationNumberOrderResp
 + include cancellationTokenOrderResp
-+ alternateConfirmationDetails (array [alternateConfirmationInfo]) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `alternateConfirmationDetails` array is not returned in the API response.
-+ errors (array [errorsOrderResp]) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` object is not returned in the API response.
-+ warnings (array [warningsOrderResp]) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` object is not returned in the API response.
++ alternateConfirmationDetails (array [alternateConfirmationInfo], fixed-type) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `alternateConfirmationDetails` array is not returned in the API response.
++ errors (array [errorsOrderResp], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` object is not returned in the API response.
++ warnings (array [warningsOrderResp], fixed-type) - Contains the list of warnings that appear during the booking process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` object is not returned in the API response.
 
 ## supplierConfirmationNumberOrderResp
 + supplierConfirmationNumber: `309755104` (string, nullable) - Supplier confirmation number for the booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `supplierConfirmationNumber` field is not returned in the API response.
@@ -4301,8 +4300,8 @@ Notes:</b>
 ## cancellationInfoOrderResp 
 + cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `cancellationTimestamp` field value is returned as `0001-01-01T00:00:00Z`.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>  
 + include supplierCancellationNumberOrderResp
-+ errors (array [errorsOrderResp]) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` object is not returned in the API response.
-+ warnings (array [warningsOrderResp]) - Contains the list of warnings that appear during the cancellation process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` object is not returned in the API response.
++ errors (array [errorsOrderResp], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `errors` object is not returned in the API response.
++ warnings (array [warningsOrderResp], fixed-type) - Contains the list of warnings that appear during the cancellation process.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `warnings` object is not returned in the API response.
 
 ## supplierCancellationNumberOrderResp
 + supplierCancellationNumber: `309755104` (string, nullable) - Supplier cancellation number for the booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `supplierCancellationNumber` field is not returned in the API response.
@@ -4374,11 +4373,11 @@ Notes:</b>
 + include supplierConfirmationNumberReq
 + include cancellationTokenReq
 + include alternateConfirmationDetails  
-+ errors (array [errorsCancelOrderReq]) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
-+ warnings (array [warningsCancelOrderReq]) - Contains the list of warnings that appear during the booking process.
++ errors (array [errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ warnings (array [warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## alternateConfirmationDetails 
-+ alternateConfirmationDetails (array [alternateConfirmationInfo], required) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> The `id`, `name`, `type`, and `value` fields are optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the errors array.
++ alternateConfirmationDetails (array [alternateConfirmationInfo], required, fixed-type) - Contains the confirmation details of the activity booking from the supplier.<br><br><b>Note:</b> The `id`, `name`, `type`, and `value` fields are optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the errors array.
 
 ## alternateConfirmationInfo
 + id: `SupplierVoucher` (string) - Unique ID for the confirmation details of the activity shared by the supplier.
@@ -4406,14 +4405,14 @@ Notes:</b>
 ## cancellationInfoReq 
 + cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled.<br><br><b>Note:</b> The `cancellationTimestamp` field is optional only when the supplier returns error at the time of cancellation. In this case, you must specify the list of errors in the `errors` array.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
 + include supplierCancellationNumberReq
-+ errors (array [errorsCancelOrderReq]) - Contains the list of errors that occur during the cancellation process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
-+ warnings (array [warningsCancelOrderReq]) - Contains the list of warnings that appear during the cancellation process.
++ errors (array [errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ warnings (array [warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the cancellation process.
 
 ## supplierCancellationNumberReq
 + supplierCancellationNumber: `309755104` (string, nullable) - Supplier cancellation number for the booking. For every successful cancellation, the supplier cancellation number must be provided either in the `supplierCancellationNumber` field in the `/cancellationDetails` object.<br><br><b>Note:</b> The `supplierCancellationNumber` field is optional only when the supplier returns errors at the time of cancellation. In this case, you must specify the list of errors in the `errors` array.
 
 ## paymentMethodReq
-+ paymentMethods (array [paymentMethodDetailsReq]) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card.<br><br>
++ paymentMethods (array [paymentMethodDetailsReq], fixed-type) - Contains the list of payment methods used to pay for the booking. We support payments made by cash and credit card.<br><br>
 <b>Notes:</b><ul style="list-style-type:disc"><li>If the `/paymentMethods[]/type` field is set to `Card`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` field is set to `Cash`, then you must not provide the `/paymentMethods[]/card` object.</li></ul>
 
 ## paymentMethodDetailsReq
