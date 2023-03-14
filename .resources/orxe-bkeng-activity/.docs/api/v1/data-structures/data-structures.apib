@@ -2767,7 +2767,7 @@ Notes:</b>
 + desc: `For a full refund, cancel at least 24 hours in advance of the start date of the experience.` (string) - Textual description of the policy.<br><br><b>Note:</b> If you do not provide this field, then the `desc` field is not returned in the API response.  
 
 ## reviewsOrderReq
-+ reviews (array[reviewInfoOrderReq]) - Contains the list of reviews, given by other customers, for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `reviews` array is returned as an empty array in the API response.
++ reviews (array[reviewInfoOrderReq], fixed-type) - Contains the list of reviews, given by other customers, for the activity.<br><br><b>Note:</b> If you do not provide this field, then the `reviews` array is returned as an empty array in the API response.
 
 ## reviewInfoOrderReq
 + desc: `It was an amazing experience with exceptional travel arrangements.` (string) - Description of the review.<br><br><b>Note:</b> If you do not provide this field, then the `desc` field is not returned in the API response. 
@@ -2794,7 +2794,7 @@ Notes:</b>
 + maxPassengerCount: 3  (number) - Indicates the maximum number of travelers allowed to participate in this activity.<br><br><b>Note:</b> If you do not provide this field, then the `maxPassengerCount` field value is set to `0`.<br><br><b>Format:</b> Decimal 
 
 ## offersOrderReq
-+ offers (array[offerInfoOrderReq]) - Contains details about supplier-specific promotional offers.<br><br><b>Note:</b> If you do not provide this field, then the `offers` array is returned as an empty array in the API response.
++ offers (array[offerInfoOrderReq], fixed-type) - Contains details about supplier-specific promotional offers.<br><br><b>Note:</b> If you do not provide this field, then the `offers` array is returned as an empty array in the API response.
 
 ## offerInfoOrderReq
 + format: `Text` (enum) - Indicates the format in which the offer is provided by the <@ supplier @>.<br><br><b>Note:</b> If you do not provide this field, then the `format` field is set to `Structured`.
@@ -2817,7 +2817,7 @@ Notes:</b>
 + include allowedCreditCardsOrderReq
 
 ## bookingQuestionsOrderReq
-+ bookingQuestions (array[questionInfoOrderReq]) - Contains the list of questions that is displayed to the customer at the time of booking.<br><br><b>Note:</b> If you do not provide this field, then the `bookingQuestions` array is returned as an empty array in the API response.
++ bookingQuestions (array[questionInfoOrderReq], fixed-type) - Contains the list of questions that is displayed to the customer at the time of booking.<br><br><b>Note:</b> If you do not provide this field, then the `bookingQuestions` array is returned as an empty array in the API response.
 
 ## questionInfoOrderReq
 + question: `Please pick me up at` (string) - Contains the question that is displayed to the <@ customer_popup @> on the User Interface (UI) at the time of booking.<br><br><b>Note:</b> If you do not provide this field, then the `question` field is not returned in the API response. 
@@ -2983,7 +2983,7 @@ Notes:</b>
 + pointsCurrency: `Points` (string) - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles. Note that the `points` field value is represented by this currency.<br><br><b>Note:</b> If you do not provide this field, then the `pointsCurrency` field is not returned in the API response. 
 
 ## rewardsOrderReq 
-+ rewards (array[rewardInfoOrderReq]) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the activity booking.<br><br><b>Note:</b> If you do not provide this field, then the `rewards` array is returned as an empty array in the API response. 
++ rewards (array[rewardInfoOrderReq], fixed-type) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the activity booking.<br><br><b>Note:</b> If you do not provide this field, then the `rewards` array is returned as an empty array in the API response. 
 
 ## rewardInfoOrderReq
 + id: `1482|1` (string) -  Unique ID for the <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, then the `id` field is not returned in the API response. 
@@ -3187,7 +3187,7 @@ Notes:</b>
 + name: `California` (string) - Name of the state.
 
 ## selectedPaymentOptionsOrderReq
-+ selectedPaymentOptions (array[selectedPaymentOptionInfoOrderReq], required) - Contains the list of selected payment options that the customer wants to avail to pay for the activity.<br><br>
++ selectedPaymentOptions (array[selectedPaymentOptionInfoOrderReq], required, fixed-type) - Contains the list of selected payment options that the customer wants to avail to pay for the activity.<br><br>
 <b>Notes:</b><ul style="list-style-type:disc"><li>In case of activity bookings, you can only provide one payment option within the `/selectedPaymentOptions` array.</li><li>Either the amount in cash, points, or a combination of both the amount in cash and points must be provided within the `/selectedPaymentOptions` array.</li></ul> 
 
 ## selectedPaymentOptionInfoOrderReq
@@ -3753,7 +3753,7 @@ Notes:</b>
 + desc: `For a full refund, cancel at least 24 hours in advance of the start date of the experience.` - Textual description of the policy.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `desc` field is not returned in the API response.
 
 ## reviewsOrderResp
-+ reviews (array[reviewInfoOrderResp]) - Contains the list of reviews, given by other customers, for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `reviews` array is returned as an empty array in the API response.
++ reviews (array[reviewInfoOrderResp], fixed-type) - Contains the list of reviews, given by other customers, for the activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `reviews` array is returned as an empty array in the API response.
 
 ## reviewInfoOrderResp
 + desc: `It was an amazing experience with exceptional travel arrangements.` - Description of the review.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `desc` field is not returned in the API response. 
@@ -3780,7 +3780,7 @@ Notes:</b>
 + maxPassengerCount: 3  (number) - Indicates the maximum number of travelers allowed to participate in this activity.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `maxPassengerCount` field value is returned as `0`.<br><br><b>Format:</b> Decimal 
 
 ## offersOrderResp
-+ offers (array[offerInfoOrderResp]) - Contains details about supplier-specific promotional offers.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `offers` array is returned as an empty array in the API response.
++ offers (array[offerInfoOrderResp], fixed-type) - Contains details about supplier-specific promotional offers.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `offers` array is returned as an empty array in the API response.
 
 ## offerInfoOrderResp
 + format: `Text` (enum) - Indicates the format in which the offer is provided by the <@ supplier @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `format` field is returned as `Structured`.
@@ -3803,7 +3803,7 @@ Notes:</b>
 + include allowedCreditCardsOrderResp
 
 ## bookingQuestionsOrderResp
-+ bookingQuestions (array[questionInfoOrderResp]) - Contains the list of questions that is displayed to the customer at the time of booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `bookingQuestions` array is returned as an empty array in the API response. 
++ bookingQuestions (array[questionInfoOrderResp], fixed-type) - Contains the list of questions that is displayed to the customer at the time of booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `bookingQuestions` array is returned as an empty array in the API response. 
 
 ## questionInfoOrderResp
 + question: `Please pick me up at` (string) - Contains the question that is displayed to the <@ customer_popup @> on the User Interface (UI) at the time of booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `question` field is not returned in the API response. 
@@ -3969,7 +3969,7 @@ Notes:</b>
 + pointsCurrency: `Points` - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles. Note that the `points` field value is represented by this currency.<br><br><b>Note:</b> If you do not provide this field, then the `pointsCurrency` field is not returned in the API response. 
 
 ## rewardsOrderResp 
-+ rewards (array[rewardInfoOrderResp]) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the activity booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `rewards` array is returned as an empty array in the API response. 
++ rewards (array[rewardInfoOrderResp], fixed-type) - Contains the list of <@ reward_popup @> options that the <@ customer_popup @> can avail to make the activity booking.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `rewards` array is returned as an empty array in the API response. 
 
 ## rewardInfoOrderResp
 + id: `1482|1` - Unique ID for the <@ reward_popup @>.<br><br><b>Note:</b> If you do not provide this field, at the time of order creation, then the `id` field is not returned in the API response. 
@@ -4173,7 +4173,7 @@ Notes:</b>
 + name: `California` (string) - Name of the state.
 
 ## selectedPaymentOptionsOrderResp
-+ selectedPaymentOptions (array[selectedPaymentOptionInfoOrderResp]) - Contains the list of selected payment options that the customer wants to avail to pay for the activity.<br><br>
++ selectedPaymentOptions (array[selectedPaymentOptionInfoOrderResp], fixed-type) - Contains the list of selected payment options that the customer wants to avail to pay for the activity.<br><br>
 <b>Note:</b> Either the amount in cash, points, or a combination of both the amount in cash and points is returned within the `/selectedPaymentOptions` array.</li></ul> 
 
 ## selectedPaymentOptionInfoOrderResp
