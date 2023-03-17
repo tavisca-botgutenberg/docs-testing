@@ -46,10 +46,10 @@
 + paxNationality: `US` (string, nullable) - 2-character ISO code that indicates the traveler's nationality. 
 Notes:
   + This is an optional field.
-  + If you want to provide the `paxNationality` in the request, you must provide a valid <a href="../reference-reads#countrycodes">2-character ISO country code</a> or set the field to `null` without the quotation marks ("").
+  + If you want to provide the `paxNationality` in the request, you must provide a valid character ISO country code or set the field to `null` without the quotation marks ("").
 
 ## allowedCountry
-+ allowedCountry: US - Include only those activities that belong to the country (<a target="_blank" href="../reference-reads#countrycodes">2-character ISO country code</a>) specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
++ allowedCountry: US - Include only those activities that belong to the country character ISO country code specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
 
 ## customerInfoRQ
 + customerInfo (customerDetails, required) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with.
@@ -81,7 +81,7 @@ Notes:
 + shortfallAllowed: true (boolean) - For internal use only.
 
 ## currencyRQ
-+ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the base fare, discount, taxes, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies"> ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team. Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`. 
++ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the base fare, discount, taxes, and other monetary amounts are returned in their `USD` amount equivalents. We support all  ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team. Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`. 
 Note: If you do not set a value for the `currency` field, the `currency` value will automatically be set based on your default account configuration.
 
 ## programIdRQ
@@ -118,7 +118,7 @@ Note: If you do not set a value for the `currency` field, the `currency` value w
 ## pageInfo
 + pageNo: `1` (number, required) - Indicates the start page from where you want to retrieve the search results. The response returns the result set only from the `pageNo` that you specify while considering the number of search results per page based on the `/paging/pageSize` field. Consider a scenario where you set the `/paging/pageSize` field to `10`, which means that the response will return 10 search results per page. If you want the response to return the search results from the 21st search result/record and skip/ignore search results 1 to 20. In this scenario, you must set the `pageNo` field to `3`. Default value: `1`.
 + pageSize: `10` (number, required) - Indicates the number of search results/records that the response must return per page. For example, if you want the response to return `10` search results per page, set the `pageSize` field to `10`. Note: The `pageSize` field value must be greater than `0`. 
-+ orderBy: `price` (string) - Indicates the sort criteria or order in which the response must return the search results. You can sort the search results by: - `recommended` (Sort order based on supplier's recommendation) - `price` (Ascending order of total fare) - `price asc` (Ascending order of total fare) - `price desc` (Descending order of total fare) - `rating` (Ascending order of <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a> rating) - `rating asc` (Ascending order of TripAdvisor&reg; rating) - `rating desc` (Descending order of TripAdvisor&reg; rating) - `name` (Ascending order of activity name) - `name asc` (Ascending order of activity name) - `name desc` (Descending order of activity name). Default value: price asc
++ orderBy: `price` (string) - Indicates the sort criteria or order in which the response must return the search results. You can sort the search results by: - `recommended` (Sort order based on supplier's recommendation) - `price` (Ascending order of total fare) - `price asc` (Ascending order of total fare) - `price desc` (Descending order of total fare) - `rating` (Ascending order of TripAdvisor rating) - `rating asc` (Ascending order of TripAdvisor&reg; rating) - `rating desc` (Descending order of TripAdvisor&reg; rating) - `name` (Ascending order of activity name) - `name asc` (Ascending order of activity name) - `name desc` (Descending order of activity name). Default value: price asc
 
 ## filters 
 + filters (filterInfo) - Contains filters to narrow down the activity search results. The search results include only those activities that match all the filter criteria specified. Note that all the content related to an activity, such as the activity cancellation policies, location, address, and contact information, are obtained from the supplier.
@@ -144,25 +144,25 @@ Notes:
   + The `maxPrice` field value must be greater than the `minPrice`. 
 
 ## priceFilterInfo
-+ minPrice: 20.00 (number) - Include only those activities whose rate is equal to or higher than the rate specified in this field. The `minPrice` value must be greater than or equal to `0`. Notes:<ul style="list-style-type:disc"> The `minPrice` value is an indicative rate, which means that these are approximate rates. If you want to obtain the exact rate, you must call the <a href="../details" target="_blank">Get Activity Details</a> API.  The value for this field must be less than the value of the `maxPrice` field.   Default value: `0` Format: Decimal
++ minPrice: 20.00 (number) - Include only those activities whose rate is equal to or higher than the rate specified in this field. The `minPrice` value must be greater than or equal to `0`. Notes:<ul style="list-style-type:disc"> The `minPrice` value is an indicative rate, which means that these are approximate rates. If you want to obtain the exact rate, you must call the Get Activity Details API.  The value for this field must be less than the value of the `maxPrice` field.   Default value: `0` Format: Decimal
 + maxPrice: 1000.00 (number) - Include only those activities whose  rate is equal to or lower than the rate specified in this field. The `maxPrice` value must be greater than or equal to `0`. Notes:<ul style="list-style-type:disc"> The `maxPrice` must be greater than or equal to the `minPrice`.  By default, the `maxPrice` field is set to the highest price value returned in the search result set.   Format: Decimal
 
 ## categoryFilter
-+ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.
++ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter.  .
 
 ## tripAdvRatingFilter
-+ tripAdvisorRating: `1`,`2`, `3`, `4`, `5` (array) - Include only those activities whose TripAdvisor&reg; rating is equal to the TripAdvisor&reg; rating specified in this field. The `tripAdvisorRating` field value must be between 1 and 5. This rating information is obtained from the <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a>. If you set the `tripAdvisorRating` field to `2`, then the search results include activities whose TripAdvisor&reg; rating is between `2.0` and `2.9`.
++ tripAdvisorRating: `1`,`2`, `3`, `4`, `5` (array) - Include only those activities whose TripAdvisor&reg; rating is equal to the TripAdvisor&reg; rating specified in this field. The `tripAdvisorRating` field value must be between 1 and 5. This rating information is obtained from the TripAdvisor. If you set the `tripAdvisorRating` field to `2`, then the search results include activities whose TripAdvisor&reg; rating is between `2.0` and `2.9`.
 
 ## customerInfoSearchRQ
 + customerInfo (customerResults) - Contains information about the customer.
  Notes:
-  + If you do not provide this field, the API returns the reward options based on the available point balance provided  in the <a href="../search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> API request. 
+  + If you do not provide this field, the API returns the reward options based on the available point balance provided  in the Initiate Activity Search API request. 
   + If you provide this field, the API returns the reward options based on the available point balance provided in the `Get Activity Search Results` API request.
 
 ## customerInfoResultsRQ
 + customerInfo (customerResults) - Contains information about the customer.
  Notes:
-  + If you do not provide this field, the API returns the reward options based on the available point balance provided in the <a href="../search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the `Initiate a Stand-Alone Activity Search` APIs request. 
+  + If you do not provide this field, the API returns the reward options based on the available point balance provided in the Initiate Activity Search or the `Initiate a Stand-Alone Activity Search` APIs request. 
   + If you provide this field, the API returns the reward options based on the available point balance provided in the `Get Activity Details Result` API request.
 
 ## customerResults
@@ -209,7 +209,7 @@ Notes:
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` - Name of the activity.  
 
 ## activityCategory
-+ categories (array [categoryInfo], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>. 
++ categories (array [categoryInfo], fixed-type) - Contains the list of categories to which the activity belongs.   
 
 ## categoryInfo
 + id: `20` - Unqiue ID for the category. 
@@ -275,7 +275,7 @@ Notes:
 + name: `California` - Name of the state. 
 
 ## countryCode
-+ countryCode: `US` - 2-character ISO code of the country. <a href="../reference-reads#countrycodes">Read more about valid country codes</a>.
++ countryCode: `US` - 2-character ISO code of the country.  
 
 ## summary
 + summary: `Enjoy all the theme parks, hotels, restaurants, shopping, dining and other destinations within the Anaheim Resort area with this multi-day transportation ticket. Whether you want to go to the theme parks, do some shopping or sample some local cuisine you will be able to get there quickly and efficiently by eco-friendly bus! The routes include the cities of Anaheim, Garden Grove, Buena Park, Costa Mesa, Santa Ana and Orange and the tickets can be delivered to your hotel.` - Description of the activity.
@@ -344,7 +344,7 @@ Notes:
 + question: `Please pick me up at` - Contains the question that is displayed to the customer on the User Interface (UI) at the time of booking. 
 + sampleAnswer: `Holiday Inn Anaheim- Resort Area` - Sample answer that is displayed, as a reference, on the User Interface (UI).
 + id: `19` (number) - Unique ID that is assigned to the question.
-+ isMandatory: true (boolean) - Indicates whether the question is mandatory for the customer at the time of booking. If this field returns `true`, then you must provide question ID returned in the `bookingQuestions[]/id` field in the `questionAnswers[]/questionId` field in the <a href="../check-out#initiateBook" target="_blank">Initiate Booking</a> API request. For more information on how the `isMandatory` field value affects the `Initiate Booking` API request, see the `/bookingInfo/questionAnswers` field description in the `Initiate Booking` API request.
++ isMandatory: true (boolean) - Indicates whether the question is mandatory for the customer at the time of booking. If this field returns `true`, then you must provide question ID returned in the `bookingQuestions[]/id` field in the `questionAnswers[]/questionId` field in the Initiate Booking API request. For more information on how the `isMandatory` field value affects the `Initiate Booking` API request, see the `/bookingInfo/questionAnswers` field description in the `Initiate Booking` API request.
 + sortOrder: `1` (number) - Indicates the order index used for displaying the question.
 + questionCategory: `Pickup Location` - Contains the category to which this question belongs. 
 
@@ -363,7 +363,7 @@ Notes:
 + include breakup
 
 ## currencyDSFare
-+ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFareStartsFrom`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team.
++ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFareStartsFrom`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team.
 
 ## isRefundable
 + isRefundable: true (boolean) - Indicates whether the fare is refundable.  
@@ -448,7 +448,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + totalPurchaseUnits: `1` (number) - Total number of rewards that the customer can avail to pay for the booking.
 
 ## cashCurrency
-+  cashCurrency: `USD` - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. For example, if the `currency` is set to `USD`, then the `cash` amounts are returned in the `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads/#supported-currencies">ISO currencies</a>.
++  cashCurrency: `USD` - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. For example, if the `currency` is set to `USD`, then the `cash` amounts are returned in the `USD` amount equivalents. We support all ISO currencies.
 
 ## pointsCurrency
 + pointsCurrency: `Points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. Note that the `points` field value is represented by this currency.
@@ -460,7 +460,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + id: `1482|1` - Unique ID for the reward.
 + name: `Activity Reward` - Name of the reward.
 + rank: `10` - Rank assigned to the reward. This can be used to display the reward options on the User Interface (UI), based on the reward ranking.
-+ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. <a href='../reference-reads#TypesOfRewards' target='_blank'>Read more about the different types of rewards</a>.
++ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward.  
   + Dollars_Off_Incremental
   + Dollars_Off
   + FixedTicketPrice_TieredFTP
@@ -480,7 +480,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + id: `1482|1` - Unique ID for the reward.
 + name: `Activity Reward` - Name of the reward.
 + rank: `10` - Rank assigned to the reward. This can be used to display the reward options on the User Interface (UI), based on the reward ranking.
-+ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. <a href='../reference-reads#TypesOfRewards' target='_blank'>Read more about the different types of rewards</a>.
++ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. 
   + Dollars_Off_Incremental
   + Dollars_Off
   + FixedTicketPrice_TieredFTP
@@ -753,17 +753,17 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + include passengerActivityDetails 
 
 ## activityIdOptions
-+ activityId: `59521P1` (string,required) - Unique activity ID that identifies a specific activity for which you want to retrieve the list of available activity options. You must set the value for this field to the activity ID returned in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.
++ activityId: `59521P1` (string,required) - Unique activity ID that identifies a specific activity for which you want to retrieve the list of available activity options. You must set the value for this field to the activity ID returned in the  Get Activity Details Result API response.
 
 ## activityDate 
-+ activityDate : `{date|YYYY-MM-DD|30}` (string, required) - Date for which the traveler wants to book the activity for. You must set the value for this field to one of the available dates for the activity returned within the `/activity[]/availableOn` array in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response. Format:YYYY-MM-DD
++ activityDate : `{date|YYYY-MM-DD|30}` (string, required) - Date for which the traveler wants to book the activity for. You must set the value for this field to one of the available dates for the activity returned within the `/activity[]/availableOn` array in the  Get Activity Details Result API response. Format:YYYY-MM-DD
 
 ## passengerActivityDetails
 + passengerDetails (array [passengerDetails], required, fixed-type) - Contains the list of information about the travelers, based on which you want to retrieve the list of activity options.  Consider a scenario where you want to retrieve the list of activity options for 3 travellers, 2 Adults and 1 Child. In this scenario, you must provide two objects in the `passengerDetails` array, one object which provides the count and traveler information for both the `Adult` travelers and another object which provides the count and traveler information for the `Child` traveler.
 
 ## passengerDetails
-+ count: 1 (number, required) - Number of travelers of a specific `type`.  Note that the count set for a specific traveler `type` must be between the `paxTypeInfo[]/minQty` and the `paxTypeInfo[]/maxQty` returned within the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.
-+ ages :`20` (array [number], fixed-type) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array. Note that the `ages` set for a specific traveler `type` must be between the `paxTypeInfo[]/minAge` and the `paxTypeInfo[]/maxAge` returned within the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response. 
++ count: 1 (number, required) - Number of travelers of a specific `type`.  Note that the count set for a specific traveler `type` must be between the `paxTypeInfo[]/minQty` and the `paxTypeInfo[]/maxQty` returned within the  Get Activity Details Result API response.
++ ages :`20` (array [number], fixed-type) - Age of travelers of a specific `type`. For example, if the `count` field value is set to `2` for traveler type `Adult`, then you must provide the age of two adult travelers in the `ages` array. Note that the `ages` set for a specific traveler `type` must be between the `paxTypeInfo[]/minAge` and the `paxTypeInfo[]/maxAge` returned within the  Get Activity Details Result API response. 
 + type: `Adult` (enum, required) - Type of traveler. 
     + Adult 
     + Child
@@ -812,7 +812,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 ## customerInfoOptionsRQ
 + customerInfo (customerResults) - Contains information about the customer.
  Notes:
-  + If you do not provide this field, the API returns the reward options based on the available point balance provided in the <a href="../search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a>, or the <a href="../details#standalone" target="_blank">Initiate a Stand-Alone Activity Search</a> APIs request. 
+  + If you do not provide this field, the API returns the reward options based on the available point balance provided in the Initiate Activity Search, or the Initiate a Stand-Alone Activity Search APIs request. 
   + If you provide this field, the API returns the reward options based on the available point balance provided in the `Get Activity Options Search Results` API request.
 
 ## optionsresultsResponse
@@ -855,7 +855,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + include offers
 
 ## allPaxRequired
-+ allPaxRequired: true (boolean) -  If the `allPaxRequired` field returns `true`, then the information for all the travelers is required within the `/bookingInfo/passengers` array of the <a href="../check-out#initiateBook" target="_blank">Initiate Booking</a> API request. If `allPaxRequired` field returns `false`, then the traveler information for atleast one `Adult` traveler is required within the `/bookingInfo/passengers` array in the `Initiate Booking` API request. For more information on how the `allPaxRequired` field value affects the `Initiate Booking` API request, see the scenarios provided in the `/bookingInfo/passengers` array in the `Initiate Booking` API request. 
++ allPaxRequired: true (boolean) -  If the `allPaxRequired` field returns `true`, then the information for all the travelers is required within the `/bookingInfo/passengers` array of the Initiate Booking API request. If `allPaxRequired` field returns `false`, then the traveler information for atleast one `Adult` traveler is required within the `/bookingInfo/passengers` array in the `Initiate Booking` API request. For more information on how the `allPaxRequired` field value affects the `Initiate Booking` API request, see the scenarios provided in the `/bookingInfo/passengers` array in the `Initiate Booking` API request. 
 
 ## options 
 + options (array [optionsResp], fixed-type) - Contains the list of available options for the activity and their details, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
@@ -877,7 +877,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + desc: `1-Day Ticket` - Description of the option. 
 
 ## optionRate
-+ rate (rateInfo) - Contains information about the rate for the activity option, such as the rate ID, the fare (including fees, taxes, markup one, and discounts), and the available reward options. Note that the rate for an activity option may vary if the activity date and the traveler details, specified in the <a href="../options">Initiate Options Search</a> API request, are changed.
++ rate (rateInfo) - Contains information about the rate for the activity option, such as the rate ID, the fare (including fees, taxes, markup one, and discounts), and the available reward options. Note that the rate for an activity option may vary if the activity date and the traveler details, specified in the Initiate Options Search API request, are changed.
 
 ## rateInfo
 + include rateId
@@ -894,7 +894,7 @@ Note: The baseFare amount does not include the discount, taxes, fees, markup one
 + displayFare (displayOps) - Contains information about the fare, along with the various breakup components that make up the fare for the activity. This fare is displayed to the customer on the User Interface (UI). 
  
 ## currencyDSOptFare
-+ currency: `USD` (string) - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team.
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team.
 
 ## displayOps
 + include totalFare
@@ -931,8 +931,8 @@ Note:The `baseFare` amount does not include the discount, taxes, fees, markup on
   
 
 ## windowInfo
-+ start: `2019-06-13T00:00:00` - Start date and time for the window. Format: YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
-+ end: `2019-06-15T00:00:00` - End date and time for the window. Format: YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ start: `2019-06-13T00:00:00` - Start date and time for the window. Format: YYYY-MM-DDTHH:MM:SS  
++ end: `2019-06-15T00:00:00` - End date and time for the window. Format: YYYY-MM-DDTHH:MM:SS  
             
 <!-- Activity Cart Specific structure-->
 
@@ -944,13 +944,13 @@ Note:The `baseFare` amount does not include the discount, taxes, fees, markup on
 + include customerInfo
 
 ## programIdActivity
-+ programId: `docs` (string, required) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. You must set the same `programId` that you provided in the <a href="../search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the <a href="../details#standalone" target="_blank">Initiate a Stand-Alone Activity Search</a> APIs request. 
++ programId: `docs` (string, required) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. You must set the same `programId` that you provided in the Initiate Activity Search or the Initiate a Stand-Alone Activity Search APIs request. 
 
 ## currencyCartRQActivity
-+ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve the monetary amounts for the cart. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team. Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`. Note: If the amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
++ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve the monetary amounts for the cart. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team. Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`. Note: If the amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
 
 ## pointsCurrencyReq
-+ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. You can obtain this information from the `rate/purchaseOption/pointsCurrency` field returned within the `/activity/options` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> API response. 
++ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. You can obtain this information from the `rate/purchaseOption/pointsCurrency` field returned within the `/activity/options` array in the Get Activity Options Search Results API response. 
 Notes: 
   + The `points` field value is represented by this currency. 
   + If you provide the `points` field in the  `/item/paymentOptions` array, then the `pointsCurrency` field must be provided in the request.  
@@ -970,12 +970,12 @@ Notes:
 + productType: `Activity` (string, required) - Text
 
 ## productIdAddToCartActivity
-+ productId: `aa0123aa-12z3-1234-8f12-1236374qwz1` (string, required) - Unique ID for the product for which you want to obtain the latest price. The `productId` must map with the one of the rate IDs (rate/id field) returned within the `/activity/options` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank"> Get Activity Options Search Results</a> API response.
++ productId: `aa0123aa-12z3-1234-8f12-1236374qwz1` (string, required) - Unique ID for the product for which you want to obtain the latest price. The `productId` must map with the one of the rate IDs (rate/id field) returned within the `/activity/options` array in the Get Activity Options Search Results API response.
 
 ## quotedFareAddToCartActivity
-+ quotedPrice (quotedFareObjectActivity) - Contains information about the fare for the activity. This is the activity fare returned in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> API response. 
++ quotedPrice (quotedFareObjectActivity) - Contains information about the fare for the activity. This is the activity fare returned in the Get Activity Options Search Results API response. 
   Notes:
-    + The `quotedPrice` is an optional field. You can obtain the `quotedPrice` from the `/rate/displayFare/totalFare` field returned within the `options` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank"> Get Activity Options Search Results</a> API response.
+    + The `quotedPrice` is an optional field. You can obtain the `quotedPrice` from the `/rate/displayFare/totalFare` field returned within the `options` array in the Get Activity Options Search Results API response.
     + If you want to know whether the price of the item (activity option) has changed, you must provide the `quotedPrice` in the request. If there is any change in the price after the search results are retrieved, an error message along with the latest price is returned. In this case, you must use the latest fare amount returned in the response and call the `Get Price Using Cart` API again.
 
 ## quotedFareObjectActivity
@@ -993,9 +993,9 @@ Notes:
   + If you do not provide this field, then the `pointsCurrency` and the `points` fields are not returned in the response. 
 
 ## paymentOptionsObjectActivity
-+ rewardId: `5256|5` (string, required) - Unique ID for the reward that is availed to pay for the activity. The `rewardId` must map with one of the IDs returned within the `purchaseOption/rewards` array in the  <a href="../options#GetActivityOptionsResultsAPI" target="_blank"> Get Activity Options Search Results</a> API response.
-+ amount: 258.03 (number) - Cash component of the activity fare that the customer must pay to book the activity. You can obtain this information from the `rewards[]/recommendation/cash` field returned within the `rate/purchaseOption` object in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank"> Get Activity Options Search Results</a> API response. Format: Decimal<br 
-+ points: 10000 (number) - Number of points that the customer must redeem to book the activity. You can obtain this information from the `rewards[]/recommendation/points` field returned within the `rate/purchaseOption` object in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank"> Get Activity Options Search Results</a> API response. 
++ rewardId: `5256|5` (string, required) - Unique ID for the reward that is availed to pay for the activity. The `rewardId` must map with one of the IDs returned within the `purchaseOption/rewards` array in the  Get Activity Options Search Results API response.
++ amount: 258.03 (number) - Cash component of the activity fare that the customer must pay to book the activity. You can obtain this information from the `rewards[]/recommendation/cash` field returned within the `rate/purchaseOption` object in the Get Activity Options Search Results API response. Format: Decimal<br 
++ points: 10000 (number) - Number of points that the customer must redeem to book the activity. You can obtain this information from the `rewards[]/recommendation/points` field returned within the `rate/purchaseOption` object in the Get Activity Options Search Results API response. 
 Notes: 
   + If the payment option selected by the customer for the activity option is to pay by points or by a combination of cash and points, then you must provide the `pointsCurrency` field. 
   + If the payment option selected by the customer for the activity option is to pay by cash, then do not provide the `points` field in the request. In case you provide the `points` field, then you must set the `points` field value to `0` and provide the `pointsCurrency` field in the request. Format: Decimal
@@ -1022,10 +1022,10 @@ Notes:
 + include updatedAtUtcRSActivity
 
 ## cartidRSActivity
-+ id: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique ID for the cart that contains the item for which you want to obtain the latest price. You must use this cart id as an identifier in subsequent API calls at a later point in time. For example, you must provide this `id` in the <a href="../check-out#initiatebook" target="_blank">Initiate Booking</a> API request.
++ id: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique ID for the cart that contains the item for which you want to obtain the latest price. You must use this cart id as an identifier in subsequent API calls at a later point in time. For example, you must provide this `id` in the Initiate Booking API request.
 
 ## currencyRSActivity
-+ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the monetary amounts are returned for the cart. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team. Note: If the amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the monetary amounts are returned for the cart. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team. Note: If the amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
 
 ## pointsCurrencyResp
 + pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. 
@@ -1086,7 +1086,7 @@ Notes:
 + itemRefId: (nullable) - Unique ID for the item on which the add on is dependent.
 
 ## isAvailableActivity
-+ isAvailable: true (boolean) - Indicates whether the rate of the requested item is available with the supplier. Note that if the `isAvailable` field returns `false`, you must not go ahead with the <a href="../check-out" target="_blank">Checkout</a> API call. In this scenario, you must initiate the search again and then call the `Get Price Using Cart` API.
++ isAvailable: true (boolean) - Indicates whether the rate of the requested item is available with the supplier. Note that if the `isAvailable` field returns `false`, you must not go ahead with the Checkout API call. In this scenario, you must initiate the search again and then call the `Get Price Using Cart` API.
 
 ## paymentOptionsRSActivity
 + paymentOptions (array[paymentOptionsObjectActivityRS]) - Contains the list of reward options that are availed to pay for the activity.
@@ -1114,15 +1114,15 @@ Notes:
 + chargePrice (chargeFareDetailsActivity) - Contains information about the cart total charged to the customer at the time of check out. Depending on the selected payment option, the cart total is returned in either cash, points, or a combination of cash and points in the `chargePrice` object. Note: In this scenario, where the cart contains a single item (activity option), the cart total is equivalent to the selling price of the single item (activity option).
 
 ## chargeFareDetailsActivity
-+ currency: `CAD` (string) - 3-character ISO code that indicates the currency in which the cart total is charged to the customer. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field value returns `USD` and the `chargePrice/currency` field returns `CAD`, then the `chargePrice` amount is returned in `CAD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team.
++ currency: `CAD` (string) - 3-character ISO code that indicates the currency in which the cart total is charged to the customer. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field value returns `USD` and the `chargePrice/currency` field returns `CAD`, then the `chargePrice` amount is returned in `CAD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team.
 + amount: 311.20 (number) - Cash component of the cart total that is charged to the customer in the `/chargePrice/currency`. Format: Decimal
 + points: 10000.0 (number) - Number of points that the customer must redeem to pay the cart total charged to the customer. The value in the `points` field is represented by the currency returned in the `pointsCurrency` field. Format: Decimal
 
 ## createdAtUtcRSActivity
-+ createdAtUtc: `2020-05-21T06:35:10Z` (string) - Date and time when the cart is created. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ createdAtUtc: `2020-05-21T06:35:10Z` (string) - Date and time when the cart is created. Format: YYYY-MM-DDTHH:MM:SSZ  
 
 ## updatedAtUtcRSActivity
-+ updatedAtUtc: `2020-05-22T06:35:10Z` (string) - Date and time when the cart is updated. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ updatedAtUtc: `2020-05-22T06:35:10Z` (string) - Date and time when the cart is updated. Format: YYYY-MM-DDTHH:MM:SSZ  
 
 ## getFetchPriceResponse
 + include sessionRS
@@ -1150,7 +1150,7 @@ Notes:
 + include allowedCreditCards
 
 ## allowedCreditCards
-+ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking. <a target="_blank" href="../reference-reads/#cardissuer">See the list of card issuer codes and their descriptions.</a>
++ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking.  
 
 ## optionsPrice
 + option (optionsPriceDetails) - Contains information about the selected activity option, along with the details of the option, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
@@ -1174,7 +1174,7 @@ Notes:
 + include purchaseOptionsOptionsRS
 
 ## currencyDSFarePrice
-+ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, please contact cxLoyalty Business Team.
++ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies If you want to configure multiple currencies, please contact cxLoyalty Business Team.
 
 ## initiateBookCartRequest
 + idempotencyToken: `123-456-789` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request.  Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted. Consider the following scenarios for the `idempotencyToken` field usage: 
@@ -1201,7 +1201,7 @@ Consider a scenario where you want to check out the same cart again and you pass
 
 ## bookCartInfo
 + passengers (array [passengerInfo], required, fixed-type) - Contains the list of information of travelers for whom the customer wants to book the activity option. 
-If the `allPaxRequired` field in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> API response returned `true`, the information for all the travelers is required within the `passengers` array of the `Initiate Booking` API request, which includes the traveler's type, name, and age. If you do not provide the required information, the booking fails. Note that the `age` field is mandatory for the child traveler and optional for the adult traveler. If the `allPaxRequired` field returns `false`, then the traveler information must be provided for atleast one `Adult` traveler or for a traveler who belongs to a traveler type for which `treatAsAdult` field is returned `true` in the Get Activity Details Result API response. 
+If the `allPaxRequired` field in the Get Activity Options Search Results API response returned `true`, the information for all the travelers is required within the `passengers` array of the `Initiate Booking` API request, which includes the traveler's type, name, and age. If you do not provide the required information, the booking fails. Note that the `age` field is mandatory for the child traveler and optional for the adult traveler. If the `allPaxRequired` field returns `false`, then the traveler information must be provided for atleast one `Adult` traveler or for a traveler who belongs to a traveler type for which `treatAsAdult` field is returned `true` in the Get Activity Details Result API response. 
 The sample scenarios for the implementation of the `passengers` array are provided below. 
 Scenario 1: 
 Consider a scenario where you want to book an activity for two travelers, one adult and one child.  
@@ -1219,14 +1219,14 @@ In this case, two objects must be provided in the `passengers` array, one object
 If the `allPaxRequired` field returned `false`: 
 In this case, only one object for an adult traveler must be provided in the `passengers` array. You must provide the traveler `type` and `name` for adult. The traveler's `age` is optional for adults. 
 <@ book_traveler_scenario_two_partial @> with only the required fields.
-+ bookingContact (bookingContactInfo, required) - Contains the name, contact information, nationality, and date of birth of the person who is making the booking. Note: The person who is making the booking must be an `Adult` traveler or must belong to a traveler `type` for which `treatAsAdult` field is returned `true` in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response.
++ bookingContact (bookingContactInfo, required) - Contains the name, contact information, nationality, and date of birth of the person who is making the booking. Note: The person who is making the booking must be an `Adult` traveler or must belong to a traveler `type` for which `treatAsAdult` field is returned `true` in the  Get Activity Details Result API response.
 + paymentOptions (array [paymentOptionsBook], required, fixed-type) - Contains the list of reward options that you want to avail to pay for the activity.  
  Notes: 
-  + You must provide either the payment option returned within the `/items[]/paymentOptions` array in the <a href="../price#CreateCartWIthAnItem" target="_blank">Get Price Using Cart</a> API response or one of the payment options returned within the `purchaseOption/rewards` array in the <a href="../price#fetchapi" target="_blank">Get Product Details</a> API response.
+  + You must provide either the payment option returned within the `/items[]/paymentOptions` array in the Get Price Using Cart API response or one of the payment options returned within the `purchaseOption/rewards` array in the Get Product Details API response.
   + In case of activity bookings, you must provide `only` one reward option within the `/paymentOptions` array.
   + Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
 + specialRequest: `Please arrange a wheelchair` - Contains information about any special requests that is made, with respect to the activity, at the time of booking. 
-+ questionAnswers (array [questionAnsInfo], fixed-type) - Contains the list of optional and mandatory questions for the customer to answer, at the time of booking.  You must obtain the list of questions from the `bookingQuestions` array. To know whether the question is mandatory or not, see the `isMandatory` field returned within the `bookingQuestions` array in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Activity Options Search Results</a> or the <a href="../price#fetchapi" target="_blank">Get Product Details</a> APIs response 
++ questionAnswers (array [questionAnsInfo], fixed-type) - Contains the list of optional and mandatory questions for the customer to answer, at the time of booking.  You must obtain the list of questions from the `bookingQuestions` array. To know whether the question is mandatory or not, see the `isMandatory` field returned within the `bookingQuestions` array in the Get Activity Options Search Results or the Get Product Details APIs response 
 Note: If the `bookingQuestions` array does not contain any mandatory questions, then the `questionAnswers` array is an optional field in the API request. 
 + include reportingFields
 
@@ -1247,7 +1247,7 @@ Note: If the `bookingQuestions` array does not contain any mandatory questions, 
 + unit: `points` (string, required)  - Indicates the currency that is associated with the loyalty program. For example, points and miles. 
 
 ## passengerName
-+ name (namePassenger) - Contains information about the name of the traveler. Note: If the `allPaxRequired` field returns `true` in the <a href="../price#fetchapi" target="_blank">Get Product Details</a> API response, then you must provide the `first` name and the `last` name of the traveler.
++ name (namePassenger) - Contains information about the name of the traveler. Note: If the `allPaxRequired` field returns `true` in the Get Product Details API response, then you must provide the `first` name and the `last` name of the traveler.
 
 ## passengerInfo
 + include passengerType 
@@ -1277,7 +1277,7 @@ Note: If the `bookingQuestions` array does not contain any mandatory questions, 
 + suffix: `Jr` - Suffix that follows the name.
 
 ## agePassenger
-+ `age`: 35 (number) - Age of traveler. The age must be provided for a child traveler. A traveler's age must be between the minimum (minAge field) and maximum (maxAge field) age that is specified for the activity in the <a href="../details#GetActivityDetailsResultsAPI" target="_blank">Get Activity Details Result</a> API response. 
++ `age`: 35 (number) - Age of traveler. The age must be provided for a child traveler. A traveler's age must be between the minimum (minAge field) and maximum (maxAge field) age that is specified for the activity in the  Get Activity Details Result API response. 
 
 ## bookingContactInfo
 + include nameBookContact 
@@ -1316,7 +1316,7 @@ Note: The phone number must not include the country code, area code, or the exte
 + line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
 + cityName: `San Francisco` (string, required) - Name of the city.
 + state (stateBookContact) - Contains information about the state. 
-+ countryCode: `US` (string, required) - 2-character ISO code of the country. <a target="_blank" href="../reference-reads#countrycodes">Read more about valid country codes.</a>
++ countryCode: `US` (string, required) - 2-character ISO code of the country.  
 + postalCode: `94133` (string)- Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code. 
 
 ## stateBookContact
@@ -1324,7 +1324,7 @@ Note: The phone number must not include the country code, area code, or the exte
 + name: `California` - Name of the state.
 
 ## questionAnsInfo 
-+ questionId: 19 (string) - Unique ID for the question. You must obtain the `questionId` from the `bookingQuestion[]/id` field returned in the <a href="../options#GetActivityOptionsResultsAPI" target="_blank">Get Options Search Results</a> or the <a href="../price#fetchapi" target="_blank">Get Product Details</a> APIs response. 
++ questionId: 19 (string) - Unique ID for the question. You must obtain the `questionId` from the `bookingQuestion[]/id` field returned in the Get Options Search Results or the Get Product Details APIs response. 
 + answer: `Yes` (string) - Response to the question. 
 
 ## agentInfo
@@ -1401,8 +1401,8 @@ Notes:
 ## cardInfo
 + number: `5555555555554444` (string, required) - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
 + holderName: `John Doe` (string, required) - Name on the credit card that is used for the payment.
-+ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). <a href="https://en.wikipedia.org/wiki/Card_security_code" target="_blank">Read more about CVV/CSC.</a>
-+ issuedBy: `VI` (enum, required) -  Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>. Note that the card issuer set in the `issuedBy` field must match with one of the allowed credit card issuers returned in the `/activity/bookingRequirements/allowedCreditCards` array in the <a href="../price#fetchapi" target="_blank">Get Product Details</a> API response.
++ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). 
++ issuedBy: `VI` (enum, required) -  Card issuer. Note that the card issuer set in the `issuedBy` field must match with one of the allowed credit card issuers returned in the `/activity/bookingRequirements/allowedCreditCards` array in the Get Product Details API response.
   + VI
   + CA
   + AX
@@ -1518,7 +1518,7 @@ Notes:
 + lastUpdatedOn: `2020-03-21T06:35:10.864Z` - Date and time when the booking is last updated. Format:YYYY-MM-DDTHH:MM:SSZ
 
 ## searchRequest
-+ searchRequest (searchReqInfo) - Contains information about the search criteria that were provided in the <a href="../search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the <a href="../details#standalone" target="_blank">Initiate Stand-alone Activity Search</a> API request.
++ searchRequest (searchReqInfo) - Contains information about the search criteria that were provided in the Initiate Activity Search or the Initiate Stand-alone Activity Search API request.
 
 ## searchReqInfo
 + include currencyRQ
@@ -1529,9 +1529,9 @@ Notes:
 ## searchQueryRS
 + searchQuery (searchQueryInfo) - Contains the list of search criteria that is used to search for activities. The `searchQuery` object contains the information about the geo region and the date range within which the customer wants to search for activities.
  Notes 
-  + Depending on the type of search (<a href="../search#radial" target="_blank">radial search</a> or <a href="../details#standalone" target="_blank">stand-alone activity search</a>) that you perform, the information returned within the `searchQuery` object is different.
-  + If you performed a <a href="../search#radial" target="_blank">radial activity search</a>, then the `searchQuery/bounds` object contains the geographic coordinates of the center point and the radius within which the search for activities is requested.
-  + If you performed a <a href="../details#standalone" target="_blank">stand-alone activity search</a>, then the `searchQuery` object contains the activity ID and the date range between which the search for the activity is requested.
+  + Depending on the type of search radial search or stand-alone activity search that you perform, the information returned within the `searchQuery` object is different.
+  + If you performed a radial activity search, then the `searchQuery/bounds` object contains the geographic coordinates of the center point and the radius within which the search for activities is requested.
+  + If you performed a stand-alone activity search, then the `searchQuery` object contains the activity ID and the date range between which the search for the activity is requested.
 
 ## searchQueryInfo
 + passengerDetails (array [passengerDetailsRS], fixed-type) -  Contains the list of information about the travelers based on which you want to retrieve the list of activity options.  Consider a scenario where you retrieved activity options for three travellers, 2 Adults and 1 Child. In this scenario, the `passengerDetails` array contains two objects,one object which returns the count and traveler information for both the `Adult` travelers and another object which returns the count and traveler information for the `Child` traveler.
@@ -1738,8 +1738,8 @@ Note: The phone number must not include the country code, area code, or the exte
 ## cardInfoRS
 + number: `5555555555554444` (string) - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
 + holderName: `John Doe` (string) - Name on the credit card that is used for the payment.
-+ cvv: `123` (string) - Three or four-digit card verification value (CVV) or card security code (CSC). <a href="https://en.wikipedia.org/wiki/Card_security_code" target="_blank">Read more about CVV/CSC.</a>
-+ issuedBy: `VI` (enum) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>. 
++ cvv: `123` (string) - Three or four-digit card verification value (CVV) or card security code (CSC).
++ issuedBy: `VI` (enum) - Card issuer.  
   + VI
   + CA
   + AX
@@ -1784,14 +1784,14 @@ Notes:
 + cancellationDetails (cancellationDetailsRS) - Contains the cancellation details of the activity booking.
 
 ## bookingDetailsInfo
-+ bookingTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is completed. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ bookingTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is completed. Format: YYYY-MM-DDTHH:MM:SSZ 
 + include supplierConfirmationNumber
 + cancellationToken:`268063245` - Cancellation token received from the supplier that is required to cancel the activity booking. Note that this information is supplier-specific, which means that some suppliers might provide a `cancellationToken` while some suppliers do not provide a `cancellationToken`.
 + errors (array [errorsBookings], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the booking fails, the `errors` array lists the appropriate error message.
 + warnings (array [warningsBookings], fixed-type) - Contains the list of warnings that appear during the booking process. 
 
 ## cancellationDetailsRS
-+ cancellationTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is canceled. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> 
++ cancellationTimestamp: `2018-03-21T06:35:10.864Z` - Date and time when the activity booking is canceled. Format: YYYY-MM-DDTHH:MM:SSZ 
 + include supplierCancellationNumber
 + errors (array [errorsCancel], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error message.
 + warnings (array [warningsCancel], fixed-type) - Contains the list of warnings that appear during the cancellation process.
@@ -1848,7 +1848,7 @@ Notes:
 + activityNames (activityNamesFilter) - Contains the URL to retrieve the list of activity name suggestions from the search result set. 
 + price (activityPriceFilter) - Contains the filter data for the price filter. This filter data includes the `minPrice` and `maxPrice` value.
 + categories (activityCategoriesFilter) - Contains the filter data for the categories filter. This filter data includes the list of categories and the activity count for each category.
-+ tripAdvisorRating (tripAdvisorRatingFilter) - Contains the filter data for the <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a> rating filter. This filter data includes the list of TripAdvisor&reg; ratings and the activity count for each rating.
++ tripAdvisorRating (tripAdvisorRatingFilter) - Contains the filter data for the TripAdvisor rating filter. This filter data includes the list of TripAdvisor&reg; ratings and the activity count for each rating.
 
 ## activityNamesFilter
 + getUrl: `https://activity-loyalty.stage.cnxloyalty.com/activity/v1.0/filter-data/{sessionId}/activities?q={query}` - URL to retrieve the list of activity names from the search result set. The URL is valid for `60` minutes from the time the activity search is initiated. You can retrieve the list of activity name suggestions by calling the `Get Activity Name Suggestions` API.
@@ -1856,14 +1856,14 @@ Notes:
 ## activityPriceFilter 
 + minPrice: 224.10 (number) - Fare of the lowest priced activity that is returned in the search result set. Format: Decimal  
 + maxPrice: 1797.02 (number) - Fare of the highest priced activity that is returned in the search result set. Format: Decimal 
-+ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD, then the `minPrice` and `maxPrice` amounts are returned in their USD amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD, then the `minPrice` and `maxPrice` amounts are returned in their USD amount equivalents. We support all ISO currencies If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
 
 ## activityCategoriesFilter 
 + items (array [itemCategoriesInfo], fixed-type) - Contains the list of categories-related filter data. 
 
 ## itemCategoriesInfo 
 + name: `Outdoor Activities` (string) - Name of the activity category.
-+ value: `9`(string) - Category ID. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.
++ value: `9`(string) - Category ID.  
 + count: 25 (number) - Count of activities that belong to category returned in the `categories/items[]/name` field. 
 + include minPriceCategories
 
@@ -1871,7 +1871,7 @@ Notes:
 + minPrice: 500.00 (number) - Fare of the lowest priced activity from the list of activities that belong to the category returned in the `categories/items[]/name` field. Format: Decimal
 
 ## tripAdvisorRatingFilter 
-+ items (array [itemtripAdvisorRatingInfo], fixed-type) - Contains the list of <a target="_blank" href="http://www.tripadvisor.com/">TripAdvisor&reg;</a> rating filter data. 
++ items (array [itemtripAdvisorRatingInfo], fixed-type) - Contains the list of TripAdvisor rating filter data. 
 
 ## itemtripAdvisorRatingInfo 
 + name: `5` (string) - Name of the TripAdvisor&reg; rating.  
@@ -2468,7 +2468,7 @@ Notes:
   + < Stateless >
 
 ## searchRequestOrderReq
-+ searchRequest (searchRequestInfoOrderReq, required) - Contains information about the search criteria that were provided in the <a href="..\search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the <a href="..\details#standalone" target="_blank">Initiate a Stand-Alone Activity Search</a>  API request at time of search.
++ searchRequest (searchRequestInfoOrderReq, required) - Contains information about the search criteria that were provided in the Initiate Activity Search or the Initiate a Stand-Alone Activity Search  API request at time of search.
 
 ## searchRequestInfoOrderReq
 + include currencyOrderReq 
@@ -2477,7 +2477,7 @@ Notes:
 + include programIdOrderReq 
 
 ## currencyOrderReq
-+ currency: `USD` (string) - 3-character ISO code that indicates the currency that was specified in the search request. <a target="_blank" href="/orxe/activity/current/reference-reads/#supported-currencies">See the list of supported of ISO currencies</a>. 
++ currency: `USD` (string) - 3-character ISO code that indicates the currency that was specified in the search request.  
 Note: If you do not provide this field, the `currency` field is not returned in the API response.
 
 ## searchQueryOrderReq
@@ -2542,13 +2542,13 @@ Notes:
 + maxPrice: 1000.00 (number) - Include only those activities whose  rate is equal to or lower than the rate specified in this field. Format: Decimal
 
 ## categoryFilterOrderReq
-+ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.
++ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter.  
 
 ## tripAdvRatingFilterOrderReq
 + tripAdvisorRating: `1`,`2`, `3`, `4`, `5` (array) - Include only those activities whose TripAdvisor&reg; rating is equal to the TripAdvisor&reg; rating specified in this field. 
 
 ## allowedCountryOrderReq
-+ allowedCountry: `US` (string) - Include only those activities that belong to the country (<a target="_blank" href="../reference-reads#countrycodes">2-character ISO country code</a>) specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
++ allowedCountry: `US` (string) - Include only those activities that belong to the country character ISO country code specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
 
 ## customerInfoOrderReq
 + customerInfo (customerDetailsOrderReq) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with. Note: If you do not provide this field, then the `customerInfo` field is not returned in the API response. 
@@ -2611,7 +2611,7 @@ Note: If you provide the `activity` object, then you must provide the activity n
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` (string, required) - Name of the activity.
 
 ## activityCategoryOrderReq
-+ categories (array [categoryOrderReq], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>. Note: If you do not provide this field, then the `categories` array is not returned in the API response.
++ categories (array [categoryOrderReq], fixed-type) - Contains the list of categories to which the activity belongs.   Note: If you do not provide this field, then the `categories` array is not returned in the API response.
 
 ## categoryOrderReq
 + id: `20` (string) - Unqiue ID for the category. Note: If you do not provide this field, then the `id` field is not returned in the API response. 
@@ -2712,7 +2712,7 @@ Note: If you provide the `activity` object, then you must provide the activity n
 + code: `CA` (string) - 2-character state code. 
 
 ## countryCodeOrderReq
-+ countryCode: `US` (string) - 2-character ISO code of the country. <a href="../reference-reads#countrycodes">Read more about valid country codes</a>.
++ countryCode: `US` (string) - 2-character ISO code of the country.  
 
 ## summaryOrderReq
 + summary: `Enjoy all the theme parks, hotels, restaurants, shopping, dining and other destinations within the Anaheim Resort area with this multi-day transportation ticket. Whether you want to go to the theme parks, do some shopping or sample some local cuisine you will be able to get there quickly and efficiently by eco-friendly bus! The routes include the cities of Anaheim, Garden Grove, Buena Park, Costa Mesa, Santa Ana and Orange and the tickets can be delivered to your hotel.` (string) - Description of the activity. Note: If you do not provide this field, then the `summary` field is not returned in the API response. 
@@ -2831,7 +2831,7 @@ Note: If you provide the `activity` object, then you must provide the activity n
 + allPaxRequired: true (boolean) -  If the `allPaxRequired` field returns `true`, then the information for all the travelers is required at the time of booking. Note: If you do not provide this field, then the `allPaxRequired` field is set to `false`. 
 
 ## allowedCreditCardsOrderReq
-+ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking. <a target="_blank" href="../reference-reads/#cardissuer">See the list of card issuer codes and their descriptions.</a> Note: If you do not provide this field, then the `allowedCreditCards` array is returned as an empty array in the API response.
++ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking.   Note: If you do not provide this field, then the `allowedCreditCards` array is returned as an empty array in the API response.
 
 ## activityOptionOrderReq
 + option (optionOrderReq, required) - Contains information about the selected activity option, along with the details of the option, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
@@ -2878,7 +2878,7 @@ Note: If you provide the `activity` object, then you must provide the activity n
 + isRefundable: true (boolean) - Indicates whether the fare is refundable. Note: If you do not provide this field, then the `isRefundable` field is set to `false`.  
 
 ## currencyDSFareOrderReq
-+ currency: `USD` (string) - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. Note: If you do not provide this field, then the `currency` field is not returned in the API response.
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies Note: If you do not provide this field, then the `currency` field is not returned in the API response.
 
 ## displayFareOptionsOrderReq
 + displayFare (displayOpsOrderReq) - Contains information about the fare, along with the various breakup components that make up the fare for the activity. This fare is displayed to the customer on the User Interface (UI). Note: If you do not provide this field, then the `displayFare` object is not returned in the API response.
@@ -2953,7 +2953,7 @@ Notes:
 + fare (paxTypeFareOrderReq, required) - Contains information about the fare, along with the various breakup components that make up the fare for the activity. 
 
 ## paxTypeFareOrderReq
-+ currency: `USD` (string, required) -  3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ currency: `USD` (string, required) -  3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies
 + totalFare: 2.72 (number, required) - Contains the fare for the activity after considering the `breakup/baseFare`, `breakup/taxes`, `breakup/fees`, `breakup/discounts`, and `breakup/markups` amounts. Format: Decimal
 + breakUp (breakupPaxTypeFareOrderReq, required) - Contains information about various breakup components that make up the `fare/totalFare`.
 
@@ -2977,7 +2977,7 @@ Notes:
 + totalPurchaseUnits: `1` (number) - Total number of rewards that the customer can avail to pay for the activity booking. Note: If you do not provide this field, then the `totalPurchaseUnits` field value is set to `0`.   
 
 ## cashCurrencyOrderReq
-+  cashCurrency: `USD` (string) - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. <a target="_blank" href="/orxe/activity/current/reference-reads/#supported-currencies"> See the list of supported ISO currencies</a>. Note: If you do not provide this field, then the `cashCurrency` field is not returned in the API response.
++  cashCurrency: `USD` (string) - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field.   Note: If you do not provide this field, then the `cashCurrency` field is not returned in the API response.
 
 ## pointsCurrencyOrderReq
 + pointsCurrency: `Points` (string) - Indicates the currency that is associated with the loyalty program. For example, points and miles. Note that the `points` field value is represented by this currency. Note: If you do not provide this field, then the `pointsCurrency` field is not returned in the API response. 
@@ -2989,7 +2989,7 @@ Notes:
 + id: `1482|1` (string) -  Unique ID for the reward. Note: If you do not provide this field, then the `id` field is not returned in the API response. 
 + name: `Activity Reward` (string) - Name of the reward. Note: If you do not provide this field, then the `name` field is not returned in the API response. 
 + rank: `10` (string) - Rank assigned to the reward. This can be used to display the reward options on the User Interface (UI), based on the reward ranking. Note: If you do not provide this field, then the `rank` field is not returned in the API response.
-+ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. <a href='../reference-reads#TypesOfRewards' target='_blank'>Read more about the different types of rewards</a>. Note: If you do not provide this field, then the `type` field is not returned in the API response.
++ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. Note: If you do not provide this field, then the `type` field is not returned in the API response.
   + Dollars_Off_Incremental
   + Dollars_Off
   + FixedTicketPrice_TieredFTP
@@ -3072,8 +3072,8 @@ Notes:
 + window (windowInfoOrderReq) -  Window during which the penalty is applicable. Note: If you do not provide this field, then the `window` object is not returned in the API response. 
 
 ## windowInfoOrderReq
-+ start: `2019-06-13T00:00:00` - Start date and time for the window. Note: If you do not provide this field, then the `date` field is set to `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
-+ end: `2019-06-15T00:00:00` - End date and time for the window. Note: If you do not provide this field, then the `date` field is set to `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ start: `2019-06-13T00:00:00` - Start date and time for the window. Note: If you do not provide this field, then the `date` field is set to `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS  
++ end: `2019-06-15T00:00:00` - End date and time for the window. Note: If you do not provide this field, then the `date` field is set to `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS  
 
 ## isImmediateRefundNeededOrderReq
 + isImmediateRefundNeeded: true (boolean) - Indicates whether refund must be processed immediately on cancellation or not. If `isImmediateRefundNeeded` is set to `true`, this means that refund must be processed immediately on cancellation. Note: If you do not provide this field, then the `isImmediateRefundNeeded` field is set to `false`.     
@@ -3179,7 +3179,7 @@ Notes:
 + line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
 + cityName: `San Francisco` (string) - Name of the city.
 + state (stateBookContactOrderReq) - Contains information about the state.  
-+ countryCode: `US` (string) - 2-character ISO code of the country. <a target="_blank" href="../reference-reads#countrycodes">Read more about valid country codes.</a>
++ countryCode: `US` (string) - 2-character ISO code of the country.  
 + postalCode: `94133` (string)- Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code.
 
 ## stateBookContactOrderReq
@@ -3253,8 +3253,8 @@ Notes:
 + token: `skfwefh$@fkew0fwy32ryr$#8ffjn3` (string, required) - For internal use only.
 + number: `444433******1111` (string, required) - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
 + holderName: `John Doe` (string, required) - Name on the credit card that is used for the payment.
-+ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). <a href="https://en.wikipedia.org/wiki/Card_security_code" target="_blank">Read more about CVV/CSC.</a>
-+ issuedBy: `AX` (enum, required) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>. 
++ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). 
++ issuedBy: `AX` (enum, required) - Card issuer.  
   + VI
   + CA
   + AX
@@ -3293,7 +3293,7 @@ Notes:
 + confirmationDetails (confirmationInfoOrderReq) - Contains the confirmation details of the activity booking. Note: If you do not provide this field, then the `confirmationDetails` object is not returned in the API response.
 
 ## confirmationInfoOrderReq 
-+ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is completed. Note: If you do not provide this field, then the `bookingTimestamp` field value is set to `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is completed. Note: If you do not provide this field, then the `bookingTimestamp` field value is set to `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ  
 + include supplierConfirmationNumberOrderReq
 + include cancellationTokenOrderReq
 + alternateConfirmationDetails (array [alternateConfirmationInfo], fixed-type) - Contains the confirmation details of the activity booking from the supplier. Note: If you do not provide this field, then the `alternateConfirmationDetails` array is not returned in the API response.
@@ -3307,8 +3307,8 @@ Notes:
 + cancellationToken: null (string, nullable) - Cancellation token received from the supplier that is required to cancel the activity booking. Note: If you do not provide this field, then the `cancellationToken` field is not returned in the API response.
 
 ## errorsOrderReq
-+ code: `3434` - Code for the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
-+ message: `Error: Could not process the request due to network connectivity issues. Please try again.` - Error message text. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
++ code: `3434` - Code for the error.  
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` - Error message text.  
 
 ## warningsOrderReq
 + code: `4313` -  Code for the warning. 
@@ -3318,7 +3318,7 @@ Notes:
 + cancellationDetails (cancellationInfoOrderReq) -  Contains the cancellation details of the activity booking. Note: If you do not provide this field, then the `confirmationDetails` object is not returned in the API response.
 
 ## cancellationInfoOrderReq 
-+ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is canceled. Note: If you do not provide this field, then the `cancellationTimestamp` field value is set to `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>  
++ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` - Date and time when the activity booking is canceled. Note: If you do not provide this field, then the `cancellationTimestamp` field value is set to `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ    
 + include supplierCancellationNumberOrderReq
 + errors (array [errorsOrderReq], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages. Note: If you do not provide this field, then the `errors` array is not returned in the API response.
 + warnings (array [warningsOrderReq], fixed-type) - Contains the list of warnings that appear during the cancellation process. Note: If you do not provide this field, then the `warnings` array is not returned in the API response.
@@ -3382,7 +3382,7 @@ Notes:
 + line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information. 
 + cityName: `San Francisco` (string, required) - Name of the city.
 + state (stateCustomerInfoOrderReq, required) - Contains information about the state. Note: If the `countryCode` is set to `US`, `state` name is mandatory. For more information on US state codes, see the [state code list](http://pe.usps.com/text/pub28/28apb.htm). 
-+ countryCode: `US` (string, required) - 2-character ISO code of the country. <a href="../reference-reads#countrycodes">Read more about valid country codes</a>.
++ countryCode: `US` (string, required) - 2-character ISO code of the country.  
 + postalCode: `94133` (string, required) - Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code.
  
 ## stateCustomerInfoOrderReq
@@ -3431,10 +3431,10 @@ Notes:
 + sessionId: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique acknowledgement token that indicates that the request has been received and the processing has been initiated. The session ID is valid for 60 minutes from the time it is generated. Note: If you do not provide this field, at the time of order creation, then the `sessionId` field is not returned in the API response.
 
 ## createdOnDateOrderResp
-+ createdOn: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the order is created. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> 
++ createdOn: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the order is created. Format: YYYY-MM-DDTHH:MM:SSZ   
 
 ## lastUpdatedOnDateOrderResp
-+ lastUpdatedOn: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the order is last updated. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ lastUpdatedOn: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the order is last updated. Format: YYYY-MM-DDTHH:MM:SSZ  
 
 ## orderIdOrderResp
 + orderId: `123-456-789` (string) -  Unique ID to identify the order for the activity booking. The order ID is generated by the system and returned in the API response. 
@@ -3455,7 +3455,7 @@ Note: You must use this order ID to retrieve the order details, and to update th
   + stateless
 
 ## searchRequestOrderResp
-+ searchRequest (searchRequestInfoOrderResp) - Contains information about the search criteria that were provided in the <a href="..\search#InitiateSearchAPI" target="_blank">Initiate Activity Search</a> or the <a href="..\details#standalone" target="_blank">Initiate a Stand-Alone Activity Search</a>  API request at time of search.
++ searchRequest (searchRequestInfoOrderResp) - Contains information about the search criteria that were provided in the Initiate Activity Search or the Initiate a Stand-Alone Activity Search  API request at time of search.
 
 ## searchRequestInfoOrderResp
 + include currencyOrderResp 
@@ -3464,7 +3464,7 @@ Note: You must use this order ID to retrieve the order details, and to update th
 + include programIdOrderResp 
 
 ## currencyOrderResp
-+ currency: `USD` - 3-character ISO code that indicates the currency that was specified in the search request. <a target="_blank" href="/orxe/activity/current/reference-reads/#supported-currencies">See the list of supported of ISO currencies</a>. 
++ currency: `USD` - 3-character ISO code that indicates the currency that was specified in the search request.  
 Note: If you do not provide this field, at the time of order creation, the `currency` field is not returned in the API response.
 
 ## searchQueryOrderResp
@@ -3529,13 +3529,13 @@ Notes:
 + maxPrice: 1000.00 (number) - Include only those activities whose  rate is equal to or lower than the rate specified in this field. Format: Decimal
 
 ## categoryFilterOrderResp
-+ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>.
++ categories: `9`, `12`, `16`, `4` (array) - Include only those activities that belong to the categories specified in this field.  You must provide the IDs of the categories that are supported by the `categories` filter.  
 
 ## tripAdvRatingFilterOrderResp
 + tripAdvisorRating: `1`,`2`, `3`, `4`, `5` (array) - Include only those activities whose TripAdvisor&reg; rating is equal to the TripAdvisor&reg; rating specified in this field.  
 
 ## allowedCountryOrderResp
-+ allowedCountry: US - Include only those activities that belong to the country (<a target="_blank" href="../reference-reads#countrycodes">2-character ISO country code</a>) specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
++ allowedCountry: US - Include only those activities that belong to the country character ISO country code specified in this field. This filter is used when the specified radial search region spreads across different countries and you want to restrict the results to only one specific country. Consider a scenario where the georegion provided in the search criteria is located close to a country's borderline and the radius spans two countries, such as `France` and `Belgium`. In this scenario, if you want to restrict the results to `France`, you must set the `allowedCountry` field value to `FR`.
 
 ## customerInfoOrderResp
 + customerInfo (customerDetailsOrderResp) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with. Note: If you do not provide this field, at the time of order creation then the `customerInfo` field is not returned in the API response. 
@@ -3597,7 +3597,7 @@ Notes:
 + name: `Anaheim Resort Area Multi-Day Transportation Tickets` (string) - Name of the activity.
 
 ## activityCategoryOrderResp
-+ categories (array [categoryOrderResp], fixed-type) - Contains the list of categories to which the activity belongs. <a href="../reference-reads#categories" target="_blank">See the list of supported categories</a>. Note: If you do not provide this field, at the time of order creation, then the `categories` array is not returned in the API response.
++ categories (array [categoryOrderResp], fixed-type) - Contains the list of categories to which the activity belongs.   Note: If you do not provide this field, at the time of order creation, then the `categories` array is not returned in the API response.
 
 ## categoryOrderResp
 + id: `20` - Unqiue ID for the category. Note: If you do not provide this field, at the time of order creation, then the `id` field is not returned in the API response. 
@@ -3698,7 +3698,7 @@ Notes:
 + code: `CA` (string) - 2-character state code. 
 
 ## countryCodeOrderResp
-+ countryCode: `US` (string) - 2-character ISO code of the country. <a href="../reference-reads#countrycodes">Read more about valid country codes</a>.
++ countryCode: `US` (string) - 2-character ISO code of the country.  
 
 ## summaryOrderResp
 + summary: `Enjoy all the theme parks, hotels, restaurants, shopping, dining and other destinations within the Anaheim Resort area with this multi-day transportation ticket. Whether you want to go to the theme parks, do some shopping or sample some local cuisine you will be able to get there quickly and efficiently by eco-friendly bus! The routes include the cities of Anaheim, Garden Grove, Buena Park, Costa Mesa, Santa Ana and Orange and the tickets can be delivered to your hotel.` (string) - Description of the activity. Note: If you do not provide this field, at the time of order creation, then the `summary` field is not returned in the API response. 
@@ -3817,7 +3817,7 @@ Notes:
 + allPaxRequired: true (boolean) - If the `allPaxRequired` field returns `true`, then the information for all the travelers is required at the time of booking. Note: If you do not provide this field, at the time of order creation, then the `allPaxRequired` field is returned as `false`. 
 
 ## allowedCreditCardsOrderResp
-+ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking. <a target="_blank" href="../reference-reads/#cardissuer">See the list of card issuer codes and their descriptions.</a> Note: If you do not provide this field, at the time of order creation, then the `allowedCreditCards` array is returned as an empty array in the API response.
++ allowedCreditCards: `VI`, `MC`, `AX` (array) - Contains the list of credit card types that are accepted at the time of booking. Note: If you do not provide this field, at the time of order creation, then the `allowedCreditCards` array is returned as an empty array in the API response.
 
 ## activityOptionOrderResp
 + option (optionOrderResp, required) - Contains information about the selected activity option, along with the details of the option, such as the option name, description, the fare for the activity option, available purchase options, and the applicable cancellation policy. 
@@ -3864,7 +3864,7 @@ Notes:
 + isRefundable: true (boolean) - Indicates whether the fare is refundable. Note: If you do not provide this field, then the `isRefundable` field is returned as `false`.  
 
 ## currencyDSFareOrderResp
-+ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is returned as `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. Note: If you do not provide this field, at the time of order creation, then the `currency` field is not returned in the API response.
++ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is returned as `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies Note: If you do not provide this field, at the time of order creation, then the `currency` field is not returned in the API response.
 
 ## displayFareOptionsOrderResp
 + displayFare (displayOpsOrderResp) - Contains information about the fare, along with the various breakup components that make up the fare for the activity. This fare is displayed to the customer on the User Interface (UI). Note: If you do not provide this field, at the time of order creation, then the `displayFare` object is not returned in the API response.
@@ -3939,7 +3939,7 @@ Notes:
 + fare (paxTypeFareOrderResp) - Contains information about the fare, along with the various breakup components that make up the fare for the activity. 
 
 ## paxTypeFareOrderResp
-+ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. 
++ currency: `USD` - 3-character ISO code that indicates the currency in which monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then the `baseFare`, `discount`, `taxes`, and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies 
 + totalFare: 2.72 (number) - Contains the fare for the activity after considering the `breakup/baseFare`, `breakup/taxes`, `breakup/fees`, `breakup/discounts`, and `breakup/markups` amounts. Format: Decimal
 + breakup (breakupPaxTypeFareOrderResp) - Contains information about various breakup components that make up the `fare/totalFare`.
 
@@ -3963,7 +3963,7 @@ Notes:
 + totalPurchaseUnits: `1` (number) - Total number of rewards that the customer can avail to pay for the activity booking. Note: If you do not provide this field, at the time of order creation, then the `totalPurchaseUnits` field value is returned as `0`.   
 
 ## cashCurrencyOrderResp
-+  cashCurrency: `USD` - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field. <a target="_blank" href="/orxe/activity/current/reference-reads/#supported-currencies"> See the list of supported ISO currencies</a>. Note: If you do not provide this field, at the time of order creation, then the `cashCurrency` field is not returned in the API response.
++  cashCurrency: `USD` - 3-character ISO code that indicates the currency in which the cash amount is returned in the `cash` field.   Note: If you do not provide this field, at the time of order creation, then the `cashCurrency` field is not returned in the API response.
 
 ## pointsCurrencyOrderResp
 + pointsCurrency: `Points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. Note that the `points` field value is represented by this currency. Note: If you do not provide this field, then the `pointsCurrency` field is not returned in the API response. 
@@ -3975,7 +3975,7 @@ Notes:
 + id: `1482|1` - Unique ID for the reward. Note: If you do not provide this field, at the time of order creation, then the `id` field is not returned in the API response. 
 + name: `Activity Reward` - Name of the reward. Note: If you do not provide this field, at the time of order creation, then the `name` field is not returned in the API response. 
 + rank: `10` - Rank assigned to the reward. This can be used to display the reward options on the User Interface (UI), based on the reward ranking. Note: If you do not provide this field, at the time of order creation, then the `rank` field is not returned in the API response.
-+ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward. <a href='../reference-reads#TypesOfRewards' target='_blank'>Read more about the different types of rewards</a>. Note: If you do not provide this field, at the time of order creation, then the `type` field is not returned in the API response.
++ type: `Variable_TieredVariable_LAPF_HybridFTP` (enum) - Type of reward.   Note: If you do not provide this field, at the time of order creation, then the `type` field is not returned in the API response.
   + Dollars_Off_Incremental
   + Dollars_Off
   + FixedTicketPrice_TieredFTP
@@ -4058,8 +4058,8 @@ Notes:
 + window (windowInfoOrderResp) - Window during which the penalty is applicable. Note: If you do not provide this field, at the time of order creation, then the `window` object is not returned in the API response. 
 
 ## windowInfoOrderResp
-+ start: `2019-06-13T00:00:00` - Start date and time for the window. Note: If you do not provide this field, at the time of order creation, then the `date` field is returned as `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
-+ end: `2019-06-15T00:00:00` - End date and time for the window. Note: If you do not provide this field, at the time of order creation, then the `date` field is returned as `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ start: `2019-06-13T00:00:00` - Start date and time for the window. Note: If you do not provide this field, at the time of order creation, then the `date` field is returned as `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS  
++ end: `2019-06-15T00:00:00` - End date and time for the window. Note: If you do not provide this field, at the time of order creation, then the `date` field is returned as `0001-01-01T00:00:00`. Format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS  
 
 ## isImmediateRefundNeededOrderResp
 + isImmediateRefundNeeded: true (boolean) - Indicates whether refund must be processed immediately on cancellation or not. If `isImmediateRefundNeeded` returns as `true`, this means that refund must be processed immediately on cancellation. Note: If you do not provide this field, at the time of order creation, then the `isImmediateRefundNeeded` field is returned as `false`.  
@@ -4165,7 +4165,7 @@ Notes:
 + line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
 + cityName: `San Francisco` (string) - Name of the city.
 + state (stateBookContactOrderResp) - Contains information about the state.  
-+ countryCode: `US` (string) - 2-character ISO code of the country. <a target="_blank" href="../reference-reads#countrycodes">Read more about valid country codes.</a>
++ countryCode: `US` (string) - 2-character ISO code of the country.  
 + postalCode: `94133` (string)- Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code.
 
 ## stateBookContactOrderResp
@@ -4225,8 +4225,8 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + token: `skfwefh$@fkew0fwy32ryr$#8ffjn3` (string) - For internal use only. 
 + number: `444433******1111` (string) - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
 + holderName: `John Doe` (string) - Name on the credit card that is used for the payment.
-+ cvv: `***` (string) - Three or four-digit card verification value (CVV) or card security code (CSC). <a href="https://en.wikipedia.org/wiki/Card_security_code" target="_blank">Read more about CVV/CSC.</a> Note: The `cvv` value is returned as `***` as the API does not store the value. 
-+ issuedBy: `AX` (enum) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>.
++ cvv: `***` (string) - Three or four-digit card verification value (CVV) or card security code (CSC). Note: The `cvv` value is returned as `***` as the API does not store the value. 
++ issuedBy: `AX` (enum) - Card issuer. 
   + VI
   + CA
   + AX
@@ -4273,7 +4273,7 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + confirmationDetails (confirmationInfoOrderResp) - Contains the confirmation details of the activity booking. Note: If you do not provide this field, then the `confirmationDetails` object is not returned in the API response.
 
 ## confirmationInfoOrderResp 
-+ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: If you do not provide this field, at the time of order creation, then the `bookingTimestamp` field value is returned as `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: If you do not provide this field, at the time of order creation, then the `bookingTimestamp` field value is returned as `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ  
 + include supplierConfirmationNumberOrderResp
 + include cancellationTokenOrderResp
 + alternateConfirmationDetails (array [alternateConfirmationInfo], fixed-type) - Contains the confirmation details of the activity booking from the supplier. Note: If you do not provide this field, at the time of order creation, then the `alternateConfirmationDetails` array is not returned in the API response.
@@ -4287,8 +4287,8 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + cancellationToken: null (string, nullable) - Cancellation token received from the supplier that is required to cancel the activity booking. Note: If you do not provide this field, at the time of order creation, then the `cancellationToken` field is not returned in the API response.
 
 ## errorsOrderResp
-+ code: `3434` (string)- Code for the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
-+ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
++ code: `3434` (string)- Code for the error.  
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text.  
 
 ## warningsOrderResp
 + code: `4313` (string) - Code for the warning.
@@ -4298,7 +4298,7 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + cancellationDetails (cancellationInfoOrderResp) - Contains the cancellation details of the activity booking. Note: If you do not provide this field, at the time of order creation, then the `cancellationDetails` object is not returned in the API response.
 
 ## cancellationInfoOrderResp 
-+ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled. Note: If you do not provide this field, at the time of order creation, then the `cancellationTimestamp` field value is returned as `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>  
++ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled. Note: If you do not provide this field, at the time of order creation, then the `cancellationTimestamp` field value is returned as `0001-01-01T00:00:00Z`. Format: YYYY-MM-DDTHH:MM:SSZ    
 + include supplierCancellationNumberOrderResp
 + errors (array [errorsOrderResp], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  cancellation fails, the `errors` array lists the appropriate error messages. Note: If you do not provide this field, at the time of order creation, then the `errors` object is not returned in the API response.
 + warnings (array [warningsOrderResp], fixed-type) - Contains the list of warnings that appear during the cancellation process. Note: If you do not provide this field, at the time of order creation, then the `warnings` object is not returned in the API response.
@@ -4369,7 +4369,7 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + include customerOrderReq
 
 ## confirmationInfoReq 
-+ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: The `bookingTimestamp` field is optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: The `bookingTimestamp` field is optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
 + include supplierConfirmationNumberReq
 + include cancellationTokenReq
 + include alternateConfirmationDetails  
@@ -4392,8 +4392,8 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + cancellationToken: null (string, nullable) - Cancellation token received from the supplier to cancel the activity booking. If returned by the supplier, you must provide the `cancellationToken` in the `/confirmationDetails` object.
 
 ## errorsCancelOrderReq
-+ code: `3434` (string) - Code for the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
-+ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
++ code: `3434` (string) - Code for the error.  
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text.  
 
 ## warningsCancelOrderReq
 + code: `4313` (string) - Code for the warning.
@@ -4403,7 +4403,7 @@ Note: If you do not provide this field, at the time of order creation, then the 
 + cancellationDetails (cancellationInfoReq, required) - Contains the cancellation details of the activity booking. 
 
 ## cancellationInfoReq 
-+ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled. Note: The `cancellationTimestamp` field is optional only when the supplier returns error at the time of cancellation. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled. Note: The `cancellationTimestamp` field is optional only when the supplier returns error at the time of cancellation. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
 + include supplierCancellationNumberReq
 + errors (array [errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
 + warnings (array [warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the cancellation process.
@@ -4422,5 +4422,5 @@ Notes:<ul style="list-style-type:disc"> If the `/paymentMethods[]/type` field is
 + source: `Customer` (enum) - Indicates the source of payment.
   + Customer 
   + Supplier
-+ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the payment is made for the activity booking. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the payment is made for the activity booking. We support all ISO currencies
 + card (cardInfoSupplierOrderReq) - Contains information about the credit card that is used make the payment for the booking to the supplier. Note: You must provide the `card` object, when the `/paymentMethods[]/type` field is set to `Card`.
