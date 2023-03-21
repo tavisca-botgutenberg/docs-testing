@@ -1,1 +1,24 @@
+# <a class="hide-parent" name="applyorderlevelfees"></a>
+## Apply Fee [/api/cart/v2.0/{cartId}/fees/apply]
+The `Apply Fee` API allows you to apply additional fee. For example, <@ order_fee @>. The order fee is an adjustment that is only applied at the cart level and is considered in the <@ cart_total_popup @> (/price/amount field). 
 
+You must provide the ID of the cart, to which you want to apply the order fee, in the request URL. Also, you must provide the ID and type of fee that you want to apply in the request. 
+
+### Apply Fee [PUT]
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> to which you want to apply the order fee. 
+
++ Request applyOrderFees (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (applyOrderFeesRequest)
+
++ Response 200 (application/json)    
+    + Attributes (applyOrderFeesResp)
