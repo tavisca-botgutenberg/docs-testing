@@ -1,1 +1,27 @@
+# <a class="hide-parent" name="getBookDetails"></a>
+## Get Order Details [/api/cart/v1.0/order/{orderId}/get]
+The `Get Order Details` API allows you to retrieve the <@ order_popup @> details. For example, as an API consumer you may use this API to display the order summary on the User Interface (UI). 
 
+You must provide the `orderId` in the request URL. The API response returns an order summary that includes the information about the items booked, the voucher details, the breakup of the fare, and details of the applicable order fees, along with the list of point-based transactions and cash-based transactions made to purchase the items.
+
+# <a class="hide-parent" name="getorderdetailsapi"></a>
+### Get Order Details [GET]
+
++ Parameters
+    + orderId: `2gbxku3lmgw` (string, required) - Unique ID for the <@ order_popup @> for which you want to retrieve the order details. 
+ 
++ Request getOrderDetails (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+
++ Response 200 (application/json)
+    + Attributes (getOrderDetailsResponse)
+<br><br>
+<a href="../price">&lt;&lt; Go to the previous API: Manage Cart API</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../reference-reads">Go to the Reference Reads page &gt;&gt;</a>
