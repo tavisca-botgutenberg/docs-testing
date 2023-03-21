@@ -1,1 +1,26 @@
+## <a class="hide-parent" name="waiveChargesapi"></a>
+## Waive Charges [/api/cart/v2.0/{cartId}/waivecharges]
+The `Waive Charges` API allows you to waive the adjustment charges, such as <@ order_fee @> and <@ reward_fee @>.
 
+You must provide the ID of the cart, from which you want to waive the adjustment charges, in the request URL. Also, you must provide the <@ cart_currency_popup @> and the ID of the adjustment that you want to remove in the request. 
+
+### Waive Charges [PUT]
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> for which you want to waive the adjustment charges, such as <@ reward_fee @> and <@ order_fee @>.   
+
++ Request waiveChargesReq (application/json)
+    + Headers
+
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+
+    + Attributes (array [waiveChargesRequest])
+
++ Response 200 (application/json)    
+    + Attributes (waiveChargesResp)
