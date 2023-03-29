@@ -833,12 +833,12 @@ In this example, we have provided the sample promo code `Cart_4_100`, which appl
 
 ## initiateBookSingleItemRequest
 + include idempotencyToken
-+ items (array [itemBookInfo0], required) - Contains the list of the items in the <@ cart_popup @> that you want to book.<br><br>Consider a scenario where you want to book a single item, a car rental option. In this scenario, you must provide one object in the `items` array, which provides the item ID and booking details for the car rental option.
-+ customer (customerBookInfo, required) - Contains information about the <@ customer_popup @>.
++ items (array [itemBookInfo0], required) - Contains the list of the items in the cart that you want to book. Consider a scenario where you want to book a single item, a car rental option. In this scenario, you must provide one object in the `items` array, which provides the item ID and booking details for the car rental option.
++ customer (customerBookInfo, required) - Contains information about the customer.
 + purchaseId: `12345` (string, required) - Unique ID for the booking. You must provide this ID to track all the booking-related transactions across different systems within cxLoyalty. The `purchaseId` is required when you contact the cxLoyalty Customer Service.
-+ agent (agentInfo, required) - Contains information about the <@ agent_popup @>.
++ agent (agentInfo, required) - Contains information about the agent.
 + formOfPayment (formOfPaymentInfo) - Contains information about the credit card that is used to pay for the item. This credit card information is used to pay the `cash/amount` specified within the `paymentOptions` array.
-<br><br><b>Notes:</b><br>
+Notes:
   + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Card`, then you must provide the `/formOfPayment` object.
   + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Cash`, then you must not provide the `/formOfPayment` object.
 + statebag (stateBagInfo) - For internal use only. 
@@ -846,41 +846,41 @@ In this example, we have provided the sample promo code `Cart_4_100`, which appl
 
 ## initiateBookRequest
 + include idempotencyToken
-+ items (array [itemBookInfo1, itemBookInfo2], required) - Contains the list of the items in the <@ cart_popup @> that you want to book.<br><br>Consider a scenario where you want to book two items, a car rental and car insurance. In this scenario, you must provide two objects in the `items` array, one object that provides the item ID and the booking details for the car rental option and another object that provides the item ID and the booking details for the insurance.
-+ customer (customerBookInfo, required) - Contains information about the <@ customer_popup @>.
++ items (array [itemBookInfo1, itemBookInfo2], required) - Contains the list of the items in the cart that you want to book. Consider a scenario where you want to book two items, a car rental and car insurance. In this scenario, you must provide two objects in the `items` array, one object that provides the item ID and the booking details for the car rental option and another object that provides the item ID and the booking details for the insurance.
++ customer (customerBookInfo, required) - Contains information about the customer.
 + purchaseId: `12345` (string, required) - Unique ID for the booking. You must provide this ID to track all the booking-related transactions across different systems within cxLoyalty. The `purchaseId` is required when you contact the cxLoyalty Customer Service.
-+ agent (agentInfo, required) - Contains information about the <@ agent_popup @>.
++ agent (agentInfo, required) - Contains information about the agent.
 + formOfPayment (formOfPaymentInfo) - Contains information about the credit card that is used to pay for the item. This credit card information is used to pay the `cash/amount` specified within the `paymentOptions` array.
-<br><br><b>Notes:</b><br>
+Notes:
   + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Card`, then you must provide the `/formOfPayment` object.
   + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Cash`, then you must not provide the `/formOfPayment` object.
 + statebag (stateBagInfo) - For internal use only. 
 + reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.<br><br>If you want to configure a custom field, then please contact cxLoyalty Business Team. 
 
 ## idempotencyToken
-+ idempotencyToken: `123-456-789` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request.<br> Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted.<br>Consider the following scenarios for the `idempotencyToken` field usage:<br><br>
-<b>Scenario 1:</b><br>
-Consider a scenario where you want to check out a cart. You pass a new, unique value for the `idempotencyToken` field in the booking request. In this scenario, the request is considered as a new booking request and the API returns a new and unique `orderID`.<br><br>
-<b>Scenario 2:</b><br>
++ idempotencyToken: `123-456-789` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request. Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted. Consider the following scenarios for the `idempotencyToken` field usage:
+Scenario 1:
+Consider a scenario where you want to check out a cart. You pass a new, unique value for the `idempotencyToken` field in the booking request. In this scenario, the request is considered as a new booking request and the API returns a new and unique `orderID`.
+Scenario 2:
 Consider a scenario where you want to checkout the same cart again and you pass the same `idempotencyToken` field value that was used in the earlier booking request. In this scenario, the booking request is considered as a duplicate, regardless of whether the booking request contains new booking field values or the same booking field values as of a previously made booking request. The API returns the same `orderId` that was returned for the previous booking request and not a new `orderId`. If you want to reattempt the booking, you must provide a new and unique value for the `idempotencyToken` field for the same cart. 
 
 ## itemBookInfo0
-+ id: `1e817cd6-85ba-451d-9553-dee99e04eeec` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the <a href="../create#createcartwithitemapi" target="_blank">Create Cart With an Item</a> or <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API response.
-+ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for a hotel booking. To know the about the `bookingInfo` object that must be provided for other supported products, please contact cxLoyalty Business team.<br><br> To try out the `Initiate Booking` API, we have provided a sample JSON for the `bookingInfo` object that you can use to book a car rental.<br><br>Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only. 
++ id: `1e817cd6-85ba-451d-9553-dee99e04eeec` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for a hotel booking. To know the about the `bookingInfo` object that must be provided for other supported products, please contact cxLoyalty Business team. To try out the `Initiate Booking` API, we have provided a sample JSON for the `bookingInfo` object that you can use to book a car rental.Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only. 
 + statebag (stateBagInfo) - For internal use only. 
-+ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.<br><br>If you want to configure a custom field, then please contact cxLoyalty Business Team. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
 
 ## itemBookInfo1
-+ id: `56dea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the <a href="../create#createcartwithitemapi" target="_blank">Create Cart With an Item</a> or <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API response.
-+ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance.<br><br> To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car rental and an insurance. Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only.<br><br>To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
++ id: `56dea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance. To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car rental and an insurance. Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only. To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
 + statebag (stateBagInfo) - For internal use only. 
 + reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.<br><br>If you want to configure a custom field, then please contact cxLoyalty Business Team. 
 
 ## itemBookInfo2
-+ id: `sdea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the <a href="../create#createcartwithitemapi" target="_blank">Create Cart With an Item</a> or <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API response.
-+ bookingInfo (bookInsuranceInfo, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance.<br><br>To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car and an insurance. Note that the sample JSON is for reference purpose only.<br><br>To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
++ id: `sdea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookInsuranceInfo, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance. To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car and an insurance. Note that the sample JSON is for reference purpose only. To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
 + statebag (stateBagInfo) - For internal use only. 
-+ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.<br><br>If you want to configure a custom field, then please contact cxLoyalty Business Team. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
 
 ## bookingInfoBookDetailsRQ
 + include driverInfoBookRQ
@@ -1053,15 +1053,15 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + include key 
 
 ## customerBookInfo
-+ name (customerName, required) - Contains information about the name of the <@ customer_popup @>.
-+ phone (phoneBookInfo, required) - Contains the contact number of the <@ customer_popup @>.
-+ alternatePhone (phoneBookInfo) - Contains the alternate contact number of the <@ customer_popup @>.
-+ address (addressCustomer) - Contains information about the address of the <@ customer_popup @>. 
++ name (customerName, required) - Contains information about the name of the customer.
++ phone (phoneBookInfo, required) - Contains the contact number of the customer.
++ alternatePhone (phoneBookInfo) - Contains the alternate contact number of the customer.
++ address (addressCustomer) - Contains information about the address of the customer. 
 + email: `abc@xyz.com` (string, required) - Email address (recipient ID) that must be used when any email communication needs to be made.
 + reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.<br><br>If you want to configure a custom field, then please contact cxLoyalty Business Team. 
-+ id: `127_4006347435` (string, required) - Unique ID for the <@ customer_popup @>.
-+ transitCode: `51749600-e7cc-3be3-eb19-17701a4a0f70` (string) - Unique code that is generated by the <@ transit_service @>. The transit code is used to track all the calls made to different systems within cxLoyalty for all search to booking-related transactions for a single user session. The transit code is valid for `72 hours` from the time it is generated. 
-+ availablePointBalance: `500000` (string, required) - Number of <@ loyaltypoints_popup @> available in the customer's credit card account. <br><br><b>Format:</b> Decimal
++ id: `127_4006347435` (string, required) - Unique ID for the customer.
++ transitCode: `51749600-e7cc-3be3-eb19-17701a4a0f70` (string) - Unique code that is generated by the transit. The transit code is used to track all the calls made to different systems within cxLoyalty for all search to booking-related transactions for a single user session. The transit code is valid for `72 hours` from the time it is generated. 
++ availablePointBalance: `500000` (string, required) - Number of loyaltypoints available in the customer's credit card account. Format: Decimal
 
 ## customerName
 + title (enum) - Title before the name.
@@ -1084,8 +1084,8 @@ Consider a scenario where you want to checkout the same cart again and you pass 
   + Mobile
   + Work
   + Unknown
-+ number: `555-0173` (string, required) - Phone number. The phone number can include the following characters: 0 to 9, plus sign +, minus sign -, and parenthesis ( ).<br>
-<b>Notes:</b>
++ number: `555-0173` (string, required) - Phone number. The phone number can include the following characters: 0 to 9, plus sign +, minus sign -, and parenthesis ( ).
+Notes:
     + The phone number can include the area code, if applicable.
     + The phone number must not include the country code. You can provide the country code in the `countryCode` field.
     + The phone number must not include spaces.
@@ -1096,7 +1096,7 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
 + cityName: `San Francisco` (string, required) - Name of the city.
 + state (stateBook) - Contains information about the state. Note that if the `countryCode` is set to `US`, `CA`, or `AU`, the `state` code is mandatory. For more information on state codes, see the [state code list](http://pe.usps.com/text/pub28/28apb.htm).
-+ countryCode: `US` (string, required) - 2-character ISO code of the country. <a target="_blank" href="../reference-reads#countrycodes">Read more about valid country codes.</a>
++ countryCode: `US` (string, required) - 2-character ISO code of the country. Read more about valid country codes.
 + postalCode: `94133` (string, required)- Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code. 
 
 ## stateBook
@@ -1111,7 +1111,7 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + field5: `Value2` - Indicates the value for custom field 5.
 
 ## agentInfo
-+ id: `agent1` (string, required) - Unique ID for the <@ agent_popup @>. 
++ id: `agent1` (string, required) - Unique ID for the agent. 
 
 ## formOfPaymentInfo
 + card (cardInfo) - Contains information about the credit card that is used to make the payment for the booking.
@@ -1119,8 +1119,8 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 ## cardInfo
 + number: `5555555555554444` (string, required) - Credit card number to be used for the payment. Note that the credit card number must be at least 12 digits.
 + holderName: `John Doe` (string, required) - Name on the credit card that is used for the payment.
-+ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). <a href="https://en.wikipedia.org/wiki/Card_security_code" target="_blank">Read more about CVV/CSC.</a>
-+ issuedBy: `AX` (enum, required) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>. 
++ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). Read more about CVV/CSC.
++ issuedBy: `AX` (enum, required) - Card issuer. See the list of card issuer codes and their descriptions. 
   + VI
   + CA
   + AX
@@ -1149,14 +1149,14 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + key1: `value1` (string) - For internal use only.
 
 ## initiateBookResponse
-+ orderId: `123-456-789` - Unique ID for the <@ order_popup @>.<br><br><b>Note:</b> You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you check the booking status (using the `Get Booking Status` API) and retrieve the order details (using the `Get Order Details` API). 
++ orderId: `123-456-789` - Unique ID for the order. Note: You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you check the booking status (using the `Get Booking Status` API) and retrieve the order details (using the `Get Order Details` API). 
 
 ## bookStatusRequest
 + orderId: `123-456-789` (string, required) - Unique ID for the <@ order_popup @> for which you want to check the status. You must obtain the `orderId` from the `Initiate Booking` API response.
 
 ## bookStatusResponse
-+ orderId: `123-456-789` - Unique ID for the <@ order_popup @> for which the status is checked.<br><br><b>Note:</b> You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you want to retrieve the order details (using the `Get Order Details` API). 
-+ status: `InProgress` (enum) - Indicates the status of the <@ order_popup @>. If the `status` field returns `CompletedWithFailure` or Failed, see the `errors[]`, `/items[]/status`, and `/items[]/errors[]/message` fields for more information.
++ orderId: `123-456-789` - Unique ID for the order for which the status is checked. Note: You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you want to retrieve the order details (using the `Get Order Details` API). 
++ status: `InProgress` (enum) - Indicates the status of the order. If the `status` field returns `CompletedWithFailure` or Failed, see the `errors[]`, `/items[]/status`, and `/items[]/errors[]/message` fields for more information.
   + Completed
   + CompletedWithfailure
   + Failed
@@ -1174,47 +1174,47 @@ Consider a scenario where you want to checkout the same cart again and you pass 
   + InProgress
   + Failed
   + NotAttempted
-+ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details.<br><br> Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the <a href="/../orxe/car/current/check-out#getBookDetails" target="_blank">Get Booking Details</a> API, which is implemented for <a href="/../orxe/car/current/overview" target="_blank">ORXe APIs for Car</a>. To know the booking details that are returned for other supported products, please contact cxLoyalty Business team. 
++ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details. Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the Get Booking Details API, which is implemented for ORXe APIs for Car. To know the booking details that are returned for other supported products, please contact cxLoyalty Business team. 
 + statebag (stateBagInfo) - For internal use only. 
 + errors (array [errorsBookStatus]) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
 + warnings (array [warningsBookStatus]) - Contains the list of warnings that appear during the booking process.
 
 ## errorsBookStatus
-+ code: `14` - Code for the error. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>.
-+ message: `The supplier server is unreachable. Try again after some time.` - Error message text. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>
++ code: `14` - Code for the error. See the list of API error codes and messages.
++ message: `The supplier server is unreachable. Try again after some time.` - Error message text. See the list of API error codes and messages
 
 ## warningsBookStatus
-+ code: `4313` - Code for the warning. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>
-+ message: `The supplier server is unreachable. Try again after some time.` - Warning message text. <a href="../errors#apierrorcode" target="_blank">See the list of API error codes and messages</a>
++ code: `4313` - Code for the warning. See the list of API error codes and messages
++ message: `The supplier server is unreachable. Try again after some time.` - Warning message text. See the list of API error codes and messages
 
 ## getOrderDetailsResponse
-+ items (array [itemRetrieve]) - Contains the list of the items in the <@ cart_popup @>.
-+ fees (array [feesInfo]) - Contains the list of all the applicable fees charged to the <@ customer_popup @> to process the <@ order_popup @>.
-+ transaction (transactionInfo) - Contains information about the payment-related transaction made for the booking. Payment-related transactions includes points-related transactions as well as cash-related transactions.<br><br>
-<b>Notes:</b>
++ items (array [itemRetrieve]) - Contains the list of the items in the cart.
++ fees (array [feesInfo]) - Contains the list of all the applicable fees charged to the customer to process the order.
++ transaction (transactionInfo) - Contains information about the payment-related transaction made for the booking. Payment-related transactions includes points-related transactions as well as cash-related transactions.
+Notes:
   + If the payment is made by cash, then only the `cashTransactions` object` is returned.
   + If the payment is made by points, then only the `pointTransactions` object is returned. 
   + If the payment is made by a combination of both cash and points, then both the `cashTransactions` object and the `pointTransactions` object is returned.
-+ customer (customerResp) - Contains information about the <@ customer_popup @>.
-+ agent (agentInfo) - Contains information about the <@ agent_popup @>.
++ customer (customerResp) - Contains information about the customer.
++ agent (agentInfo) - Contains information about the agent.
 
 ## itemRetrieve
 + id: `sdea34-d9cb-461f-a165-7086772w324` - Unqiue ID for the item. 
 + bookingId: `12345` - Unique ID for the booking. 
 + productId: `nextgencar` - Unique ID for the product that is purchased. 
 + productType: `Car` (string) - Type of product that is purchased.
-+ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details.<br><br> Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the <a href="/../orxe/car/current/check-out#getBookDetails" target="_blank">Get Booking Details</a> API, which is implemented for <a href="/../orxe/car/current/overview" target="_blank">ORXe APIs for Car</a>.
++ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details. Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the Get Booking Details API, which is implemented for ORXe APIs for Car.
 + supplierCard (supplierCardInfo) - Contains information about the single-use card, which is used to pay the supplier for the booking.
-+ vouchers (array [vouchersInfo]) - Contains the list of <@ voucher_popup @>.  
++ vouchers (array [vouchersInfo]) - Contains the list of voucher.  
 + displayFare (fare) - Contains information about the fare of the item that is displayed on the User Interface (UI). 
 + agencyFare (agencyFare) - Contains the fare breakup amounts in the agency's operating currency. This information is typically used in B2B scenarios.
 
 ## supplierCardInfo
 + id: `10550229` - Unique ID for the single-use card that is generated by the single-use card provider service. If the single-use card is not generated, then this field is not returned in the API response. 
 + number: `5555555555554444` (string, required) - Credit card number of the single-use card that is used for the payment. Note that the credit card number must be at least 12 digits.
-+ amount: 12 (number) - Amount paid to the supplier to book the item.<br><br><b>Format:</b> Decimal
++ amount: 12 (number) - Amount paid to the supplier to book the item. Format: Decimal
 + currency: `USD` - 3-character ISO code that indicates the currency in which the `supplierCard/amount` is returned. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field returns `USD`, then the `supplierCard/amount` is returned in its `USD` amount equivalents. Currently, we only support payments made in `USD` using single-use card. 
-+ issuedBy: `AX` (enum, required) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>.
++ issuedBy: `AX` (enum, required) - Card issuer. See the list of card issuer codes and their descriptions.
   + VI
   + CA
   + AX
@@ -1244,28 +1244,28 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + include alternateConfirmationIdsVouchers
 
 ## voucherId
-+ id: `wq23-qiu4d-we43-14eerf55` - Unique ID for the <@ voucher_popup @>.
++ id: `wq23-qiu4d-we43-14eerf55` - Unique ID for the voucher.
 
 ## supplierConfirmationNumberVouchers
 + supplierConfirmationNumber: `2356` - Supplier confirmation number for the booking. 
-<b>Notes:</b>
+Notes:
   + The `supplierConfirmationNumber` is required when you contact cxLoyalty Customer Service.
   + The `supplierConfirmationNumber` must be used as the confirmation number for the booking.
 
 ## vendorConfirmationNumberVouchers
-+ vendorConfirmationNumber: `8765` - Vendor confirmation number for the booking. If the vendor does not provide a confirmation number, this field returns `null`.<br>
-<b>Notes:</b>
++ vendorConfirmationNumber: `8765` - Vendor confirmation number for the booking. If the vendor does not provide a confirmation number, this field returns `null`.
+Notes:
     + The `vendorConfirmationNumber` is required when you contact cxLoyalty Customer Service. If the `vendorConfirmationNumber` is not available, you must provide the `supplierConfirmationNumber`.
     + The `vendorConfirmationNumber` and the `supplierConfirmationNumber` must be used as confirmation numbers for the booking. If the `vendorConfirmationNumber` is not available, the `supplierConfirmationNumber` must be used as the confirmation number for the booking.
 
 ## issuedByVouchers
-+ issuedBy: `Supplier` - Indicates the issuer of the <@ voucher_popup @>. 
++ issuedBy: `Supplier` - Indicates the issuer of the voucher. 
 
 ## issuedIdVouchers
-+ issuerId: `123` - Unqiue ID assigned to identify the issuer of the <@ voucher_popup @>. 
++ issuerId: `123` - Unqiue ID assigned to identify the issuer of the voucher. 
 
 ## issuedOnVouchers
-+ issuedOn: `2006-04-17T21:22:48.2698750Z` - Date and time when the <@ voucher_popup @> is issued.<br><br><b>Format:</b> YYYY-MM-DDTHH:MM:SSZ<br><br><a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>
++ issuedOn: `2006-04-17T21:22:48.2698750Z` - Date and time when the voucher is issued. Format: YYYY-MM-DDTHH:MM:SSZISO 8601
 
 ## voucherStatus
 + status: `Confirmed` (enum) - Indicates the status of the booking. 
@@ -1274,14 +1274,14 @@ Consider a scenario where you want to checkout the same cart again and you pass 
   + NotAttempted
 
 ## customerRetrieve
-+ customer (customerRetrieveInfo) - Contains information about the <@ customer_popup @>.
++ customer (customerRetrieveInfo) - Contains information about the customer.
 
 ## customerRetrieveInfo
-+ type: `Adult` - Type of <@ customer_popup @>.
-+ name (nameResp) - Contains information about the name of the <@ customer_popup @>.
-+ age: 25 (number) - Age of the <@ customer_popup @>.
-+ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the <@ customer_popup @>.
-+ phone (phoneRetrieveInfo) - Contains the contact number of the <@ customer_popup @>. 
++ type: `Adult` - Type of customer.
++ name (nameResp) - Contains information about the name of the customer.
++ age: 25 (number) - Age of the customer.
++ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the customer.
++ phone (phoneRetrieveInfo) - Contains the contact number of the customer. 
 
 ## nameResp
 + title (enum) - Title before the name.
@@ -1318,8 +1318,8 @@ Consider a scenario where you want to checkout the same cart again and you pass 
   + Supplier
 
 ## fare 
-+ currency: `USD` - 3-character ISO code that indicates the currency in which the display fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
-+ total: 12 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost.<br><br><b>Format:</b> Decimal
++ currency: `USD` - 3-character ISO code that indicates the currency in which the display fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ total: 12 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost. Format: Decimal
 + include fareBreakupInfo
 + include commissions
 
@@ -1335,58 +1335,58 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + otherCharges (array [otherCharges]) - Contains the list of applicable charges for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field.
 
 ## baseAmount
-+ baseAmount: 6 (number) - Base price of the item.<br><br><b>Note:</b> The `baseAmount` does not include the `discount`, `taxes`, `fees`, `markups`, or any other additional cost.<br><br><b>Format:</b> Decimal
++ baseAmount: 6 (number) - Base price of the item. Note: The `baseAmount` does not include the `discount`, `taxes`, `fees`, `markups`, or any other additional cost. Format: Decimal
 
 
 ## taxes (object)
-+ amount: 0 (number) - Tax amount applicable for the item.<br><br><b>Format:</b> Decimal
++ amount: 0 (number) - Tax amount applicable for the item. Format: Decimal
 + desc: Luxury tax - Description or additional information for the type of tax that is charged.
 
 ## fees (object)
-+ amount: 2.0 (number) - Fee amount levied or charged for the item.<br><br><b>Format:</b> Decimal
++ amount: 2.0 (number) - Fee amount levied or charged for the item. Format: Decimal
 + desc: `Late check-out fee` - Description or additional information for the type of fee that is charged.
-+ source: `Supplier` (enum) - Indicates whether the fees is levied or charged by the <@ supplier @> or the <@ OTA @>.
++ source: `Supplier` (enum) - Indicates whether the fees is levied or charged by the supplier or the OTA.
   + Agency
   + Supplier
 
 ## discounts (object)
-+ amount: `2.0` (number) - Discount amount applicable for the item.<br><br><b>Format:</b> Decimal
++ amount: `2.0` (number) - Discount amount applicable for the item. Format: Decimal
 + desc: `Save 15%` - Description or additional information for the discount that is offered.
-+ source: `Supplier` (enum) - Indicates whether the discount is provided by the <@ supplier @> or the <@ OTA @>.
++ source: `Supplier` (enum) - Indicates whether the discount is provided by the supplier or the OTA.
   + Agency
   + Supplier
 
 ## markups
-+ amount: 2 (number) - Markup (MUP) amount. A markup indicates the amount of money added on top of what a <@ supplier @> charges so that you or your clients can make money off of bookings.<br><br><b>Format:</b> Decimal
++ amount: 2 (number) - Markup (MUP) amount. A markup indicates the amount of money added on top of what a supplier charges so that you or your clients can make money off of bookings. Format: Decimal
 + desc: Agency - Description or additional information for the markup.
-+ source: `Agency` (enum) - Indicates whether the markup is applied by the <@ supplier @> or the <@ OTA @>.
++ source: `Agency` (enum) - Indicates whether the markup is applied by the supplier or the OTA.
   + Agency
   + Supplier
 
 ## otherCharges
-+ amount: 2 (number) - Applicable amount for other charges.<br><br><b>Format:</b> Decimal
++ amount: 2 (number) - Applicable amount for other charges. Format: Decimal
 + desc: `Internet Charges` - Description or additional information for the other charges. 
-+ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the <@ supplier @> or the <@ OTA @>.
++ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the supplier or the OTA.
   + Agency
   + Supplier
 
 ## otherChargesAgency
-+ amount: 8 (number) - Applicable amount for other charges.<br><br><b>Format:</b> Decimal
++ amount: 8 (number) - Applicable amount for other charges. Format: Decimal
 + desc: `Internet Charges` - Description or additional information for the other charges. 
-+ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the <@ supplier @> or the <@ OTA @>.
++ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the supplier or the OTA.
   + Agency
   + Supplier
 
 ## commissions
-+ commissions (array [commissionsInfo]) - Contains information about the <@ commission_two_popup @> that the <@ supplier @> is providing to the <@ OTA @> for the rate that is returned in the response.
++ commissions (array [commissionsInfo]) - Contains information about the commission two that the supplier is providing to the OTA for the rate that is returned in the response.
 
 ## commissionsInfo 
-+ amount: 10.5 (number) - <@ commission_one_popup @> amount that the <@ supplier @> is providing to the <@ OTA @> for the rate that is returned in the response.<br><br><b>Note:</b> The `commission` amount has no impact and is not considered within the `/items[]/displayFare/breakup` object. This means that the `displayFare/total` value does not include the `commission` amount.<br><br><b>Format:</b> Decimal
-+ desc: `Flat rate commission for the agency` - Description or additional information for the <@ commission_two_popup @> that the <@ supplier @> is providing to the <@ OTA @>.
++ amount: 10.5 (number) - commission one amount that the supplier is providing to the OTA for the rate that is returned in the response. Note: The `commission` amount has no impact and is not considered within the `/items[]/displayFare/breakup` object. This means that the `displayFare/total` value does not include the `commission` amount. Format: Decimal
++ desc: `Flat rate commission for the agency` - Description or additional information for the commission two that the supplier is providing to the OTA.
 
 ## agencyFare
-+ currency: `CAD` - 3-character ISO code that indicates the agency's operating currency in which the fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `CAD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `CAD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
-+ total: 16 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost.<br><br><b>Format:</b> Decimal
++ currency: `CAD` - 3-character ISO code that indicates the agency's operating currency in which the fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `CAD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `CAD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ total: 16 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost. Format: Decimal
 + include agencyFareBreakupInfo
 + include commissions
 
@@ -1406,65 +1406,65 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + line2: `Landmark: Beside the ACME Shopping Mall` - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
 + cityName: `San Francisco` (string) - Name of the city.
 + state (stateBook) - Contains information about the state.
-+ countryCode: `US` (string) - 2-character ISO code of the country. <a target="_blank" href="../reference-reads/#countrycodes">Read more about valid country codes.</a>
++ countryCode: `US` (string) - 2-character ISO code of the country. Read more about valid country codes.
 + postalCode: `94133` (string) - Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code.
 
 ## feesInfo
 + id: `12d5b-d4sb-2asf-a165-q2w123sa` - Unique ID for the order fee. 
 + type: `service` - Type of order fee that is applied. 
 + desc: `service charge` - Description or additional information for the type of order fee.
-+ amount: 1.00 (number) - Order fee amount.<br><br><b>Format:</b> Decimal
-+ currency: `USD` - 3-character ISO code that indicates the currency in which the `/fees[]/amount` is returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `/fees[]/amount` is returned in its `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ amount: 1.00 (number) - Order fee amount. Format: Decimal
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `/fees[]/amount` is returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `/fees[]/amount` is returned in its `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
 
 ## transactionInfo
 + pointsTransaction (pointsTransactionInfo) - Contains information about the points-related transactions.  
 + cashTransaction (cashTransactionInfo) - Contains information about the cash-related transactions. 
 
 ## pointsTransactionInfo 
-+ points (pointsInfo) - Contains information about the loyalty points that the <@ customer_popup @> redeemed.
++ points (pointsInfo) - Contains information about the loyalty points that the customer redeemed.
 + desc: `Mock Transaction` - Description of the transaction. 
 + paymentBreakup (array [paymentBreakupPoints]) - Contains the list of the payments made by redemption of points. The `paymentBreakup` array provides the breakup of the number of points redeemed (pointsTransaction/points/value field). This means that the sum total of all the `paymentBreakup[]/points/value` must be equal to the number of points returned in the `pointsTransaction/points/value` field.
 
 ## pointsInfo
-+ value: 200 (number) - Total number of points that the <@ customer_popup @> redeemed. Note that this value must be equal to the sum of all the `/points/value` returned within the `pointsTransaction/paymentBreakup` array.<br><br><b>Format:</b> Decimal 
-+ unit: `points` - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles.
++ value: 200 (number) - Total number of points that the customer redeemed. Note that this value must be equal to the sum of all the `/points/value` returned within the `pointsTransaction/paymentBreakup` array. Format: Decimal 
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
 
 ## paymentBreakupPoints
-+ points (pointsBreakup) - Contains information about the loyalty points that the <@ customer_popup @> redeemed.
++ points (pointsBreakup) - Contains information about the loyalty points that the customer redeemed.
 
 ## pointsBreakup
-+ value: 200 (number) - Total number of points that the <@ customer_popup @> redeemed.<br><br><b>Format:</b> Decimal 
-+ unit: `points` - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles.
-+ voucherRefIds: `d245o45f` (array) - Contains the list of <@ voucher_popup @> reference IDs. 
-+ fee (feeBreakup) - Contains information about points redeemed to pay the applicable fee for using the <@ reward_popup @> option. 
++ value: 200 (number) - Total number of points that the customer redeemed.Format: Decimal 
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
++ voucherRefIds: `d245o45f` (array) - Contains the list of voucher reference IDs. 
++ fee (feeBreakup) - Contains information about points redeemed to pay the applicable fee for using the reward option. 
 
 ## feeBreakup
-+ points (feePoints) - Contains information about the loyalty points redeemed to use the <@ reward_popup @> option.
++ points (feePoints) - Contains information about the loyalty points redeemed to use the reward option.
 
 ## feePoints 
-+ value: 100 (number) - Number of points that the <@ customer_popup @> redeemed to pay the fee amount.<br><br><b>Format:</b> Decimal
-+ unit: `points` - Indicates the currency that is associated with the <@ loyalty_program_popup @>. For example, points and miles.
++ value: 100 (number) - Number of points that the customer redeemed to pay the fee amount. Format: Decimal
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
 
 ## cashTransactionInfo
-+ currency: `USD` - 3-character ISO code that indicates the currency in which the monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `cashTransaction/amount` and the `paymentBreakup/amount` is returned in their `USD` amount equivalents. We support all <a target="_blank" href="../reference-reads#currencies">ISO currencies</a>.
++ currency: `USD` - 3-character ISO code that indicates the currency in which the monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `cashTransaction/amount` and the `paymentBreakup/amount` is returned in their `USD` amount equivalents. We support all ISO currencies.
 + card (cardTransactions) - Contains information about the credit card that is used to pay the cash amount returned in the `cashTransaction/amount` field.
-+ amount: 8 (number) - Amount charged on the credit card by the payment gateway.<br><br><b>Format:</b> Decimal 
++ amount: 8 (number) - Amount charged on the credit card by the payment gateway. Format: Decimal 
 + status: `Captured` (enum) - Indicates the transaction status of the card payment.
-  + <@ Authorized @>
-  + <@ AuthorizationFailed @>
-  + <@ AuthorizeNotAttempted @> 
-  + <@ CapturedNotAttempted @>
-  + <@ Captured @>
-  + <@ CaptureFailed @>
-  + <@ ReverseAuthorized @>
-  + <@ ReverseAuthorizeFailed @> 
+  + Authorized
+  + AuthorizationFailed
+  + AuthorizeNotAttempted
+  + CapturedNotAttempted
+  + Captured
+  + CaptureFailed
+  + ReverseAuthorized
+  + ReverseAuthorizeFailed
 + transactionId: `6b36c65d-88e5-4651-b48f-0c6f543e1691` - Transaction ID returned by the payment service. This transactionId can be used to refer to the same transaction. Note that this transactionId is only for the payment service and for internal transaction referencing. 
 + desc: `Mock Transaction` - Description of the transaction.
 + paymentBreakup (paymentBreakupCash) - Contains the list of the payments made by card. The `paymentBreakup` array provides the breakup of the amount charged on the credit card (cashTransaction/amount field). This means that the sum total of all the `paymentBreakup/amount` must be equal to the amount returned in the `cashTransaction/amount` field.
 
 ## cardTransactions
 + number: `4444333322221111` - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
-+ issuedBy: `AX` (enum) - Card issuer. <a href="../reference-reads#cardissuer" target="_blank">See the list of card issuer codes and their descriptions</a>. 
++ issuedBy: `AX` (enum) - Card issuer. See the list of card issuer codes and their descriptions. 
   + VI
   + CA
   + AX
@@ -1480,16 +1480,16 @@ Consider a scenario where you want to checkout the same cart again and you pass 
 + nameOnCard: `John` - Name on the credit card used for the payment.
 
 ## paymentBreakupCash
-+ amount: 8 (number) - Amount charged on the credit card.<br><br><b>Format:</b> Decimal
-+ voucherRefIds: `d245o45f` (array) - Contains the list of <@ voucher_popup @> reference IDs. 
-+ fee (cashFee) - Contains information about the applicable fee for using the <@ reward_popup @> option.
++ amount: 8 (number) - Amount charged on the credit card.Format: Decimal
++ voucherRefIds: `d245o45f` (array) - Contains the list of voucher reference IDs. 
++ fee (cashFee) - Contains information about the applicable fee for using the reward option.
 
 ## cashFee
-+ cashAmount: 90 (number) - Fee amount levied or charged to use the <@ reward_popup @> option.<br><br><b>Format:</b> Decimal 
++ cashAmount: 90 (number) - Fee amount levied or charged to use the reward option. Format: Decimal 
 
 ## customerResp
-+ name (nameResp) - Contains information about the name of the <@ customer_popup @>.
-+ phone (phoneRetrieveInfo) - Contains the contact number of the <@ customer_popup @>. 
-+ alternatePhone (phoneRetrieveInfo) - Contains the alternate contact number of the <@ customer_popup @>.
-+ address (addressBookInfoResp) - Contains information about the address of the <@ customer_popup @>.
-+ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the <@ customer_popup @>.
++ name (nameResp) - Contains information about the name of the customer.
++ phone (phoneRetrieveInfo) - Contains the contact number of the customer. 
++ alternatePhone (phoneRetrieveInfo) - Contains the alternate contact number of the customer.
++ address (addressBookInfoResp) - Contains information about the address of the customer.
++ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the customer.
