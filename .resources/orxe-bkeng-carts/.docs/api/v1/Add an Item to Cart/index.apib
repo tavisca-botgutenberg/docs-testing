@@ -1,3 +1,20 @@
+# <a class="hide-parent" name="createcart"></a>
+# Create Cart API [/api/cart/v2.0/create]
+The `Create Cart` API allows you to create a <@ cart_popup @>. 
+
+We have designed the `Create Cart` API keeping in mind the following two business use cases: 
+
+1. [Create an Empty Cart](#createemptycartapi) allows you to create an empty cart. 
+
+2. [Create a Cart with an Item](#createcartwithitemapi) allows you to create a cart with an item.
+ Note that you cannot create a cart with an <@ add_on_popup @> item.
+
+The API returns a cart ID in the response. You must use the cart ID as an identifier in the subsequent API calls. For example, you must provide the cart ID in the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API to add an item to the cart.
+
+The `Create Cart` API endpoint is https://cart.stage.cnxloyalty.com/api/cart/v1.0/create
+
+For a seamless experience, we have provided two use cases for you to try out - `Create an Empty Cart` use case and `Create a Cart with an Item` use case. 
+
 # <a class="hide-parent" name="createemptycartapi"></a>
 ## Create an Empty Cart [POST]
 This is a sample scenario that allows you to create an empty cart. To add an item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API. 
@@ -15,8 +32,8 @@ This is a sample scenario that allows you to create an empty cart. To add an ite
 
 + Response 200 (application/json)    
     + Attributes (createEmptyCartResp)
-    
-    # <a class="hide-parent" name="createcartwithitemapi"></a>
+
+# <a class="hide-parent" name="createcartwithitemapi"></a>
 ## Create a Cart with an Item [POST]
 This is sample scenario that allows you to create a cart with an item. For example, a car product. In this case, if you want to check out with a single item, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Single Item Check Out</a> use case.<br><br>Note that you cannot create a cart with an <@ add_on_popup @> item. To add an <@ add_on_popup @> item or another item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API.
 
