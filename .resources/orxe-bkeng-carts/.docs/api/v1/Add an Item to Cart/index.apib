@@ -1,25 +1,20 @@
-# <a class="hide-parent" name="createcart"></a>
-# Create Cart API [/api/cart/v2.0/create]
-The `Create Cart` API allows you to create a <@ cart_popup @>. 
+# <a class="hide-parent" name="addtocartapi"></a>
+## Add to Cart [/api/cart/v2.0/{cartId}/add]
+The `Add to Cart` API allows you to add an item to the <@ cart_popup @>.
 
-We have designed the `Create Cart` API keeping in mind the following two business use cases: 
+If the item that you want to add to the cart is an <@ add_on_popup @>, you must ensure that the item on which the purchase of <@ add_on_popup @> is dependent is already added to the cart. You must provide the ID of the item on which the purchase of <@ add_on_popup @> is dependent in the `/item/dependsOn/itemRefId` field in the request.<br>
 
-1. [Create an Empty Cart](#createemptycartapi) allows you to create an empty cart. 
+For example, if you want to add a car insurance to the cart, you must ensure the car rental option, for which the car insurance is being purchased, is already added to the cart and the item ID of the car rental option must be provided in the `/item/dependsOn/itemRefId` field.
 
-2. [Create a Cart with an Item](#createcartwithitemapi) allows you to create a cart with an item.
- Note that you cannot create a cart with an <@ add_on_popup @> item.
+<b>Note:</b> In case you <a href="../create#createcartwithitemapi" target="_blank">create a cart with an item</a> and then want to check out, then you can skip the `Add to Cart` API call and directly proceed to the <a href="../check-out" target="_blank">Check Out</a> API call.</li></ul>
 
-The API returns a cart ID in the response. You must use the cart ID as an identifier in the subsequent API calls. For example, you must provide the cart ID in the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API to add an item to the cart.
+### Add an Item to Cart [PUT]
+This is a sample scenario that allows you to add an <@ add_on_popup @> item to the cart, such as a car insurance. Since, insurance is an add-on item for the `car` product, you must ensure that the <em>car</em> product is already added to the cart. In this case, if you want to check out, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Multi-Item Check Out</a> use case. 
 
-The `Create Cart` API endpoint is https://cart.stage.cnxloyalty.com/api/cart/v1.0/create
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> to which you want to add an item.  
 
-For a seamless experience, we have provided two use cases for you to try out - `Create an Empty Cart` use case and `Create a Cart with an Item` use case. 
-
-# <a class="hide-parent" name="createemptycartapi"></a>
-## Create an Empty Cart [POST]
-This is a sample scenario that allows you to create an empty cart. To add an item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API. 
-
-+ Request createEmptyCart (application/json)
++ Request addToCart (application/json)
     + Headers
       Content-Type: application/json
       cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
@@ -28,27 +23,7 @@ This is a sample scenario that allows you to create an empty cart. To add an ite
       cnx-environment-token: T3
       Accept-Encoding: gzip, deflate
       Accept-Language: en-US
-    + Attributes (createEmptyCartRequest)
+    + Attributes (addToCartRequest)
 
 + Response 200 (application/json)    
-    + Attributes (createEmptyCartResp)
-
-# <a class="hide-parent" name="createcartwithitemapi"></a>
-## Create a Cart with an Item [POST]
-This is sample scenario that allows you to create a cart with an item. For example, a car product. In this case, if you want to check out with a single item, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Single Item Check Out</a> use case.<br><br>Note that you cannot create a cart with an <@ add_on_popup @> item. To add an <@ add_on_popup @> item or another item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API.
-
-+ Request createCartWithItemReq (application/json)
-    + Headers
-      Content-Type: application/json
-      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
-      cnx-tenantid: 3smlq291nuo
-      cnx-userip: 127.0.0.1
-      cnx-environment-token: T3
-      Accept-Encoding: gzip, deflate
-      Accept-Language: en-US
-    + Attributes (createCartWithItemRequest)
-
-+ Response 200 (application/json)    
-    + Attributes (createCartWithItemResp)
-<br><br>
-<a href="../overview">&lt;&lt; Go to the Overview page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../manage">Go to the next API: Manage Cart API &gt;&gt;</a>
+    + Attributes (addToCartResp)
