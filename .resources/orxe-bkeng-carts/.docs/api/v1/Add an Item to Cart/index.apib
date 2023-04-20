@@ -1,15 +1,6 @@
-# <a class="hide-parent" name="addtocartapi"></a>
-## Add to Cart [/api/cart/v2.0/{cartId}/add]
-The `Add to Cart` API allows you to add an item to the <@ cart_popup @>.
+# Add to Cart [/api/cart/v2.0/{cartId}/add]
 
-If the item that you want to add to the cart is an <@ add_on_popup @>, you must ensure that the item on which the purchase of <@ add_on_popup @> is dependent is already added to the cart. You must provide the ID of the item on which the purchase of <@ add_on_popup @> is dependent in the `/item/dependsOn/itemRefId` field in the request.<br>
-
-For example, if you want to add a car insurance to the cart, you must ensure the car rental option, for which the car insurance is being purchased, is already added to the cart and the item ID of the car rental option must be provided in the `/item/dependsOn/itemRefId` field.
-
-<b>Note:</b> In case you <a href="../create#createcartwithitemapi" target="_blank">create a cart with an item</a> and then want to check out, then you can skip the `Add to Cart` API call and directly proceed to the <a href="../check-out" target="_blank">Check Out</a> API call.</li></ul>
-
-### Add an Item to Cart [PUT]
-This is a sample scenario that allows you to add an <@ add_on_popup @> item to the cart, such as a car insurance. Since, insurance is an add-on item for the `car` product, you must ensure that the <em>car</em> product is already added to the cart. In this case, if you want to check out, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Multi-Item Check Out</a> use case. 
+## Add an Item to Cart [PUT] 
 
 + Parameters
     + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> to which you want to add an item.  
