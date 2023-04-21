@@ -11,7 +11,7 @@
 + include reportingFieldsBookRQ
 
 ## idempotencyTokenBookRQ
-+ idempotencyToken: `123-456-789` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request.<br> Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted.<br>Consider the following scenarios for the `idempotencyToken` field usage:
++ idempotencyToken: `123-456-789-test` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request.<br> Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted.<br>Consider the following scenarios for the `idempotencyToken` field usage:
 <b>Scenario 1:</b><br>
 Consider a scenario where you want to check out a cart. You pass a new, unique value for the `idempotencyToken` field in the booking request. In this scenario, the request is considered as a new booking request and the API returns a new and unique `orderID`. 
 <b>Scenario 2:</b><br>
