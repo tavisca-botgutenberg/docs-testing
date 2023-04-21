@@ -8,8 +8,8 @@ at the time of booking. In this case, you must specify the list of errors in the
 + include supplierConfirmationNumberReq
 + include cancellationTokenReq
 + include alternateConfirmationDetails  
-+ errors (array [confirm_order_errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
-+ warnings (array [confirm_order_warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
++ confirm_order_errors (array [confirm_order_errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ confirm_order_warnings (array [confirm_order_warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## alternateConfirmationDetails 
 + alternateConfirmationDetails (array [alternateConfirmationInfo], required, fixed-type) - Contains the confirmation details of the activity booking from the supplier. Note: The `id`, `name`, `type`, and `value` fields are optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the errors array.
