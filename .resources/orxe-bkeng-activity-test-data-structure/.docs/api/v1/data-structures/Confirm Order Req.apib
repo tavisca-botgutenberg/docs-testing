@@ -3,12 +3,13 @@
 + include customerOrderReq
 
 ## confirmationInfoReq 
-+ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: The `bookingTimestamp` field is optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
++ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: The `bookingTimestamp` field is optional only when the supplier returns 
+at the time of booking. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
 + include supplierConfirmationNumberReq
 + include cancellationTokenReq
 + include alternateConfirmationDetails  
-+ errors (array [errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
-+ warnings (array [warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
++ errors (array [confirm_order_errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ warnings (array [confirm_order_warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## alternateConfirmationDetails 
 + alternateConfirmationDetails (array [alternateConfirmationInfo], required, fixed-type) - Contains the confirmation details of the activity booking from the supplier. Note: The `id`, `name`, `type`, and `value` fields are optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the errors array.
@@ -25,10 +26,10 @@
 ## cancellationTokenReq
 + cancellationToken: null (string, nullable) - Cancellation token received from the supplier to cancel the activity booking. If returned by the supplier, you must provide the `cancellationToken` in the `/confirmationDetails` object.
 
-## errorsCancelOrderReq
+## confirm_order_errorsCancelOrderReq
 + code: `3434` (string) - Code for the error.  
 + message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text.  
 
-## warningsCancelOrderReq
+## confirm_order_warningsCancelOrderReq
 + code: `4313` (string) - Code for the warning.
 + message: `Warning: Due to heavy traffic, the processing might take longer than expected.` (string) - Warning message text.
