@@ -1,0 +1,23 @@
+## Get Activity Name Suggestions [/activity/v1.0/filter-data/{sessionId}/activities?q={query}]
+
+### Get Activity Name Suggestions [GET]
+
++ Parameters
+    + sessionId: `d29e0c56-54fb-4e1a-974a-7362635bb135` (string, required) - Unique acknowledgement token that indicates that the request has been received and the processing has been initiated. You must use the session ID returned in the `Get Activity Search Results` API response for further calls in the same session. The session ID is valid for 60 minutes from the time it is generated.<br><br><b>Note:</b> If you provide an invalid `sessionId`, then the `/activities` array is returned as an empty array. 
+    + query: tour (string, required) - Contains the query string based on which you want to retrieve activity names. For example, if you set the `query` parameter as `tour`, the API returns the activity names that contain the query string `tour`.<br><br>
+    <b>Notes:</b>
+        + This is a case-insensitive parameter.  
+        + If you set the `query` parameter as `tour`, the API returns the activity names that contain the query string `tour`. All leading or trailing spaces added in the query string, if any, is ignored by the API. 
+        + If the query string passed in the `query` parameter does not return any results, then the `/activities` array is returned as an empty array. 
+
++ Request searchByActivityName (application/json)
+
+    + Headers
+    
+      cnx-correlationid: activity-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+
++ Response 200 (application/json)
+    + Attributes (searchByActivityNameResp)
