@@ -1,6 +1,6 @@
 # Data Structures
 
-## roundTrip_offAirport_Req
+## roundTrip_onAirport_Req
 + currency: `USD` (string) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD the car fare, discount, taxes, and other monetary amounts are returned in their USD amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. Consider a scenario where you set the currency field value to USD and the car vendor's currency is in AUD. The API calculates the AUD to USD amount equivalents and displays monetary amounts in USD. Note: If you do not set a value for the currency field, the currency value will automatically be set based on the default account configuration.
 + searchQuery (searchQuery_object, required) - Contains the list of search criteria including different filter options that can be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
 + customerInfo (customerInfo_object, required) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with.
