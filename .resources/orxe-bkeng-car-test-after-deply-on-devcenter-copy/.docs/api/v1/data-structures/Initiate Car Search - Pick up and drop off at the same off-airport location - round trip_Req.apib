@@ -1,34 +1,34 @@
 ## roundTrip_offAirport_Req
 + currency: `USD` (string) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD the car fare, discount, taxes, and other monetary amounts are returned in their USD amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. Consider a scenario where you set the currency field value to USD and the car vendor's currency is in AUD. The API calculates the AUD to USD amount equivalents and displays monetary amounts in USD. Note: If you do not set a value for the currency field, the currency value will automatically be set based on the default account configuration.
-+ searchQuery (searchQuery_object, required) - Contains the list of search criteria including different filter options that can be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
-+ customerInfo (customerInfo_object, required) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with.
++ searchQuery (searchQuery_object1, required) - Contains the list of search criteria including different filter options that can be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
++ customerInfo (customerInfo_object1, required) - Contains information about the customer and the eligibility information of the customer for the loyalty program that the customer is associated with.
 + programId: `docs` (string, required) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. The programId is used to retrieve all the rewards mapped to it.
 
-## searchQuery_object
-+ criteria (criteria_object, required) - Contains the list of search criteria that must be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
-+ filters (filters_object) - Contains filters to narrow down the car search results. The search results include only those cars that match all the filter criteria specified. Note that all car content information, such as the car rental policies, and the rental location address and contact information, are obtained from the content provider.
+## searchQuery_object1
++ criteria (criteria_object1, required) - Contains the list of search criteria that must be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
++ filters (filters_object1) - Contains filters to narrow down the car search results. The search results include only those cars that match all the filter criteria specified. Note that all car content information, such as the car rental policies, and the rental location address and contact information, are obtained from the content provider.
 + vendorSpecificOptions (array[vendorSpecificOptions_Info], fixed-type) - Contains vendor-specific options to narrow down the car search results. The search results will include only those cars that match all the vendor-specific criteria specified. Note that vendorCode is mandatory and you must ensure that each object has a unique vendorCode. Additionally, either the promoCode or the corporateCode must be provided in the vendorSpecificOptions array. You can also provide both the promoCode and the corporateCode. Contact your Account Manager for more information.
 
-## criteria_object
-+ pickUp (pickUp_object, required) - Contains the car pickup search criteria. 
-+ dropOff (dropOff_object, required) - Contains the car drop-off search criteria.
-+ driverInfo (driverInfo_object, required) - Contains information about the person who will be driving the car.
+## criteria_object1
++ pickUp (pickUp_object1, required) - Contains the car pickup search criteria. 
++ dropOff (dropOff_object1, required) - Contains the car drop-off search criteria.
++ driverInfo (driverInfo_object1, required) - Contains information about the person who will be driving the car.
 
-## pickUp_object
+## pickUp_object1
 + airportCode: `LAX` (string, required) - 3-character IATA airport code.
 + date: `2023-05-10` (string, required) - Pickup date or the start date of the rental duration. The API supports same-day searches to accommodate different time zones. You can check for availability only up to 365 days in advance. Additionally, the number of days between the pickup date and the drop-off date must be less than or equal to 365 days.
 + time: `10:30` (string, required) - Time when the car will be picked up from the pickup rental location. Format: hh:mm (24-hour, example: 23:59)
 
-## dropOff_object
+## dropOff_object1
 + sameAsPickup: true (boolean) - If the drop-off location is the same as the pickup location, set the sameAsPickup field to true. If the sameAsPickup field is set to true, the airportCode field becomes optional and only the drop-off date and time fields are mandatory. If the sameAsPickup field is set to false, the airportCode, the drop-off date, and the drop-off time fields are all mandatory. Default value: false.
 + date: `2023-05-14` (string, required) - Drop-off date or the end date of the rental duration. The drop-off date (dropOffDate) must be later than the pickup date (pickupDate) date. Additionally, the number of days between the pickup date and the drop-off date must be less than or equal to 365 days. Format: YYYY-MM-DD
 + time: `17:30` (string, required) - Time when the car will be dropped off at the drop-off rental location. Format: hh:mm (24-hour, example: 23:59)
 
-## driverInfo_object
+## driverInfo_object1
 + age: 25 (number, required) - Age of the person who will be driving the car. Note that the driver's age must be between 18 and 110.
 + nationality: `US` (string, required) - 2-character ISO code that indicates the nationality of the person who will be driving the car. Read more about valid nationality codes.
 
-## filters_object
+## filters_object1
 + vendor (object) - Contains the list of vendors that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object.
     + allow (array[vendorAllow_list], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify HZ, ZI as the value of the allow array, the car search results will include only car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
     + disallow (array[vendorDisallow_list], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify HZ, ZI as the value of the disallow array, the car search results will exclude (not include) all car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
@@ -47,7 +47,7 @@
 + airConditionedOnly: true (boolean) - If you want to include only air-conditioned cars in the car search results, set this field to true.
 
 
-## eligibilityInfo_object
+## eligibilityInfo_object1
 + programCurrency: `Points` (string) - For internal use only.
 + purchaseAllowed: true (boolean) - For internal use only.
 + redemptionAllowed: true (boolean) - For internal use only.
@@ -55,7 +55,7 @@
 + useVariableMilesFormula: false (boolean) - For internal use only.
 + shortfallAllowed: true (boolean) - For internal use only.
 
-## customerInfo_object
+## customerInfo_object1
 + id: `TestUser` (string, required) - Unique ID for the customer.
 + availablePointBalance: 90000 (number, required) - Number of loyalty points available in the customer's credit card account.
 + transitCode: `72e87c86-c240-45eb-8d96-b46c52e56782` (string, required) - Unique code that is generated by the transit service. The transit code is used to track all the calls made to different systems within cxLoyalty for all search to booking-related transactions for a single user session. The transit code is valid for 72 hours from the time it is generated.
