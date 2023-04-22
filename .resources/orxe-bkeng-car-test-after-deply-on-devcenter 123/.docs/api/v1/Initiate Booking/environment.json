@@ -1,8 +1,0 @@
-{
-  "environments": [
-    {
-      "baseUrl": "https://api.stage.secure.cnxloyalty.com",
-      "type": "stage"
-    }
-  ]
-}
