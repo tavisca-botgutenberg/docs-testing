@@ -1,0 +1,11 @@
+## getCarSearchStatus_Req
++ status: `InProgress` (enum) - Current status of the car search request.
+    + InProgress (string)
+    + Completed (string)
+    + Faulted (string)
++ resultsCount: `97` (number) - Total number of car search results that are available in the result set at the time when the status request is made.
++ errors (array[errors_list], fixed-width) - Contains the list of errors that have occurred during the car search process. For example, if an error occurs when the engine validates the currency provided in the request with the currency that is set in the account configuration, the errors array lists the appropriate error message.
+
+## errors_list
++ code: `3434` (string) - Code for the error. See the list of API error codes and messages.
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text. See the list of API error codes and messages.
