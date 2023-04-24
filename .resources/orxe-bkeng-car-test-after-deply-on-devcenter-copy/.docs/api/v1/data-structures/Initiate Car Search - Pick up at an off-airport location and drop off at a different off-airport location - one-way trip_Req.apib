@@ -7,7 +7,7 @@
 ## searchQuery_object3
 + criteria (criteria_object3, required) - Contains the list of search criteria that must be used to search for cars that are available for pickup and drop-off at the same airport (round trip). 
 + filters (filters_object3) - Contains filters to narrow down the car search results. The search results include only those cars that match all the filter criteria specified. Note that all car content information, such as the car rental policies, and the rental location address and contact information, are obtained from the content provider.
-+ vendorSpecificOptions (array[vendorSpecificOptions_Info], fixed-type) - Contains vendor-specific options to narrow down the car search results. The search results will include only those cars that match all the vendor-specific criteria specified. Note that vendorCode is mandatory and you must ensure that each object has a unique vendorCode. Additionally, either the promoCode or the corporateCode must be provided in the vendorSpecificOptions array. You can also provide both the promoCode and the corporateCode. Contact your Account Manager for more information.
++ vendorSpecificOptions (array[vendorSpecificOptions_Info3], fixed-type) - Contains vendor-specific options to narrow down the car search results. The search results will include only those cars that match all the vendor-specific criteria specified. Note that vendorCode is mandatory and you must ensure that each object has a unique vendorCode. Additionally, either the promoCode or the corporateCode must be provided in the vendorSpecificOptions array. You can also provide both the promoCode and the corporateCode. Contact your Account Manager for more information.
 
 ## criteria_object3
 + pickUp (pickUp_object3, required) - Contains the car pickup search criteria. 
@@ -250,7 +250,7 @@
 + TwoWheelVehicle
 + Van
 
-## vendorSpecificOptions_Info1
+## vendorSpecificOptions_Info3
 + vendorCode: `ZI` (string, required) - Vendor code for which the vendor-specific options must be applied. Each object must have a unique vendorCode. You cannot have two objects with the same vendorCode. See the list of vendor codes and their descriptions.
 + promoCode: `HzXMas16` (string) - Vendor-specific promotion code that must be used for the car search. Only car inventory that belong to the promotion code specified will be returned in the car search results. Either the promoCode or the corporateCode must be provided in the /vendorSpecificOptions array. You can also provide both the promoCode and the corporateCode. Contact your Account Manager for more information.
 + corporateCode: `K836600` (string) - Vendor-specific corporate code that must be used for the car search. Only car inventory that belong to the corporate code specified will be returned in the car search results. Either the promoCode or the corporateCode must be provided in the /vendorSpecificOptions array. You can also provide both the promoCode and the corporateCode. Contact your Account Manager for more information.
