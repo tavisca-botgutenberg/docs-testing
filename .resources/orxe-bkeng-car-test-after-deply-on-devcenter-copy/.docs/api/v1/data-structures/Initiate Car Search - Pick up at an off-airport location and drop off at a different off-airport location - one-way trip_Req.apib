@@ -28,6 +28,7 @@
 + long: `-118.4963` (number, required) - Longitude coordinate of the center point. The long value must be between -180 and +180. For example, the long value for the Santa Monica Pier is -118.4963.
 
 ## dropOff_object3
++ sameAsPickup: false (boolean) - If the drop-off location is different from the pickup location, set the sameAsPickup field to false. If the sameAsPickup field is set to false, the circle object, the drop-off date, and the drop-off time fields are all mandatory. If the sameAsPickup field is set to true, the circle field becomes optional and only the drop-off date and time fields are mandatory.
 + circle (circle_object3-double, required) - Contains the geographic coordinates of the center point and the radius within which you want to search for rental locations.
 + date: `2023-05-13` (string, required) - Pickup date or the start date of the rental duration. The API supports same-day searches to accommodate different time zones. You can check for availability only up to 365 days in advance. Additionally, the number of days between the pickup date and the drop-off date must be less than or equal to 365 days.
 + time: `10:30` (string, required) - Time when the car will be picked up from the pickup rental location. Format: hh:mm (24-hour, example: 23:59)
