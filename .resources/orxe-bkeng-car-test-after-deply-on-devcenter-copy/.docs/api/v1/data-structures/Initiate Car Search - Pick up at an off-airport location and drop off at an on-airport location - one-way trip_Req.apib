@@ -39,14 +39,14 @@
 
 ## filters_object4
 + vendor (object) - Contains the list of vendors that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object.
-    + allow (array[vendorAllow_list2], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify HZ, ZI as the value of the allow array, the car search results will include only car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
-    + disallow (array[vendorDisallow_list2], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify HZ, ZI as the value of the disallow array, the car search results will exclude (not include) all car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
+    + allow (array[vendorAllow_list4], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify HZ, ZI as the value of the allow array, the car search results will include only car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
+    + disallow (array[vendorDisallow_list4], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify HZ, ZI as the value of the disallow array, the car search results will exclude (not include) all car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
 + vehicleType (object) - Contains the types of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
-    + allow (array[vehicleTypeAllow_list2], fixed-type) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the allow array, the car search results will include only cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
-    + disallow (array[vehicleTypeDisallow_list2], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the disallow array, the car search results will exclude (not include) all cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
+    + allow (array[vehicleTypeAllow_list4], fixed-type) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the allow array, the car search results will include only cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
+    + disallow (array[vehicleTypeDisallow_list4], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the disallow array, the car search results will exclude (not include) all cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
 + vehicleCategory (object) - Contains the categories of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
-    + allow (array[vehicleCategoryAllow_list2], fixed-type) - Contains the list of vehicle categories that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the allow array, the car search results will include only cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
-    + disallow (array[vehicleCategoryDisallow_list2], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the disallow array, the car search results will exclude (not include) all cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
+    + allow (array[vehicleCategoryAllow_list4], fixed-type) - Contains the list of vehicle categories that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the allow array, the car search results will include only cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
+    + disallow (array[vehicleCategoryDisallow_list4], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the disallow array, the car search results will exclude (not include) all cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
 + price (object) - Contains the minimum and maximum price range for the car rental.
     + min: 20 (number) - Include only vehicles for which the car rental rate is equal to or more than the rate specified in this field. The min value must be greater than or equal to 0. Consider a scenario where the car rental rate from car vendor 1 amounts to $98, the car rental rate from car vendor 2 amounts to $100, and the car rental rate from car vendor 3 amounts to $250. If you set the min field to 100, the car search results will include only results from car vendor 2 and car vendor 3. The car search results will not include results from car vendor 1 as its car rental rate, $98, is lower than the min value specified. Notes: The min and max filters allow users to see only those rental cars that are within their budget. The value for this field must be a positive number. The value for this field must be less than the value of the max field, if specified. The min value is an indicative rate, which means that these are approximate rates. If you want to obtain the exact rate, you must use the Get Price Using Cart API.
     + max: 10000 (number) - Include only vehicles for which the car rental rate is equal to or lower than the rate specified in this field. The max value must be greater than 0. Additionally, the max value must be greater than the min value, if specified. Consider a scenario where the car rental rate from car vendor 1 amounts to $98, the car rental rate from car vendor 2 amounts to $100, and the car rental rate from car vendor 3 amounts to $250. If you set the max field to 100, the car search results will include results from car vendor 1 and car vendor 2. The car search results will not include results from car vendor 3 as its car rental rate, 250, is higher than the max value specified. Notes: The min and max filters allow users to see only those car rentals that are within their budget. The max field ensures that the user does not get distracted by car rentals that are beyond their budget. The value for this field must be a positive number.
@@ -69,19 +69,19 @@
 + useVariableMilesFormula: false (boolean) - For internal use only.
 + shortfallAllowed: true (boolean) - For internal use only.
 
-## vendorAllow_list2 (enum)
+## vendorAllow_list4 (enum)
 + ^^empty^^
 + HZ
 + ZE 
 + ZI
 
-## vendorDisallow_list2 (enum)
+## vendorDisallow_list4 (enum)
 + ^^empty^^
 + HZ
 + ZE 
 + ZI
 
-## vehicleTypeAllow_list2 (enum)
+## vehicleTypeAllow_list4 (enum)
 + ^^empty^^
 + CargoVan
 + Compact
@@ -132,7 +132,7 @@
 + TwentySixFootTruck
 + Unique
 
-## vehicleTypeDisallow_list2 (enum)
+## vehicleTypeDisallow_list4 (enum)
 + ^^empty^^
 + CargoVan
 + Compact
@@ -183,7 +183,7 @@
 + TwentySixFootTruck
 + Unique
 
-## vehicleCategoryAllow_list2 (enum)
+## vehicleCategoryAllow_list4 (enum)
 + ^^empty^^
 + AllTerrain
 + CarOrSedan
@@ -213,7 +213,7 @@
 + TwoWheelVehicle
 + Van
 
-## vehicleCategoryDisallow_list2 (enum)
+## vehicleCategoryDisallow_list4 (enum)
 + ^^empty^^
 + AllTerrain
 + CarOrSedan
