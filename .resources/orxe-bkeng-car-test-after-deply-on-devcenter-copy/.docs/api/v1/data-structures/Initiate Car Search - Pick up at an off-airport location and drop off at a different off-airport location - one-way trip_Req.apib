@@ -28,19 +28,19 @@
 + long: `-118.4963` (number, required) - Longitude coordinate of the center point. The long value must be between -180 and +180. For example, the long value for the Santa Monica Pier is -118.4963.
 
 ## dropOff_object3
-+ circle (circle_object3a, required) - Contains the geographic coordinates of the center point and the radius within which you want to search for rental locations.
++ circle (circle_object3-double, required) - Contains the geographic coordinates of the center point and the radius within which you want to search for rental locations.
 + date: `2023-05-13` (string, required) - Pickup date or the start date of the rental duration. The API supports same-day searches to accommodate different time zones. You can check for availability only up to 365 days in advance. Additionally, the number of days between the pickup date and the drop-off date must be less than or equal to 365 days.
 + time: `10:30` (string, required) - Time when the car will be picked up from the pickup rental location. Format: hh:mm (24-hour, example: 23:59)
 
-## circle_object3a
-+ center (center_object3a, required) - Contains the latitude and longitude coordinates of the given point from which the radius is calculated to determine the area to search for rental locations. For example, if you want to search for rental locations within a 10.5 km radius from the Santa Monica Pier, the Santa Monica Pier is considered as your center.
+## circle_object3-double
++ center (center_object3-double, required) - Contains the latitude and longitude coordinates of the given point from which the radius is calculated to determine the area to search for rental locations. For example, if you want to search for rental locations within a 10.5 km radius from the Santa Monica Pier, the Santa Monica Pier is considered as your center.
 + radiusKms: 10.5 (number, required) - Distance, in kilometers, from the center point that you want to consider in the search area. The radiusKms value must be between 1 and 30. For example, if you want to search within a 10.5 km radius from the Santa Monica Pier set the radiusKms field to 10.5.
 
-## center_object3a
+## center_object3-double
 + lat: 34.0103 (number, required) - Latitude coordinate of the center point. The lat value must be between -90 and +90. For example, the lat value for the Santa Monica Pier is 34.0103.
 + long: `-118.4963` (number, required) - Longitude coordinate of the center point. The long value must be between -180 and +180. For example, the long value for the Santa Monica Pier is -118.4963.
 
-## driverInfo_object3a
+## driverInfo_object3
 + age: 25 (number, required) - Age of the person who will be driving the car. Note that the driver's age must be between 18 and 110.
 + nationality: `US` (string, required) - 2-character ISO code that indicates the nationality of the person who will be driving the car. Read more about valid nationality codes.
 
