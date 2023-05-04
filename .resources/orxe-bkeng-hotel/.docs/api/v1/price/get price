@@ -1,0 +1,22 @@
+# Get Price Using Cart [/api/cart/v2.0/create]
+The `Get Price Using Cart` allows you to add a room to a <@ cart_popup @> and retrieve the latest fare of that room.
+
+If you want to check whether the price of the hotel room has changed since the last search, you must provide the `quotedPrice` field in the API request. If there is any change in the price after the <a href="../room-list#GetRoomSearchResultsAPI" target="_blank">search results are retrieved</a>, an error message along with the latest fare is returned. In this case, you must use the latest fare amount returned in the response and call the `Get Price Using Cart` API again.
+
+<b>Note:</b> To retrieve the latest room fare, you must call the `Get Price Using Cart` API within 60 minutes from the time the <a href="../search" target="_blank">hotel search</a> or <a href="../room-list" target="_blank">room search</a> is initiated.
+
+## Get Price Using Cart [POST]
+
++ Request CreateCartWithAnItemRQ (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (CreateCartWithAnItemRQHotel)
+
++ Response 200 (application/json)    
+    + Attributes (CreateCartWithAnItemRSHotel)

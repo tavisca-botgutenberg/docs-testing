@@ -1,0 +1,17 @@
+# Get Hotel Search Status [/hotel/v1.0/search/status]
+The `Get Hotel Search Status` API allows you to check the status of a hotel search that was [initiated at an earlier point in time](#InitiateSearchAPI), rather than waiting for the suppliers to return all the results.
+
+This API allows you to obtain information about the search progress and the number of hotels that are provided in the search results. When you think that the number of hotel search results meet your requirement, you can then use the search result set by calling the [Get Hotel Search Results API](#GetSearchResultsAPI).
+
+## Get Hotel Search Status [POST]
+
++ Request getSearchStatus (application/json)
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+    + Attributes (sessionIdReq)
+
++ Response 200 (application/json)
+    + Attributes (getstatusresponse)
