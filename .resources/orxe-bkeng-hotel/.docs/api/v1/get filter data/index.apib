@@ -1,0 +1,24 @@
+#  Get Filter Data [/hotel/v1.0/filter-data/{sessionId}]
+The `Get Filter Data` API allows you to retrieve the filter data for various <@ filters_display @>. The filter data is constructed based on the search result set that is returned when a hotel search is initiated.<br><br>For example, when a hotel search is initiated, the filter data for `hotelChains` filter includes a list of all those hotel chains for which the hotels are available, and the hotel count for each hotel chain.  
+
+You must use the session ID returned in the `Initiate Hotel Search` API response.
+
+The API response returns the filter data that can be used to apply filters on the search result set.
+
+<b>Notes:</b>
+<ul style="list-style-type:disc;margin-left:25px"><li>You must call the <code>Get Filter Data</code> API after the <code>Get Hotel Search Status</code> API and prior to <code>Get Hotel Search Results</code> API to retrieve the filter data.</li><li>To retrieve the filter data, you must call the <code>Get Filter Data</code> API within 60 minutes from the time the hotel search is initiated.</li></ul>
+
+## Get Filter Data [GET]
+
++ Parameters
+    + sessionId: `0f8fad5b-d9cb-461f-a165-70867728951z` - Unique acknowledgement token that indicates that the request has been received and the processing has been initiated. You must use the session ID returned in the `Initiate Hotel Search` API response for further calls in the same session. The session ID is valid for 60 minutes from the time it is generated.
+
++ Request filterDataReq (application/json)
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+
++ Response 200 (application/json)
+    + Attributes (getFilterDataResponse)

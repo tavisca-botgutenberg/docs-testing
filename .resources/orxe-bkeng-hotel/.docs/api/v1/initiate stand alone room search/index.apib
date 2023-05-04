@@ -1,0 +1,20 @@
+# Initiate a Stand-Alone Room Search [/hotel/v1.0/rooms/search/init/stateless]
+With the `Initiate a Stand-Alone Room Search` API you can initiate a room search to directly retrieve the list of rooms that are available for a specific hotel for the guest count (occupants), stay duration (check-in and check-out dates) specified. 
+
+In addition to the search criteria, you must also provide the <@ customer_popup @> information, such as customer ID, <@ point_balance_popup @>, and <@ loyalty_program_popup @> ID. Based on this information, a list of <@ reward_popup @> options is returned in the `Get Room Search Results` API response. 
+
+Consider a scenario where as an <@ OTA @>, you are running a promotion on a specific hotel. You have a banner on your home page that lets your users know about a promotional offer of 25% off on bookings for that specific hotel. In this scenario, when your user clicks on the banner, you might want to directly get the available room list for that specific hotel and a list of reward options that the customer can avail to book the room, and display this information on the page. The `Get Room List` API allows you to take care of such scenarios in minimum time and effort as you can directly call the `Get Room List` API and proceed from there.
+
+#### Initiate a Stand-Alone Room Search [POST]
+
++ Request initiateStatelessRoomSearchRequest (application/json)
+
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+    + Attributes (initiateStatelessRoomSearchRequest)
+
++ Response 200 (application/json)
+    + Attributes (initiateRoomSearchResponse)
