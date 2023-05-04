@@ -1,0 +1,27 @@
+#  Initiate Booking [/cart/{cartId}/checkout/init]
+The `Initiate Booking` API allows you to book a room. To book a room, you must provide the <@ cart_id @> in the request URL. You can make a booking for up to 8 guests in a room. This limitation can vary per <@ supplier @>.
+
+Before calling the `Check Out` API, you must call the <a href="/orxe/hotel/current/price" target="_blank">Get Price</a> API to ensure that you have the latest fare of the room that you want to book.
+
+This API returns the `orderId` in the response. You can use the `orderId` to [check the booking status](#getbookingstatusapi) at any later point in time.
+
+## Initiate Booking [POST]
+
++ Parameters
+    + cartId: `1gxyupie2` - Unique ID for the <@ cart_popup @> that contains the item (room option) that you want to book. You must obtain the `cartId` from the `/id` field returned in the `Get Price Using Cart` API response.  
+
++ Request initiateBookCart (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+
+    + Attributes (initiateBookCartRequest)
+
++ Response 200 (application/json)
+    + Attributes (initiateBookCartResponse)

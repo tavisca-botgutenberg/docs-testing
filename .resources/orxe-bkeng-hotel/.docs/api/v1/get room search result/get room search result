@@ -1,0 +1,26 @@
+# Get Room Search Results [/hotel/v1.0/rooms/search/results]
+The `Get Room Search Results` API allows you to retrieve the room search results. Using this API, you can also specify the customer's <@ point_balance_popup @> and retrieve a list of <@ reward_popup @> options that the <@ customer_popup @> can avail to book a room. For each reward option, the API also returns the redemption details as well as the <@ earncomponent @> applicable for the reward. 
+
+When retrieving the search results, you can choose the <@ hotelcontentattributes_popup @> that you want the API to return based on your business use case, without compromising on the response size or latency.
+
+When this API is called for the first time, the API implicitly signals to stop the room search, even if the search is still in progress, and finalizes the result set.
+
+This API returns the rooms that are available in the given hotel for the given guest count (occupants) and the duration of stay (check-in and check-out dates), along with a list of <@ reward_popup @> options that the <@ customer_popup @> can avail to book a room in the hotel. The list of reward options provided for each hotel room is based on the <@ point_balance_popup @> and the <@ loyalty_program_popup @> that the customer is associated with.
+
+Additionally, the hotel's content attributes are also returned based on the content preferences (such as the hotel's <@ amenitiessmall @>, policies, or images) provided in the request.
+
+The <a href="../reference-reads#fareBasedRewardOption" target="_blank">fare-based reward options</a> also allow you to offer different room rates for the cash-only and points-only rewards. For more information and to have the loyalty program configured to return fare-based reward options, please contact cxLoyalty Business Team.
+
+## Get Room Search Results [POST]
+
++ Request resultsRequest (application/json)
+
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+    + Attributes (resultsRequest)
+
++ Response 200 (application/json)
+    + Attributes (resultsResponse)
