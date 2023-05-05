@@ -1,0 +1,8 @@
+{
+  "environments": [
+    {
+      "baseUrl": "https://cart.stage.cnxloyalty.com",
+      "type": "stage"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-# <a class="hide-parent" name="createcartwithitemapi"></a>
-## Create a Cart with an Item [POST]
-This is sample scenario that allows you to create a cart with an item. For example, a car product. In this case, if you want to check out with a single item, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Single Item Check Out</a> use case.<br><br>Note that you cannot create a cart with an <@ add_on_popup @> item. To add an <@ add_on_popup @> item or another item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API.
+# Create Cart API [/api/cart/v2.0/create]
+
+## Create a Cart with an Items [POST]
 
 + Request createCartWithItemReq (application/json)
     + Headers
@@ -15,5 +15,3 @@ This is sample scenario that allows you to create a cart with an item. For examp
 
 + Response 200 (application/json)    
     + Attributes (createCartWithItemResp)
-<br><br>
-<a href="../overview">&lt;&lt; Go to the Overview page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../manage">Go to the next API: Manage Cart API &gt;&gt;</a>

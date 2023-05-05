@@ -1,0 +1,26 @@
+## Update Booking Details [/hotel/v1.0/{bookingId}/modify]
+The `Update Booking Details` API allows you to update the booking details. With this API, you can update the special request information and guest information such as guest type and guest name. 
+
+To update the booking details, you must provide the booking ID in the request URL. Note that this is an independant API which can be called at any time after the booking is confirmed.  
+
+The API returns `200` HTTP status with an empty response body when the API call is successful. In case the API call fails, the API returns an appropriate error message with the HTTP status code. For more information, see <a href="../errors" target="_blank">Status and Error Codes</a>. 
+
+#### Update Booking Details [PUT]
+
++ Parameters
+    + bookingId: `1gxyupie4-12z3-1234-8f12-1236374qwz1` - Unique ID for the booking. You must obtain the booking ID from the `/bookingId` field returned in the `Get Booking Details` API response.
+    
++ Request updateBookingDetails (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+      
+    + Attributes (updateBookingDetails)
+
++ Response 200 (application/json)

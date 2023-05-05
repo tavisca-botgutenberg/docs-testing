@@ -1,0 +1,8 @@
+{
+  "environments": [
+    {
+      "baseUrl": "https://car-order-service.stage.cnxloyalty.com",
+      "type": "stage"
+    }
+  ]
+}

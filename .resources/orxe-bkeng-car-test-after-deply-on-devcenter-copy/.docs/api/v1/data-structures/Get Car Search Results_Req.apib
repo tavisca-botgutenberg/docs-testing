@@ -1,0 +1,208 @@
+## getCarSearchResults_Req
++ sessionId: `28000bd3-5659-41c0-ab11-e99751fb74c0` (string, required) - Unique session ID for the current session. You must obtain the sessionId for the current session from the Initiate Car Search API's response. The session ID is valid for 60 minutes from the time it is generated.
++ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD the car fare, discount, taxes, and other monetary amounts are returned in their USD amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. Consider a scenario where you set the currency field value to USD and the car vendor's currency is in AUD. The API calculates the AUD to USD amount equivalents and displays monetary amounts in USD. Note: If you do not set a value for the currency field, the currency value will automatically be set based on the default account configuration.
++ paging (paging_object)
++ contentPrefs: `All` (array, fixed-type)
++ filters (filters_object_GCSR)
++ customerInfo (customerInfo_object_GCSR)
+
+## paging_object
++ pageNo: 1 (number, required) - Indicates the start page from where you want to retrieve the search results. The response returns the result set only from the pageNo that you specify while considering the number of search results per page based on the /paging/pageSize field. Consider a scenario where you set the /paging/pageSize field to 10, which means that the response will return 10 search results per page. If you want the response to return the search results from the 21st search result (record) and skip (ignore) search results 1 to 20. In this scenario, you must set the pageNo field to 3.
++ pageSize: 10 (number, required) - Indicates the number of search results/records that the response must return per page. For example, if you want the response to return 10 search results per page, set the pageSize field to 10.
++ orderBy: `price asc` (string) - Indicates the sort criteria/order in which the response must return the search results. You can sort the search results by: - price asc (Ascending order of total fare) - price desc (Descending order of total fare)
+
+## filters_object_GCSR
++ vendor (object) - Contains the list of vendors that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object.
+    + allow (array[vendorAllow_list_GCSR], fixed-type) - Contains the list of vendors from whom you want to search for the car inventory. The car search results will include inventory only from this list of vendors. For example, if you specify HZ, ZI as the value of the allow array, the car search results will include only car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
+    + disallow (array[vendorDisallow_list_GCSR], fixed-type) - Contains the list of vendors that you want to exclude in the search for car inventory. The car search results will exclude (not include) inventory from this list of vendors. For example, if you specify HZ, ZI as the value of the disallow array, the car search results will exclude (not include) all car inventory that are from the HZ and ZI vendors. Either the allow array or the disallow array can be sent in the vendor object. You cannot send both the allow array and the disallow array in the vendor object. See the list of vendor codes and their descriptions.
++ vehicleType (object) - Contains the types of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
+    + allow (array[vehicleTypeAllow_list_GCSR], fixed-type) - Contains the list of vehicle types that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the allow array, the car search results will include only cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
+    + disallow (array[vehicleTypeDisallow_list_GCSR], fixed-type) - Contains the list of vehicle types that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle types specified in this list. For example, if you specify economy, premium as the value of the disallow array, the car search results will exclude (not include) all cars that are of the economy and premium vehicle types. Either the allow array or the disallow array can be sent in the vehicleType object. You cannot send both the allow array and the disallow array in the vehicleType object.
++ vehicleCategory (object) - Contains the categories of vehicles that you want to include (allow) or exclude (disallow) in the search for car inventory. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
+    + allow (array[vehicleCategoryAllow_list_GCSR], fixed-type) - Contains the list of vehicle categories that you want to include in the car search. The car search results will include only cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the allow array, the car search results will include only cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
+    + disallow (array[vehicleCategoryDisallow_list_GCSR], fixed-type) - Contains the list of vehicle categories that you want to exclude in the car search. The car search results will not include cars that belong to either one of the vehicle categories specified in this list. For example, if you specify limo, SUV as the value of the disallow array, the car search results will exclude (not include) all cars that are of the limo and SUV vehicle categories. Either the allow array or the disallow array can be sent in the vehicleCategory object. You cannot send both the allow array and the disallow array in the vehicleCategory object.
++ price (object) - Contains the minimum and maximum price range for the car rental.
+    + min: 20 (number) - Include only vehicles for which the car rental rate is equal to or more than the rate specified in this field. The min value must be greater than or equal to 0. Consider a scenario where the car rental rate from car vendor 1 amounts to $98, the car rental rate from car vendor 2 amounts to $100, and the car rental rate from car vendor 3 amounts to $250. If you set the min field to 100, the car search results will include only results from car vendor 2 and car vendor 3. The car search results will not include results from car vendor 1 as its car rental rate, $98, is lower than the min value specified. Notes: The min and max filters allow users to see only those rental cars that are within their budget. The value for this field must be a positive number. The value for this field must be less than the value of the max field, if specified. The min value is an indicative rate, which means that these are approximate rates. If you want to obtain the exact rate, you must use the Get Price Using Cart API.
+    + max: 10000 (number) - Include only vehicles for which the car rental rate is equal to or lower than the rate specified in this field. The max value must be greater than 0. Additionally, the max value must be greater than the min value, if specified. Consider a scenario where the car rental rate from car vendor 1 amounts to $98, the car rental rate from car vendor 2 amounts to $100, and the car rental rate from car vendor 3 amounts to $250. If you set the max field to 100, the car search results will include results from car vendor 1 and car vendor 2. The car search results will not include results from car vendor 3 as its car rental rate, 250, is higher than the max value specified. Notes: The min and max filters allow users to see only those car rentals that are within their budget. The max field ensures that the user does not get distracted by car rentals that are beyond their budget. The value for this field must be a positive number.
++ transmission: (enum) - Indicates the required type of car transmission.
+    + Automatic (string)
+    + Manual (string)
++ airConditionedOnly: true (boolean) - If you want to include only air-conditioned cars in the car search results, set this field to true.
+
+## customerInfo_object_GCSR
++ id: `TestUser` (string, required) - Unique ID for the customer.
++ availablePointBalance: 90000 (number, required) - Number of loyalty points available in the customer's credit card account.
+
+## vendorAllow_list_GCSR (enum)
++ ^^empty^^
++ HZ
++ ZE 
++ ZI
+
+## vendorDisallow_list_GCSR (enum)
++ ^^empty^^
++ HZ
++ ZE 
++ ZI
+
+## vehicleTypeAllow_list_GCSR (enum)
++ ^^empty^^
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
+## vehicleTypeDisallow_list_GCSR (enum)
++ ^^empty^^
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
+## vehicleCategoryAllow_list_GCSR (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
+
+## vehicleCategoryDisallow_list_GCSR (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
