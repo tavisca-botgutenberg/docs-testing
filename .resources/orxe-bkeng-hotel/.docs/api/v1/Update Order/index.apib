@@ -1,13 +1,7 @@
-## Update Order [/hotel/v1.0/order/{id}]
+# Update Order [/hotel/v1.0/order/{id}]
 The `Update Order` API allows you to update the order details. With this API, you can update the stay period, payment options, special request information, and guest information such as guest type and name.
 
-To update the order details, you must provide the order ID in the request URL. Note that this is an independant API which can be called at any time after order creation.  
-
-The API returns `200` HTTP status with an empty response body when the API call is successful. In case the API call fails, the API returns an appropriate error message with the HTTP status code. For more information, see <a href="../errors" target="_blank">Status and Error Codes</a>. 
-
-To view the order with the updated order details, you must call the `Get Order` API. 
-
-#### Update Order [PUT]
+## Update Order [PUT]
 
 + Parameters
     + id: `123-456-789` (string, required) - Unique ID for the <@ product_order_popup @> for which you want to update order details. 
@@ -20,6 +14,7 @@ To view the order with the updated order details, you must call the `Get Order` 
       cnx-tenantid: 2ql3bti6juo
       cnx-userip: 127.0.0.1
       Accept-Encoding: gzip, deflate
+      
 `   + Attributes (updateOrderReq)
       
 + Response 200 (application/json)
