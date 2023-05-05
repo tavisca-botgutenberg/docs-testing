@@ -1,0 +1,484 @@
+## getCarSearchResults_Res
++ sessionId: `28000bd3-5659-41c0-ab11-e99751fb74c0`(string) 
++ carRentals (array[carRentals_info], fixed-type)
++ vendors (array[vendors_info], fixed-type)
++ rentalLocations (array[rentalLocations_info], fixed-type)
++ vehicles (array[vehicles_info], fixed-type)
++ paging (object)
++ warnings (array[warnings_info], fixed-type)
+
+
+## carRentals_info
++ id: `0b142645-51fb-4f0c-98c8-64d613c461ac.0` (string) 
++ pickUpLocationId: `c10917a19cb5acb4710120e072665267` (string) 
++ dropOffLocationId: `c10917a19cb5acb4710120e072665267` (string) 
++ vehicleRefId: `3142cb83-dc3e-4ae3-a8b3-29c6292e87f3` (string) 
++ vendorCode: `ZI` (string) 
++ supplierId: `114` (string) 
++ rateCode: `ASJKL` (string) 
++ inventoryType: `prepaid` (enum)
+    + Prepaid
+    + Postpaid
+    + Unknown
++ displayFare (object)
++ optionalCharges (object)
++ policies (array[policies_info], fixed-type)
++ cancellationPolicy (object)
++ freeCancellationEndDate: `2023-05-19T10:29:59` (string)
++ mileage (object)
++ purchaseOption (object)
+
+## displayFare
++ type: `Corporate` (string)
++ currency: `USD` (string)
++ guaranteeRequired: true (boolean)
++ depositRequired: false (boolean)
++ totalFare: 272.61 (number)
++ breakup (object)
+    + baseFare: 217.8 (number)
+    + fees (array [fees_info], fixed-type)
+    + taxes (array[taxes_info], fixed-type)
+    + discounts (array[discounts_info], fixed-type)
+    + markups (array[markups_info], fixed-type)
+    + charges (array[charges_info], fixed-type)
+    + coverages (array[coverages_info], fixed-type)
+    + equipments (array[equipments_info], fixed-type)
++ commissions (object)
+    + amount: 10.5 (number)
+    + desc: `Flat rate commission for the agency` (string)
+
+## fees_info
++ source: `vendorFee` (string)
++ amount: 31.82 (number)
++ desc: `Concession Recovery Fee` (string)
+
+## taxes_info
++ source: `Local Tax` (string)
++ amount: 22.99 (number)
++ code: `LT` (string)
++ desc: `Local Tax` (string)
+
+## discounts_info
++ amount: 40 (number)
++ desc: `Low season discount` (string)
++ source: `agency` (string)
+
+## markups_info
++ amount: 10 (number)
++ desc: `Standard markup` (string)
++ source: `agency` (string)
+
+## charges_info
++ type: `CleaningFee` (enum)
+    +AdditionalDay
+    +AdditionalDistance
+    +AdditionalDrive
+    +AdditionalHour
+    +AdditionalWeek
+    +Adjustment
+    +AdministrationFee
+    +AgeDifferential
+    +AirConditioningSurcharge
+    +AirportAccessFee
+    +AirportConcessionFeeRecovery
+    +AirportConstructionFee
+    +AirportContractFee
+    +AirportFee
+    +AirportSurcharge
+    +AutoExcise
+    +BaseRate
+    +BorderCrossingFee
+    +CarSeatFee
+    +CityMitigationFee
+    +CityProjectFund
+    +CityTax
+    +CleaningFee
+    +ConcessionFee
+    +ConcessionRecoveryFee
+    +ContractFee
+    +CountyLicenseFee
+    +CountySurcharge
+    +CountyTax
+    +Coverage
+    +CustomerDropOff
+    +CustomerFacilityCharge
+    +CustomerPickup
+    +Discount
+    +Drop
+    +EarlyAmFee
+    +EmptyToEmpty
+    +EnergySurcharge
+    +Equipment
+    +ExtraGratuity
+    +ExtraPassengers
+    +ExtraStop
+    +FacilityFee
+    +Fee
+    +FreeTank
+    +Fuel
+    +FuelSurcharge
+    +FullToEmpty
+    +FullToFull
+    +GoodsAndServiceFee
+    +GovernmentRateSupplement
+    +GovernmentRentalSurcharge
+    +Gratuity
+    +Greeter
+    +GrossReceiptsFee
+    +HalfToHalf
+    +HighwayUseCharge
+    +HolidaySurcharge
+    +InfantOrChildRestraintDeviceSurcharge
+    +LatePMFee
+    +LessorTax
+    +LicenseRecoupmentFee
+    +LocationCustomerFee
+    +MaintenanceFacilityFee
+    +Mandatory
+    +MandatoryChargesTotal
+    +MeetAndGreet
+    +MileageIncluded
+    +MitigationFee
+    +MotorVehicleCharge
+    +Optional
+    +OutOfHoursFee
+    +Parking
+    +PayOnArrivalAmount
+    +PetSurcharge
+    +Phone
+    +PremiumLocationSurcharge
+    +PrepaidFuel
+    +PrepayAmount
+    +PrepurchasedWithNoRefund
+    +PrepurchasedWithRefund
+    +PushCart
+    +QuarterToEmpty
+    +RateOverride
+    +RefuelingSurcharge
+    +RegistrationFee
+    +ReimbursementFee
+    +Representative
+    +RoadSafetyProgramFee
+    +RoadUsageSurcharge
+    +SecurityFee
+    +Senior
+    +ServiceCharge
+    +StandardGratuity
+    +StateRentalFee
+    +StateSurcharge
+    +StateTourismFund
+    +Stop
+    +Subtotal
+    +Surcharge
+    +SurfaceTransportationCharge
+    +Tax
+    +Tip
+    +TireAndBatteryFee
+    +TireManagementFee
+    +Tolls
+    +TotalSurcharges
+    +TourismCharge
+    +TransactionFee
+    +TravelTimeFee
+    +UDriveItFee
+    +Unknown
+    +VehicleCollection
+    +VehicleDelivery
+    +VehicleLicenseFee
+    +VehicleMaintenanceFee
+    +VehicleRental
+    +WaitTime
+    +WinterServiceCharge
+    +YoungDriver
+    +YoungerDriver
++ amount: 10 (number)
++ taxInclusive: false (boolean)
++ calculationBasis (object)
+    + unitType: `RentalPeriod` (enum)
+        + PerDay
+        + PerHour
+        + PerKm
+        + PerMile
+        + PerMonth
+        + PerWeek
+        + PerYear
+    + quantity: 1 (number)
+    + amount: 10 (number)
++ desc: `Amount charged as the vehicle cleaning fee` (string)
+
+## coverages_info
++ type: `CleaningFee` (enum)
+    +AdditionalDay
+    +AdditionalDistance
+    +AdditionalDrive
+    +AdditionalHour
+    +AdditionalWeek
+    +Adjustment
+    +AdministrationFee
+    +AgeDifferential
+    +AirConditioningSurcharge
+    +AirportAccessFee
+    +AirportConcessionFeeRecovery
+    +AirportConstructionFee
+    +AirportContractFee
+    +AirportFee
+    +AirportSurcharge
+    +AutoExcise
+    +BaseRate
+    +BorderCrossingFee
+    +CarSeatFee
+    +CityMitigationFee
+    +CityProjectFund
+    +CityTax
+    +CleaningFee
+    +ConcessionFee
+    +ConcessionRecoveryFee
+    +ContractFee
+    +CountyLicenseFee
+    +CountySurcharge
+    +CountyTax
+    +Coverage
+    +CustomerDropOff
+    +CustomerFacilityCharge
+    +CustomerPickup
+    +Discount
+    +Drop
+    +EarlyAmFee
+    +EmptyToEmpty
+    +EnergySurcharge
+    +Equipment
+    +ExtraGratuity
+    +ExtraPassengers
+    +ExtraStop
+    +FacilityFee
+    +Fee
+    +FreeTank
+    +Fuel
+    +FuelSurcharge
+    +FullToEmpty
+    +FullToFull
+    +GoodsAndServiceFee
+    +GovernmentRateSupplement
+    +GovernmentRentalSurcharge
+    +Gratuity
+    +Greeter
+    +GrossReceiptsFee
+    +HalfToHalf
+    +HighwayUseCharge
+    +HolidaySurcharge
+    +InfantOrChildRestraintDeviceSurcharge
+    +LatePMFee
+    +LessorTax
+    +LicenseRecoupmentFee
+    +LocationCustomerFee
+    +MaintenanceFacilityFee
+    +Mandatory
+    +MandatoryChargesTotal
+    +MeetAndGreet
+    +MileageIncluded
+    +MitigationFee
+    +MotorVehicleCharge
+    +Optional
+    +OutOfHoursFee
+    +Parking
+    +PayOnArrivalAmount
+    +PetSurcharge
+    +Phone
+    +PremiumLocationSurcharge
+    +PrepaidFuel
+    +PrepayAmount
+    +PrepurchasedWithNoRefund
+    +PrepurchasedWithRefund
+    +PushCart
+    +QuarterToEmpty
+    +RateOverride
+    +RefuelingSurcharge
+    +RegistrationFee
+    +ReimbursementFee
+    +Representative
+    +RoadSafetyProgramFee
+    +RoadUsageSurcharge
+    +SecurityFee
+    +Senior
+    +ServiceCharge
+    +StandardGratuity
+    +StateRentalFee
+    +StateSurcharge
+    +StateTourismFund
+    +Stop
+    +Subtotal
+    +Surcharge
+    +SurfaceTransportationCharge
+    +Tax
+    +Tip
+    +TireAndBatteryFee
+    +TireManagementFee
+    +Tolls
+    +TotalSurcharges
+    +TourismCharge
+    +TransactionFee
+    +TravelTimeFee
+    +UDriveItFee
+    +Unknown
+    +VehicleCollection
+    +VehicleDelivery
+    +VehicleLicenseFee
+    +VehicleMaintenanceFee
+    +VehicleRental
+    +WaitTime
+    +WinterServiceCharge
+    +YoungDriver
+    +YoungerDriver
++ desc: `Protection insurance for accidents` (string)
++ amount: 10 (number)
++ taxInclusive: false (boolean)
++ calculationBasis (object)
+    + unitType: `RentalPeriod` (enum)
+        + PerDay
+        + PerHour
+        + PerKm
+        + PerMile
+        + PerMonth
+        + PerWeek
+        + PerYear
+    + quantity: 1 (number)
+    + amount: 10 (number)
++ deductibleAmount: 500 (number)
+
+## equipments_info
++ code: 9 (number)
++ desc: `Child Safety Seat` (string)
++ amount: 10 (number)
++ guaranteeRequired: true
++ taxInclusive: false
++ calculationBasis:
+    + unitType: `RentalPeriod` (enum)
+        + PerDay
+        + PerHour
+        + PerKm
+        + PerMile
+        + PerMonth
+        + PerWeek
+        + PerYear
+    + quantity: 1 (number)
+    + amount: 10 (number)
+
+
+## vendors_info
++ code: `ZI` (string)
++ name: `Avis` (string)
++ logo: `http://vendor.com/logo.jpg` (string)
++ policies (array [policies_info], fixed-type)
+
+
+## policies_info
++ type: `Prepay` (string)
++ text: `Prepayment. For the local pick up of your car a valid credit card is mandatory. The cardholder and the driver must be the same person.` (string)
+
+## rentalLocations_info
++ id: `c10917a19cb5acb4710120e072665267` (string)
++ code: `LAXT01` (string)
++ name: `Los Angeles Intl Airport` (string)
++ inTerminal: false (boolean)
++ atAirport: true (boolean)
++ shuttle: `CarRental` (enum)
+    + Available
+    + CarRental
+    + MultiShuttle
+    + NotSpecified
+    + OnCall
+    + Unavailable
+    + Unknown
++ hoursOfOperation (array[hoursOfOperation_info], fixed-type)
++ contactInfo (object)
++ geoCode (object)
+
+
+
+## hoursOfOperation_info
++ dayOfWeek: `Mon` (string)
++ workingHours (array[workingHours_info], fixed-type)
+
+## workingHours_info
++ openTime: `08:00` (string)
++ closeTime: `18:00` (string)
+
+## contactInfo
++ address (object)
++ email: `john.doe@abc.com` (string)
++ phone (array[phone_info], fixed-type)
++ countryCode: 1 (number)
+
+
+## address
++ line1: `3077 ACME Street` (string)
++ line2: `Beside the ACME Shopping Mall` (string)
++ cityName: `San Francisco` (string)
++ state (object)
++ countryCode: `US` (string)
++ postalCode: `94133` (string)
+
+
+## state
++ code: `CA` (string)
++ name: `California` (string)
+
+## phone_info
++ type: `Mobile` (enum)
+    + Home
+    + Mobile
+    + Work
+    + Unknown
++ number: `(123)-555-0173` (string)
++ 
+
+## geoCode
++ lat: 34.0103 (number)
++ long: 33.952591 (number)
+
+// vehicles_info - start
+
+## vehicles_info
++ sippCode: `CCAR` (string)
++ refId: `33ee9404-83b3-44b9-b8d1-1a787de6eb09` (string)
++ name: `Group B - Ford Focus or similar` (string)
++ category: `AllTerrain` (string)
++ type: `CargoVan` (string)
++ transmission: `Automatic` (string)
++ desc: `Vehicle Description` (string)
++ images: `http://www.avis.com/car-rental/images/global/en/rentersguide/vehicle_guide/2016-ford-focus-se-sedan-black.png`(array, fixed-type)
++ airConditioned: true (boolean)
++ fuelType: `Petrol` (string)
++ baggageCapacity: 5 (number)
++ passengerCapacity: 5 (number)
++ doorCount: 4 (number)
++ driveType: `AllWheelDrive` (string)
++ policies (array [policies_info], fixed-type)
++ specialEquipment (array[specialEquipment_info])
+
+
+## policies_info
++ type: `Premium Class Minimum Age` (string)
++ text: `The minimum age of the driver for ACME Premium Vehicle Class rentals is 25 years.` (string)
+
+## specialEquipment_info
++ type: `child seat` (string)
++ desc: `We offer child safety seats at a cost of 12.99 USD per day` (string)
+
+// vehicles_info - end
+
+## paging
++ totalRecords: 1 (number)
++ pageNo: 1 (number)
++ pageSize: 10 (number)
+
+
+## warnings_info
++ code: 1 (number)
++ message: `Min age 20 - Most Car Classes. 20-24 Rate Differential Applies` (string)
+
+
+
+
+
+

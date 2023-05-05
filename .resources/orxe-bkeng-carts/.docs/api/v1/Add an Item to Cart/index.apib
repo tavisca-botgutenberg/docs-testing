@@ -1,8 +1,11 @@
-# <a class="hide-parent" name="createemptycartapi"></a>
-## Create an Empty Cart [POST]
-This is a sample scenario that allows you to create an empty cart. To add an item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API. 
+# Add to Cart [/api/cart/v2.0/{cartId}/add]
 
-+ Request createEmptyCart (application/json)
+## Add an Item to Cart [PUT] 
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> to which you want to add an item.  
+
++ Request addToCart (application/json)
     + Headers
       Content-Type: application/json
       cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
@@ -11,27 +14,7 @@ This is a sample scenario that allows you to create an empty cart. To add an ite
       cnx-environment-token: T3
       Accept-Encoding: gzip, deflate
       Accept-Language: en-US
-    + Attributes (createEmptyCartRequest)
+    + Attributes (addToCartRequest)
 
 + Response 200 (application/json)    
-    + Attributes (createEmptyCartResp)
-    
-    # <a class="hide-parent" name="createcartwithitemapi"></a>
-## Create a Cart with an Item [POST]
-This is sample scenario that allows you to create a cart with an item. For example, a car product. In this case, if you want to check out with a single item, you must call the <a href="../check-out#initiateBook" target="_blank">Initiate Booking - Single Item Check Out</a> use case.<br><br>Note that you cannot create a cart with an <@ add_on_popup @> item. To add an <@ add_on_popup @> item or another item to this cart, you must call the <a href="../manage#addtocartapi" target="_blank">Add to Cart</a> API.
-
-+ Request createCartWithItemReq (application/json)
-    + Headers
-      Content-Type: application/json
-      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
-      cnx-tenantid: 3smlq291nuo
-      cnx-userip: 127.0.0.1
-      cnx-environment-token: T3
-      Accept-Encoding: gzip, deflate
-      Accept-Language: en-US
-    + Attributes (createCartWithItemRequest)
-
-+ Response 200 (application/json)    
-    + Attributes (createCartWithItemResp)
-<br><br>
-<a href="../overview">&lt;&lt; Go to the Overview page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../manage">Go to the next API: Manage Cart API &gt;&gt;</a>
+    + Attributes (addToCartResp)

@@ -1,0 +1,19 @@
+## cancelOrderReq
++ cancellationDetails (cancellationInfoReq, required) - Contains the cancellation details of the activity booking. 
+
+## cancellationInfoReq 
++ cancellationTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is canceled. Note: The `cancellationTimestamp` field is optional only when the supplier returns error at the time of cancellation. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
++ include supplierCancellationNumberReq
++ errors (array [errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the cancellation process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ warnings (array [warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the cancellation process.
+
+## supplierCancellationNumberReq
++ supplierCancellationNumber: `309755104` (string, nullable) - Supplier cancellation number for the booking. For every successful cancellation, the supplier cancellation number must be provided either in the `supplierCancellationNumber` field in the `/cancellationDetails` object. Note: The `supplierCancellationNumber` field is optional only when the supplier returns errors at the time of cancellation. In this case, you must specify the list of errors in the `errors` array.
+
+## errorsCancelOrderReq
++ code: `3434` (string) - Code for the error.  
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text.  
+
+## warningsCancelOrderReq
++ code: `4313` (string) - Code for the warning.
++ message: `Warning: Due to heavy traffic, the processing might take longer than expected.` (string) - Warning message text.
