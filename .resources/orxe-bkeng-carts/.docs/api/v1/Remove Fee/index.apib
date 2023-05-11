@@ -1,0 +1,24 @@
+# <a class="hide-parent" name="removeorderlevelfees"></a>
+## Remove Fee [/api/cart/v2.0/{cartId}/fees/remove]
+The `Remove Order Fee` API allows you to remove an additional fee applied to the cart, such as <@ order_fee @>.  
+
+You must provide the ID of the cart, from which you want to remove the fee, in the request URL. Also, you must provide the <@ cart_currency_popup @> and the ID of the fee that you want to remove in the request. 
+
+## Remove Fee [PUT]
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> from which you want to remove the order fee.  
+
++ Request removeOrderLevelReq (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (removeAnOrderLevelRequest)
+
++ Response 200 (application/json)    
+    + Attributes (removeOrderLevelResp)

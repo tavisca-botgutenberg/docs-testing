@@ -1,0 +1,84 @@
+## flexiDate_Request
++ programId: `303ynydtn9xx`(string) - Unique ID for the loyalty program. Each loyalty program can be associated with various rewards. The programId is used to retrieve all the rewards mapped to it.
++ currency: `USD` (string)
++ journeys (array[journeysInfo],fixed-type)
++ cabinType: `economy` (enum)
+ + All (string)
+ + Business (string)
+ + Economy (string)
+ + First (string)
+ + Premium Economy (string)
++ passengers (array[passengersInfo1, passengersInfo2, passengersInfo3],fixed-type)
++ filters (filtersDetails)
++ customerInfo (customerInfoDetails)
++ maxResults: 500 (number) - Maximum number of results to be returned. Min: 1. Max: 500.
+
+## journeysInfo
++ departrue (object)
+    + code: `LAS` (string)
+    + type: `City` (string)
++ arrival (object)
+    + code: `LAX`(string)
+    + type: `airport`(string)
++ travelDate (object)
+    + date: `2018-12-03`(string)
+    + time: `14:00`(string)
+    + timeWindow: 2(number)
+    + dateWindow: 3 (number)
+    + anchoredSegments (array[anchoredSegmentsInfo],fixed-type)
+
+## anchoredSegmentsInfo
++ airlineCode: `AA` (string)
++ flightNumber: 234 (number)
++ departrue (object)
+    + code: `LAS`(string)
+    + type: `city`(string)
++ arrival (object)
+    + code: `LAX`(string)
+    + type: `airport`(string)
++ travelDate (object)
+    + date: `2018-12-03`(string)
+    + time: `14:00` (string)
+
+## passengersInfo1
++ age: `1`,`2`,`3` (array[number],fixed-type)
++ type: `adult`(string)
++ count: 2 (number)
+
+## passengersInfo2
++ age: `1`,`2`,`3` (array[number],fixed-type)
++ type: `child`(string)
++ count: 23 (number)
+
+## passengersInfo3
++ age: `1`,`2`,`3` (array[number],fixed-type)
++ type: `infantInLap`(string)
++ count: 1 (number)
+
+## filtersDetails
++ airlines (object)
+    + age: `1`,`2`,`3` (array[number], fixed-type)
+    + allowType: `only` (string)
+    + onlineConnectionOnly: false (boolean)
++ connection (object)
+    + maxConnectionTime: 30 (number)
+    + maxConnectingPoints: 1 (number)
+    + nonStopOnly: true (boolean)
+ + isDirectFlight: true (boolean)
++ unrestrictedFaresOnly: true (boolean)
++ refundableOnly: false (boolean)
++ excludeBasicEconomy: false (boolean)
++ brandedFares: false (boolean)
++ upsell: true (boolean)
+
+## customerInfoDetails
++ id: 12345 (number)
++ transitCode: `77bf396b-b170-4ede-9f64-f83bfa6b1e3f`(string)
++ availablePointBalance: 50000.0 (number) - Number of loyalty points available in the customer's credit card account.
++ eligibilityInfo (object) - Contains information for internal use only.
+    + programCurrency: `points` (string)
+    + purchaseAllowed: true (boolean)
+    + redemptionAllowed: true (boolean)
+    + displayProgramCurrencyAsDecimal: false (boolean)
+    + useVariableMilesFormula: false (boolean)
+    + shortfallAllowed: true (boolean)

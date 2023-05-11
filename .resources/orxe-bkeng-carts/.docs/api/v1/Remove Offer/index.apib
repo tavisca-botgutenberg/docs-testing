@@ -1,0 +1,23 @@
+## Remove Offer [/api/cart/v2.0/{cartId}/offer/remove]
+The `Remove Offer` API allows you to remove the applied promotional discount. 
+
+You must provide the ID of the cart, from which you want to remove the offer, in the request URL. Also, you must provide the promo code for the offer that you want to remove in the request. 
+
+### Remove Offer [PUT]
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> from which you want to remove the offer. 
+
++ Request removeOfferReq (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (removeOfferRequest)
+
++ Response 200 (application/json)    
+    + Attributes (removeOfferResp)

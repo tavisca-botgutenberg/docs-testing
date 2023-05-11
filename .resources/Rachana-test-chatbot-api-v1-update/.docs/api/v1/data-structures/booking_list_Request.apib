@@ -1,0 +1,21 @@
+## booking_list_Request 
++ client (client_info, required)
++ user (user_info, required)
++ configurations (configurations_info, required)
+
+
+## client_info (object)
++ clientId: 2147483647 (number, required) - Unique ID for client.
++ programId: 2147483647 (number, required) - Unique ID for the loyalty program.
++ clientTenantId: `string` (string, nullable)
+
+## user_info (object)
++ firstName: `string` (string, nullable) - Contains information about first name of customer.
++ lastName: `string` (string, nullable) - Contains information about last name of customer.
++ userId: 1 (number) - Contains information about userId of customer.
++ userName: `string` (string, required) - Contains information about username of customer.
+
+## configurations_info (object)
++ additionalProp1: `string` (string) - Additional property information.
++ additionalProp2: `string` (string) - Additional property information.
++ additionalProp3: `string` (string) - Additional property information.

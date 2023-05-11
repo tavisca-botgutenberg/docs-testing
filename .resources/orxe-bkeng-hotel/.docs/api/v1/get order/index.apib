@@ -1,0 +1,23 @@
+# Get Order [/hotel/v1.0/order/{id}]
+The `Get Order` API allows you to retrieve the details of an existing <@ product_order_popup @>. With this API, you can view the order details with the updated order status for each hotel booking and take business decisions accordingly. For example, as an API consumer, you can use this API to retrieve the order details of the hotel booking before initiating cancellation with the supplier. 
+
+To retrieve the order details, you must provide the order ID in the request URL. 
+
+The API response returns the order details with the updated order status. 
+
+## Get Order [GET]
+
++ Parameters
+    + id: `123-456-789` (string, required) - Unique ID for the <@ product_order_popup @> for which you want to retrieve the order details. 
+    
++ Request getOrderReq (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2@@description: Unique ID that is used to track API calls made in the same session. It is recommended that, as an ORXe API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session. If you encounter any issue in your API calls, you must provide this ID to our support executive.
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+      
++ Response 200 (application/json)
+    + Attributes (getOrderResponse)

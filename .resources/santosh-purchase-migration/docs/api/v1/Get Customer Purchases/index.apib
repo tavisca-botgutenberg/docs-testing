@@ -1,0 +1,16 @@
+## Get Customer Purchases [/api/v1.0/customers/{accountId}/purchases]
+
+### Get Customer Purchases [GET]
+
++ Parameters 
+    + accountId: `p1-customer` (string, required) - Unique account ID of the customer. You can use this ID to retrieve the list of purchases of a customer.
+
++ Request getPurchaseInfoByPurchaseIDReq (application/json)
+
+    + Headers
+      cnx-correlationid: purchase-stage-doc-497c-b2e5-2e40b26a9bc2@@description: Unique ID that is used to track API calls made in the same session. It is recommended that, as an API consumer, you use a new correlation ID for each API call in a session. If you encounter any issue in your API calls, you must provide this ID to our support executive.
+      cnx-userip: 127.0.0.1 
+      cnx-tenantid: 3smlq291nuo
+
++ Response 200 (application/json)
+    + Attributes (getPurchaseInfoByResp)

@@ -1,0 +1,20 @@
+## Create Order [/hotel/v1.0/order]
+The `Create Order` API allows you to create a new <@ product_order_popup @> for each hotel booking.
+
+When you create an order using the `Create Order` API, the system generates an order ID and returns it in the API response. You can use the order ID to perform additional functions, such as to retrieve order details, and to update the confirmation and cancellation details for the order.  
+
+### Create Order [POST]
+    
++ Request createOrderReq (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2@@description: Unique ID that is used to track API calls made in the same session. It is recommended that, as an ORXe API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session. If you encounter any issue in your API calls, you must provide this ID to our support executive.
+      cnx-tenantid: 2ql3bti6juo
+      cnx-userip: 127.0.0.1
+      Accept-Encoding: gzip, deflate
+    
+    + Attributes (createOrderRequest)
+      
++ Response 200 (application/json)
+    + Attributes (createOrderResponse)

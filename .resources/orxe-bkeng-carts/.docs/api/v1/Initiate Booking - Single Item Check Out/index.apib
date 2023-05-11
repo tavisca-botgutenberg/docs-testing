@@ -1,0 +1,31 @@
+# <a class="hide-parent" name="initiateBook"></a>
+## Initiate Booking [/cart/{cartId}/checkout/init]
+The `Initiate Booking` API allows you to book the item in a cart.
+
+To initiate the booking, you must provide the <@ cart_id @> in the request URL. Also, you must provide the ID of the item and the booking details (/items[]/bookingInfo field) for the item in the request. Depending on the item that you are booking, the `items[]/bookingInfo` object is different. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for a hotel booking.
+
+This API returns the `orderId` in the response. You can use the `orderId` to [check the booking status](#getbookingstatusapi) or to [retrieve the order details](#getorderdetailsapi), at any later point in time.
+
+For a seamless experience, we have provided two uses cases - <em>Single-Item Check Out</em> use case and <em>Multi-Item Check Out</em> use case. 
+
+### Initiate Booking - Single Item Check Out [POST]
+This is a sample scenario that allows you check out a cart with a single item. For example, a car rental.<br><br><b>Note:</b> If you want to try out the end-to-end search to check out API workflow for <em>car</em>, refer to <a href="/orxe/car/current/overview" target="_blank">ORXe APIs for Car</a>.
+
++ Parameters
+    + cartId: `1gxyupie2` (string, required) - Unique ID for the <@ cart_popup @> that contains the item that you want to book.
+
++ Request initiateBook (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+
+    + Attributes (initiateBookSingleItemRequest)
+
++ Response 200 (application/json)
+    + Attributes (initiateBookResponse)

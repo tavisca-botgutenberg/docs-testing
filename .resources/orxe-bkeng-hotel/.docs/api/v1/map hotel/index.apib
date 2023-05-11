@@ -1,0 +1,21 @@
+## Map Hotels [/hotel/v1.0/search/results/map]
+The `Map Hotels` API allows you to display the list of hotels, returned in the search results, on a map. This API allows you to support a map-based viewing experience on your travel website. For example, you can provide a clickable map view that allows the user to look at the list of hotels in the region where the hotel search was performed to decide which hotel suits their needs.
+
+You must use the session ID returned in the `Get Hotel Search Results` API response.
+
+You have the option to refine or customize the number of hotels that you want to display on the map by specifying the <@ filters_map @>. For example, the `rating` filter allow the user to view only those hotels that are within the quality of service that they want.
+
+The API response returns the list of mapped hotels along with the basic information about the hotel, such as hotel ID, name, and the geographic coordinates of the hotel. 
+
+### Map Hotels [POST]
+
++ Request mapHotelRequest (application/json)
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+    + Attributes (mapHotelReq)
+
++ Response 200 (application/json)
+    + Attributes (mapHotelResp)

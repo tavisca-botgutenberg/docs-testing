@@ -1,0 +1,18 @@
+# Get Booking Details [/activity/v1.0/book/details/{bookingId}]
+## Get Booking Details [GET]
++ Parameters
+    + bookingId: `1gxyupie4-12z3-1234-8f12-1236374qwz1` - Unique ID for the booking. You must obtain the booking ID from the `/items[]/bookingId` field returned in the `Get Booking Status` API response.
+
++ Request retrieveReq (application/json)
+
+    + Headers
+    
+      cnx-correlationid: activity-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+      Content-Type: application/json
+      cnx-environment-token: T3
+
++ Response 200 (application/json)
+    + Attributes (retrieveBookResponse)

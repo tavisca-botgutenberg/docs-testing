@@ -1,0 +1,22 @@
+# Initiate Booking [/cart/{cartId}/checkout/init]
+
+## Initiate Booking - Multi-Item Check Out [POST]
+
++ Parameters
+    + cartId: `1gxyupie2` (string, required) - Unique ID for the <@ cart_popup @> that contains the items that you want to book.
+
++ Request initiateBook (application/json)
+
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+
+    + Attributes (initiateBookRequest)
+
++ Response 200 (application/json)
+    + Attributes (initiateBookResponse)

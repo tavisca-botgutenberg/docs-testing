@@ -1,0 +1,35 @@
+## confirmOrderReq
++ confirmationDetails (confirmationInfoReq, required) - Contains the confirmation details of the activity booking. 
++ include customerOrderReq
+
+## confirmationInfoReq 
++ bookingTimestamp: `{dateTime|YYYY-MM-DDTHH:mm:ssZ|0 0}` (string) - Date and time when the activity booking is completed. Note: The `bookingTimestamp` field is optional only when the supplier returns 
+at the time of booking. In this case, you must specify the list of errors in the `errors` array. Format: YYYY-MM-DDTHH:MM:SSZ  
++ include supplierConfirmationNumberReq
++ include cancellationTokenReq
++ include alternateConfirmationDetails  
++ confirm_order_errors (array [confirm_order_errorsCancelOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
++ confirm_order_warnings (array [confirm_order_warningsCancelOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
+
+## alternateConfirmationDetails 
++ alternateConfirmationDetails (array [alternateConfirmationInfo], required, fixed-type) - Contains the confirmation details of the activity booking from the supplier. Note: The `id`, `name`, `type`, and `value` fields are optional only when the supplier returns error at the time of booking. In this case, you must specify the list of errors in the errors array.
+
+## alternateConfirmationInfo
++ id: `SupplierVoucher` (string) - Unique ID for the confirmation details of the activity shared by the supplier.
++ name: `VoucherUrl` (string) - Name for the confirmation details. For example, if supplier shares the voucher URL for the activity booking, the name for the confirmation details can be `VoucherUrl`.  
++ type: `Supplier` - Indicates the provider of the confirmation details for the activity booking. 
++ value:`https://viatorapi.live.rc.viator.com/service/merchant/voucher.jspa?code=1008580324:a35f4fd9442a4f50fa37d97888ec1d9bc7fa9d4e2fc21b977676880d721084bb&embedResources=false` - Contains the voucher details for the activity booking shared by the supplier. For example, the voucher URL for the activity booking provided by the supplier. 
+
+## supplierConfirmationNumberReq
++ supplierConfirmationNumber: `309755104` (string, nullable) - Supplier confirmation number for the booking. For every successful booking, the supplier confirmation number must be provided either in the `supplierConfirmationNumber` field in the `/confirmationDetails` object. Note: The `supplierConfirmationNumber` field is optional only when the supplier returns errors at the time of booking. In this case, you must specify the list of errors in the `errors` array.
+
+## cancellationTokenReq
++ cancellationToken: null (string, nullable) - Cancellation token received from the supplier to cancel the activity booking. If returned by the supplier, you must provide the `cancellationToken` in the `/confirmationDetails` object.
+
+## confirm_order_errorsCancelOrderReq
++ code: `3434` (string) - Code for the error.  
++ message: `Error: Could not process the request due to network connectivity issues. Please try again.` (string) - Error message text.  
+
+## confirm_order_warningsCancelOrderReq
++ code: `4313` (string) - Code for the warning.
++ message: `Warning: Due to heavy traffic, the processing might take longer than expected.` (string) - Warning message text.

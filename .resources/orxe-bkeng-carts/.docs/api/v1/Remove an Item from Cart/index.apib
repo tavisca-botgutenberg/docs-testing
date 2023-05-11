@@ -1,0 +1,28 @@
+# <a class="hide-parent" name="Removeanitemapi"></a>
+## Remove from Cart [/api/cart/v2.0/{cartId}/remove]
+The `Remove from Cart` API allows you to remove an item from the cart. 
+
+You must provide the ID of the cart, from which you want to remove an item, in the request URL. Also, you must provide the ID of the item that you want to remove and the <@ cart_currency_popup @> in the request. 
+
+The API returns a `changeLog` that contains information about the changes that have occurred in the cart as a result of the removal of an item. For example, when you remove an item, the offer applied to the item is also removed and the details of this change is returned in the `changeLog`.
+
+## Remove an Item from Cart [PUT]
+
++ Parameters
+    + cartId: `aa0123aa-12z3-1234-8f12-1236374qwz1` - Unique ID for the <@ cart_popup @> from which you want to remove an item.  
+
++ Request removeAnItemReq (application/json)
+    + Headers
+      Content-Type: application/json
+      cnx-correlationid: d2e6d580-8b42-4721-a408-c3daed984c50
+      cnx-tenantid: 3smlq291nuo
+      cnx-userip: 127.0.0.1
+      cnx-environment-token: T3
+      Accept-Encoding: gzip, deflate
+      Accept-Language: en-US
+    + Attributes (removeAnItemRequest)
+
++ Response 200 (application/json)    
+    + Attributes (removeAnItemResp)
+<br><br>
+<a href="../create">&lt;&lt; Go to the previous API: Create Cart API</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../check-out">Go to the next API: Check Out API &gt;&gt;</a>

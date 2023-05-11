@@ -1,0 +1,22 @@
+## resendConfirmationEmail_Request 
++ client (client2, required)
++ user (user2, required)
++ configurations (configurations2, required)
++ bookingId: 'string' (string, nullable)
++ email: 'string' (string, nullable)
+
+## client2 (object)
++ clientId: 2147483647 (number, required) - Unique client id.
++ programId: 2147483647 (number, required) - Unique ID for the loyalty program.
++ clientTenantId: `string` (string)
+
+## user2 (object)
++ firstName: `string` (string, nullable) - Contains information about first name of customer.
++ lastName: `string` (string, nullable) - Contains information about last name of customer.
++ userId: 1 (number) - Contains information about userId of customer.
++ userName: `string` (string, required) - Contains information about username of customer.
+
+## configurations2 (object)
++ additionalProp1: `string` (string) - Additional property information.
++ additionalProp2: `string` (string) - Additional property information.
++ additionalProp3: `string` (string) - Additional property information.

@@ -1,2 +1,7 @@
 # docs-testing
-Added new line for testing master branch commits.
+adding sample text on 13th Jan.
+adding one line for test.
+adding one line for test.
+add new line again to test conflict.
+Testing whether got rights to publish or not
+Line added on 17th April by Shayeri.

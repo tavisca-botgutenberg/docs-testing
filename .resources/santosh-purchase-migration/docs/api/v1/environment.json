@@ -1,0 +1,16 @@
+{
+    "environments": [
+      {
+        "baseUrl": "https://purchase-api.qa.cnxloyalty.com",
+        "type": "qa"
+      },
+      {
+        "baseUrl": "https://purchase-api.stage.cnxloyalty.com",
+        "type": "stage"
+      },
+      {
+        "baseUrl": "https://purchase-api.cnxloyalty.com",
+        "type": "prod"
+      }
+    ]
+}

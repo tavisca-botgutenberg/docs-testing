@@ -1,0 +1,24 @@
+## Get Booking Details [/hotel/extensions/cart/v1.0/getbookdetails/{bookingId}]
+The `Get Booking Details` API allows you to retrieve the room booking details. For example, as an API consumer you may use this API to display the room booking details on the User Interface (UI). The booking details include the status of the booking, the payment options selected, the payment details, along with confirmation and cancellation details.
+
+The API response also includes the search criteria used to search for hotels, details of the <@ reward_popup @> option availed to pay for the booking, the room details, the breakdown of the fare, and the <@ hotelcontentattributes_popup @>, along with all the rules, policies, and restrictions associated with the booking.
+
+Depending on the type of search (<a href="../search#radial" target="_blank">radial</a>, <a href="../search#rectangular" target="_blank">rectangular</a> or <a href="../room-list#standalone" target="_blank">stand-alone room search</a>) that you perform, the `searchQuery` object returned is different. Note that the rest of the objects in the API response remain the same. For more information, see the field description of `/searchRequest/searchQuery` field in the `Get Booking Details` API response. 
+
+# <a class="hide-parent" name="getbookdetails"></a>
+#### Get Booking Details [GET]
+    
++ Parameters
+    + bookingId: `1gxyupie4-12z3-1234-8f12-1236374qwz1` - Unique ID for the booking. You must obtain the booking ID from the `/items[]/bookingId` field returned in the `Get Booking Status` API response.
+
++ Request retrieveReq (application/json)
+    + Headers
+      cnx-correlationid: hotel-stage-doc-497c-b2e5-2e40b26a9bc2
+      cnx-userip: 127.0.0.1
+      cnx-tenantid: 2ql3bti6juo
+      Accept-Language: en-US
+      Content-Type: application/json
+      cnx-environment-token: T3
+
++ Response 200 (application/json)
+    + Attributes (retrieveRadialResponse)

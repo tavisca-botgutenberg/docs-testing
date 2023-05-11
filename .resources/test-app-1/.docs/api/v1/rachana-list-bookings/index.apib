@@ -1,0 +1,24 @@
+# Get booking list [/api/v2/booking/{itineraryType}]
+## Get booking list [POST]
+
++ Parameters
+  + itineraryType: `upcoming`(string, required) - Possible value can be "upcoming", "cancelled", "completed" 
+
++ Request sampleRequest (application/json)
+  + Headers
+    Content-Type: application/json
+    cnx-correlationId: should be GUID/uuid string used to log all event in one session
+    cnx-tenantid: TenantId should be agency tenantId
+    cnx-userip: 127.0.0.0
+    cnx-environment-token: token-1
+    source: appname
+    x-date: 
+    nonce: a
+    traceId: tId
+  + Attributes (sampleRequest)
+
++ Response 200 (application/json)
+  + Attributes (sampleResponse)
+  
+
+   

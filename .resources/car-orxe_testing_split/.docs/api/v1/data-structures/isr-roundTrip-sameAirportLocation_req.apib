@@ -1,0 +1,224 @@
+## isr-roundTrip-sameAirportLocation_req
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which you want to retrieve monetary amounts. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the currency field value is set to USD the car fare, discount, taxes, and other monetary amounts are returned in their USD amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. <br> Consider a scenario where you set the currency field value to USD and the car vendor's currency is in AUD. The API calculates the AUD to USD amount equivalents and displays monetary amounts in USD. <br> Note: If you do not set a value for the currency field, the currency value will automatically be set based on the default account configuration.
++ searchQuery (object, required)
+    + criteria (object, required)
+        + pickUp (object, required)
+            + airportCode: `LAX` (string, required)
+            + date: `2023-03-12` (string, required)
+            + time: `10:30` (string, required)
+        + dropOff (object, required)
+            + sameAsPickup: true (boolean)
+            + date: `2023-03-16` (string, required)
+            + time: `17:30` (string, required)
+        + driverInfo (object, required)
+            + age: `25` (number, required)
+            + nationality: `US`(string, required)
+    + filters (object)
+        + vendor (object) 
+            + allow: (array[vendorAllow], fixed-type)
+            + disallow: (array[vendorDisallow], fixed-type)
+        + vehicleType (object)
+            + allow: (array[vehicleTypeAllow], fixed-type)
+            + disallow: (array[vehicleTypeDisallow], fixed-type)
+        + vehicleCategory (object)
+            + allow (array[vehicleCategoryAllow], fixed-type)
+            + disallow (array[vehicleCategoryDisallow], fixed-type)
+        + price (object)
+            + min: 20 (number)
+            + max: 10000 (number)
+        + transmission (enum)
+            + Automatic
+            + Manual
+        + airConditionedOnly: true (boolean)
+    + vendorSpecificOptions (array[vendorSpecificOptionsInfo], fixed-type)
++ customerInfo (object, required)
+    + id: `TestUser` (string, required)
+    + availablePointBalance: 90000 (number, required)
+    + transitCode: `72e87c86-c240-45eb-8d96-b46c52e56782` (string, required)
+    + eligibilityInfo (object)
+        + programCurrency: `Points` (string)
+        + purchaseAllowed: true (boolean)
+        + redemptionAllowed: true (boolean)
+        + displayProgramCurrencyAsDecimal: false (boolean)
+        + useVariableMilesFormula: false (boolean)
+        + shortfallAllowed: true (boolean)
++ programId: `docs` (string, required)
+
+## vendorAllow (enum)
++ ^^empty^^
++ HZ
++ ZE
++ ZI
+
+## vendorDisallow (enum)
++ ^^empty^^
++ HZ
++ ZE
++ ZI
+
+## vehicleTypeAllow (enum)
++ ^^empty^^
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
+## vehicleTypeDisallow (enum)
++ ^^empty^^
++ CargoVan
++ Compact
++ CompactElite
++ Convertible
++ Economy
++ EconomyElite
++ Estate
++ Exotic
++ ExoticSuv
++ FifteenPassengerVan
++ FiftyPassengerCoach
++ FiveSeatMiniVan
++ FourWheelDrive
++ Fullsize
++ FullsizeElite
++ Intermediate
++ IntermediateElite
++ LargeSuv
++ LargeTruck
++ Luxury
++ LuxuryElite
++ MediumSuv
++ MidSize
++ Mini
++ MiniElite
++ MiniVan
++ Moped
++ MovingVan
++ NineSeatMiniVan
++ Oversize
++ Premium
++ PremiumElite
++ Regular
++ SevenSeatMiniVan
++ SmallOrMediumTruck
++ SmallSuv
++ Special
++ Standard
++ StandardElite
++ Stretch
++ Subcompact
++ SUV
++ TwelveFootTruck
++ TwelvePassengerVan
++ TwentyFootTruck
++ TwentyFourFootTruck
++ TwentySixFootTruck
++ Unique
+
+## vehicleCategoryAllow (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
+
+## vehicleCategoryDisallow (enum)
++ ^^empty^^
++ AllTerrain
++ CarOrSedan
++ Coach
++ CommercialVanOrTruck
++ Convertible
++ Coupe
++ Crossover
++ ExtendedCabPickup
++ FourToFiveDoorVehicle
++ Limo
++ Monospace
++ Motorcycle
++ MotorHome
++ Pickup
++ Recreational
++ RegularCabPickup
++ Roadster
++ Special
++ SpecialOfferCar
++ Sport
++ StationWagon
++ Suv
++ Truck
++ TwoOrFourDoorVehicle
++ TwoToThreeDoorVehicle
++ TwoWheelVehicle
++ Van
+
+## vendorSpecificOptionsInfo
++ vendorCode: `ZI` (string, required)
++ promoCode: `HzXMas16` (string)
++ corporateCode: `K836600` (string)

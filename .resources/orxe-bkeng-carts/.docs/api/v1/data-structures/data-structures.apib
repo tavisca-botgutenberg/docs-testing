@@ -1,0 +1,1497 @@
+# Data Structures
+
+## createEmptyCartRequest
++ include programId
++ include currency
+
+## programId
++ programId: `docs` (string, required) - Unique ID for the loyalty program. The `programId` is used to obtain the business configurations that are set for the loyalty program. If you do not know the `programId`, then please contact cxLoyalty Business Team. 
+
+## currency
++ currency: `USD` (required, string) - 3-character ISO code that indicates the currency in which you want to retrieve the monetary amounts for the cart, also known as cart currency. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`.
+Notes: 
+  + If an amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
+  + In case of an empty cart, the `amount` field value always returns `0`.  
+
+## createEmptyCartResp
++ include cartidRS
++ include currencyRS
++ include itemsEmptyCart
++ include chargeFareEmptyRS
++ include displayFareEmptyRS
++ include createdAtUtc
++ include updatedAtUtc
+
+## cartidRS
++ id: `11565242030882816` (string) - Unique ID for the cart. You must use this cart id as an identifier in the subsequent API calls at a later point in time. For example, you must provide this `id` in the Add to Cart API request to add an item to the empty cart.
+
+## currencyRS
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the monetary amounts are returned for the cart, also known as the cart currency. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is `USD`, then the `costPrice/amount`, the `sellingPrice/amount`, and `price/amount` are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
+Notes:
+  + If an amount is returned in a different currency, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
+  + In case of an empty cart, the `amount` field value always return `0`.  
+
+## itemsEmptyCart
++ items (array[]) - Contains the list of the items that are added to the cart.Note: In case you create an empty cart, the `items` array is returned as an empty array.
+
+## feesEmptyCart
++ fees (array []) - Contains the list of all the applicable fees charged to the customer to process the order.Note: In case you create a cart, the `fees` array is returned as an empty array.
+
+## chargeFareEmptyRS
++ chargePrice (chargeFareEmptyDetails) - Contains information about the cart total charged to the customer at the time of check out.
+
+## chargeFareEmptyDetails
++ currency: `CAD` (string) - 3-character ISO code that indicates the currency in which the cart total amount is charged to the customer, also known as charge currency. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `/currency` field value returns `USD` and the `chargeFare/currency` field returns `CAD`, then the `chargeFare` amount is returned in `CAD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ amount: 0.0 (number) - cart total amount that is charged to the customer in the `/chargePrice/currency`.Note: In case you create an empty cart, the `chargeFare/amount` field returns `0`.Format: Decimal
+
+## displayFareEmptyRS
++ price (displayFareEmptyDetailsRS) - Contains information about the cart total in the `/currency` field set in the request. 
+
+## displayFareEmptyDetailsRS
++ amount: 0.0 (number) - cart total amount returned in the `/currency` set in the request.Note: In case you create an empty cart, the `price/amount` field returns `0`.Format: Decimal
+
+## createdAtUtc
++ createdAtUtc: `2020-05-15T06:35:10Z` (string) - Date and time when the cart is created.Format: YYYY-MM-DDTHH:MM:SSZISO 8601
+
+## updatedAtUtc
++ updatedAtUtc: `2020-05-20T06:35:10Z` (string) - Date and time when the cart is updated.Format: YYYY-MM-DDTHH:MM:SSZISO 8601
+
+## createCartWithItemRequest
++ include programId
++ include currencyCartRQ
++ include pointsCurrencyRQ
++ include itemCreateCartAddItemtRQ
++ include customerInfo
+
+## currencyCartRQ
++ currency: `USD` (string, required) - 3-character ISO code that indicates the currency in which you want to retrieve the monetary amounts for the cart, also known as cart currency. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then all the monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.Consider a scenario where you set the `currency` field value to `USD` and the supplier's currency is in `AUD`. The API calculates the `AUD` to `USD` amount equivalents and displays monetary amounts in `USD`.Note: If an amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
+
+## pointsCurrencyRQ
++ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+Notes: 
+  + The `points` field value is represented by this currency. 
+  + If you provide the `points` field in the `/item/paymentOptions` array, then the `pointsCurrency` field must be provided in the request. 
+
+## itemCreateCartAddItemtRQ
++ item (itemCreateCartAddItemtDetailsRQ, required) - Contains information about the item that you want to add to the cart. 
+
+## itemCreateCartAddItemtDetailsRQ
++ include productIdAddToCart
++ include productTypeCreateCartWithItem
++ include quotedFareCreateCart
++ include paymentOptionsRQ
++ include reportingFields
++ include statebag
+
+## productIdAddToCart
++ productId: `nextgencar` (string, required) - Unique ID for the product that you want to add to the cart.
+
+## productTypeCreateCartWithItem
++ productType: `Car` (string, required) - Type of Product. If you want to add a new type of product to the cart, then please contact cxLoyalty Business Team.
+
+## productTypeAddToCart
++ productType: `Insurance` (string, required) - Type of Product. If you want to add a new type of product to the cart, then please contact cxLoyalty Business Team.
+
+## quotedFareCreateCart
++ quotedPrice (quotedFareObject) - Contains information about the price of the item returned in the search results at the time of product search. If there is any change in the price of the item after the product search results are retrieved, an error message along with the latest price is returned. In this case, you must use the latest price amount returned in the response and call the `Create Cart` API again. Note: If you do not provide this field, then the API does not check for price change and returns the latest price of the item.
+
+## quotedFareAddToCart
++ quotedPrice (quotedFareObject) - Contains information about the price of the item returned in the search results at the time of product search. If there is any change in the price of the item after the product search results are retrieved, an error message along with the latest price is returned. In this case, you must use the latest price amount returned in the response and call the `Add to Cart` API again. Note: If you do not provide this field, then the API does not check for price change and returns the latest price of the item.
+
+## quotedFareObject
++ amount: 12.00 (number, required) - Total price of the item including taxes. Format: Decimal 
++ amountWithoutTax: 11.00 (number) - Total price of the item excluding taxes. Format: Decimal 
+
+## paymentOptionsRQ
++ paymentOptions (array[paymentOptionsObject], fixed-type) - Contains the list of reward options that you want to avail to pay for the item. Notes: 
+  + This is an optional field. If you do not provide the payment options for the item in this API call, then you must provide the payment options for the item prior to check out, by using the Apply Payment Options API.   
+  + Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
+  + If you provide this field, then you must provide the `/customerInfo` field in the request.  
+  + If you do not provide this field, then the `pointsCurrency` and the `points` fields are not returned in the response. 
+
+## paymentOptionsObject
++ rewardId: `1116|1` (string, required) - Unique ID for the reward that is availed to pay for the item.
++ amount: 8 (number) - Cash component of the amount that the customer must pay to purchase the item. Format: Decimal
++ points: 200 (number) - Number of points that the customer must redeem to purchase the item. The  value in the `points` field is represented by the `pointsCurrency`.
+Notes: 
+  + If the payment option selected by the customer is to pay by points or by a combination of cash and points, then you must provide the `/pointsCurrency` field in the request. 
+  + If the payment option selected by the customer is to pay by cash, then do not provide the `points` field in the request. In case you provide the `points` field, then you must set the `points` field value to `0` and provide the `/pointsCurrency` field in the request. Format: Decimal
++ fee (feeInfoRQ) - Contains information about the fee that the customer must pay to use this reward option (/paymentOptions[]/rewardId). This fee can be either paid by cash or by points and not in the combination of both cash and points. Note: If a fee is not applicable for the selected reward option, then the `/item/paymentOptions[]/fee` field must not be provided in the request.  
+
+## feeInfoRQ
++ amount: 4 (number) - Fee amount that the customer must pay to avail the reward option (/paymentOptions[]/rewardId field). Format: Decimal 
++ points: 0 (number) - Number of points that the customer must redeem to pay the fee amount. The  value in the `points` field is represented by the `pointsCurrency`.
+Notes:  
+  + If the payment of the fee is by points or by a combination of cash and points, then you must provide the `/pointsCurrency` field in the request. 
+  + If the payment of the fee is by cash, then do not provide the `points` field in the request. In case you provide the `points` field, then you must set the `points` field value to `0` and provide the `/pointsCurrency` field in the request. Format: Decimal
+
+## feeInfoAddToCartRQ
++ amount: 0 (number) - Fee amount that the customer must pay to avail the reward option (/paymentOptions[]/rewardId field). Format: Decimal 
++ points: 0 (number) - Number of points that the customer must redeem to pay the fee amount. The  value in the `points` field is represented by the `pointsCurrency`.
+Notes:  
+  + If the payment of the fee is by points or by a combination of cash and points, then you must provide the `/pointsCurrency` field in the request. 
+  + If the payment of the fee is by cash, then do not provide the `points` field in the request. In case you provide the `points` field, then you must set the `points` field value to `0` and provide the `/pointsCurrency` field in the request. Format: Decimal
+
+## reportingFields
++ reportingFields (reportingFieldsList) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## reportingFieldsList
++ field1: `Value1` - Indicates the value for custom field 1.
++ field2: `value2` - Indicates the value for custom field 2.
++ field3: `value3` - Indicates the value for custom field 3.
++ field4: `value4` - Indicates the value for custom field 4.
++ field5: `value5` - Indicates the value for custom field 5.
+
+## statebag
++ statebag (statebagList) - For internal use only.  
+
+## statebagList
++ key1: `value1` (string) - For internal use only.  
+
+## customerInfo
++ customerInfo (customerInfoDetails) - Contains information about the customer. 
+Note: If you provide the `/item/paymentOptions` array, then you must provide this field in the request. 
+
+## customerInfoDetails
++ id: `127_4006347435` (string, required) - Unique ID for the customer.
++ transitCode: `51749600-e7cc-3be3-eb19-17701a4a0f70` (string, required) - Unique code that is generated by the transit service. The transit code is used to track all the calls made to different systems within cxLoyalty for all search to booking-related transactions for a single user session. The transit code is valid for `72 hours` from the time it is generated.
++ availablePointBalance: 500000 (number, required) - Number of loyaltypoints available in the customer's credit card account. Format: Decimal
+
+## createCartWithItemResp
++ include cartidRSCreateCart
++ include currencyCartRS
++ include pointsCurrencyRS
++ include itemsRS
++ include chargeFareRS
++ include displayFareCreateCartAddItemRS 
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## currencyCartRS
++ currency: `USD` (string) - 3-character ISO code that indicates the currency in which the monetary amounts are returned for the cart, also known as cart currency.  The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is `USD`, then the `costPrice/amount`, the `sellingPrice/amount`, and `price/amount` are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team. Note: If an amount is returned in a currency different from the currency specified in the request, then the `currency` for that amount field is returned separately. For example, the currency for `/chargePrice/amount` is returned in the `/chargePrice/currency` field.
+
+## itemsRS
++ items (array[itemDetailsRS], fixed-type) - Contains the list of items that are added to the cart. 
+
+## itemDetailsRS
++ include itemIdRS
++ include productIdRS
++ include productTypeRS
++ include fareRS 
++ include sellingPriceItem
++ include productDetailsLink
++ include statebag
+
+## pointsCurrencyRS
++ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles. 
+Notes: 
+  + The `points` field value is represented by this currency. 
+  + If you do not provide the `/item/paymentOptions[]/points` field in the request, then this field is not returned in the response. 
+
+## itemIdRS
++ id: `sdea34-d9cb-461f-a165-7086772w324` (string) - Unique ID that is assigned to identify the item within the cart. You must use this item ID as an identifier in the subsequent API calls. For example, you must provide this `id` at the time of checkout (in the Initiate Booking API request).
+
+## itemIdCartRS
++ id: `56dea34-d9cb-461f-a165-7086772w324` (string) - Unique ID that is assigned to identify the item within the cart. You must use this item ID as an identifier in the subsequent API calls. For example, you must provide this `id` at the time of checkout (in the Initiate Booking API request).
+
+## productIdRS
++ productId: `nextgencar` (string) - Unique ID for the product that is added to the cart.
+
+## productIdRSINR
++ productId: `nextgeninsurance` (string) - Unique ID for the product that is added to the cart.
+
+## productTypeRS
++ productType: `Car` (string) - Type of Product.
+
+## productTypeRSAddToCart
++ productType: `Insurance` (string) - Type of Product.
+
+## fareRS
++ costPrice (fareDetailsRS) - Contains information about the latest price of the item. 
+
+## fareDetailsRS
++ amount: 12.0 (number) - Total price of the item including taxes. Format: Decimal 
++ amountWithoutTax: 11.0 (number) - Total price of the item excluding taxes. Format: Decimal 
+
+## sellingPriceItem
++ sellingPrice (sellingPriceItemInfo) - Contains information about the price of the item that the customer must pay in either cash, points, or a combination of cash and points after considering the selected payment options and the adjustments applied to the price of the item.
+
+## sellingPriceWCItem
++ sellingPrice (sellingPriceItemWCInfo) - Contains information about the price of the item that the customer must pay in either cash, points, or a combination of cash and points after considering the selected payment options and the adjustments applied to the price of the item.
+
+## sellingPriceWChargesItem
++ sellingPrice (sellingPriceItemWChargesInfo) - Contains information about the price of the item that the customer must pay in either cash, points, or a combination of cash and points after considering the selected payment options and the adjustments applied to the price of the item.
+
+## sellingPriceItemInfo
++ amount: 16 (number) - Cash amount that the customer must pay to purchase the item. The `amount` field value is the sum total of the amount returned in the `/breakup/paymentOptions[]/amount` and the `breakup/adjustments[]/amount` fields. Format: Decimal  
++ points: 300 (number) - Number of points that the customer must redeem to purchase the item. The `points` field value is the sum total of the points returned in the `/breakup/paymentOptions[]/points` and  the `breakup/adjustments[]/points` fields.
+Notes:
+  + The  value in the `points` field is represented by the currency returned in the `/pointsCurrency` field in the request.
+  + If the `/item/paymentOptions[]/points` field is not provided in the request, then this field is not returned in the response. Format: Decimal 
++ breakup (breakupSellingPriceInfo) - Contains information about the selected payment options and the list of adjustments applied to the selling price of the item.
+
+## sellingPriceItemWChargesInfo
++ amount: 12 (number) - Cash amount that the customer must pay to purchase the item. The `amount` field value is the sum total of the amount returned in the `/breakup/paymentOptions[]/amount` and the `breakup/adjustments[]/amount` fields. Format: Decimal  
++ points: 300 (number) - Number of points that the customer must redeem to purchase the item. The `points` field value is the sum total of the points returned in the `/breakup/paymentOptions[]/points` and  the `breakup/adjustments[]/points` fields.
+Notes:
+  + The  value in the `points` field is represented by the currency returned in the `/pointsCurrency` field in the request.
+  + If the `/item/paymentOptions[]/points` field is not provided in the request, then this field is not returned in the response.Format: Decimal 
++ breakup (breakupSellingPriceWChargesInfo) - Contains information about the selected payment options and the list of adjustments applied to the selling price of the item.
+
+## sellingPriceItemWCInfo
++ amount: 12 (number) - Cash amount that the customer must pay to purchase the item. The `amount` field value is the sum total of the amount returned in the `/breakup/paymentOptions[]/amount` and the `breakup/adjustments[]/amount` fields. Format: Decimal  
++ points: 200 (number) - Number of points that the customer must redeem to purchase the item. The `points` field value is the sum total of the points returned in the `/breakup/paymentOptions[]/points` and  the `breakup/adjustments[]/points` fields.
+Notes:
+  + The  value in the `points` field is represented by the currency returned in the `/pointsCurrency` field in the request.
+  + If the `/item/paymentOptions[]/points` field is not provided in the request, then this field is not returned in the response. Format: Decimal 
++ breakup (breakupSellingPriceWCInfo) - Contains information about the selected payment options and the list of adjustments applied to the selling price of the item.
+
+## breakupSellingPriceInfo
++ paymentOptions (array[paymentOptionsObjectAddToCartRS], fixed-type) - Contains the list of reward options that you want to avail to pay for an item.
+Note: If the `/paymentOptions` array is not provided in the request, then this field is not returned in the response. 
++ adjustments (array [adjustmentsAddToCartRS], fixed-type) - Contains the list of adjustments applied to the selling price of the item such as promotional discounts, reward fee, and waive reward fee. Adjustments can be applied in either cash (adjustments/amount field), points(adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the price of the item, then the `adjustments` array is not returned in the API response.
+
+## breakupSellingPriceWChargesInfo
++ paymentOptions (array[paymentOptionsObjectAddToCartRS], fixed-type) - Contains the list of reward options that you want to avail to pay for an item.
+Note: If the `/paymentOptions` array is not provided in the request, then this field is not returned in the response. 
++ adjustments (array [adjustmentsWChargesRS, adjustmentsWChargesRS2], fixed-type) - Contains the list of adjustments applied to the selling price of the item such as promotional discounts, reward fee, and waive reward fee. Adjustments can be applied in either cash (adjustments/amount field), points(adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the price of the item, then the `adjustments` array is not returned in the API response.
+
+## breakupSellingPriceWCInfo
++ paymentOptions (array[paymentOptionsObjectAddToCartRS], fixed-type) - Contains the list of reward options that you want to avail to pay for an item.
+Note: If the `/paymentOptions` array is not provided in the request, then this field is not returned in the response. 
++ adjustments (array [adjustmentsWCRS, adjustmentsWCRS2], fixed-type) - Contains the list of adjustments applied to the selling price of the item such as promotional discounts, reward fee, and waive reward fee. Adjustments can be applied in either cash (adjustments/amount field), points(adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the price of the item, then the `adjustments` array is not returned in the API response.  
+
+## adjustmentsAddToCartRS
++ id: `55r6t-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `RewardFee`, then the `id` field returns the ID of the reward fee. You can use this reward fee ID to waive the reward fee using the `Waive Charges` API.  
+  + If the type of adjustment is `waiveRewardFee`, then the `id` field returns the ID of the `waiveRewardFee`.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied. 
++ type: `RewardFee` (enum) - Type of adjustment.
+  + promotional discounts
+  + reward fee
+  + waive reward fee
++ desc: `Reward Level Fee` - Description for the adjustment.
++ amount: `8` (number) - Adjustment amount that is considered in the selling price of the item. 
++ points: `100` (number) - Number of points that are considered in the selling price of the item. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal 
++ refId: `63h6u-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `RewardFee`, then the value returned in the `refId` field is the ID of the selected payment option for the item (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the  `refId` field is the ID of the reward fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## adjustmentsWChargesRS
++ id: `55r6t-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `RewardFee`, then the`id` field returns the ID of the reward fee. You can use this reward fee ID to waive the reward fee using the `Waive Charges` API.  
+  + If the type of adjustment is `waiveRewardFee`, then the `id` field returns the ID of the `waiveRewardFee`.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.    
++ type: `RewardFee` (enum) - Type of adjustment.
+  + promotional discounts
+  + reward fee
+  + waive reward fee
++ desc: `Reward Level Fee` - Description for the adjustment.
++ amount: `4` (number) - Adjustment amount that is considered in the selling price of the item. 
++ points: 0 (number) - Number of points that are considered in the selling price of the item. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal 
++ refId: `63h6u-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `RewardFee`, then the value returned in the `refId` field is the ID of the selected payment option for the item (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the  `refId` field is the ID of the reward fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## adjustmentsWChargesRS2
++ id: `krr6t-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `RewardFee`, then the `id` field returns the ID of the reward fee. You can use this reward fee ID to waive the reward fee using the `Waive Charges` API.  
+  + If the type of adjustment is `waiveRewardFee`, then the `id` field returns the ID of the `waiveRewardFee`.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.    
++ type: `WaiveRewardFee` (enum) - Type of adjustment.
+  + promotional discounts
+  + reward fee
+  + waive reward fee
++ desc: `Waive Reward Fee` - Description for the adjustment.
++ amount: `-4` (number) - Adjustment amount that is considered in the selling price of the item. 
++ points: 0 (number) - Number of points that are considered in the selling price of the item. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal 
++ refId: `55r6t-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `RewardFee`, then the value returned in the `refId` field is the ID of the selected payment option for the item (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the  `refId` field is the ID of the reward fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## adjustmentsWCRS2
++ id: `55r6t-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `RewardFee`, then the `id` field returns the ID of the reward fee. You can use this reward fee ID to waive the reward fee using the `Waive Charges` API.  
+  + If the type of adjustment is `waiveRewardFee`, then the `id` field returns the ID of the `waiveRewardFee`.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.    
++ type: `Reward Fee` (enum) - Type of adjustment.
+  + promotional discounts
+  + reward fee
+  + waive reward fee
++ desc: `Reward Fee` - Description for the adjustment.
++ amount: `4` (number) - Adjustment amount that is considered in the selling price of the item. 
++ points: 0 (number) - Number of points that are considered in the selling price of the item. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field.Format: Decimal 
++ refId: `63h6u-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `RewardFee`, then the value returned in the `refId` field is the ID of the selected payment option for the item (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the  `refId` field is the ID of the reward fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## adjustmentsWCRS
++ id: `tyr6t-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `RewardFee`, then the `id` field returns the ID of the reward fee. You can use this reward fee ID to waive the reward fee using the `Waive Charges` API.  
+  + If the type of adjustment is `waiveRewardFee`, then the `id` field returns the ID of the `waiveRewardFee`.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.   
++ type: `WaiveRewardFee` (enum) - Type of adjustment.
+  + promotional discounts
+  + reward fee
+  + waive reward fee
++ desc: `Waive Reward Fee` - Description for the adjustment.
++ amount: `-4` (number) - Adjustment amount that is considered in the selling price of the item. 
++ points: 0 (number) - Number of points that are considered in the selling price of the item. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal 
++ refId: `55r6t-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `RewardFee`, then the value returned in the `refId` field is the ID of the selected payment option for the item (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the  `refId` field is the ID of the reward fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## dependsOnRS
++ dependsOn (dependsOnInfo) - Contains information about the parent item on which the purchase of the add on item is dependent.
+Notes:
+  + If the item (/items[]/id) added to the cart is an add-on item, then the item ID of the parent item, on which the purchase of this add-on item is dependent, is returned in the `dependsOn/itemRefId` field. 
+  + If the item (/items[]/id) added to the cart is not an add-on item, then this field is not returned in the API response.
+
+## dependsOnInfo
++ itemRefId: `56dea34-d9cb-461f-a165-7086772w324` - Unique ID for the parent item on which the purchase of add on item is dependent. For example, if the item (/items[]/id) added to the cart is an insurance for a car rental option, then the item ID of the car rental option, on which the purchase of this insurance is dependent, is returned in the `itemRefID` field.  
+  
+## isAvailable
++ isAvailable: true (boolean) - Indicates whether the item added to the cart is available for booking. 
+    + True
+    + False
+
+## paymentOptionsObjectAddToCartRS
++ id: `63h6u-d4sb-2asf-a165-q2w123sa` (string) - Unique ID for the selected payment option.
++ rewardId: `1116|1` (string) - Unique ID for the reward that is availed to pay for the item.
++ amount: 8 (number) - Cash component of the price that the customer must pay to purchase the item. Format: Decimal
++ points: 200 (number) - Number of points that the customer must redeem to purchase the item.
+Notes:
+  +  The value in the `points` field is represented by the currency returned in the `pointsCurrency` field.
+  +  If the `/item/paymentOptions[]/points` field is not provided in the request, then this field is not returned in the response. Format: Decimal
+
+## productDetailsLink
++ productDetailsLink: `http://www.example.com/detail/123` (string) - URL to view the information about the product added to the cart. This information includes the product details and the fare breakup of the product, including the baseAmount, taxes, discounts, fees, markups, and the total cost of the product. The `productDetailsLink` is valid for `60` minutes from the time the product search is initiated. Consider a scenario where you have added a car rental option to the cart. If you want to retrieve the information about this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the product information that is returned for the car rental option, you can view the sample API response of the Get Product Details API, which is implemented for ORXe APIs for Car. To know the product information that is returned for other supported products, please contact cxLoyalty Business team. 
+
+## displayFareCreateCartAddItemRS
++ price (displayFareCreateCardAddItemDetailsRS) - Contains information about the cart. Depending on the selected payment options, the cart total is returned in either cash, points, or a combination of cash and points in the `price` object.
+
+## displayFareCreateCardAddItemDetailsRS
++ amount: 16 (number) - Cash component of the cart in the `/currency` set in the request. Format: Decimal
++ points: 300 (number) - Number of points that the customer must redeem to pay the cart. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
+
+## displayFareAddToCartRS
++ price (displayFareAddToCartDetailsRS) - Contains information about the cart total. Depending on the selected payment options and the applicable cart-level adjustments, the cart total is returned in either cash, points, or a combination of cash and points in the `price` object.
+
+## displayFareWaiveChargesRS
++ price (displayFareWaiveChargesInfoRS) - Contains information about the cart total. Depending on the selected payment options and the applicable cart-level adjustments, the cart total is returned in either cash, points, or a combination of cash and points in the `price` object.
+
+## displayFareAddToCartDetailsRS
++ amount: 28 (number) - Cash component of the cart total in the `/currency` set in the request. The `amount` field value is the sum total of the amount returned in the `/items[]/sellingPrice/amount` and the `/price/breakup/adjustments[]/amount` fields. Format: Decimal
++ points: 300 (number) - Number of points that the customer must redeem to pay the cart total. The `points` field value is the sum total of the points returned in the `/items[]/sellingPrice/points` and the `/price/breakup/adjustments[]/points` fields. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
++ include breakupAdjustmentsAddToCart
+
+## displayFareWaiveChargesInfoRS
++ amount: 28 (number) - Cash component of the cart total in the `/currency` set in the request. The `amount` field value is the sum total of the amount returned in the `/items[]/sellingPrice/amount` and the `/price/breakup/adjustments[]/amount` fields. Format: Decimal
++ points: 300 (number) - Number of points that the customer must redeem to pay the cart total. The `points` field value is the sum total of the points returned in the `/items[]/sellingPrice/points` and the `/price/breakup/adjustments[]/points` fields. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
++ include breakupAdjustmentsWaiveCharges
+
+## breakupAdjustmentsAddToCart
++ breakup (breakupPriceAddToCartAdjustments) - Contains information about the adjustments applied to the cart. 
+
+## breakupAdjustmentsWaiveCharges
++ breakup (breakupPriceWaiveChargesCartAdjustments) - Contains information about the adjustments applied to the cart. 
+
+## breakupPriceAddToCartAdjustments
++ adjustments (array [adjustmentAddToCartPriceInfo], fixed-type) - Contains the list of adjustments applied to the cart such as promotional discounts cart, order fee, and waive order fee. Adjustments can be paid in either cash (adjustments/amount field), points (adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the cart, then the `adjustments` array is not returned in the API response. 
+
+## breakupPriceWaiveChargesCartAdjustments
++ adjustments (array [adjustmentWaiveChargesPriceInfo, adjustmentWaiveChargesPriceInfo2], fixed-type) - Contains the list of adjustments applied to the cart such as promotional discounts cart, order fee, and waive order fee. Adjustments can be paid in either cash (adjustments/amount field), points (adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the cart, then the `adjustments` array is not returned in the API response. 
+
+## adjustmentAddToCartPriceInfo
++ id: `23452-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `orderFee`, then the `id` field returns the ID of the order fee. You can use this order fee ID to waive the order fee using the `Waive Charges` API. 
+  + If the type of adjustment is `waiveOrderFee`, then the `id` field returns the ID of the `waiveOrderFee`. 
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied. 
++ type: `PromotionalDiscount` (enum) - Type of adjustment.
+  + promotional discounts cart
+  + order fee
+  + waive order fee
++ desc: `New year offer applied for car booking` - Description for the adjustment.
++ amount: `-8` (number) - Adjustment amount that is considered in the cart total.
++ points: `-100` (number) - Number of points that are considered in the cart total. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field.Format: Decimal
++ refId: `Car_8_100` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+  + If the type of adjustment applied is `OrderFee`, then the `refId` field is not returned in the API response.
+  + If the type of adjustment applied is `WaiveOrderFee`, then the value returned in the `refId` field is the ID of the applied order fee.  
+
+## adjustmentWaiveChargesPriceInfo
++ id: `23452-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `orderFee`, then the `id` field returns the ID of the order fee. You can use this order fee ID to waive the order fee using the `Waive Charges` API. 
+  + If the type of adjustment is `waiveOrderFee`, then the `id` field returns the ID of the `waiveOrderFee`. 
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.
++ type: `OrderFee` (enum) - Type of adjustment.
+  + promotional discounts cart
+  + order fee
+  + waive order fee
++ desc: `Order processing charges` - Description for the adjustment.
++ amount: 4 (number) - Adjustment amount that is considered in the cart total.
++ points: 0 (number) - Number of points that are considered in the cart total. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal
++ refId: `abdcd-d4sb-2asf-a165-q2w0001` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `OrderFee`, then the `refId` field is not returned in the API response.
+  + If the type of adjustment applied is `WaiveOrderFee`, then the value returned in the `refId` field is the ID of the applied order fee.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## adjustmentWaiveChargesPriceInfo2
++ id: `fr452-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `orderFee`, then the `id` field returns the ID of the order fee. You can use this order fee ID to waive the order fee using the `Waive Charges` API. 
+  + If the type of adjustment is `waiveOrderFee`, then the `id` field returns the ID of the `waiveOrderFee`. 
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied. 
++ type: `WaiveOrderFee` (enum) - Type of adjustment.
+  + promotional discounts cart
+  + order fee
+  + waive order fee
++ desc: `Waive order processing charges` - Description for the adjustment.
++ amount: `-4` (number) - Adjustment amount that is considered in the cart total.
++ points: 0 (number) - Number of points that are considered in the cart total. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal
++ refId: `23452-d4sb-2asf-a165-q2w123sa` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+  + If the type of adjustment applied is `OrderFee`, then the value returned in the `refId` field is the ID of the selected payment option (breakup/paymentOptions[]/id field) for which the reward fee is applied. 
+  + If the type of adjustment applied is `WaiveRewardFee`, then the value returned in the `refId` field is the ID of the reward fee that is waived.
+ 
+## chargeFareRS
++ chargePrice (chargeFareDetails) - Contains information about the cart total charged to the customer at the time of check out. Depending on the selected payment option, the cart total is returned in either cash, points, or a combination of cash and points in the `chargePrice` object.
+
+## chargeFareDetails
++ currency: `CAD` (string) - 3-character ISO code that indicates the currency in which the cart total is charged to the customer, also known as charge currency. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field value returns `USD` and the `chargePrice/currency` field returns `CAD`, then the `chargeFare` amount is returned in `CAD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ amount: 10.73 (number) -Cash component of the cart total that is charged to the customer in the `/chargePrice/currency`. Format: Decimal
++ points: 300 - Number of points that the customer must redeem to pay the cart total charged to the customer. The value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
+
+## chargeFareAddToCartRS
++ chargePrice (chargeFareAddToCartDetails) - Contains information about the cart total charged to the customer at the time of check out. Depending on the selected payment option, the cart total is returned in either cash, points, or a combination of cash and points in the `chargePrice` object.
+
+## chargeFareAddToCartDetails
++ currency: `CAD` (string) - 3-character ISO code that indicates the currency in which the cart total is charged to the customer, also known as charge currency. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field value returns `USD` and the `chargePrice/currency` field returns `CAD`, then the `chargeFare` amount is returned in `CAD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ amount: 48 (number) -Cash component of the cart total that is charged to the customer in the `/chargePrice/currency`. Format: Decimal
++ points: 300 - Number of points that the customer must redeem to pay the cart total charged to the customer. The value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
+
+## addToCartRequest
++ include currencyCartRQ
++ include pointsCurrencyRQ
++ include itemAddToCartItemtRQ
++ include customerInfo
+
+## itemAddToCartItemtRQ
++ item (itemAddToCartDetailsRQ, required) - Contains information about the item that you want to add to the cart.If you add an add on item to the cart, then you must provide the item ID of the parent item, on which the purchase of this add-on item is dependent, in the `dependsOn/itemRefId` field within the `/items` array. 
+
+## itemAddToCartDetailsRQ
++ include productIdAddToCartRQ
++ include productTypeAddToCart
++ include quotedFareAddToCart
++ include dependsOnRQ
++ paymentOptions (array[paymentOptionsObjectAddToCart], fixed-type) - Contains the list of reward options that you want to avail to pay for the item.
+Notes:
+  + This is an optional field. If you do not provide the payment options for the item in this API call, then you must provide the payment options for the item prior to check out, by using the Apply Payment Options API.   
+  + Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
+  + If you provide this field, then you must provide the `/customerInfo` field in the request.  
++ include reportingFields
++ include statebag
+
+## productIdAddToCartRQ
++ productId: `nextgeninsurance` (string, required) - Unique ID for the product that you want to add to the cart. 
+
+## dependsOnRQ
++ dependsOn (dependsOnInfoRQ) - Contains information about the parent item on which the purchase of the add on item is dependent.
+Notes:
+  + If the product (/item/productId) that you want to add to the cart is an add-on item, then you must provide the item ID of the parent item, on which the purchase of this add-on item is dependent, in the `dependsOn/itemRefId` field. 
+  + If the product (/item/productId) that you want to add to the cart is not an add-on item, then this field must not be provided in the API request.
+
+## dependsOnInfoRQ
++ itemRefId: `56dea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the parent item on which the purchase of the add on item is dependent. For example, if the item (/items[]/id) that you want to add to the cart is an insurance for a car rental option, then the item ID of the car rental option, on which the purchase of this insurance is dependent, must be provided in the `itemRefID` field.  
+
+## paymentOptionsObjectAddToCart
++ rewardId: `1116|1` (string, required) - Unique ID for the reward that is availed to pay for the item.
++ amount: 12 (number) - Cash component of the amount that the customer must pay to purchase the item. Format: Decimal
++ points: 0 (number) - Number of points that the customer must redeem to purchase the item. The  value in the `points` field is represented by the `pointsCurrency`.
+Notes: 
+  + If the payment option selected by the customer is to pay by points or by a combination of cash and points, then you must provide the `/pointsCurrency` field in the request. 
+  + If the payment option selected by the customer is to pay by cash, then do not provide the `points` field in the request. In case you provide the `points` field, then you must set the `points` field value to `0` and provide the `/pointsCurrency` field in the request. Format: Decimal
++ fee (feeInfoAddToCartRQ) - Contains information about the fee that the customer must pay when this reward option (/paymentOptions[]/rewardId) is used. This fee can be either paid by cash or by points and not in the combination of both cash and points.
+Note: If a fee is not applicable for the selected reward option, then the `/item/paymentOptions[]/fee` field must not be provided in the request.
+
+## addToCartResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareAddToCartRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## cartidRSAddToCart
++ id: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique ID for the cart. You must use this cart id as an identifier in the subsequent API calls at a later point in time. For example, you must provide this `id` in the Initiate Booking API request at the time of check out.
+
+## cartidRSCreateCart
++ id: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique ID for the cart. You must use this cart id as an identifier in the subsequent API calls at a later point in time. For example, you must provide this `id` in the Add to Cart API request to add another item to the cart.
+
+## itemsAddToCartRS
++ items (array[itemDetailsAddToCartCartRS, itemDetailsAddToCartINRS], fixed-type) - Contains the list of items that are added to the cart.
+
+## itemsWaiveChargesRS
++ items (array[itemDetailsWaiveChargesCartRS, itemDetailsWaiveChargesINRS], fixed-type) - Contains the list of items that are added to the cart.
+
+## itemsRemoveRS
++ items (array[itemDetailsAddToCartCartRS], fixed-type) - Contains the list of items in the cart.
+
+## itemDetailsAddToCartCartRS
++ include itemIdCartRS
++ include productIdRS
++ include productTypeRS
++ include fareRS 
++ include sellingPriceItem
++ include productDetailsLink
++ include statebag
+
+## itemDetailsAddToCartINRS
++ include itemIdRS
++ include productIdRSINR
++ include productTypeAddToCart
++ include fareRS 
++ include dependsOnRS
++ include sellingPriceItem
++ include productDetailsLink
++ include statebag
+
+## itemDetailsWaiveChargesCartRS
++ include itemIdCartRS
++ include productIdRS
++ include productTypeRS
++ include fareRS 
++ include sellingPriceWChargesItem
++ include productDetailsLink
++ include statebag
+
+## itemDetailsWaiveChargesINRS
++ include itemIdRS
++ include productIdRSINR
++ include productTypeAddToCart
++ include fareRS 
++ include dependsOnRS
++ include sellingPriceWCItem
++ include productDetailsLink
++ include statebag
+  
+## removeAnItemRequest
++ itemId: `sdea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to remove from the cart. 
++ include currencyCartRQ
+
+## removeAnItemResp
++ include cartidRSRemove
++ include currencyCartRS
++ include pointsCurrencyRS
++ include itemsRemoveRS
++ include chargeFareRS
++ include displayFareAddToCartRS
++ include changeLog
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## cartidRSRemove
++ id: `0f8fad5b-d9cb-461f-a165-70867728951z` (string) - Unique ID for the cart that contains the item that you want to remove. For example, you must provide this `id` in the Initiate Booking API request at the time of check out.
+
+## displayFareRemoveFromCartDetailsRS
++ amount: 8 (number) - Cash component of the cart total in the `/currency` set in the request. The `amount` field value is the sum total of the amount returned in the `/items[]/sellingPrice/amount` and the `/price/breakup/adjustments[]/amount` fields. Format: Decimal
++ points: 200 (number) - Number of points that the customer must redeem to pay the cart total. The `points` field value is the sum total of the points returned in the `/items[]/sellingPrice/points` and the `/price/breakup/adjustments[]/points` fields. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
++ include breakupAdjustmentsAddToCart
+
+## changeLog
++ changeLog (changeLogInfo) - Contains information about the changes that occur on the cart when an item is removed.
+
+## changeLogInfo
++ deleted (array [deletedDetails], fixed-type) - Contains the list of the components (parent item, add on item, offer, or fee) that are removed from the cart.
+Consider a scenario where you have a cart that contains a car rental option and an add on item such as an insurance. When you remove the car rental option from the cart, the insurance is removed and the details of both the items are returned in the `/changeLog/deleted` array. 
+
+## deletedDetails
++ type: `Item` (enum) - Type of component that is removed.
+    + Item
+    + Offer
+    + Fee
++ id: `sdea34-d9cb-461f-a165-7086772w324` - Unique ID for the component that is removed. 
++ description: `This item has been removed from the cart.` - Description of the change that has occurred in the cart. 
+
+## applyOfferRequest
++ include currencyCartRQ
++ code: `Cart_4_100` (string, required) - promo_code for the offer that you want to apply. Note that you cannot apply offer to an empty cart.
+In this example, we have provided the sample promo code `Cart_4_100`, which applies the offer at cart level and gives you discount of both $4 cash and 100 points on the cart total. The details of the cart-level offer applied are returned in the `breakup/adjustments` array within the `/price` object in the API response. To apply the offer at the item level, use the promo code `Offer_4_100`, which gives a discount of both $4 cash and 100 points on the selling price of the item. The details of the item-level offer applied are returned in the `sellingPrice/breakup/adjustments` array within the `items` array in the API response.
+
++ statebag (stateBagInfo) - For internal use only.
+
+## applyOfferResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyApplyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareAddToCartRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## pointsCurrencyApplyRS
++ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+Notes: 
+  + The `points` field value is represented by this currency. 
+  + If no payment option is selected at the time of creating a cart with an item or adding an item to the cart, then this field is not returned in the response. 
+
+## removeOfferRequest
++ code: `Cart_4_100` (string, required) - promo code for the offer that you want to remove. 
++ include currencyCartRQ
+
+## removeOfferResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyApplyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareApplyFeeRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+  
+## applyOrderFeesRequest
++ desc: `service charge` - Description of the fee that you want to apply. 
++ type: `OrderFee` (string, required) - Type of fee that you want to apply.
+Note: We currently allow to apply only order fee.  To apply order fee, you must set the `type` field value to `OrderFee`.  
++ amount: 10.00 (number, required) - Fee amount that you want to apply. Format: Decimal
++ include currencyCartRQ
+
+## applyOrderFeesResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyApplyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareApplyFeeRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## displayFareApplyFeeRS
++ price (displayFareApplyFeeDetailsRS) - Contains information about the cart total. Depending on the selected payment options and the applicable cart-level adjustments, the cart total is returned in either cash, points, or a combination of cash and points in the `price` object.
+
+## displayFareApplyFeeDetailsRS
++ amount: 42 (number) - Cash component of the cart total in the `/currency` set in the request. The `amount` field value is the sum total of the amount returned in the `/items[]/sellingPrice/amount` and the `/price/breakup/adjustments[]/amount` fields. Format: Decimal
++ points: 400 (number) - Number of points that the customer must redeem to pay the cart total. The `points` field value is the sum total of the points returned in the `/items[]/sellingPrice/points` and the `/price/breakup/adjustments[]/points` fields. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
++ include breakupFeeAdjustments
+
+## breakupFeeAdjustments
++ breakup (breakupFeeAdjustmentsInfo) - Contains information about the adjustments applied to the cart. 
+
+## breakupFeeAdjustmentsInfo
++ adjustments (array [adjustmentFeeInfo], fixed-type) - Contains the list of adjustments applied to the cart such as promotional discounts cart, order fee, and waive order fee. Adjustments can be paid in either cash (adjustments/amount field), points (adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the cart, then the `adjustments` array is not returned in the API response. 
+
+## adjustmentFeeInfo
++ id: `55r6t-d4sb-2asf-a165-q2w0001` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `orderFee`, then the `id` field returns the ID of the order fee. You can use this order fee ID to waive the order fee using the `Waive Charges` API. 
+  + If the type of adjustment is `waiveOrderFee`, then the `id` field returns the ID of the `waiveOrderFee`. 
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.
++ type: `OrderFee` (enum) - Type of adjustment.
+  + promotional discounts cart
+  + order fee
+  + waive order fee
++ desc: `Order processing charges` - Description for the adjustment.
++ amount: `8` (number) - Adjustment amount that is considered in the cart total. Format: Decimal
++ points: `100` (number) - Number of points that are considered in the cart total. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal
++ refId: `abdcd-d4sb-2asf-a165-q2w0001` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `OrderFee`, then the `refId` field is not returned in the API response.
+  + If the type of adjustment applied is `WaiveOrderFee`, then the value returned in the `refId` field is the ID of the applied order fee.
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## removeAnOrderLevelRequest
++ id: `55r6t-d4sb-2asf-a165-q2w0001` (string, required) - Unqiue ID of the order fee that you want to remove. You can obtain this information from the `/price/breakup/adjustments[]/id` field returned for adjustmentType `OrderFee` in the earlier API response. 
++ include currencyCartRQ
+
+## removeOrderLevelResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyApplyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareRemoveOrderFee
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## displayFareRemoveOrderFee
++ price (displayFareRODetailsRS) - Contains information about the cart total. Depending on the selected payment options and the applicable cart-level adjustments, the cart total is returned in either cash, points, or a combination of cash and points in the `price` object.
+
+## displayFareRODetailsRS
++ amount: 28 (number) - Cash component of the cart total in the `/currency` set in the request. The `amount` field value is the sum total of the amount returned in the `/items[]/sellingPrice/amount` and the `/price/breakup/adjustments[]/amount` fields.Format: Decimal
++ points: 200 (number) - Number of points that the customer must redeem to pay the cart total. The `points` field value is the sum total of the points returned in the `/items[]/sellingPrice/points` and the `/price/breakup/adjustments[]/points` fields. The  value in the `points` field is represented by the `pointsCurrency`. Format: Decimal
++ include breakupAdjustmentsRO
+
+## breakupAdjustmentsRO
++ breakup (breakupPriceROAdjustments) - Contains information about the adjustments applied to the cart. 
+
+## breakupPriceROAdjustments
++ adjustments (array [adjustmentROPriceInfo], fixed-type) - Contains the list of adjustments applied to the cart such as promotional discounts cart, order fee, and waive order fee. Adjustments can be paid in either cash (adjustments/amount field), points (adjustments/points field), or in a combination of both cash and points. Note that if no adjustments are applied to the cart, then the `adjustments` array is not returned in the API response. 
+
+## adjustmentROPriceInfo
++ id: `23459-d4sb-2asf-a165-q2w123sa` - Unique ID for the adjustment.
+Note:
+  + If the type of adjustment is `orderFee`, then the `id` field returns the ID of the order fee. You can use this order fee ID to waive the order fee using the `Waive Charges` API. 
+  + If the type of adjustment is `waiveOrderFee`, then the `id` field returns the ID of the `waiveOrderFee`. 
+  + If the type of adjustment applied is `PromotionalDiscount`, then the `id` field returns the ID for the offer that is applied.
++ type: `PromotionalDiscount` (enum) - Type of adjustment.
+  + promotional discounts cart
+  + order fee
+  + waive order fee
++ desc: `New year offer applied for car booking` - Description for the adjustment.
++ amount: `-8` (number) - Adjustment amount that is considered in the cart total.
++ points: `-100` (number) - Number of points that are considered in the cart total. The  value in the `points` field is represented by the currency in the `/pointsCurrency` field. Format: Decimal
++ refId: `Car_8_100` - Reference ID that identifies the specific adjustment applied.
+Notes:
+  + If the type of adjustment applied is `OrderFee`, then the `refId` field is not returned in the response. 
+  + If the type of adjustment applied is `WaiveOrderFee`, then the value returned in the `refId` field is the ID of the order fee that is waived.  
+  + If the type of adjustment applied is `PromotionalDiscount`, then the value returned in the `refId` field is the applied offer code.
+
+## applyPaymentOptionsRequest
++ include currencyCartRQ
++ include pointsCurrencyRQ
++ item (itemPaymentOptions, required) - Contains information about the item for which you want to apply the payment options.
++ customerInfo (customerInfoDetails, required) - Contains information about the customer.
+
+## itemPaymentOptions
++ id: `56dea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID of the item for which you want to apply the payment options. 
++ paymentOptions (array[paymentOptionsObject], fixed-type, required) - Contains the list of reward options that you want to avail to pay for the item.
+Note: Depending on the selected reward option, you must provide either the amount in cash, points, or a combination of both the amount in cash and points within the `/paymentOptions` array.
++ include reportingFields
++ statebag (stateBagInfo) - For internal use only. 
+  
+## applyPaymentOptionsResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyRS
++ include itemsAddToCartRS
++ include chargeFareAddToCartRS
++ include displayFareAddToCartRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## waiveChargesRequest
++ include waiveChargesReqInfo
+
+## waiveChargesReqInfo
++ feeId: `12d5b-d4sb-2asf-a165-q2w123sa` (string, required) - Unique ID of the adjustment, which the agent wants to waive. Adjustments that can be waived are reward fee and order. 
++ reason: `Website Error - No Confirmation` (string, required) - Contains the reason for the waive off of the adjustment charges. 
++ type: `RewardFee` (enum, required) - Indicates the type of adjustment that is waived. 
+  + reward fee
+  + order fee
++ amount: 4 (number) - Cash amount that the agent wants to waive.
++ points: 0 (number) - Number of points that the agent wants to waive. The  value in the `points` field is represented by the `pointsCurrency`.
+Format: Decimal
++ include currencyCartRQ
++ include pointsCurrencyWCRQ
+
+## pointsCurrencyWCRQ
++ pointsCurrency: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+Notes: 
+  + The `points` field value is represented by this currency. 
+  + If you provide the `points` field, then the `pointsCurrency` field must be provided in the request. 
+
+## waiveChargesResp
++ include cartidRSAddToCart
++ include currencyCartRS
++ include pointsCurrencyRS
++ include itemsWaiveChargesRS
++ include chargeFareAddToCartRS
++ include displayFareWaiveChargesRS
++ include createdAtUtc
++ include updatedAtUtc
++ statebag (stateBagInfo) - For internal use only.
+
+## initiateBookSingleItemRequest
++ include idempotencyToken
++ items (array [itemBookInfo0], fixed-type, required) - Contains the list of the items in the cart that you want to book. Consider a scenario where you want to book a single item, a car rental option. In this scenario, you must provide one object in the `items` array, which provides the item ID and booking details for the car rental option.
++ customer (customerBookInfo, required) - Contains information about the customer.
++ purchaseId: `12345` (string, required) - Unique ID for the booking. You must provide this ID to track all the booking-related transactions across different systems within cxLoyalty. The `purchaseId` is required when you contact the cxLoyalty Customer Service.
++ agent (agentInfo, required) - Contains information about the agent.
++ formOfPayment (formOfPaymentInfo) - Contains information about the credit card that is used to pay for the item. This credit card information is used to pay the `cash/amount` specified within the `paymentOptions` array.
+Notes:
+  + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Card`, then you must provide the `/formOfPayment` object.
+  + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Cash`, then you must not provide the `/formOfPayment` object.
++ statebag (stateBagInfo) - For internal use only. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## initiateBookRequest
++ include idempotencyToken
++ items (array [itemBookInfo1, itemBookInfo2], fixed-type, required) - Contains the list of the items in the cart that you want to book. Consider a scenario where you want to book two items, a car rental and car insurance. In this scenario, you must provide two objects in the `items` array, one object that provides the item ID and the booking details for the car rental option and another object that provides the item ID and the booking details for the insurance.
++ customer (customerBookInfo, required) - Contains information about the customer.
++ purchaseId: `12345` (string, required) - Unique ID for the booking. You must provide this ID to track all the booking-related transactions across different systems within cxLoyalty. The `purchaseId` is required when you contact the cxLoyalty Customer Service.
++ agent (agentInfo, required) - Contains information about the agent.
++ formOfPayment (formOfPaymentInfo) - Contains information about the credit card that is used to pay for the item. This credit card information is used to pay the `cash/amount` specified within the `paymentOptions` array.
+Notes:
+  + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Card`, then you must provide the `/formOfPayment` object.
+  + If the `/cash/paymentMode` field within the `/items[]/bookingInfo/paymentOptions` array is set to `Cash`, then you must not provide the `/formOfPayment` object.
++ statebag (stateBagInfo) - For internal use only. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields.
+If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## idempotencyToken
++ idempotencyToken: `123-456-789` (string, required) - Token ID that represents a unique booking request. You must assign a new token ID for every booking request. Both the `idempotencyToken` and `cartId` field values are used to decide if the same booking request is reattempted. Consider the following scenarios for the `idempotencyToken` field usage:
+Scenario 1:
+Consider a scenario where you want to check out a cart. You pass a new, unique value for the `idempotencyToken` field in the booking request. In this scenario, the request is considered as a new booking request and the API returns a new and unique `orderID`.
+Scenario 2:
+Consider a scenario where you want to checkout the same cart again and you pass the same `idempotencyToken` field value that was used in the earlier booking request. In this scenario, the booking request is considered as a duplicate, regardless of whether the booking request contains new booking field values or the same booking field values as of a previously made booking request. The API returns the same `orderId` that was returned for the previous booking request and not a new `orderId`. If you want to reattempt the booking, you must provide a new and unique value for the `idempotencyToken` field for the same cart. 
+
+## itemBookInfo0
++ id: `1e817cd6-85ba-451d-9553-dee99e04eeec` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for a hotel booking. To know the about the `bookingInfo` object that must be provided for other supported products, please contact cxLoyalty Business team. To try out the `Initiate Booking` API, we have provided a sample JSON for the `bookingInfo` object that you can use to book a car rental.Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only. 
++ statebag (stateBagInfo) - For internal use only. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## itemBookInfo1
++ id: `56dea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookingInfoBookDetailsRQ, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance. To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car rental and an insurance. Note that the sample JSON provided for the `bookingInfo` object is for testing purpose only. To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
++ statebag (stateBagInfo) - For internal use only. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## itemBookInfo2
++ id: `sdea34-d9cb-461f-a165-7086772w324` (string, required) - Unique ID for the item that you want to book. You must obtain this `id` from the `/items[]/id` field returned in the Create Cart With an Item or Add to Cart API response.
++ bookingInfo (bookInsuranceInfo, required) - Contains information about the booking details. The `bookingInfo` object differs based on the product that you want to book. This means that the `bookingInfo` object that you provide for a car rental booking is different from the `bookingInfo` object that you provide for booking an insurance. To try out the `Initiate Booking` API, we have provided a sample JSON of the `bookingInfo` object that you can use to book a car and an insurance. Note that the sample JSON is for reference purpose only. To know about the `bookingInfo` object that must be provided for the supported products, please contact cxLoyalty Business team. 
++ statebag (stateBagInfo) - For internal use only. 
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
+
+## bookingInfoBookDetailsRQ
++ include driverInfoBookRQ
++ include paymentOptionsBookRQ
++ include reportingFields
+
+## driverInfoBookRQ
++ driverInfo (driverInfoBookDetailsRQ) 
+
+## driverInfoBookDetailsRQ
++ name (nameDriver) 
++ contactInfo (contactInfoDriver) 
++ dob: `1989-12-25` (string)
++ include nationality
+
+## nameDriver
++ title (enum) 
+  + Mr
+  + Madam
+  + Master
+  + Miss
+  + Mrs
+  + Ms
+  + Mx
++ first: `Jeff` (string)
++ middle: `Alex` 
++ last: `Hawking` (string)
++ suffix: `Jr`
+
+## contactInfoDriver
++ address (addressDriver)
++ email: `jeff.hawking@abc.com` (string)
++ phone (phoneDriver)
+
+## addressDriver
++ line1: `3077 ACME Street` (string)
++ line2: `Landmark: Beside the ACME Shopping Mall` (string)
++ cityName: `San Francisco` (string)
++ state (stateBookReq)
++ countryCode: `US` (string)
++ postalCode: `94133` (string)
+
+## stateBookReq
++ code: `CA` (string)
++ name: `California` (string)
+
+## phoneDriver
++ type: `Mobile` (enum)
+    + Fax
+    + Home
+    + Mobile
+    + Work
+    + Unknown
++ number: `23049561` (string)
++ countryCode: `1` 
+
+## nationality
++ nationality: `US` (string)
+
+## paymentOptionsBookRQ
++ paymentOptions (array[paymentOptionsBookObjectRQ], fixed-type)
+
+## paymentOptionsBookObjectRQ
++ rewardId: `1116|1` (string)
++ cash (cashDetailsBookRS)
++ points (pointsDetailsBookRQ)
+
+## cashDetailsBookRS
++ amount: 8 (number)
++ paymentMode: `Card` (enum)
+
+## pointsDetailsBookRQ
++ value: 200 (number)
++ unit: `points` (string)
+
+## bookInsuranceInfo
++ insuredMembers (array [membersInfo], fixed-type)
++ product (productInfo)
++ totalCost (totalCostInfo) 
++ paymentOption (paymentOptionDetails) 
+
+## membersInfo
++ include memberDetails
++ email: `john.doe@malinator.com` (string)
++ address (addressInsuranceCustomer)
++ phone (phoneMemberInfo)
++ gender: `Male` (enum)
+  + Male
+  + Female
++ dateOfBirth: `1990-08-08` (string)
++ beneficiary (beneficiaryInfo)
++ cost (costInfo)
+
+## addressInsuranceCustomer
++ line1: `3077 ACME Street` (string)
++ line2: `Landmark: Beside the ACME Shopping Mall` (string)
++ cityName: `San Francisco` (string) 
++ state (stateBookInsurance)
++ countryCode: `US` (string) 
++ postalCode: `94133` (string)
+
+## stateBookInsurance
++ code: `CA` (string)
++ name: `California` (string)
+
+## memberDetails
++ firstName: `John` (string)
++ lastName: `Doe` (string) 
+
+## phoneMemberInfo
++ type: `Unknown` (enum)
+  + Home
+  + Mobile
+  + Work
+  + Unknown
++ number: `555-0173` (string)
++ countryCode: `1`
+
+## beneficiaryInfo
++ include memberDetails
++ email: `john.doe@malinator.com` (string)
++ gender: `Male` (enum)
+  + Male
+  + Female
++ dateOfBirth: `1990-08-08` (string)
+
+## costInfo
++ amount: 12 (number)
++ currency: `USD` (string)
+
+## productInfo
++ type: `Car` (enum)
+  + Car
+  + Hotel
+  + Flights
++ totalCost (totalCostInfo)
++ pickup (addressInsuranceCustomer)
++ dropOff (addressInsuranceCustomer)
++ from: `2018-10-01T00:00:00Z` (string)
++ to: `2018-10-01T00:00:00Z` (string)
+
+## totalCostInfo
++ amount: 12 (number)
++ currency: `USD` (string)
+
+## paymentOptionDetails
++ rewardId: `1116|1` (string)
++ cash (cashBookReq)
+
+## guestReq
++ type (enum) 
+  + Adult
+  + Child
++ name (customerName) 
+
+## cashBookReq
++ amount: 12.00 (number)
++ paymentMode: `Card` (enum)
+  + Cash
+  + Card
+
+## fieldsReq
++ field1: `Value1`
++ field2: `Value2`
++ field3: `Value3`
++ field4: `Value2`
++ field5: `Value2`
+
+## stateBagInfo
++ include key 
+
+## customerBookInfo
++ name (customerName, required) - Contains information about the name of the customer.
++ phone (phoneBookInfo, required) - Contains the contact number of the customer.
++ alternatePhone (phoneBookInfo) - Contains the alternate contact number of the customer.
++ address (addressCustomer) - Contains information about the address of the customer. 
++ email: `abc@xyz.com` (string, required) - Email address (recipient ID) that must be used when any email communication needs to be made.
++ reportingFields (reportingFieldsInfo) - Contains the fields that can be used for any business-related purposes, such as to pass the booking token for reporting purpose. Note that you can only pass up to five custom fields. If you want to configure a custom field, then please contact cxLoyalty Business Team. 
++ id: `127_4006347435` (string, required) - Unique ID for the customer.
++ transitCode: `51749600-e7cc-3be3-eb19-17701a4a0f70` (string) - Unique code that is generated by the transit. The transit code is used to track all the calls made to different systems within cxLoyalty for all search to booking-related transactions for a single user session. The transit code is valid for `72 hours` from the time it is generated. 
++ availablePointBalance: `500000` (string, required) - Number of loyaltypoints available in the customer's credit card account. Format: Decimal
+
+## customerName
++ title (enum) - Title before the name.
+  + Mr
+  + Madam
+  + Master
+  + Miss
+  + Mrs
+  + Ms
+  + Mx
++ first: `John` (string, required) - First name.
++ middle: `Alex` - Middle name. 
++ last: `Smith` (string, required) - Last name.
++ suffix: `Jr` - Suffix that follows the name.
+
+## phoneBookInfo
++ type: `Unknown` (enum) - Type of phone number or contact number. If you do not provide the phone `type`, this field is automatically set to `Unknown`.
+  + Fax
+  + Home
+  + Mobile
+  + Work
+  + Unknown
++ number: `555-0173` (string, required) - Phone number. The phone number can include the following characters: 0 to 9, plus sign +, minus sign -, and parenthesis ( ).
+Notes:
+    + The phone number can include the area code, if applicable.
+    + The phone number must not include the country code. You can provide the country code in the `countryCode` field.
+    + The phone number must not include spaces.
++ countryCode: `1` - Country code for the phone number.
+
+## addressCustomer
++ line1: `3077 ACME Street` (string, required) - Street number and street name.
++ line2: `Landmark: Beside the ACME Shopping Mall` (string) - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
++ cityName: `San Francisco` (string, required) - Name of the city.
++ state (stateBook) - Contains information about the state. Note that if the `countryCode` is set to `US`, `CA`, or `AU`, the `state` code is mandatory. For more information on state codes, see the [state code list](http://pe.usps.com/text/pub28/28apb.htm).
++ countryCode: `US` (string, required) - 2-character ISO code of the country. Read more about valid country codes.
++ postalCode: `94133` (string, required)- Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code. 
+
+## stateBook
++ code: `CA` (string, required) - 2-character state code.
++ name: `California` (string) - Name of the state.
+
+## reportingFieldsInfo
++ field1: `Value1` - Indicates the value for custom field 1.
++ field2: `Value2` - Indicates the value for custom field 2.
++ field3: `Value3` - Indicates the value for custom field 3.
++ field4: `Value2` - Indicates the value for custom field 4.
++ field5: `Value2` - Indicates the value for custom field 5.
+
+## agentInfo
++ id: `agent1` (string, required) - Unique ID for the agent. 
+
+## formOfPaymentInfo
++ card (cardInfo) - Contains information about the credit card that is used to make the payment for the booking.
+
+## cardInfo
++ number: `5555555555554444` (string, required) - Credit card number to be used for the payment. Note that the credit card number must be at least 12 digits.
++ holderName: `John Doe` (string, required) - Name on the credit card that is used for the payment.
++ cvv: `123` (string, required) - Three or four-digit card verification value (CVV) or card security code (CSC). Read more about CVV/CSC.
++ issuedBy: `AX` (enum, required) - Card issuer. See the list of card issuer codes and their descriptions. 
+  + VI
+  + CA
+  + AX
+  + DS
+  + TO 
+  + DC
+  + S
+  + JC
+  + BC
+  + T
+  + R 
+  + E
++ expiry (expiryInfo, required) - Contains the credit card expiration details. Note that the expiration date of the credit card must be later than or equal to the current month and of the current year. 
++ contactInfo (cardcontactInfo, required) - Contains the contact information for the cardholder. The contact information provided for the cardholder must be the same as the billing contact information that is on the record of the credit card issuing bank.
+
+## expiryInfo
++ month: 12 (number, required) - Expiration month of the credit card. Note that the value of `month` must be between `1` and `12`.
++ year: 2023 (number, required) - Expiration year of the credit card.
+
+## cardcontactInfo
++ email: `abc@xyz.com` (string, required) - Email address (recipient ID) that must be used for any email communication with the cardholder.
++ billingAddress (addressCustomer, required) - Contains information about the billing address of the cardholder.
++ phone (phoneBookInfo) - Contains the contact number of the cardholder.
+
+## key
++ key1: `value1` (string) - For internal use only.
+
+## initiateBookResponse
++ orderId: `123-456-789` - Unique ID for the order. Note: You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you check the booking status (using the `Get Booking Status` API) and retrieve the order details (using the `Get Order Details` API). 
+
+## bookStatusRequest
++ orderId: `123-456-789` (string, required) - Unique ID for the order for which you want to check the status. You must obtain the `orderId` from the `Initiate Booking` API response.
+
+## bookStatusResponse
++ orderId: `123-456-789` - Unique ID for the order for which the status is checked. Note: You must use the `orderId` as an identifier in the subsequent API calls at a later point in time. For example, you need the `orderId` when you want to retrieve the order details (using the `Get Order Details` API). 
++ status: `InProgress` (enum) - Indicates the status of the order. If the `status` field returns `CompletedWithFailure` or Failed, see the `errors[]`, `/items[]/status`, and `/items[]/errors[]/message` fields for more information.
+  + Completed
+  + CompletedWithfailure
+  + Failed
+  + InProgress
++ items (array [itemsInfo], fixed-type) - Contains the list of items that are booked. 
++ errors (array [errorsBookStatus], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the `errors` array lists the appropriate error message.
++ warnings (array [warningsBookStatus], fixed-type) - Contains the list of warnings that appear during the booking process.
++ statebag (stateBagInfo) - For internal use only. 
+
+## itemsInfo
++ id: `123-456-789` - Unique ID for the item that is booked.
++ bookingId: `12345` - Unique ID for the booking. 
++ status: `InProgress` (enum) - Indicates the status of the booking. If the `status` field returns `Failed` or `NotAttempted`, see the `/items[]/errors[]/message` field for more information.
+  + Confirmed
+  + InProgress
+  + Failed
+  + NotAttempted
++ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details. Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the Get Booking Details API, which is implemented for ORXe APIs for Car. To know the booking details that are returned for other supported products, please contact cxLoyalty Business team. 
++ statebag (stateBagInfo) - For internal use only. 
++ errors (array [errorsBookStatus], fixed-type) - Contains the list of errors that have occurred during the booking process. For example, if the booking fails, the errors array lists the appropriate error message.
++ warnings (array [warningsBookStatus], fixed-type) - Contains the list of warnings that appear during the booking process.
+
+## errorsBookStatus
++ code: `14` - Code for the error. See the list of API error codes and messages.
++ message: `The supplier server is unreachable. Try again after some time.` - Error message text. See the list of API error codes and messages
+
+## warningsBookStatus
++ code: `4313` - Code for the warning. See the list of API error codes and messages
++ message: `The supplier server is unreachable. Try again after some time.` - Warning message text. See the list of API error codes and messages
+
+## getOrderDetailsResponse
++ items (array [itemRetrieve], fixed-type) - Contains the list of the items in the cart.
++ fees (array [feesInfo], fixed-type) - Contains the list of all the applicable fees charged to the customer to process the order.
++ transaction (transactionInfo) - Contains information about the payment-related transaction made for the booking. Payment-related transactions includes points-related transactions as well as cash-related transactions.
+Notes:
+  + If the payment is made by cash, then only the `cashTransactions` object` is returned.
+  + If the payment is made by points, then only the `pointTransactions` object is returned. 
+  + If the payment is made by a combination of both cash and points, then both the `cashTransactions` object and the `pointTransactions` object is returned.
++ customer (customerResp) - Contains information about the customer.
++ agent (agentInfo) - Contains information about the agent.
+
+## itemRetrieve
++ id: `sdea34-d9cb-461f-a165-7086772w324` - Unqiue ID for the item. 
++ bookingId: `12345` - Unique ID for the booking. 
++ productId: `nextgencar` - Unique ID for the product that is purchased. 
++ productType: `Car` (string) - Type of product that is purchased.
++ productDetailsLink: `http://www.example-product.com/detail` - URL to view the booking details. Consider a scenario where you have booked a car rental option. If you want to retrieve the booking details for this car rental option, then you must make a GET call on the `productDetailsLink`. To know about the booking details that are returned for the car rental option, you can view the sample API response of the Get Booking Details API, which is implemented for ORXe APIs for Car.
++ supplierCard (supplierCardInfo) - Contains information about the single-use card, which is used to pay the supplier for the booking.
++ vouchers (array [vouchersInfo], fixed-type) - Contains the list of voucher.  
++ displayFare (fare) - Contains information about the fare of the item that is displayed on the User Interface (UI). 
++ agencyFare (agencyFare) - Contains the fare breakup amounts in the agency's operating currency. This information is typically used in B2B scenarios.
+
+## supplierCardInfo
++ id: `10550229` - Unique ID for the single-use card that is generated by the single-use card provider service. If the single-use card is not generated, then this field is not returned in the API response. 
++ number: `5555555555554444` (string, required) - Credit card number of the single-use card that is used for the payment. Note that the credit card number must be at least 12 digits.
++ amount: 12 (number) - Amount paid to the supplier to book the item. Format: Decimal
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `supplierCard/amount` is returned. The API calculates the amount equivalents and returns the amount in the currency specified. For example, if the `/currency` field returns `USD`, then the `supplierCard/amount` is returned in its `USD` amount equivalents. Currently, we only support payments made in `USD` using single-use card. 
++ issuedBy: `AX` (enum, required) - Card issuer. See the list of card issuer codes and their descriptions.
+  + VI
+  + CA
+  + AX
+  + DS
+  + TO 
+  + DC
+  + S
+  + JC
+  + BC
+  + T
+  + R 
+  + E
++ nameOnCard: `John` - Name on the credit card used for the payment.
++ billingAddress (addressBookInfoResp) - Contains information about the billing address of the cardholder.
++ token: `skfwefh$@fkew0fwy32ryr$#8ffjn3` - For internal use only. 
++ expiry (expiryInfo) - Contains the credit card expiration details. Note that the expiration date of the credit card must be later than or equal to the current month and of the current year. 
+
+## vouchersInfo
++ include voucherId
++ include supplierConfirmationNumberVouchers
++ include vendorConfirmationNumberVouchers
++ include issuedByVouchers
++ include issuedIdVouchers
++ include issuedOnVouchers
++ include voucherStatus
++ include customerRetrieve
++ include alternateConfirmationIdsVouchers
+
+## voucherId
++ id: `wq23-qiu4d-we43-14eerf55` - Unique ID for the voucher.
+
+## supplierConfirmationNumberVouchers
++ supplierConfirmationNumber: `2356` - Supplier confirmation number for the booking. 
+Notes:
+  + The `supplierConfirmationNumber` is required when you contact cxLoyalty Customer Service.
+  + The `supplierConfirmationNumber` must be used as the confirmation number for the booking.
+
+## vendorConfirmationNumberVouchers
++ vendorConfirmationNumber: `8765` - Vendor confirmation number for the booking. If the vendor does not provide a confirmation number, this field returns `null`.
+Notes:
+    + The `vendorConfirmationNumber` is required when you contact cxLoyalty Customer Service. If the `vendorConfirmationNumber` is not available, you must provide the `supplierConfirmationNumber`.
+    + The `vendorConfirmationNumber` and the `supplierConfirmationNumber` must be used as confirmation numbers for the booking. If the `vendorConfirmationNumber` is not available, the `supplierConfirmationNumber` must be used as the confirmation number for the booking.
+
+## issuedByVouchers
++ issuedBy: `Supplier` - Indicates the issuer of the voucher. 
+
+## issuedIdVouchers
++ issuerId: `123` - Unqiue ID assigned to identify the issuer of the voucher. 
+
+## issuedOnVouchers
++ issuedOn: `2006-04-17T21:22:48.2698750Z` - Date and time when the voucher is issued. Format: YYYY-MM-DDTHH:MM:SSZISO 8601
+
+## voucherStatus
++ status: `Confirmed` (enum) - Indicates the status of the booking. 
+  + Confirmed
+  + Failed
+  + NotAttempted
+
+## customerRetrieve
++ customer (customerRetrieveInfo) - Contains information about the customer.
+
+## customerRetrieveInfo
++ type: `Adult` - Type of customer.
++ name (nameResp) - Contains information about the name of the customer.
++ age: 25 (number) - Age of the customer.
++ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the customer.
++ phone (phoneRetrieveInfo) - Contains the contact number of the customer. 
+
+## nameResp
++ title (enum) - Title before the name.
+  + Mr
+  + Madam
+  + Master
+  + Miss
+  + Mrs
+  + Ms
+  + Mx
++ first: `John` (string) - First name.
++ middle: `Alex` - Middle name.
++ last: `Smith` (string) - Last name.
++ suffix: `Jr` - Suffix that follows the name.
+
+## phoneRetrieveInfo
++ type: `Unknown` (enum) - Type of phone number or contact number.
+  + Fax
+  + Home
+  + Mobile
+  + Work
+  + Unknown
++ number: `555-0173` (string) - Phone number.
++ countryCode: `1` - Country code for the phone number.
+
+## alternateConfirmationIdsVouchers
++ alternateConfirmationDetails (array [confirmationIds], fixed-type) - Contains the list of alternate confirmation details for the booking.
+
+## confirmationIds
++ id: `wdkjdqio` - Unique ID that identifies the alternate confirmation number. 
++ name: `AirlineRecordLocator` - Contains the description of the alternate confirmation number.
++ issuedBy: `supplier` (enum) - Indicates whether the alternate confirmation number is provided by the supplier or the OTA. 
+  + Agency
+  + Supplier
+
+## fare 
++ currency: `USD` - 3-character ISO code that indicates the currency in which the display fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ total: 12 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost. Format: Decimal
++ include fareBreakupInfo
++ include commissions
+
+## fareBreakupInfo
++ breakup (breakupInfo) - Contains information about the various breakup components that make up the `displayFare/total`.
+
+## breakupInfo
++ include baseAmount
++ taxes (array[taxes], fixed-type) - Contains the list of all the applicable taxes for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field.
++ fees (array[fees], fixed-type) - Contains the list of all the applicable fees for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field. If the supplier does not provide this information, the `fees` array is returned as an empty array.
++ discounts (array[discounts], fixed-type) - Contains the list of all the applicable discounts for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field.
++ markups (array[markups], fixed-type) - Contains the list of applicable markups for the fare. Markups indicate the amount of money added on top of what a supplier charges so that you or your clients can make money off of bookings. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field.
++ otherCharges (array [otherCharges], fixed-type) - Contains the list of applicable charges for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `displayFare/total` field.
+
+## baseAmount
++ baseAmount: 6 (number) - Base price of the item. Note: The `baseAmount` does not include the `discount`, `taxes`, `fees`, `markups`, or any other additional cost. Format: Decimal
+
+
+## taxes (object)
++ amount: 0 (number) - Tax amount applicable for the item. Format: Decimal
++ desc: Luxury tax - Description or additional information for the type of tax that is charged.
+
+## fees (object)
++ amount: 2.0 (number) - Fee amount levied or charged for the item. Format: Decimal
++ desc: `Late check-out fee` - Description or additional information for the type of fee that is charged.
++ source: `Supplier` (enum) - Indicates whether the fees is levied or charged by the supplier or the OTA.
+  + Agency
+  + Supplier
+
+## discounts (object)
++ amount: `2.0` (number) - Discount amount applicable for the item. Format: Decimal
++ desc: `Save 15%` - Description or additional information for the discount that is offered.
++ source: `Supplier` (enum) - Indicates whether the discount is provided by the supplier or the OTA.
+  + Agency
+  + Supplier
+
+## markups
++ amount: 2 (number) - Markup (MUP) amount. A markup indicates the amount of money added on top of what a supplier charges so that you or your clients can make money off of bookings. Format: Decimal
++ desc: Agency - Description or additional information for the markup.
++ source: `Agency` (enum) - Indicates whether the markup is applied by the supplier or the OTA.
+  + Agency
+  + Supplier
+
+## otherCharges
++ amount: 2 (number) - Applicable amount for other charges. Format: Decimal
++ desc: `Internet Charges` - Description or additional information for the other charges. 
++ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the supplier or the OTA.
+  + Agency
+  + Supplier
+
+## otherChargesAgency
++ amount: 8 (number) - Applicable amount for other charges. Format: Decimal
++ desc: `Internet Charges` - Description or additional information for the other charges. 
++ source: `Supplier` (enum) - Indicates whether the other charges are levied or charged by the supplier or the OTA.
+  + Agency
+  + Supplier
+
+## commissions
++ commissions (array [commissionsInfo], fixed-type) - Contains information about the commission two that the supplier is providing to the OTA for the rate that is returned in the response.
+
+## commissionsInfo 
++ amount: 10.5 (number) - commission one amount that the supplier is providing to the OTA for the rate that is returned in the response. Note: The `commission` amount has no impact and is not considered within the `/items[]/displayFare/breakup` object. This means that the `displayFare/total` value does not include the `commission` amount. Format: Decimal
++ desc: `Flat rate commission for the agency` - Description or additional information for the commission two that the supplier is providing to the OTA.
+
+## agencyFare
++ currency: `CAD` - 3-character ISO code that indicates the agency's operating currency in which the fare amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `CAD`, then the `baseAmount`, `discount`, `taxes`, `markups` and other monetary amounts are returned in their `CAD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
++ total: 16 (number) - Total cost of the item after considering the `baseAmount`, `discount`, `taxes`, `fees`, `markups`, and any other additional cost. Format: Decimal
++ include agencyFareBreakupInfo
++ include commissions
+
+## agencyFareBreakupInfo
++ breakup (agencyBreakupInfo) - Contains information about the various breakup components that make up the `agencyFare/total`.
+
+## agencyBreakupInfo
++ include baseAmount
++ taxes (array[taxes], fixed-type) - Contains the list of all the applicable taxes for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `agencyFare/total` field.
++ fees (array[fees], fixed-type) - Contains the list of all the applicable fees for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `agencyFare/total` field. If the supplier does not provide this information, the `fees` array is returned as an empty array.
++ discounts (array[discounts], fixed-type) - Contains the list of all the applicable discounts for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `agencyFare/total` field.
++ markups (array[markups], fixed-type) - Contains the list of applicable markups for the fare. Markups indicate the amount of money added on top of what a supplier charges so that you or your clients can make money off of bookings. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `agencyFare/total` field.
++ otherCharges (array [otherChargesAgency], fixed-type) - Contains the list of applicable charges for the item. This amount is not included in the `breakup/baseAmount` field. However, this amount is already included in the `agencyFare/total` field.
+
+## addressBookInfoResp
++ line1: `3077 ACME Street` (string)- Street number and street name.
++ line2: `Landmark: Beside the ACME Shopping Mall` - Additional information related to the address, such as landmark, apartment, suite, unit, and building information.
++ cityName: `San Francisco` (string) - Name of the city.
++ state (stateBook) - Contains information about the state.
++ countryCode: `US` (string) - 2-character ISO code of the country. Read more about valid country codes.
++ postalCode: `94133` (string) - Postal code. In various countries, postal code is also known as postcode, post code, Eircode, PIN Code, or ZIP Code.
+
+## feesInfo
++ id: `12d5b-d4sb-2asf-a165-q2w123sa` - Unique ID for the order fee. 
++ type: `service` - Type of order fee that is applied. 
++ desc: `service charge` - Description or additional information for the type of order fee.
++ amount: 1.00 (number) - Order fee amount. Format: Decimal
++ currency: `USD` - 3-character ISO code that indicates the currency in which the `/fees[]/amount` is returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `/fees[]/amount` is returned in its `USD` amount equivalents. We support all ISO currencies. If you want to configure multiple currencies, then please contact cxLoyalty Business Team.
+
+## transactionInfo
++ pointsTransaction (pointsTransactionInfo) - Contains information about the points-related transactions.  
++ cashTransaction (cashTransactionInfo) - Contains information about the cash-related transactions. 
+
+## pointsTransactionInfo 
++ points (pointsInfo) - Contains information about the loyalty points that the customer redeemed.
++ desc: `Mock Transaction` - Description of the transaction. 
++ paymentBreakup (array [paymentBreakupPoints], fixed-type) - Contains the list of the payments made by redemption of points. The `paymentBreakup` array provides the breakup of the number of points redeemed (pointsTransaction/points/value field). This means that the sum total of all the `paymentBreakup[]/points/value` must be equal to the number of points returned in the `pointsTransaction/points/value` field.
+
+## pointsInfo
++ value: 200 (number) - Total number of points that the customer redeemed. Note that this value must be equal to the sum of all the `/points/value` returned within the `pointsTransaction/paymentBreakup` array. Format: Decimal 
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+
+## paymentBreakupPoints
++ points (pointsBreakup) - Contains information about the loyalty points that the customer redeemed.
+
+## pointsBreakup
++ value: 200 (number) - Total number of points that the customer redeemed.Format: Decimal 
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
++ voucherRefIds: `d245o45f` (array) - Contains the list of voucher reference IDs. 
++ fee (feeBreakup) - Contains information about points redeemed to pay the applicable fee for using the reward option. 
+
+## feeBreakup
++ points (feePoints) - Contains information about the loyalty points redeemed to use the reward option.
+
+## feePoints 
++ value: 100 (number) - Number of points that the customer redeemed to pay the fee amount. Format: Decimal
++ unit: `points` - Indicates the currency that is associated with the loyalty program. For example, points and miles.
+
+## cashTransactionInfo
++ currency: `USD` - 3-character ISO code that indicates the currency in which the monetary amounts are returned in the response. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` is set to `USD`, then the `cashTransaction/amount` and the `paymentBreakup/amount` is returned in their `USD` amount equivalents. We support all ISO currencies.
++ card (cardTransactions) - Contains information about the credit card that is used to pay the cash amount returned in the `cashTransaction/amount` field.
++ amount: 8 (number) - Amount charged on the credit card by the payment gateway. Format: Decimal 
++ status: `Captured` (enum) - Indicates the transaction status of the card payment.
+  + Authorized
+  + AuthorizationFailed
+  + AuthorizeNotAttempted
+  + CapturedNotAttempted
+  + Captured
+  + CaptureFailed
+  + ReverseAuthorized
+  + ReverseAuthorizeFailed
++ transactionId: `6b36c65d-88e5-4651-b48f-0c6f543e1691` - Transaction ID returned by the payment service. This transactionId can be used to refer to the same transaction. Note that this transactionId is only for the payment service and for internal transaction referencing. 
++ desc: `Mock Transaction` - Description of the transaction.
++ paymentBreakup (paymentBreakupCash) - Contains the list of the payments made by card. The `paymentBreakup` array provides the breakup of the amount charged on the credit card (cashTransaction/amount field). This means that the sum total of all the `paymentBreakup/amount` must be equal to the amount returned in the `cashTransaction/amount` field.
+
+## cardTransactions
++ number: `4444333322221111` - Credit card number used for the payment. Note that the credit card number must be at least 12 digits.
++ issuedBy: `AX` (enum) - Card issuer. See the list of card issuer codes and their descriptions. 
+  + VI
+  + CA
+  + AX
+  + DS
+  + TO 
+  + DC
+  + S
+  + JC
+  + BC
+  + T
+  + R 
+  + E
++ nameOnCard: `John` - Name on the credit card used for the payment.
+
+## paymentBreakupCash
++ amount: 8 (number) - Amount charged on the credit card.Format: Decimal
++ voucherRefIds: `d245o45f` (array) - Contains the list of voucher reference IDs. 
++ fee (cashFee) - Contains information about the applicable fee for using the reward option.
+
+## cashFee
++ cashAmount: 90 (number) - Fee amount levied or charged to use the reward option. Format: Decimal 
+
+## customerResp
++ name (nameResp) - Contains information about the name of the customer.
++ phone (phoneRetrieveInfo) - Contains the contact number of the customer. 
++ alternatePhone (phoneRetrieveInfo) - Contains the alternate contact number of the customer.
++ address (addressBookInfoResp) - Contains information about the address of the customer.
++ email: `abc@xyz.com` - Email address (recipient ID) that must be used for any email communication with the customer.
