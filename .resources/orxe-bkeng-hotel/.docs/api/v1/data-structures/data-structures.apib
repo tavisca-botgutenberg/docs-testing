@@ -4921,7 +4921,7 @@ In the `guests` array, for both the adults, you must provide the guest type. The
 + errors (array [errorsOrderReq], fixed-type) - Contains the list of errors that occur during the booking process. For example, if the  booking fails, the `errors` array lists the appropriate error messages.
 
 ## warningsCFRMOrderReq
-+ warnings (array [warningsOrderReq]) - Contains the list of warnings that appear during the booking process.
++ warnings (array [warningsOrderReq], fixed-type) - Contains the list of warnings that appear during the booking process.
 
 ## cancelOrderReq
 + cancellationDetails (cancellationDetailsCFRMOrderReq, required) - Contains the cancellation details of the room booking. 
@@ -4978,7 +4978,7 @@ In the `guests` array, for both the adults, you must provide the guest type. The
 + include paymentMethodOrderReq
 
 ## paymentMethodOrderReq
-+ paymentMethods (array [paymentMethodDetailsResp], fixed-type required) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC). <br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If the `/paymentMethods[]/type` field is set to `Card` or `OUC`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` field is set to `Cash`, then you must not provide the `/paymentMethods[]/card` object.</li></ul>
++ paymentMethods (array [paymentMethodDetailsResp], fixed-type, required) - Contains the list of payment methods used to pay for the booking. We support payments made by cash, credit card, or one-use card (OUC). <br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If the `/paymentMethods[]/type` field is set to `Card` or `OUC`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If the `/paymentMethods[]/type` field is set to `Cash`, then you must not provide the `/paymentMethods[]/card` object.</li></ul>
 
 ## paymentMethodDetailsResp
 + type: `Card` (enum, required)- Indicates the mode of payment.<br><br><b>Notes:</b><ul style="list-style-type:disc"><li>If you set the `/paymentMethods[]/type` to `Card` or `OUC`, then you must provide the card details within the `/paymentMethods[]/card` object.</li><li>If you set the `/paymentMethods[]/type` to `Cash`, then the `/paymentMethods[]/card` object is optional.</li></ul>
