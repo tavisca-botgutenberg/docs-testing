@@ -1,0 +1,16 @@
+{	
+	"environments": [
+		{
+			"baseUrl": "https://activity-loyalty.qa.cnxloyalty.com",
+			"type": "qa"
+		},
+		{
+			"baseUrl": "https://activity-loyalty.stage.cnxloyalty.com",
+			"type": "stage"
+		},
+		{
+			"baseUrl": "https://activity-loyalty.cnxloyalty.com",
+			"type": "prod"
+		}
+	]		
+}
