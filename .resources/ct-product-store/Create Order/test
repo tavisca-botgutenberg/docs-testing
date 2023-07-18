@@ -1,0 +1,224 @@
+{
+    //[Mandatory]
+    "costPrice": {
+      //[Mandatory]
+      "currency": "USD",
+      //[Mandatory]
+      "amount": 122.32,
+      //[Mandatory] Payment method for supplier // This should be optional. As we do not have payment at the time of create order
+      "paymentMode": "OUC" // card|cash|OUC|customerCard : card is for backward compatibility and will be removed later
+    },
+    "bookingId": "2421c32r5f", //[Mandatory]//SPNR
+    "items": [
+      {
+        "id": "item1234", //[Mandatory] data store order id
+        //[Mandatory]
+        "name": "Cruise", // what should be value of this field. CruiseShipName?
+        //[Mandatory]
+        "quantity": 2,
+        //[Mandatory] quoted price of the item
+        "quotedPriceBreakup": {
+          //[Mandatory]
+          "baseAmount": 345.00, // FareQuote
+          "currency": null,
+          //[Optional]
+          "adjustments": [
+            {
+              "type": "Markup", //Mandatory
+              "source": "agency", //Mandatory
+              "amount": 123, //Mandatory
+              "description": "Item level markup", //Optional
+              //[Optional]
+              "additionalInfo": { //key-value pairs
+                "key1": "value1"
+              },
+              "feeType": "Item level Fee",
+              "code": null,
+              "currency": "USD"
+            },
+            {
+              "type": "Fee", //Mandatory //TaxesAndFees
+              "feeType": "item level fees", //Mandatory
+              "amount": 23.00, //Mandatory
+              "description": "item level fees", //Optional
+              //[Optional]
+              "additionalInfo": { //key-value pairs
+                "key1": "value1"
+              },
+              "source": null,
+              "code": null,
+              "currency": "USD"
+            },
+            {
+              "type": "Commission", //[Mandatory] //Need to confirm
+              "amount": 15, //[Mandatory]
+              "description": "Commission on booking", //[Optional],
+              //[Optional]
+              "additionalInfo": { //key-value pairs
+                "key1": "value1", //e.g. "chargeType": "HolidaySurcharge",
+                "key2": "value2" //e.g. "isIncludedInBaseAmount": false
+              },
+              "source": null,
+              "feeType": "Item level Fee",
+              "code": null,
+              "currency": "USD"
+            }
+          ]
+        },
+        //[Mandatory]
+        "paymentOptions": [
+          {
+            //[ConditionallyOptional]
+            "cash": 20, // FareQuoteAmount
+            "points": 0,
+            "currencyCostFactor": 0,
+            "currencyCostFactoryType": null,
+            "reportingFields": null
+          }
+        ],
+        //[Mandatory] // Item specifications
+        "orderDetailsId": "PROD1231445", // Is it store id?
+  
+        //[Mandatory]
+        "supplierRate": {
+          //[Mandatory]
+          "priceBreakup": {
+            //[Mandatory]
+            "baseAmount": 345.00, // Net rate amount
+            //[Mandatory]
+            "currency": "USD",
+            //[Optional]
+            "adjustments": [
+              {
+                //[Mandatory]
+                "type": "Fees", //TaxesAndFees
+                "source": null,
+                "feeType": null,
+                //[Mandatory]
+                "code": "Tax123",
+                //[Mandatory]
+                "amount": 23.00,
+                //[Optional]
+                "description": "item level taxs and fees",
+                //[Mandatory]
+                "currency": "USD",
+                //[Optional]
+                "additionalInfo": { //key-value pairs
+                  "key1": "value1"
+                }
+              }
+  
+            ]
+          },
+          //[Mandatory]
+          "paymentMode": "OUC", //OUC, Deposit, CustomerCard
+          //[Mandatory]
+          "rateType": "Negotiated", //Negotiated, Published
+          //[Optional]
+          "rateCode": "rate123", //RateOptionCode
+          //[Optional]
+          "commissions": [
+            {
+              "type": "booking", //[Mandatory]
+              "amount": 10, //[Mandatory]
+              "currency": "USD", //[Mandatory]
+              "description": "Commission on the booking" //[Optional]
+            }
+          ],
+          //[Mandatory]
+          "refundability": "NonRefundable" //Refundable, NonRefundable
+        },
+        "confirmationNumbers": [ //[Mandatory] //this is a list of confirmation numbers for the booking.
+          {
+            "type": "externaltripId",
+            "value": "tgbnhyujm"
+          }, //[Mandatory]	e.g. "type": "supplierConfirmationNumber", "value": "3TOGTU3"
+        ],
+        "consumers": [ //[Mandatory]
+          {
+            "id": "consumer1", //[Mandatory] //identifier of the consumer to be used in voucher for referencing. This id will not be persisted.//GUID
+            "name": //[Mandatory]
+            {
+              "title": "test",
+              "first": "John", //[Mandatory]
+              "middle": "test",
+              "last": "Smith", //[Mandatory]
+              "suffix": "test"
+            },
+            "dob": "1996-08-01", //[Optional] format : "YYYY'-'MM'-'DD"
+            "email": "abc@xyz.com", //[Optional]
+            "gender": "Female", //[Optional] Values:Male|Female|Other
+            "phone": //[Optional]
+            {
+              "type": "Office",
+              "number": "555-0173", //[Mandatory]
+              "countryCode": "test",
+              "ext": "12",
+              "areaCode": "123"
+            }
+          }
+        ],
+        "error": { //[Optional]
+          "code": "00",
+          "message": "The following validation errors occurred: ",
+          "info": [
+                {
+                "code": "00",
+                "message": "Could not process the request due to network connectivity issues. Please try again. "
+                },
+                {
+                "code": "00",
+                "message": "Due to heavy traffic, the processing might take longer than expected."
+                }
+            ]   
+        },
+        "warnings": [ //[Optional]
+          {
+            "code": "4313",
+            "message": "Warning: Due to heavy traffic, the processing might take longer than expected."
+          }
+        ]
+      },
+      "agencyPriceBreakup": {
+                  "baseAmount": 52.2,
+                  "currency": null,
+                  "adjustments": [
+                      {
+                          "type": 1,
+                          "source": null,
+                          "feeType": "Item level Fee",
+                          "code": null,
+                          "amount": 2.0,
+                          "description": null,
+                          "currency": null,
+                          "additionalInfo": null
+                      },
+                      {
+                          "type": 2,
+                          "source": "Agency",
+                          "feeType": null,
+                          "code": null,
+                          "amount": 5.0,
+                          "description": null,
+                          "currency": null,
+                          "additionalInfo": null
+                      },
+                      {
+                          "type": 5,
+                          "source": null,
+                          "feeType": null,
+                          "code": null,
+                          "amount": 10.0,
+                          "description": null,
+                          "currency": null,
+                          "additionalInfo": null
+                      }
+                    ]
+                },
+              "consumptionDatesInUtc": {
+                  "start": "2023-12-14T07:00:00",
+                  "end": "2023-12-15T07:00:00"
+                }
+        }
+    ]
+}
