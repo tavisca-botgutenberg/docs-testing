@@ -1,22 +1,22 @@
 ## createOrderReq
 + currency: `USD` (string, required)  
 + pointsCurrency: `Miles` (string, required)  
-+ include paymentOptions
-+ include customer 
++ paymentOptions (paymentOptionsInfo1)
++ customer (customerInfo1)
 + trackingId: `MA3423556`(string)  
-+ include productDetails
++ productDetails (productDetailsInfo1)
 + productType: 1 (number)  
-+ include reportingFields
-+ include extensionData
++ reportingFields (reportingFieldsInfo1)
++ extensionData (extensionDataInfo1)
 
-## extensionData
+## extensionDataInfo1
 + field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
 + field2: `Value2` (string) - Indicates the value for field 2.
 + field3: `Value3` (string) - Indicates the value for field 3.
 + field4: `Value4` (string) - Indicates the value for field 4.
 + field5: `Value5` (string) - Indicates the value for field 5.
 
-## productDetails
+## productDetailsInfo1
 + cruiseLineShipCode: `AD` (string)  
 + cruiseLineShipName: `Adventure of the Seas` (string)  
 + cruiseLineProviderID: 0 (number)  
@@ -44,10 +44,10 @@
 + passengerCount: 3 (number)  
 + conversionRate: 0.0125 (number)  
 + isAgentOverrideOFAC: false (boolean)  
-+ include primaryPassenger
++ primaryPassenger (primaryPassengerInfo2)
 + passengers (array [passenger1, passenger2], fixed-type)  
 + promotions (array [promotionsInfo], fixed-type)  
-+ include priceBreakup
++ priceBreakup (priceBreakupInfo2)
 + isGds: true (string)  
 + startDate: `2020-10-30` (string)  
 + durationInNights: 7 (number)  
@@ -57,7 +57,7 @@
 
 
 
-## priceBreakup
+## priceBreakupInfo2
 + fareQuote: 488 (number)  
 + currency: `USD` (string)  
 + loyaltyCurrencyFareQuote: 0 (number)  
@@ -71,7 +71,7 @@
 + taxesAndFees: 30 (string)  
 + bookingFees: 1 (number)  
 
-## primaryPassenger
+## primaryPassengerInfo2
 + firstName: `John` (string)  
 + lastName: `Smith` (string)  
 + gender: `M` (string)  
@@ -79,7 +79,7 @@
 + loyaltyNumber: `123` (string)  
 
 
-## reportingFields
+## reportingFieldsInfo1
 + field1: `test` (string)  
 + field2: `test` (string)  
 + field3: `test` (string)  
@@ -92,29 +92,29 @@
 + field10: `test` (string)
 
 
-## paymentOptions
+## paymentOptionsInfo1
 + cash: 140 (number)  
 + points: 6000 (number)  
 + CurrencyCostFactor: 1.0 (number)  
 + CurrencyCostFactoryType: 1 (number)  
-+ include ReportingFields
++ ReportingFields (ReportingFieldsInfo3)
 
-## ReportingFields
+## ReportingFieldsInfo3
 + key: `value` (string)  
 
-## customer
+## customerInfo1
 + id: 43435 (number)  
-+ include name
-+ include phone
-+ include address (object)
++ name (nameInfo4)
++ phone (phoneInfo4)
++ address (addressInfo4)
 + countryCode: `US` (string, required)  
 + postalCode: `94133` (string, required)  
 + email: `abc@xyz.com` (string, required)  
 + availablePointBalance: 123.0 (number)  
 + transitCode: `123sd+sdsfw3+dsfsd+23fds` (string)  
-+ include eligibilityInfo
++ eligibilityInfo (eligibilityInfo5)
 
-## eligibilityInfo
+## eligibilityInfo5
 + programCurrency: `string` (string)  
 + purchaseAllowed: true (boolean)  
 + redemptionAllowed: true (boolean)  
@@ -123,7 +123,7 @@
 + shortfallAllowed: true (boolean) 
 
 
-## name
+## nameInfo4
 + title: `test` (string)  
 + first: `John` (string, required)  
 + middle: `test` (string)  
@@ -131,7 +131,7 @@
 + suffix: `test` (string)  
 
 
-## phone
+## phoneInfo4
 + Type: `Office` (string, required)  
 + number: 555-0173 (number, required)  
 + countryCode: `11` (string)  
@@ -139,14 +139,14 @@
 + areaCode: `123` (string)  
 
 
-## address
+## addressInfo4
 + line1: `3077 ACME Street` (string, required)  
 + line2: `Landmark: Beside the ACME Shopping Mall` (string)  
 + cityName: `San Francisco` (string, required)  
-+ include state
++ state (stateInfo6)
 
 
-## state
+## stateInfo6
 + code: `CA` (string)  
 + name: `California` (string)  
 
@@ -252,7 +252,7 @@
 + supplierRate (supplierRate2)
 + confirmationNumbers (array [confirmationNumbersInfo], fixed-type)
 + consumers (consumers2)
-+ include error
++ error (errorInfo7)
 + warnings (array [warningsInfo], fixed-type)
 
 ## supplierRate2
@@ -298,7 +298,7 @@
 + ext: `12` (string)
 + areaCode: `123` (string)
 
-## error
+## errorInfo7
 + code: 0 (number)
 + message: `The following validation errors occurred:` (string)
 + info: (array [errorInfoDetails_1, errorInfoDetails_2], fixed-type)
