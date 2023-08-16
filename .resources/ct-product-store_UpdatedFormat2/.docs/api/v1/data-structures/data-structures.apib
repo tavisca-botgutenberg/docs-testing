@@ -228,4 +228,25 @@
 
 // responses
 ## createOrderRes
-+ sessionId: `28000bd3-5659-41c0-ab11-e99751fb74c0` (string) - description updated
++ costPrice (object)
+	+ currency: `USD` (string)
+	+ amount: 122.32 (number)
+	+ paymentMode: `OUC` (string)
++ bookingId: `2421c32r5f` (string) 
++ items (array [itemsInfo], fixed-type)
++ agencyPriceBreakup (object)
+	+ baseAmount: 52.2 (number)
+	+ currency: `test` (string)
+	+ adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
++ consumptionDatesInUtc (object)
+	+ start: `2023-12-14T07:00:00` (string)
+	+ end: `2023-12-15T07:00:00` (string)
+
+## itemsInfo
+
+
+## APB_adjustmentsInfo1
+
+## APB_adjustmentsInfo2
+
+## APB_adjustmentsInfo3
