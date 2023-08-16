@@ -3,32 +3,32 @@
 ## CreateOrderReq
 + currency: `USD` (string, required)  
 + pointsCurrency: `Miles` (string, required)  
-+ paymentOptions
++ paymentOptions (object)
   + cash: 140 (number)  
   + points: 6000 (number)  
   + CurrencyCostFactor: 1.0 (number)  
   + CurrencyCostFactoryType: 1 (number)  
-  + ReportingFields
+  + ReportingFields (object)
     + key: `value` (string)  
 + customer
   + id: 43435 (number)  
-  + name
+  + name (object)
     + title: `test` (string)  
     + first: `John` (string, required)  
     + middle: `test` (string)  
     + last: `Smith` (string, required)  
     + suffix: `test` (string)  
-  + phone
+  + phone (object)
     + Type: `Office` (string, required)  
     + number: `555+0173` (number, required)  
     + countryCode: `11` (string)  
     + ext: `12` (string)  
     + areaCode: `123` (string)  
-  + address
+  + address (object)
     + line1: `3077 ACME Street` (string, required)  
     + line2: `Landmark: Beside the ACME Shopping Mall` (string)  
     + cityName: `San Francisco` (string, required)  
-    + state
+    + state (object)
       + code: `CA` (string)  
       + name: `California` (string)  
     + countryCode: `US` (string, required)  
@@ -36,7 +36,7 @@
   + email: `abc@xyz.com` (string, required)  
   + availablePointBalance: 123.0 (number)  
   + transitCode: `123sd+sdsfw3+dsfsd+23fds` (string)  
-  + eligibilityInfo  
+  + eligibilityInfo (object) 
     + programCurrency: `string` (string)  
     + purchaseAllowed: true (boolean)  
     + redemptionAllowed: true (boolean)  
@@ -44,7 +44,7 @@
     + useVariableMilesFormula: true (boolean)  
     + shortfallAllowed: true (boolean)  
 + trackingId: `MA3423556`(string)  
-+ productDetails
++ productDetails (object)
   + cruiseLineShipCode: `AD` (string)  
   + cruiseLineShipName: `Adventure of the Seas` (string)  
   + cruiseLineProviderID: `0` (number)  
@@ -72,7 +72,7 @@
   + passengerCount: `3` (number)  
   + conversionRate: `0.0125` (number)  
   + isAgentOverrideOFAC: false (boolean)  
-  + primaryPassenger
+  + primaryPassenger (object)
     + firstName: `John` (string)  
     + lastName: `Smith` (string)  
     + gender: `M` (string)  
@@ -80,7 +80,7 @@
     + loyaltyNumber: `123` (string)  
   + passengers (array [passernger1, passenger2], fixed-type)  
   + promotions (array [promotionsInfo], fixed-type)  
-  + priceBreakup
+  + priceBreakup (object)
     + fareQuote: 488 (number)  
     + currency: `USD` (string)  
     + loyaltyCurrencyFareQuote: 0 (number)  
@@ -100,7 +100,7 @@
   + finalPaymentDueDate: `2020+10+25T06:21:16.764Z` (string)  
   + groupBookingId: `5` (string)  
 + productType: 1 (number)  
-+ reportingFields
++ reportingFields (object)
   + field1: `test` (string)  
   + field2: `test` (string)  
   + field3: `test` (string)  
@@ -111,7 +111,7 @@
   + field8: `test` (string)  
   + field9: `test` (string)  
   + field10: `test`
-+ extensionData
++ extensionData (object)
   + field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
   + field2: `Value2` (string) - Indicates the value for field 2.
   + field3: `Value3` (string) - Indicates the value for field 3.
@@ -172,17 +172,17 @@
 
 
 ## CreateOrderRes
-+ costPrice
++ costPrice (object)
   + currency: `USD` (string)
   + amount: 122.32 (number)
   + paymentMode: `OUC` (string)
 + bookingId: `2421c32r5f` (string) 
 + items (array [itemsInfo], fixed-type)
-+ agencyPriceBreakup
++ agencyPriceBreakup (object)
   + baseAmount: 52.2 (number)
   + currency: (nullable)
   + adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
-+ consumptionDatesInUtc
++ consumptionDatesInUtc (object)
   + start: `2023-12-14T07:00:00` (string)
   + end: `2023-12-15T07:00:00` (string)
 
@@ -220,14 +220,14 @@
 + id: `item1234` (string)  
 + name: `Cruise` (string)  
 + quantity: 2 (number)  
-+ quotedPriceBreakup
++ quotedPriceBreakup (object)
   + baseAmount: 345.0 (number)  
   + currency: (nullable)  
   + adjustments (array [adjustmentsInfo1, adjustmentsInfo2, adjustmentsInfo3], fixed-type)
 + paymentOptions (array [paymentOptionsInfo], fixed-type)
 + orderDetailsId: `PROD1231445` (string)  
-+ supplierRate
-  + priceBreakup
++ supplierRate (object)
+  + priceBreakup (object)
     + baseAmount: 345.0 (number)  
     + currency: `USD` (string)  
     + adjustments (array [adjustmentsInfo], fixed-type)
@@ -237,9 +237,9 @@
   + commissions (array [commissionsInfo], fixed-type)
   + refundability: `NonRefundable` (string) - description
 + confirmationNumbers (array [confirmationNumbersInfo], fixed-type)
-+ consumers
++ consumers (object)
   + id: `consumer1` (string)
-  + name
+  + name (object)
     + title: `test` (string)
     + first: `test` (John)
     + middle: `test` (string)
@@ -248,14 +248,14 @@
   + dob: `1996-08-01` (string)
   + email: `abc@xyz.com` (string)
   + gender: `Female` (string)
-  + phone
+  + phone (object)
     + type: `Office` (string)
     + number: `555-0173` (string)
     + countryCode: `test` (string)
     + ext: `12` (string)
     + areaCode: `123` (string)
 
-+ error
++ error (object)
   + code: 0 (number)
   + message: `The following validation errors occurred:` (string)
   + info: (array [errorInfoDetails_1, errorInfoDetails_2], fixed-type)
@@ -280,7 +280,7 @@
 + source: `agency` (string) 
 + amount: 123 (number) 
 + description: `Item level markup` (string) 
-+ additionalInfo
++ additionalInfo (object)
   + key1: `value1` (string) 
 + feeType: `Item level Fee` (string) 
 + code: (nullable) 
@@ -291,7 +291,7 @@
 + feeType: `item level fees` (string) 
 + description: `item level fees` (string) 
 + amount: 23.0 (number) 
-+ additionalInfo
++ additionalInfo (object)
   + key1: `value1` (string) 
 + source: (nullable) 
 + code: (nullable) 
@@ -301,7 +301,7 @@
 + type: `Commission` (string) 
 + amount: 15 (number) 
 + description: `item level fees` (string) 
-+ additionalInfo
++ additionalInfo (object)
   + key1: `value1` (string) 
   + key2: `value2` (string) 
 + source: (nullable) 
@@ -324,7 +324,7 @@
 + amount: 23.0 (number) 
 + description: `item level taxs and fees` (string) 
 + currency: `USD` (string) 
-+ additionalInfo
++ additionalInfo (object)
   + key1: `value1` (string) 
 
 ## commissionsInfo
