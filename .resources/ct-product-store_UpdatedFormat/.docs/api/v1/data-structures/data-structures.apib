@@ -1,120 +1,155 @@
 ## createOrderReq
 + currency: `USD` (string, required)  
 + pointsCurrency: `Miles` (string, required)  
-+ paymentOptions (object)
-	+ cash: 140 (number)  
-	+ points: 6000 (number)  
-	+ CurrencyCostFactor: 1.0 (number)  
-	+ CurrencyCostFactoryType: 1 (number)  
-	+ ReportingFields (object)
-		+ key: `value` (string)  
-+ customer (object)
-	+ id: 43435 (number)  
-	+ name (object)
-		+ title: `test` (string)  
-		+ first: `John` (string, required)  
-		+ middle: `test` (string)  
-		+ last: `Smith` (string, required)  
-		+ suffix: `test` (string)  
-	+ phone (object)
-		+ Type: `Office` (string, required)  
-		+ number: 555-0173 (number, required)  
-		+ countryCode: `11` (string)  
-		+ ext: `12` (string)  
-		+ areaCode: `123` (string)  
-	+ address (object)
-		+ line1: `3077 ACME Street` (string, required)  
-		+ line2: `Landmark: Beside the ACME Shopping Mall` (string)  
-		+ cityName: `San Francisco` (string, required)  
-		+ state (object)
-			+ code: `CA` (string)  
-			+ name: `California` (string)  
-	+ countryCode: `US` (string, required)  
-	+ postalCode: `94133` (string, required)  
-	+ email: `abc@xyz.com` (string, required)  
-	+ availablePointBalance: 123.0 (number)  
-	+ transitCode: `123sd+sdsfw3+dsfsd+23fds` (string)  
-	+ eligibilityInfo (object) 
-		+ programCurrency: `string` (string)  
-		+ purchaseAllowed: true (boolean)  
-		+ redemptionAllowed: true (boolean)  
-		+ displayProgramCurrencyAsDecimal: true (boolean)  
-		+ useVariableMilesFormula: true (boolean)  
-		+ shortfallAllowed: true (boolean)  
++ include paymentOptions
++ include customer 
 + trackingId: `MA3423556`(string)  
-+ productDetails (object)
-	+ cruiseLineShipCode: `AD` (string)  
-	+ cruiseLineShipName: `Adventure of the Seas` (string)  
-	+ cruiseLineProviderID: 0 (number)  
-	+ isRoundTrip: true (boolean)  
-	+ cabinNumber: `1405` (string)  
-	+ cabinCategoryCode: `1A` (string)  
-	+ cabinCategoryName: `Large Outside Stateroom fully obstructed views` (string)  
-	+ cabinTypeCode: `I` (string)  
-	+ vendorCode: `RC` (string)  
-	+ vendorName: `ROYAL CARIBBEAN CRUISE LINE` (string)  
-	+ primaryCruiseDestinationId: `AFR` (string)  
-	+ departurePortId: `CHS` (string)  
-	+ departurePortName: `Charleston South Carolina` (string)  
-	+ arrivalPortId: `CHS` (string)  
-	+ arrivalPortName: `Charleston South Carolina` (string)  
-	+ cruiseBookingPaymentStateID: `Hold` (string)  
-	+ cruiseProcessingStatusID: `New` (string)  
-	+ isRefundAllowedForPendingBooking: false (boolean)  
-	+ statusChangeBlockedToSystemOfRecord: false (boolean)  
-	+ passThroughToVendor: false (boolean)  
-	+ isAgentOverrideOFAC: false (boolean)  
-	+ ofacTransactionID: `1234` (string)  
-	+ cruiseShipId: 848 (number)  
-	+ id: `test` (string, nullable)  
-	+ passengerCount: 3 (number)  
-	+ conversionRate: 0.0125 (number)  
-	+ isAgentOverrideOFAC: false (boolean)  
-	+ primaryPassenger (object)
-		+ firstName: `John` (string)  
-		+ lastName: `Smith` (string)  
-		+ gender: `M` (string)  
-		+ age: `27` (string)  
-		+ loyaltyNumber: `123` (string)  
-	+ passengers (array [passenger1, passenger2], fixed-type)  
-	+ promotions (array [promotionsInfo], fixed-type)  
-	+ priceBreakup (object)
-		+ fareQuote: 488 (number)  
-		+ currency: `USD` (string)  
-		+ loyaltyCurrencyFareQuote: 0 (number)  
-		+ depositAmount: 80 (number)  
-		+ rateOptionCode: `RM1` (string)  
-		+ rateType: `Standard` (string)  
-		+ netRateAmount: 488 (number)  
-		+ markupAmount: 0 (number)  
-		+ commissionAmount: 40 (number)  
-		+ nccf: 70 (number)  
-		+ taxesAndFees: 30 (string)  
-		+ bookingFees: 1 (number)  
-	+ isGds: true (string)  
-	+ startDate: `2020-10-30` (string)  
-	+ durationInNights: 7 (number)  
-	+ depositDueDate: `2020-10-23T06:21:16.764Z` (string)  
-	+ finalPaymentDueDate: `2020-10-25T06:21:16.764Z` (string)  
-	+ groupBookingId: `5` (string)  
++ include productDetails
 + productType: 1 (number)  
-+ reportingFields (object)
-	+ field1: `test` (string)  
-	+ field2: `test` (string)  
-	+ field3: `test` (string)  
-	+ field4: `test` (string)  
-	+ field5: `test` (string)  
-	+ field6: `test` (string)  
-	+ field7: `test` (string)  
-	+ field8: `test` (string)  
-	+ field9: `test` (string)  
-	+ field10: `test` (string)
-+ extensionData (object)
-	+ field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
-	+ field2: `Value2` (string) - Indicates the value for field 2.
-	+ field3: `Value3` (string) - Indicates the value for field 3.
-	+ field4: `Value4` (string) - Indicates the value for field 4.
-	+ field5: `Value5` (string) - Indicates the value for field 5.
++ include reportingFields
++ include extensionData
+
+## extensionData
++ field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
++ field2: `Value2` (string) - Indicates the value for field 2.
++ field3: `Value3` (string) - Indicates the value for field 3.
++ field4: `Value4` (string) - Indicates the value for field 4.
++ field5: `Value5` (string) - Indicates the value for field 5.
+
+## productDetails
++ cruiseLineShipCode: `AD` (string)  
++ cruiseLineShipName: `Adventure of the Seas` (string)  
++ cruiseLineProviderID: 0 (number)  
++ isRoundTrip: true (boolean)  
++ cabinNumber: `1405` (string)  
++ cabinCategoryCode: `1A` (string)  
++ cabinCategoryName: `Large Outside Stateroom fully obstructed views` (string)  
++ cabinTypeCode: `I` (string)  
++ vendorCode: `RC` (string)  
++ vendorName: `ROYAL CARIBBEAN CRUISE LINE` (string)  
++ primaryCruiseDestinationId: `AFR` (string)  
++ departurePortId: `CHS` (string)  
++ departurePortName: `Charleston South Carolina` (string)  
++ arrivalPortId: `CHS` (string)  
++ arrivalPortName: `Charleston South Carolina` (string)  
++ cruiseBookingPaymentStateID: `Hold` (string)  
++ cruiseProcessingStatusID: `New` (string)  
++ isRefundAllowedForPendingBooking: false (boolean)  
++ statusChangeBlockedToSystemOfRecord: false (boolean)  
++ passThroughToVendor: false (boolean)  
++ isAgentOverrideOFAC: false (boolean)  
++ ofacTransactionID: `1234` (string)  
++ cruiseShipId: 848 (number)  
++ id: `test` (string, nullable)  
++ passengerCount: 3 (number)  
++ conversionRate: 0.0125 (number)  
++ isAgentOverrideOFAC: false (boolean)  
++ include primaryPassenger
++ passengers (array [passenger1, passenger2], fixed-type)  
++ promotions (array [promotionsInfo], fixed-type)  
++ include priceBreakup
++ isGds: true (string)  
++ startDate: `2020-10-30` (string)  
++ durationInNights: 7 (number)  
++ depositDueDate: `2020-10-23T06:21:16.764Z` (string)  
++ finalPaymentDueDate: `2020-10-25T06:21:16.764Z` (string)  
++ groupBookingId: `5` (string)  
+
+
+
+## priceBreakup
++ fareQuote: 488 (number)  
++ currency: `USD` (string)  
++ loyaltyCurrencyFareQuote: 0 (number)  
++ depositAmount: 80 (number)  
++ rateOptionCode: `RM1` (string)  
++ rateType: `Standard` (string)  
++ netRateAmount: 488 (number)  
++ markupAmount: 0 (number)  
++ commissionAmount: 40 (number)  
++ nccf: 70 (number)  
++ taxesAndFees: 30 (string)  
++ bookingFees: 1 (number)  
+
+## primaryPassenger
++ firstName: `John` (string)  
++ lastName: `Smith` (string)  
++ gender: `M` (string)  
++ age: `27` (string)  
++ loyaltyNumber: `123` (string)  
+
+
+## reportingFields
++ field1: `test` (string)  
++ field2: `test` (string)  
++ field3: `test` (string)  
++ field4: `test` (string)  
++ field5: `test` (string)  
++ field6: `test` (string)  
++ field7: `test` (string)  
++ field8: `test` (string)  
++ field9: `test` (string)  
++ field10: `test` (string)
+
+
+## paymentOptions
++ cash: 140 (number)  
++ points: 6000 (number)  
++ CurrencyCostFactor: 1.0 (number)  
++ CurrencyCostFactoryType: 1 (number)  
++ include ReportingFields
+
+## ReportingFields
++ key: `value` (string)  
+
+## customer
++ id: 43435 (number)  
++ include name
++ include phone
++ include address (object)
++ countryCode: `US` (string, required)  
++ postalCode: `94133` (string, required)  
++ email: `abc@xyz.com` (string, required)  
++ availablePointBalance: 123.0 (number)  
++ transitCode: `123sd+sdsfw3+dsfsd+23fds` (string)  
++ include eligibilityInfo
+
+## eligibilityInfo
++ programCurrency: `string` (string)  
++ purchaseAllowed: true (boolean)  
++ redemptionAllowed: true (boolean)  
++ displayProgramCurrencyAsDecimal: true (boolean)  
++ useVariableMilesFormula: true (boolean)  
++ shortfallAllowed: true (boolean) 
+
+
+## name
++ title: `test` (string)  
++ first: `John` (string, required)  
++ middle: `test` (string)  
++ last: `Smith` (string, required)  
++ suffix: `test` (string)  
+
+
+## phone
++ Type: `Office` (string, required)  
++ number: 555-0173 (number, required)  
++ countryCode: `11` (string)  
++ ext: `12` (string)  
++ areaCode: `123` (string)  
+
+
+## address
++ line1: `3077 ACME Street` (string, required)  
++ line2: `Landmark: Beside the ACME Shopping Mall` (string)  
++ cityName: `San Francisco` (string, required)  
++ include state
+
+
+## state
++ code: `CA` (string)  
++ name: `California` (string)  
+
 
 
 ## passenger1
@@ -154,19 +189,28 @@
 
 
 ## createOrderRes
-+ costPrice (object)
-	+ currency: `USD` (string)
-	+ amount: 122.32 (number)
-	+ paymentMode: `OUC` (string)
++ costPrice (costPrice2)
 + bookingId: `2421c32r5f` (string) 
 + items (array [itemsInfo], fixed-type)
-+ agencyPriceBreakup (object)
-	+ baseAmount: 52.2 (number)
-	+ currency: `test` (string)
-	+ adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
-+ consumptionDatesInUtc (object)
-	+ start: `2023-12-14T07:00:00` (string)
-	+ end: `2023-12-15T07:00:00` (string)
++ agencyPriceBreakup (agencyPriceBreakup2)
++ consumptionDatesInUtc (consumptionDatesInUtc2)
+
+## costPrice2
++ currency: `USD` (string)
++ amount: 122.32 (number)
++ paymentMode: `OUC` (string)
+
+## agencyPriceBreakup2
++ baseAmount: 52.2 (number)
++ currency: `test` (string)
++ adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
+
+
+## consumptionDatesInUtc2
++ start: `2023-12-14T07:00:00` (string)
++ end: `2023-12-15T07:00:00` (string)
+
+
 
 ## APB_adjustmentsInfo1
 + type: 1 (number)
@@ -202,46 +246,62 @@
 + id: `item1234` (string)  
 + name: `Cruise` (string)  
 + quantity: 2 (number)  
-+ quotedPriceBreakup (object)
-	+ baseAmount: 345.0 (number)  
-	+ currency: `test` (string)  
-	+ adjustments (array [adjustmentsInfo1, adjustmentsInfo2, adjustmentsInfo3], fixed-type)
++ quotedPriceBreakup (quotedPriceBreakup2)
 + paymentOptions (array [paymentOptionsInfo], fixed-type)
 + orderDetailsId: `PROD1231445` (string)  
-+ supplierRate (object)
-	+ priceBreakup (object)
-		+ baseAmount: 345.0 (number)  
-		+ currency: `USD` (string)  
-		+ adjustments (array [adjustmentsInfo], fixed-type)
-	+ paymentMode: `OUC` (string)
-	+ rateType: `Negotiated` (string)
-	+ rateCode: `rate123` (string)
-	+ commissions (array [commissionsInfo], fixed-type)
-	+ refundability: `NonRefundable` (string) - description
++ supplierRate (supplierRate2)
 + confirmationNumbers (array [confirmationNumbersInfo], fixed-type)
-+ consumers (object)
-	+ id: `consumer1` (string)
-	+ name (object)
-		+ title: `test` (string)
-		+ first: `test` (John)
-		+ middle: `test` (string)
-		+ last: `test` (Smith)
-		+ suffix: `test` (string)
-	+ dob: `1996-08-01` (string)
-	+ email: `abc@xyz.com` (string)
-	+ gender: `Female` (string)
-	+ phone (object)
-		+ type: `Office` (string)
-		+ number: `555-0173` (string)
-		+ countryCode: `test` (string)
-		+ ext: `12` (string)
-		+ areaCode: `123` (string)
-
-+ error (object)
-	+ code: 0 (number)
-	+ message: `The following validation errors occurred:` (string)
-	+ info: (array [errorInfoDetails_1, errorInfoDetails_2], fixed-type)
++ consumers (consumers2)
++ include error
 + warnings (array [warningsInfo], fixed-type)
+
+## supplierRate2
++ priceBreakup (priceBreakup2)
++ paymentMode: `OUC` (string)
++ rateType: `Negotiated` (string)
++ rateCode: `rate123` (string)
++ commissions (array [commissionsInfo], fixed-type)
++ refundability: `NonRefundable` (string) - description
+
+## quotedPriceBreakup2
++ baseAmount: 345.0 (number)  
++ currency: `test` (string)  
++ adjustments (array [adjustmentsInfo1, adjustmentsInfo2, adjustmentsInfo3], fixed-type)
+
+
+## priceBreakup2
++ baseAmount: 345.0 (number)  
++ currency: `USD` (string)  
++ adjustments (array [adjustmentsInfo], fixed-type)
+
+
+## consumers2
++ id: `consumer1` (string)
++ name (name2)
++ dob: `1996-08-01` (string)
++ email: `abc@xyz.com` (string)
++ gender: `Female` (string)
++ phone (phone2)
+
+## name2
++ title: `test` (string)
++ first: `test` (John)
++ middle: `test` (string)
++ last: `test` (Smith)
++ suffix: `test` (string)
+
+
+## phone2
++ type: `Office` (string)
++ number: `555-0173` (string)
++ countryCode: `test` (string)
++ ext: `12` (string)
++ areaCode: `123` (string)
+
+## error
++ code: 0 (number)
++ message: `The following validation errors occurred:` (string)
++ info: (array [errorInfoDetails_1, errorInfoDetails_2], fixed-type)
 
 ## warningsInfo
 + code: `4313` (string)
