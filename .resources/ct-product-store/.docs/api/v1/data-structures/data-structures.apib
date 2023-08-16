@@ -66,7 +66,7 @@
 	+ isAgentOverrideOFAC: false (boolean)  
 	+ ofacTransactionID: `1234` (string)  
 	+ cruiseShipId: 848 (number)  
-	+ id: ` ` (string, nullable)  
+	+ id: `test` (string, nullable)  
 	+ passengerCount: 3 (number)  
 	+ conversionRate: 0.0125 (number)  
 	+ isAgentOverrideOFAC: false (boolean)  
@@ -148,7 +148,7 @@
 + PromotionStatus: 1 (number)  
 + Provider: 150 (number)  
 + Currency: 2 (number)  
-+ CardNumber: ` ` (string, nullable)  
++ CardNumber: `test` (string, nullable)  
 
 
 
@@ -162,7 +162,7 @@
 + items (array [itemsInfo], fixed-type)
 + agencyPriceBreakup (object)
 	+ baseAmount: 52.2 (number)
-	+ currency: ` ` (string)
+	+ currency: `test` (string)
 	+ adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
 + consumptionDatesInUtc (object)
 	+ start: `2023-12-14T07:00:00` (string)
@@ -170,33 +170,33 @@
 
 ## APB_adjustmentsInfo1
 + type: 1 (number)
-+ source: ` ` (string)
++ source: `test` (string)
 + feeType: `Item level Fee` (string)
-+ code: ` ` (string)
++ code: `test` (string)
 + amount: 2.0 (number)
-+ description: ` ` (string)
-+ currency: ` ` (string)
-+ additionalInfo: ` ` (string)
++ description: `test` (string)
++ currency: `test` (string)
++ additionalInfo: `test` (string)
 
 ## APB_adjustmentsInfo2
 + type: 2 (number)
 + source: `Agency` (string)
-+ feeType: ` ` (string)
-+ code: ` ` (string)
++ feeType: `test` (string)
++ code: `test` (string)
 + amount: 5.0 (number)
-+ description: ` ` (string)
-+ currency: ` ` (string)
-+ additionalInfo: ` ` (string)
++ description: `test` (string)
++ currency: `test` (string)
++ additionalInfo: `test` (string)
 
 ## APB_adjustmentsInfo3
 + type: 5 (number)
-+ source: ` ` (string)
-+ feeType: ` ` (string)
-+ code: ` ` (string)
++ source: `test` (string)
++ feeType: `test` (string)
++ code: `test` (string)
 + amount: 10.0 (number)
-+ description: ` ` (string)
-+ currency: ` ` (string)
-+ additionalInfo: ` ` (string)
++ description: `test` (string)
++ currency: `test` (string)
++ additionalInfo: `test` (string)
 
 ## itemsInfo
 + id: `item1234` (string)  
@@ -204,7 +204,7 @@
 + quantity: 2 (number)  
 + quotedPriceBreakup (object)
 	+ baseAmount: 345.0 (number)  
-	+ currency: ` ` (string)  
+	+ currency: `test` (string)  
 	+ adjustments (array [adjustmentsInfo1, adjustmentsInfo2, adjustmentsInfo3], fixed-type)
 + paymentOptions (array [paymentOptionsInfo], fixed-type)
 + orderDetailsId: `PROD1231445` (string)  
@@ -265,7 +265,7 @@
 + additionalInfo (object)
 	+ key1: `value1` (string) 
 + feeType: `Item level Fee` (string) 
-+ code: ` ` (string) 
++ code: `test` (string) 
 + currency: `USD` (string) 
 
 ## adjustmentsInfo2
@@ -275,8 +275,8 @@
 + amount: 23.0 (number) 
 + additionalInfo (object)
 	+ key1: `value1` (string) 
-+ source: ` ` (string) 
-+ code: ` ` (string) 
++ source: `test` (string) 
++ code: `test` (string) 
 + currency: `USD` (string) 
 
 ## adjustmentsInfo3
@@ -286,22 +286,22 @@
 + additionalInfo (object)
 	+ key1: `value1` (string) 
 	+ key2: `value2` (string) 
-+ source: ` ` (string) 
++ source: `test` (string) 
 + feeType: `Item level Fee` (string) 
-+ code: ` ` (string) 
++ code: `test` (string) 
 + currency: `USD` (string) 
 
 ## paymentOptionsInfo
 + cash: 20 (number) 
 + points: 0 (number) 
 + currencyCostFactor: 0 (number) 
-+ currencyCostFactoryType: ` ` (string) 
-+ reportingFields: ` ` (string) 
++ currencyCostFactoryType: `test` (string) 
++ reportingFields: `test` (string) 
 
 ## adjustmentsInfo
 + type: `Fees` (string) 
-+ source: ` ` (string) 
-+ feeType: ` ` (string) 
++ source: `test` (string) 
++ feeType: `test` (string) 
 + code: `Tax123` (string) 
 + amount: 23.0 (number) 
 + description: `item level taxs and fees` (string) 
