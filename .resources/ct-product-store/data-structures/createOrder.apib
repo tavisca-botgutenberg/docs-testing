@@ -1,0 +1,341 @@
+# Data Structures
+
+//Request-------------------------------------------------------
+
+## CreateOrderReq
++ currency: `USD` (string, required) - description
++ pointsCurrency: `Miles` (string, required) - description
++ paymentOptions
+  + cash: `140` (number) - description
+  + points: `6000` (number) - description
+  + CurrencyCostFactor: `1.0` (number) - description
+  + CurrencyCostFactoryType: `1` (number) - description
+  + ReportingFields
+    + key: `value` (string) - description
++ customer
+  + id: `43435` (number) - description
+  + name
+    + title: `test` (string) - description
+    + first: `John` (string, required) - description
+    + middle: `test` (string) - description
+    + last: `Smith` (string, required) - description
+    + suffix: `test` (string) - description
+  + phone
+    + Type: `Office` (string, required) - description
+    + number: `555+0173` (number, required) - description
+    + countryCode: `11` (string) - description
+    + ext: `12` (string) - description
+    + areaCode: `123` (string) - description
+  + address
+    + line1: `3077 ACME Street` (string, required) - description
+    + line2: `Landmark: Beside the ACME Shopping Mall` (string) - description
+    + cityName: `San Francisco` (string, required) - description
+    + state
+      + code: `CA` (string) - description
+      + name: `California` (string) - description
+    + countryCode: `US` (string, required) - description
+    + postalCode: `94133` (string, required) - description
+  + email: `abc@xyz.com` (string, required) - description
+  + availablePointBalance: 123.0 (number) - description
+  + transitCode: `123sd+sdsfw3+dsfsd+23fds` (string) - description
+  + eligibilityInfo - description
+    + programCurrency: `string` (string) - description
+    + purchaseAllowed: true (boolean) - description
+    + redemptionAllowed: true (boolean) - description
+    + displayProgramCurrencyAsDecimal: true (boolean) - description
+    + useVariableMilesFormula: true (boolean) - description
+    + shortfallAllowed: true (boolean) - description
++ trackingId: `MA3423556`(string) - description
++ productDetails
+  + cruiseLineShipCode: `AD` (string) - description
+  + cruiseLineShipName: `Adventure of the Seas` (string) - description
+  + cruiseLineProviderID: `0` (number) - description
+  + isRoundTrip: true (boolean) - description
+  + cabinNumber: `1405` (string) - description
+  + cabinCategoryCode: `1A` (string) - description
+  + cabinCategoryName: `Large Outside Stateroom (fully obstructed views)` (string) - description
+  + cabinTypeCode: `I` (string) - description
+  + vendorCode: `RC` (string) - description
+  + vendorName: `ROYAL CARIBBEAN CRUISE LINE` (string) - description
+  + primaryCruiseDestinationId: `AFR` (string) - description
+  + departurePortId: `CHS` (string) - description
+  + departurePortName: `Charleston (string) - description South Carolina` (string) - description
+  + arrivalPortId: `CHS` (string) - description
+  + arrivalPortName: `Charleston (string) - description South Carolina` (string) - description
+  + cruiseBookingPaymentStateID: `Hold` (string) - description
+  + cruiseProcessingStatusID: `New` (string) - description
+  + isRefundAllowedForPendingBooking: false (boolean) - description
+  + statusChangeBlockedToSystemOfRecord: false (boolean) - description
+  + passThroughToVendor: false (boolean) - description
+  + isAgentOverrideOFAC: false (boolean) - description
+  + ofacTransactionID: `1234` (string) - description
+  + cruiseShipId: `848` (number) - description
+  + id: ` ` (string, nullable) - description
+  + passengerCount: `3` (number) - description
+  + conversionRate: `0.0125` (number) - description
+  + isAgentOverrideOFAC: false (boolean) - description
+  + primaryPassenger
+    + firstName: `John` (string) - description
+    + lastName: `Smith` (string) - description
+    + gender: `M` (string) - description
+    + age: `27` (string) - description
+    + loyaltyNumber: `123` (string) - description
+  + passengers (array [passernger1, passenger2], fixed+type) - description
+  + promotions (array [promotionsInfo], fixed+type) - description
+  + priceBreakup
+    + fareQuote: 488 (number) - description
+    + currency: `USD` (string) - description
+    + loyaltyCurrencyFareQuote: 0 (number) - description
+    + depositAmount: 80 (number) - description
+    + rateOptionCode: `RM1` (string) - description
+    + rateType: `Standard` (string) - description
+    + netRateAmount: 488 (number) - description
+    + markupAmount: 0 (number) - description
+    + commissionAmount: 40 (number) - description
+    + nccf: 70 (number) - description
+    + taxesAndFees: 30 (string) - description
+    + bookingFees: 1 (number) - description
+  + isGds: true (string) - description
+  + startDate: `2020+10+30` (string) - description
+  + durationInNights: 7 (number) - description
+  + depositDueDate: `2020+10+23T06:21:16.764Z` (string) - description
+  + finalPaymentDueDate: `2020+10+25T06:21:16.764Z` (string) - description
+  + groupBookingId: `5` (string) - description
++ productType: 1 (number) - description
++ reportingFields
+  + field1: `test` (string) - description
+  + field2: `test` (string) - description
+  + field3: `test` (string) - description
+  + field4: `test` (string) - description
+  + field5: `test` (string) - description
+  + field6: `test` (string) - description
+  + field7: `test` (string) - description
+  + field8: `test` (string) - description
+  + field9: `test` (string) - description
+  + field10: `test`
++ extensionData
+  + field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
+  + field2: `Value2` (string) - Indicates the value for field 2.
+  + field3: `Value3` (string) - Indicates the value for field 3.
+  + field4: `Value4` (string) - Indicates the value for field 4.
+  + field5: `Value5` (string) - Indicates the value for field 5.
+
+// arrays objects - Level 1//
+## passernger1
+
++ firstName: `Deepak` (string) - description
++ lastName: `Jonpelliwar` (string) - description
++ gender: `M` (string) - description
++ age: `27` (string) - description
++ birthDate: `1985+01+10` (string) - description
++ countryCode: `US` (string) - description
++ isLeadPassenger: false (boolean) - description
+
+## passernger2
+
++ firstName: `Deep` (string) - description
++ lastName: `Jon` (string) - description
++ gender: `M` (string) - description
++ age: `27` (string) - description
++ birthDate: `1990+05+12` (string) - description
++ countryCode: `US` (string) - description
++ isLeadPassenger: false (boolean) - description
+
+## promotionsInfo
+
++ id: `XYZ124` (string) - description
++ externalPromotionID: `7893` (string) - description
+
+* description: `Winter Cruise Early Bird Offer` (string) - description
+
++ value: 100 (number) - description
++ quantity: 1 (number) - description
++ termsId: `UTR456` (string) - description
++ CreditCardType: 8 (number) - description
++ FulFilledBy: `test` (string) - description
++ FulFilledDate: `2022+05+05T17:09:51.1198313+05:30` (string) - description
++ PromotionStatus: 1 (number) - description
++ Provider: 150 (number) - description
++ Currency: 2 (number) - description
++ CardNumber: (string, nullable) - description
+
+## fieldUpdateOrderInfo
+
++ field1: `233u3i3` - description
++ field2: `Value2` - description
++ field3: `Value3` - description
++ field4: `Value4`- description
++ field5: `Value5` - description
++ field6: `Value6` - description
++ field7: `Value7` - description
++ field8: `Value8` - description
++ field9: `Value9` - description
++ field10: `Value10` - description
+
+//Response---------------------------------------------------
+
+## CreateOrderRes
++ costPrice
+  + currency: `USD` (string)
+  + amount: 122.32 (number)
+  + paymentMode: `OUC` (string)
++ bookingId: `2421c32r5f` (string) 
++ items (array [itemsInfo], fixed-type)
++ agencyPriceBreakup
+  + baseAmount: 52.2 (number)
+  + currency: (nullable)
+  + adjustments (array [APB_adjustmentsInfo1, APB_adjustmentsInfo2, APB_adjustmentsInfo3], fixed-type)
++ consumptionDatesInUtc
+  + start: `2023-12-14T07:00:00` (string)
+  + end: `2023-12-15T07:00:00` (string)
+
+## APB_adjustmentsInfo1
++ type: 1 (number)
++ source: (nullable)
++ feeType: `Item level Fee` (string)
++ code: (nullable)
++ amount: 2.0 (number)
++ description: (nullable)
++ currency: (nullable)
++ additionalInfo: (nullable)
+
+## APB_adjustmentsInfo2
++ type: 2 (number)
++ source: `Agency` (string)
++ feeType: (nullable)
++ code: (nullable)
++ amount: 5.0 (number)
++ description: (nullable)
++ currency: (nullable)
++ additionalInfo: (nullable)
+
+## APB_adjustmentsInfo3
++ type: 5 (number)
++ source: (nullable)
++ feeType: (nullable)
++ code: (nullable)
++ amount: 10.0 (number)
++ description: (nullable)
++ currency: (nullable)
++ additionalInfo: (nullable)
+
+## itemsInfo
++ id: `item1234` (string)  
++ name: `Cruise` (string)  
++ quantity: 2 (number)  
++ quotedPriceBreakup
+  + baseAmount: 345.0 (number)  
+  + currency: (nullable)  
+  + adjustments (array [adjustmentsInfo1, adjustmentsInfo2, adjustmentsInfo3], fixed-type)
++ paymentOptions (array [paymentOptionsInfo], fixed-type)
++ orderDetailsId: `PROD1231445` (string)  
++ supplierRate
+  + priceBreakup
+    + baseAmount: 345.0 (number)  
+    + currency: `USD` (string)  
+    + adjustments (array [adjustmentsInfo], fixed-type)
+  + paymentMode: `OUC` (string)
+  + rateType: `Negotiated` (string)
+  + rateCode: `rate123` (string)
+  + commissions (array [commissionsInfo], fixed-type) - description
+  + refundability: `NonRefundable` (string) - description
++ confirmationNumbers (array [confirmationNumbersInfo], fixed-type)
++ consumers
+  + id: `consumer1` (string)
+  + name
+    + title: `test` (string)
+    + first: `test` (John)
+    + middle: `test` (string)
+    + last: `test` (Smith)
+    + suffix: `test` (string)
+  + dob: `1996-08-01` (string)
+  + email: `abc@xyz.com` (string)
+  + gender: `Female` (string)
+  + phone
+    + type: `Office` (string)
+    + number: `555-0173` (string)
+    + countryCode: `test` (string)
+    + ext: `12` (string)
+    + areaCode: `123` (string)
+
++ error
+  + code: 0 (number)
+  + message: `The following validation errors occurred:` (string)
+  + info: (array [errorInfoDetails_1, errorInfoDetails_2], fixed-type)
++ warnings (array [warningsInfo], fixed-type)
+
+## warningsInfo
++ code: `4313` (string)
++ message: `Warning: Due to heavy traffic, the processing might take longer than expected.` (string)
+
+
+## errorInfoDetails_1
++ code: `00` (string)
++ message: `Could not process the request due to network connectivity issues. Please try again.` (string)
+
+## errorInfoDetails_2
++ code: `00` (string)
++ message: `Due to heavy traffic, the processing might take longer than expected.` (string)
+
+
+## adjustmentsInfo1
++ type: `Markup` (string) 
++ source: `agency` (string) 
++ amount: 123 (number) 
++ description: `Item level markup` (string) 
++ additionalInfo
+  + key1: `value1` (string) 
++ feeType: `Item level Fee` (string) 
++ code: (nullable) 
++ currency: `USD` (string) 
+
+## adjustmentsInfo2
++ type: `Markup` (string) 
++ feeType: `item level fees` (string) 
++ description: `item level fees` (string) 
++ amount: 23.0 (number) 
++ additionalInfo
+  + key1: `value1` (string) 
++ source: (nullable) 
++ code: (nullable) 
++ currency: `USD` (string) 
+
+## adjustmentsInfo3
++ type: `Commission` (string) 
++ amount: 15 (number) 
++ description: `item level fees` (string) 
++ additionalInfo
+  + key1: `value1` (string) 
+  + key2: `value2` (string) 
++ source: (nullable) 
++ feeType: `Item level Fee` (string) 
++ code: (nullable) 
++ currency: `USD` (string) 
+
+## paymentOptionsInfo
++ cash: 20 (number) 
++ points: 0 (number) 
++ currencyCostFactor: 0 (number) 
++ currencyCostFactoryType: (nullable) 
++ reportingFields: (nullable) 
+
+## adjustmentsInfo
++ type: `Fees` (string) 
++ source: (nullable) 
++ feeType: (nullable) 
++ code: `Tax123` (string) 
++ amount: 23.0 (number) 
++ description: `item level taxs and fees` (string) 
++ currency: `USD` (string) 
++ additionalInfo
+  + key1: `value1` (string) 
+
+## commissionsInfo
++ type: `booking` (string) 
++ amount: 10 (number) 
++ currency: `USD` (string) 
++ description: `Commission on the booking` (string) 
+
+## confirmationNumbersInfo
++ type: `externaltripId` (string) 
++ value: `tgbnhyujm` (string) 
