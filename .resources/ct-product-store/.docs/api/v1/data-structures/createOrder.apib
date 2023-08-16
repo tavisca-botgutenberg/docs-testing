@@ -1,7 +1,5 @@
 # Data Structures
 
-//Request-------------------------------------------------------
-
 ## CreateOrderReq
 + currency: `USD` (string, required)  
 + pointsCurrency: `Miles` (string, required)  
@@ -80,8 +78,8 @@
     + gender: `M` (string)  
     + age: `27` (string)  
     + loyaltyNumber: `123` (string)  
-  + passengers (array [passernger1, passenger2], fixed+type)  
-  + promotions (array [promotionsInfo], fixed+type)  
+  + passengers (array [passernger1, passenger2], fixed-type)  
+  + promotions (array [promotionsInfo], fixed-type)  
   + priceBreakup
     + fareQuote: 488 (number)  
     + currency: `USD` (string)  
@@ -120,7 +118,7 @@
   + field4: `Value4` (string) - Indicates the value for field 4.
   + field5: `Value5` (string) - Indicates the value for field 5.
 
-// arrays objects - Level 1//
+
 ## passernger1
 
 + firstName: `Deepak` (string)  
@@ -172,7 +170,6 @@
 + field9: `Value9`  (string)
 + field10: `Value10`  (string)
 
-//Response---------------------------------------------------
 
 ## CreateOrderRes
 + costPrice
@@ -237,7 +234,7 @@
   + paymentMode: `OUC` (string)
   + rateType: `Negotiated` (string)
   + rateCode: `rate123` (string)
-  + commissions (array [commissionsInfo], fixed-type) - description
+  + commissions (array [commissionsInfo], fixed-type)
   + refundability: `NonRefundable` (string) - description
 + confirmationNumbers (array [confirmationNumbersInfo], fixed-type)
 + consumers
