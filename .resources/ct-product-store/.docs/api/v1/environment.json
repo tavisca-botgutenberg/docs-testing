@@ -1,15 +1,15 @@
 {
   "environments": [
     {
-      "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
+      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
       "type": "qa"
     },
     {
-      "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
+      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
       "type": "stage"
     },
     {
-      "baseUrl": "https://car-loyalty.stage.cnxloyalty.com",
+      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
       "type": "prod"
     }
   ]
