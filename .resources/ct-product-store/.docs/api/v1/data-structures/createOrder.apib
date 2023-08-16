@@ -3,115 +3,115 @@
 //Request-------------------------------------------------------
 
 ## CreateOrderReq
-+ currency: `USD` (string, required) - description
-+ pointsCurrency: `Miles` (string, required) - description
++ currency: `USD` (string, required)  
++ pointsCurrency: `Miles` (string, required)  
 + paymentOptions
-  + cash: `140` (number) - description
-  + points: `6000` (number) - description
-  + CurrencyCostFactor: `1.0` (number) - description
-  + CurrencyCostFactoryType: `1` (number) - description
+  + cash: 140 (number)  
+  + points: 6000 (number)  
+  + CurrencyCostFactor: 1.0 (number)  
+  + CurrencyCostFactoryType: 1 (number)  
   + ReportingFields
-    + key: `value` (string) - description
+    + key: `value` (string)  
 + customer
-  + id: `43435` (number) - description
+  + id: 43435 (number)  
   + name
-    + title: `test` (string) - description
-    + first: `John` (string, required) - description
-    + middle: `test` (string) - description
-    + last: `Smith` (string, required) - description
-    + suffix: `test` (string) - description
+    + title: `test` (string)  
+    + first: `John` (string, required)  
+    + middle: `test` (string)  
+    + last: `Smith` (string, required)  
+    + suffix: `test` (string)  
   + phone
-    + Type: `Office` (string, required) - description
-    + number: `555+0173` (number, required) - description
-    + countryCode: `11` (string) - description
-    + ext: `12` (string) - description
-    + areaCode: `123` (string) - description
+    + Type: `Office` (string, required)  
+    + number: `555+0173` (number, required)  
+    + countryCode: `11` (string)  
+    + ext: `12` (string)  
+    + areaCode: `123` (string)  
   + address
-    + line1: `3077 ACME Street` (string, required) - description
-    + line2: `Landmark: Beside the ACME Shopping Mall` (string) - description
-    + cityName: `San Francisco` (string, required) - description
+    + line1: `3077 ACME Street` (string, required)  
+    + line2: `Landmark: Beside the ACME Shopping Mall` (string)  
+    + cityName: `San Francisco` (string, required)  
     + state
-      + code: `CA` (string) - description
-      + name: `California` (string) - description
-    + countryCode: `US` (string, required) - description
-    + postalCode: `94133` (string, required) - description
-  + email: `abc@xyz.com` (string, required) - description
-  + availablePointBalance: 123.0 (number) - description
-  + transitCode: `123sd+sdsfw3+dsfsd+23fds` (string) - description
-  + eligibilityInfo - description
-    + programCurrency: `string` (string) - description
-    + purchaseAllowed: true (boolean) - description
-    + redemptionAllowed: true (boolean) - description
-    + displayProgramCurrencyAsDecimal: true (boolean) - description
-    + useVariableMilesFormula: true (boolean) - description
-    + shortfallAllowed: true (boolean) - description
-+ trackingId: `MA3423556`(string) - description
+      + code: `CA` (string)  
+      + name: `California` (string)  
+    + countryCode: `US` (string, required)  
+    + postalCode: `94133` (string, required)  
+  + email: `abc@xyz.com` (string, required)  
+  + availablePointBalance: 123.0 (number)  
+  + transitCode: `123sd+sdsfw3+dsfsd+23fds` (string)  
+  + eligibilityInfo  
+    + programCurrency: `string` (string)  
+    + purchaseAllowed: true (boolean)  
+    + redemptionAllowed: true (boolean)  
+    + displayProgramCurrencyAsDecimal: true (boolean)  
+    + useVariableMilesFormula: true (boolean)  
+    + shortfallAllowed: true (boolean)  
++ trackingId: `MA3423556`(string)  
 + productDetails
-  + cruiseLineShipCode: `AD` (string) - description
-  + cruiseLineShipName: `Adventure of the Seas` (string) - description
-  + cruiseLineProviderID: `0` (number) - description
-  + isRoundTrip: true (boolean) - description
-  + cabinNumber: `1405` (string) - description
-  + cabinCategoryCode: `1A` (string) - description
-  + cabinCategoryName: `Large Outside Stateroom (fully obstructed views)` (string) - description
-  + cabinTypeCode: `I` (string) - description
-  + vendorCode: `RC` (string) - description
-  + vendorName: `ROYAL CARIBBEAN CRUISE LINE` (string) - description
-  + primaryCruiseDestinationId: `AFR` (string) - description
-  + departurePortId: `CHS` (string) - description
-  + departurePortName: `Charleston (string) - description South Carolina` (string) - description
-  + arrivalPortId: `CHS` (string) - description
-  + arrivalPortName: `Charleston (string) - description South Carolina` (string) - description
-  + cruiseBookingPaymentStateID: `Hold` (string) - description
-  + cruiseProcessingStatusID: `New` (string) - description
-  + isRefundAllowedForPendingBooking: false (boolean) - description
-  + statusChangeBlockedToSystemOfRecord: false (boolean) - description
-  + passThroughToVendor: false (boolean) - description
-  + isAgentOverrideOFAC: false (boolean) - description
-  + ofacTransactionID: `1234` (string) - description
-  + cruiseShipId: `848` (number) - description
-  + id: ` ` (string, nullable) - description
-  + passengerCount: `3` (number) - description
-  + conversionRate: `0.0125` (number) - description
-  + isAgentOverrideOFAC: false (boolean) - description
+  + cruiseLineShipCode: `AD` (string)  
+  + cruiseLineShipName: `Adventure of the Seas` (string)  
+  + cruiseLineProviderID: `0` (number)  
+  + isRoundTrip: true (boolean)  
+  + cabinNumber: `1405` (string)  
+  + cabinCategoryCode: `1A` (string)  
+  + cabinCategoryName: `Large Outside Stateroom (fully obstructed views)` (string)  
+  + cabinTypeCode: `I` (string)  
+  + vendorCode: `RC` (string)  
+  + vendorName: `ROYAL CARIBBEAN CRUISE LINE` (string)  
+  + primaryCruiseDestinationId: `AFR` (string)  
+  + departurePortId: `CHS` (string)  
+  + departurePortName: `Charleston (string)   South Carolina` (string)  
+  + arrivalPortId: `CHS` (string)  
+  + arrivalPortName: `Charleston (string)   South Carolina` (string)  
+  + cruiseBookingPaymentStateID: `Hold` (string)  
+  + cruiseProcessingStatusID: `New` (string)  
+  + isRefundAllowedForPendingBooking: false (boolean)  
+  + statusChangeBlockedToSystemOfRecord: false (boolean)  
+  + passThroughToVendor: false (boolean)  
+  + isAgentOverrideOFAC: false (boolean)  
+  + ofacTransactionID: `1234` (string)  
+  + cruiseShipId: `848` (number)  
+  + id: ` ` (string, nullable)  
+  + passengerCount: `3` (number)  
+  + conversionRate: `0.0125` (number)  
+  + isAgentOverrideOFAC: false (boolean)  
   + primaryPassenger
-    + firstName: `John` (string) - description
-    + lastName: `Smith` (string) - description
-    + gender: `M` (string) - description
-    + age: `27` (string) - description
-    + loyaltyNumber: `123` (string) - description
-  + passengers (array [passernger1, passenger2], fixed+type) - description
-  + promotions (array [promotionsInfo], fixed+type) - description
+    + firstName: `John` (string)  
+    + lastName: `Smith` (string)  
+    + gender: `M` (string)  
+    + age: `27` (string)  
+    + loyaltyNumber: `123` (string)  
+  + passengers (array [passernger1, passenger2], fixed+type)  
+  + promotions (array [promotionsInfo], fixed+type)  
   + priceBreakup
-    + fareQuote: 488 (number) - description
-    + currency: `USD` (string) - description
-    + loyaltyCurrencyFareQuote: 0 (number) - description
-    + depositAmount: 80 (number) - description
-    + rateOptionCode: `RM1` (string) - description
-    + rateType: `Standard` (string) - description
-    + netRateAmount: 488 (number) - description
-    + markupAmount: 0 (number) - description
-    + commissionAmount: 40 (number) - description
-    + nccf: 70 (number) - description
-    + taxesAndFees: 30 (string) - description
-    + bookingFees: 1 (number) - description
-  + isGds: true (string) - description
-  + startDate: `2020+10+30` (string) - description
-  + durationInNights: 7 (number) - description
-  + depositDueDate: `2020+10+23T06:21:16.764Z` (string) - description
-  + finalPaymentDueDate: `2020+10+25T06:21:16.764Z` (string) - description
-  + groupBookingId: `5` (string) - description
-+ productType: 1 (number) - description
+    + fareQuote: 488 (number)  
+    + currency: `USD` (string)  
+    + loyaltyCurrencyFareQuote: 0 (number)  
+    + depositAmount: 80 (number)  
+    + rateOptionCode: `RM1` (string)  
+    + rateType: `Standard` (string)  
+    + netRateAmount: 488 (number)  
+    + markupAmount: 0 (number)  
+    + commissionAmount: 40 (number)  
+    + nccf: 70 (number)  
+    + taxesAndFees: 30 (string)  
+    + bookingFees: 1 (number)  
+  + isGds: true (string)  
+  + startDate: `2020+10+30` (string)  
+  + durationInNights: 7 (number)  
+  + depositDueDate: `2020+10+23T06:21:16.764Z` (string)  
+  + finalPaymentDueDate: `2020+10+25T06:21:16.764Z` (string)  
+  + groupBookingId: `5` (string)  
++ productType: 1 (number)  
 + reportingFields
-  + field1: `test` (string) - description
-  + field2: `test` (string) - description
-  + field3: `test` (string) - description
-  + field4: `test` (string) - description
-  + field5: `test` (string) - description
-  + field6: `test` (string) - description
-  + field7: `test` (string) - description
-  + field8: `test` (string) - description
-  + field9: `test` (string) - description
+  + field1: `test` (string)  
+  + field2: `test` (string)  
+  + field3: `test` (string)  
+  + field4: `test` (string)  
+  + field5: `test` (string)  
+  + field6: `test` (string)  
+  + field7: `test` (string)  
+  + field8: `test` (string)  
+  + field9: `test` (string)  
   + field10: `test`
 + extensionData
   + field1: `233u3i3` (string) - Indicates the value for field 1. In this example, we have set the booking token in `field1`.
@@ -123,54 +123,54 @@
 // arrays objects - Level 1//
 ## passernger1
 
-+ firstName: `Deepak` (string) - description
-+ lastName: `Jonpelliwar` (string) - description
-+ gender: `M` (string) - description
-+ age: `27` (string) - description
-+ birthDate: `1985+01+10` (string) - description
-+ countryCode: `US` (string) - description
-+ isLeadPassenger: false (boolean) - description
++ firstName: `Deepak` (string)  
++ lastName: `Jonpelliwar` (string)  
++ gender: `M` (string)  
++ age: `27` (string)  
++ birthDate: `1985+01+10` (string)  
++ countryCode: `US` (string)  
++ isLeadPassenger: false (boolean)  
 
 ## passernger2
 
-+ firstName: `Deep` (string) - description
-+ lastName: `Jon` (string) - description
-+ gender: `M` (string) - description
-+ age: `27` (string) - description
-+ birthDate: `1990+05+12` (string) - description
-+ countryCode: `US` (string) - description
-+ isLeadPassenger: false (boolean) - description
++ firstName: `Deep` (string)  
++ lastName: `Jon` (string)  
++ gender: `M` (string)  
++ age: `27` (string)  
++ birthDate: `1990+05+12` (string)  
++ countryCode: `US` (string)  
++ isLeadPassenger: false (boolean)  
 
 ## promotionsInfo
 
-+ id: `XYZ124` (string) - description
-+ externalPromotionID: `7893` (string) - description
++ id: `XYZ124` (string)  
++ externalPromotionID: `7893` (string)  
 
-* description: `Winter Cruise Early Bird Offer` (string) - description
+* description: `Winter Cruise Early Bird Offer` (string)  
 
-+ value: 100 (number) - description
-+ quantity: 1 (number) - description
-+ termsId: `UTR456` (string) - description
-+ CreditCardType: 8 (number) - description
-+ FulFilledBy: `test` (string) - description
-+ FulFilledDate: `2022+05+05T17:09:51.1198313+05:30` (string) - description
-+ PromotionStatus: 1 (number) - description
-+ Provider: 150 (number) - description
-+ Currency: 2 (number) - description
-+ CardNumber: (string, nullable) - description
++ value: 100 (number)  
++ quantity: 1 (number)  
++ termsId: `UTR456` (string)  
++ CreditCardType: 8 (number)  
++ FulFilledBy: `test` (string)  
++ FulFilledDate: `2022+05+05T17:09:51.1198313+05:30` (string)  
++ PromotionStatus: 1 (number)  
++ Provider: 150 (number)  
++ Currency: 2 (number)  
++ CardNumber: (string, nullable)  
 
 ## fieldUpdateOrderInfo
 
-+ field1: `233u3i3` - description
-+ field2: `Value2` - description
-+ field3: `Value3` - description
-+ field4: `Value4`- description
-+ field5: `Value5` - description
-+ field6: `Value6` - description
-+ field7: `Value7` - description
-+ field8: `Value8` - description
-+ field9: `Value9` - description
-+ field10: `Value10` - description
++ field1: `233u3i3` (string) 
++ field2: `Value2`  (string)
++ field3: `Value3`  (string)
++ field4: `Value4` (string)
++ field5: `Value5`  (string)
++ field6: `Value6`  (string)
++ field7: `Value7`  (string)
++ field8: `Value8`  (string)
++ field9: `Value9`  (string)
++ field10: `Value10`  (string)
 
 //Response---------------------------------------------------
 
