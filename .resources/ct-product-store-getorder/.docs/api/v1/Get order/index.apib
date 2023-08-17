@@ -1,16 +1,13 @@
-# Get order [cruise/api/v1.0/order/{orderId}]
+# Get criteria [/api/getSearchCriteria/{productId}]
+## Get criteria [GET]
 
-## Get order [Get]
-
-+ Parameters
-    + orderId: `123`(string, required) - description.
-+ Request  (application/json)
-    + Headers
-        Content-Type: application/json
-        cnx-correlationid: cruise-stage-docs-4721-a408-c3daed984c50
-        cnx-tenantid: 2ql3bti6juo
-        cnx-userip: 127.0.0.1
-        Accept-Encoding: gzip, deflate
++ parameter
+  + productId: `123` (string, required) - ProductId of the booking   ...
++ Request (application/json)
+  + Headers
+    cnx-correlationId: 5ba78f59-3dc6-4bd3-xa45-bca60d21d2r4
+    culture: en-US
+    cnx-tenantId: 3d0d08v4e80
 
 + Response 200 (application/json)
-    + Attributes (getOrderRes)
+  + Attributes (getCriteria_Response)
