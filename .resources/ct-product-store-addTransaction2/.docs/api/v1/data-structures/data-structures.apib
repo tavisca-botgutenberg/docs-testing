@@ -7,10 +7,14 @@
  + Refund (string)
  + Charge (string)
 + timeStamp: `2020-01-01T11:00:00Z` (string) - UTC timeStamp
-+ formOfPayment (object)
-    + type: `Card` (enum)
++ formOfPayment (object, required)
+    + type: `Card` (enum, required)
      + Card (string)
      + Points (string)
+    + number: `5555********4444` (string) - cardNumber will be mandatory if formOfPayment is of type 'Card'
+    + token: `Token123` (string) - Token will be mandatory in formOfPayment type in 'Card'
+    + nameOnCard: `John` (string) - nameOnCard will be mandatory in formOfPayment type in 'Card'
+    + expiryMonthYeaer: `0980` (string) - expiryMonthYeaer will be mandatory in formOfPayment type in 'Card'
 
 
 
