@@ -1,8 +1,16 @@
 {
-    "environments": [
-      {
-        "baseUrl": "https://activity-loyalty.stage.cnxloyalty.com",
-        "type": "stage"
-      }
-    ]
-  }
+  "environments": [
+    {
+      "baseUrl": "https://cruise-tour-order.qa.cnxloyalty.com",
+      "type": "qa"
+    },
+    {
+      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
+      "type": "stage"
+    },
+    {
+      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
+      "type": "prod"
+    }
+  ]
+}
