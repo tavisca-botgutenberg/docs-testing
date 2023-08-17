@@ -1,10 +1,7 @@
-# Get Order [/activity/v1.0/order/{id}]
+# Create Order [/activity/v1.0/order]
 
-## Get Order [GET]
-+ Parameters
-    + id: `123-456-789` (string, required) -  Unique ID for the <@ product_order_popup @> for which you want to retrieve the order details.
-    
-+ Request getOrderReq (application/json)
+## Create Order [POST]
++ Request createOrderReq (application/json)
 
     + Headers
     
@@ -13,6 +10,8 @@
       cnx-tenantid: 2ql3bti6juo
       cnx-userip: 127.0.0.1
       Accept-Encoding: gzip, deflate
+    
+    + Attributes (createOrderRequest)
       
 + Response 200 (application/json)
-    + Attributes (getOrderResponse)
+    + Attributes (createOrderResponse)

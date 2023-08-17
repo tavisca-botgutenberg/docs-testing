@@ -1,10 +1,10 @@
-# Get Order [/activity/v1.0/order/{id}]
+# Confirm Order [/activity/v1.0/order/{id}/confirm]
 
-## Get Order [GET]
+## Confirm Order [POST]
 + Parameters
-    + id: `123-456-789` (string, required) -  Unique ID for the <@ product_order_popup @> for which you want to retrieve the order details.
+    + id: `123-456-789` (string, required) - Unique ID for the <@ product_order_popup @> for which you want to update the confirmation details.  
     
-+ Request getOrderReq (application/json)
++ Request confirmOrderReq (application/json)
 
     + Headers
     
@@ -14,5 +14,6 @@
       cnx-userip: 127.0.0.1
       Accept-Encoding: gzip, deflate
       
+    + Attributes (confirmOrderReq)
+      
 + Response 200 (application/json)
-    + Attributes (getOrderResponse)
