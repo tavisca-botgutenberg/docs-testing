@@ -3,6 +3,26 @@
 ## addTransactionReq
 + amount: 45.00 (number, required) - description
 + currency: `USD` (string, required) - description
+ + USD (string)
+ + MXN (string)
+ + EUR (string)
+ + INR (string)
+ + BRL (string)
+ + COP (string)
+ + GBP (string)
+ + HUF (string)
+ + AED (string)
+ + BHD (string)
+ + EGP (string)
+ + CZK (string)
+ + AUD (string)
+ + HKD (string)
+ + PHP (string)
+ + THB (string)
+ + SGD (string)
+ + CRC (string)
+ + CAD (string)
+ + NotApplicable (string)
 + type: `Refund` (enum) - description
  + Refund (string)
  + Charge (string)
@@ -11,20 +31,20 @@
     + type: `Card` (enum, required)
      + Card (string)
      + Points (string)
-    + number: `5555********4444` (string) - cardNumber will be mandatory if formOfPayment is of type 'Card'
-    + token: `Token123` (string) - Token will be mandatory in formOfPayment type in 'Card'
-    + nameOnCard: `John` (string) - nameOnCard will be mandatory in formOfPayment type in 'Card'
-    + expiryMonthYeaer: `0980` (string) - expiryMonthYeaer will be mandatory in formOfPayment type in 'Card'
+    + number: `5555********4444` (string, nullable) - cardNumber will be mandatory if formOfPayment is of type 'Card'
+    + token: `Token123` (string, nullable) - Token will be mandatory in formOfPayment type in 'Card'
+    + nameOnCard: `John` (string, nullable) - nameOnCard will be mandatory in formOfPayment type in 'Card'
+    + expiryMonthYear: `0980` (string, nullable) - expiryMonthYeaer will be mandatory in formOfPayment type in 'Card'
     + billingAddress (object) - billingAddress will be mandatory in formOfPayment type in 'Card'
-        + line1: `abc` (string)
-        + line2: `ac` (string)
-        + cityName: `New york` (string)
-        + countryCode: `US` (string)
-        + postalCode: `90000` (string)
+        + line1: `abc` (string, nullable)
+        + line2: `ac` (string, nullable)
+        + cityName: `New york` (string, nullable)
+        + countryCode: `US` (string, nullable)
+        + postalCode: `90000` (string, nullable)
         + state (object)
-            + code: `USA` (string)
-            + name: `san` (string)
-+ programCurrencyCashValue: 0.0 (number) - programCurrencyCashValue will be mandatory if formOfPayment is of type 'Points2'
+            + code: `USA` (string, nullable)
+            + name: `san` (string, nullable)
++ programCurrencyCashValue: 0.0 (number) - programCurrencyCashValue will be mandatory if formOfPayment is of type 'Points'
 
 ## addTransactionRes
 + id: `1jvubnwjr75s` (string)
