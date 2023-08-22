@@ -1,7 +1,7 @@
 {
   "environments": [
     {
-      "baseUrl": "https://cruise-tour-order.stage.cnxloyalty.com",
+      "baseUrl": "https://cruise-tour-order.qa.cnxloyalty.com",
       "type": "qa"
     },
     {
