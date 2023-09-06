@@ -1,10 +1,8 @@
-# <a class="hide-parent" name="applyoffer"></a>
+# Apply Offer [PUT]
 ## Apply Offer [/api/cart/v2.0/{cartId}/offer/apply]
 The `Apply Offer` API allows you to apply a promotional discount. The promotional discount is either applied on the selling price of the item or on the <@ cart_total_popup @> depending on the discount that is offered. 
 
 You must provide the ID of the cart, to which you want to apply the offer, in the request URL. Also, you must provide the promo code for the offer that you want to apply in the request. 
-
-### Apply Offer [PUT]
 
 Before you try out the `Apply Offer` API, you must decide whether you want to apply the offer at the item level or at the cart level.
 <br><br><b>Note:</b> For you to try out this API, we have mocked the promo code values for the following sample scenarios:<br><br><ul style='list-style: disc'><li>To apply the offer at the cart level, you must provide the promo code in `Cart_X_Y` format, where X is the cash amount and Y is the number of points that you want to discount from the <@ cart_total_popup @>. In the sample API request, we have provided the promo code, `Cart_4_100`, which gives you a discount of both $4 cash and 100 points on the <@ cart_total_popup @>. If you want to apply an offer that gives you a discount on points only, then you must provide the promo code as `Cart_0_100`. If you want to apply an offer that gives you a discount on cash amount only, then you must provide the promo code as `Cart_4_0`.</li><li>To apply the offer at the item level, you must provide the promo code in `Offer_X_Y` format, where X is the cash amount and Y is the number of points that you want to discount from the selling price of the item. For example, if want to apply an offer that gives you a discount of both $4 cash and 100 points, then you must provide the promo code `Offer_4_100`. If you want to apply an offer that gives you a discount on points only, then you must provide the promo code `Offer_0_100`. If you want to apply an offer that gives you a discount on cash amount only, then you must provide the promo code `Offer_4_0`.</li></ul>    
