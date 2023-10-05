@@ -1,0 +1,55 @@
+# Data Structures
+
+## savePromotion_Req
++ id: "XYZ1245" (string) - Description to be added.
++ externalPromotionID: "ABC123" (string, required) - Description to be added.
++ description: "Winter Cruise Early Bird Offer" (string, required) - Description to be added.
++ value: 500 (number, required) - Description to be added.
++ termsId: "UTR456" (string, required) - Description to be added.
++ quantity: 1 (number, required) - Description to be added.
++ creditCardType: `MasterCard` (enum)  - Type of credit card.
+ + None (string)
+ + MasterCard (string)
+ + DinersClub (string)
+ + Visa (string)
+ + AmericanExpress (string)
+ + Discover (string)
++ fulFilledBy: "Test" (string, required) - Description to be added.
++ fulFilledDate: "2020-10-23T06:21:16.764Z" (string, required) - Description to be added.
++ promotionStatus: `NotFulfilled` (enum)  - Indicates the status of the promotion.
+ + None (string)
+ + NotFulfilled (string)
+ + FulfilledCruiseline (string)
+ + FulfilledGiftcard (string)
+ + FulfilledMisc (string)
++ provider: `MAUI` (enum) - Indicates the provider of the promotions. 
+ + None (string)
+ + MAUI (string)
+ + Travel_Syndication_Technology (string)
++ currency: `USD` (enum, required) - 3-character ISO code that indicates the currency in which you want to retrieve the monetary amounts for the cart. The API calculates the amount equivalents and returns the amounts in the currency specified. For example, if the `currency` field value is set to `USD`, then all the monetary amounts are returned in their `USD` amount equivalents.
+ + None (string)
+ + ProgramCurrency (string)
+ + USD (string)
+ + MXN (string)
+ + EUR (string)
+ + INR (string)
+ + BRL (string)
+ + COP (string)
+ + GBP (string)
+ + HUF (string)
+ + AED (string)
+ + BHD (string)
+ + EGP (string)
+ + CZK (string)
+ + AUD (string)
+ + HKD (string)
+ + PHP (string)
+ + THB (string)
+ + SGD (string)
+ + CRC (string)
+ + CAD (string)
+ + NotApplicable (string)
++ cardNumber: "string" (number, required) - Description to be added.
+
+## savePromotion_Res
++ id: `1qrynvwjgnwl` (string) - Description to be added.
