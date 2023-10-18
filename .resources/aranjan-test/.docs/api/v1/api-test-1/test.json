@@ -1,0 +1,5207 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Loyalty Service Gateway Workflow API",
+    "version": "v1"
+  },
+  "paths": {
+    "/Account/GetAccount": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Gets an Account",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Model Validation error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Returns the specific requested Account item.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Account/GenerateTransitCode": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/account/GetAccount": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GetAccountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/account/GenerateTransitCode": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Order/cruise": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Creates an Order",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateCruiseOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateCruiseOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateCruiseOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateCruiseOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Model Validation error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Creates the Order and returns success data.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Order/tour": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Order/{productType}": {
+      "put": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "productType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProductType"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Order/SaveCruisePromotion": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Order/Cancel": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/order": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseCreateOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseCreateOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseCreateOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseCreateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/order/tour": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/order/{productType}": {
+      "put": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "productType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProductType"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UpdateOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/order/SaveCruisePromotion": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/order/Cancel": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Payment/process": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Processes a Payment Request",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Model Validation error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Creates the ProcessProcessPaymentRequest and returns success data.",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Payment/process/existing-card": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/payment/process": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cruise/v1.0/payment/process/existing-card": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Content type for ex. application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "cnx-environment",
+            "in": "header",
+            "description": "The environment third party want to use for ex. prod, test",
+            "required": true,
+            "schema": {
+              "enum": [
+                "T1",
+                "T2",
+                "T3",
+                "T4",
+                "T5",
+                "T6",
+                "D1",
+                "D2",
+                "D3",
+                "D5",
+                "D6",
+                "QA",
+                "SG",
+                "P"
+              ],
+              "type": "string"
+            },
+            "example": "T1"
+          },
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "API can be tracked for tracing/debugging purposes",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "headers": {
+              "cnx-correlationid": {
+                "description": "Unique ID that is used to track calls across different external services. It is recommended that, as an API consumer, you generate the correlation ID for the first API call in a session and use the same ID for all subsequent calls during the current session for booking (get to book). If you encounter any issue in your API calls, you must provide this ID to our support executive.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-transactionid": {
+                "description": "This ID is uniquely generated for each API call and returned as an API response header. This will help us to identify one specific response from a group of responses.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tavisca.CruiseGateway.Contracts.UserType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.Mode": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.UserAuthenticationData": {
+        "required": [
+          "requestedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "requestedBy": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Username/Identifier of logged in user.",
+            "example": "Online"
+          },
+          "userType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserType"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Mode"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data about calling users and processes that can be used for administrative actions and reporting. When not provided, properties will contain defaults of \"Online\" and \"Live\"."
+      },
+      "Tavisca.CruiseGateway.Contracts.GetAccountRequest": {
+        "required": [
+          "transitCode",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "description": "Unique identifier for customer session.",
+            "format": "uuid",
+            "example": "4fa2a312-5662-41b3-ae37-270273b87907"
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Libraries.Info": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Shared.CruiseGatewayErrorInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "info": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Libraries.Info"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.State": {
+        "required": [
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "State Code.",
+            "example": "NH"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "State name.",
+            "nullable": true,
+            "example": "North Hampshire"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Address": {
+        "required": [
+          "cityName",
+          "countryCode",
+          "line1",
+          "postalCode",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "line1": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string",
+            "description": "Street Address line 1.",
+            "example": "221B Baker Street"
+          },
+          "line2": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "description": "Street Address line 2.",
+            "nullable": true,
+            "example": "Suite B"
+          },
+          "cityName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "City.",
+            "example": "New London"
+          },
+          "state": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.State"
+          },
+          "postalCode": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "Postal Code / Zip Code.",
+            "example": "03233"
+          },
+          "countryCode": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "Country code.",
+            "example": "US"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.TieredReward": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "netRateAmountFrom": {
+            "type": "number",
+            "format": "double"
+          },
+          "netRateAmountTo": {
+            "type": "number",
+            "format": "double"
+          },
+          "pointConversionFactor": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.AccountAdditionalInformation": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ProgramDetail": {
+        "type": "object",
+        "properties": {
+          "programID": {
+            "type": "integer",
+            "description": "Identifier of bank program in which customers enroll.",
+            "format": "int32"
+          },
+          "programName": {
+            "type": "string",
+            "description": "Name of the bank program to which customers enroll.",
+            "nullable": true
+          },
+          "programDescription": {
+            "type": "string",
+            "description": "Details about the bank program.",
+            "nullable": true
+          },
+          "programPhoneNumber": {
+            "type": "string",
+            "description": "The call center support number that is associated with the loyalty program.",
+            "nullable": true
+          },
+          "pointsConversionFactor": {
+            "type": "number",
+            "description": "It is the value at which points to cash conversion is done.",
+            "format": "double"
+          },
+          "programBookingFee": {
+            "type": "number",
+            "format": "double"
+          },
+          "programCurrencyMinimum": {
+            "type": "number",
+            "format": "double"
+          },
+          "programCurrencyBalance": {
+            "type": "number",
+            "description": "It is the balance amount available with the customer for the program currency (either in points or cash).",
+            "format": "double",
+            "nullable": true
+          },
+          "programCurrencyLabel": {
+            "type": "string",
+            "description": "Indicates the currency that is associated with the loyalty program. For example, points and miles.",
+            "nullable": true
+          },
+          "programCurrency": {
+            "type": "number",
+            "description": "The amount which is used by customer for booking (either points or cash).",
+            "format": "double"
+          },
+          "tiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.TieredReward"
+            },
+            "nullable": true
+          },
+          "additionalInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.AccountAdditionalInformation"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.GetAccountResponse": {
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "description": "Unique identifier (GUID) for customer session.",
+            "format": "uuid"
+          },
+          "participantCode": {
+            "type": "string",
+            "description": "An identifier for the loyalty account for which the Order applies.",
+            "nullable": true
+          },
+          "allowPurchase": {
+            "type": "boolean",
+            "description": "Customer is allowed to use cash to purchase the product."
+          },
+          "allowRedemption": {
+            "type": "boolean",
+            "description": "Customer is allowed to use points currency to purchase the product."
+          },
+          "address": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Address"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the user.",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the user.",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender of the user.",
+            "nullable": true
+          },
+          "primaryPhone": {
+            "type": "string",
+            "description": "Primary Phone of the user.",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "Email Address of the user.",
+            "nullable": true
+          },
+          "birthdate": {
+            "type": "string",
+            "description": "Birth date of the user. DateFormat yyyy-MM-dd.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "1991-08-22T00:00:00.0000000"
+          },
+          "createDate": {
+            "type": "string",
+            "description": "Created date. DateFormat yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.",
+            "format": "date-time"
+          },
+          "enrolledProgramDetails": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProgramDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.GenerateTransitCodeRequest": {
+        "required": [
+          "externalTripId",
+          "orderId",
+          "requestedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Initial ID that TPS generates in their systems before the booking is confirmed.",
+            "example": "GOs1azyqbUKo7eQzZOlNFg"
+          },
+          "orderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "ID of the order in Connexions system.",
+            "example": "CA001822"
+          },
+          "requestedBy": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Username/Identifier of logged in user.",
+            "example": "Online"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.GenerateTransitCodeResponse": {
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.PrimaryPassenger": {
+        "required": [
+          "firstName",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "gender": {
+            "maxLength": 2,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "emailAddress": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "loyaltyNumber": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Loyalty Program Number.",
+            "nullable": true,
+            "example": "null"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Passenger": {
+        "required": [
+          "firstName",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "gender": {
+            "maxLength": 2,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Currency": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.RateType": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.PriceBreakup": {
+        "required": [
+          "bookingFees",
+          "commissionAmount",
+          "currency",
+          "fareQuote",
+          "loyaltyCurrencyFareQuote",
+          "markupAmount",
+          "nccf",
+          "netRateAmount",
+          "rateType",
+          "taxesAndFees"
+        ],
+        "type": "object",
+        "properties": {
+          "fareQuote": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Total cost of cruise (in cash.)",
+            "format": "double",
+            "example": 5000
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Currency"
+          },
+          "currencyExchangeRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "loyaltyCurrencyFareQuote": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Total cost of cruise (in points.)",
+            "format": "double",
+            "example": 5000
+          },
+          "depositAmount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Deposit amount (in cash.)",
+            "format": "double",
+            "example": 500
+          },
+          "rateOptionCode": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string",
+            "description": "Specifies a qualifier of a booking. Pricing program and what benefits are associated with that.",
+            "nullable": true,
+            "example": "PEB"
+          },
+          "rateType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.RateType"
+          },
+          "netRateAmount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Negotiated rate to the Cruiseline that we owe.",
+            "format": "double",
+            "example": 4500
+          },
+          "markupAmount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Difference between FareQuote and Net Rate Amount.",
+            "format": "double",
+            "example": 500
+          },
+          "commissionAmount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Amount CNX gets as commission when booked on published rate.",
+            "format": "double",
+            "example": 50
+          },
+          "nccf": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Non Commissionable Cruise Fare / Port Charges – Information that can be used to calculate the commission rate as appropriate.",
+            "format": "double",
+            "example": 123.45
+          },
+          "taxesAndFees": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Taxes and Fees associated to a particular sailing. Included in FareQuote.",
+            "format": "double",
+            "example": 3.21
+          },
+          "bookingFees": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Fees associated with the booking.",
+            "format": "double",
+            "example": 5.5
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Promotion": {
+        "required": [
+          "description",
+          "id",
+          "termsId",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique Identifier that identifies a promotion in TST systems."
+          },
+          "description": {
+            "maxLength": 75,
+            "minLength": 1,
+            "type": "string",
+            "description": "Descriptive text of the promotion."
+          },
+          "value": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Total Value of Promotion in USD.",
+            "format": "double"
+          },
+          "termsId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Version identifier to specific T&C. for the promo."
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.PrimaryCruiseDestination": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.CruiseOrderDetail": {
+        "required": [
+          "cabinCategoryCode",
+          "cabinNumber",
+          "cruiseLineShipCode",
+          "durationInNights",
+          "finalPaymentDueDate",
+          "isGds",
+          "passengerCount",
+          "priceBreakup",
+          "primaryCruiseDestinationId",
+          "primaryPassenger",
+          "startDate",
+          "vendorCode"
+        ],
+        "type": "object",
+        "properties": {
+          "vendorCode": {
+            "maxLength": 15,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique Code that identifies a cruise line.",
+            "example": "CV"
+          },
+          "vendorName": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the cruise line for the booking.",
+            "nullable": true,
+            "example": "Carnival"
+          },
+          "isGds": {
+            "type": "boolean",
+            "description": "Global Distribution System.",
+            "example": true
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Date of departure (UTC). DateFormat yyyy-MM-dd.",
+            "format": "date-time",
+            "example": "2020-06-25T00:00:00.0000000"
+          },
+          "durationInNights": {
+            "maximum": 400,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of nights of the cruise.",
+            "format": "int32",
+            "example": 7
+          },
+          "groupBookingId": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Id for the specific group, if booking is made into a cruise group.",
+            "nullable": true,
+            "example": "5"
+          },
+          "passengerCount": {
+            "maximum": 99,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of passengers in the specific cabin for this booking.",
+            "format": "int32",
+            "example": 1
+          },
+          "isAgentOverrideOFAC": {
+            "type": "boolean"
+          },
+          "primaryPassenger": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PrimaryPassenger"
+          },
+          "passengers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Passenger"
+            },
+            "nullable": true
+          },
+          "conversionRate": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "It is the currency conversion rate.",
+            "format": "double",
+            "example": 1
+          },
+          "priceBreakup": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PriceBreakup"
+          },
+          "promotions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Promotion"
+            },
+            "description": "List of promotions attached to this booking which need to be fulfilled by the agency of record.",
+            "nullable": true
+          },
+          "depositDueDate": {
+            "type": "string",
+            "description": "UTC Date timestamp indication time by which deposit payment is due and booking may be canceled by the cruise line. (usually midnight local to the cruise line.)\r\nDateFormat yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2019-09-25T00:00:00.0000000"
+          },
+          "finalPaymentDueDate": {
+            "type": "string",
+            "description": "UTC Date timestamp indication time by which final payment is due and booking may be canceled by the cruise line. (usually midnight local to the cruise line.)\r\nDateFormat yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.",
+            "format": "date-time",
+            "example": "2020-04-25T00:00:00.0000000"
+          },
+          "cruiseLineShipCode": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique identifier for the ship with respect to the cruise line.",
+            "example": "SH"
+          },
+          "cruiseLineShipName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "description": "Unique name of the ship  with respect to the cruise line.",
+            "nullable": true,
+            "example": "Carnival Sunshine"
+          },
+          "primaryCruiseDestinationId": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PrimaryCruiseDestination"
+          },
+          "isRoundTrip": {
+            "type": "boolean",
+            "description": "Round trip indicator.If this is true then DeparturePortID should match the ArrivalPortID.",
+            "example": true
+          },
+          "cabinNumber": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique identifier for a specific cabin.  If a guarantee cabin is selected a code such as \"GTY\" or \"GUAR\" may be passed as the cruise line demands. (Ex.: 4372B)",
+            "example": "1405"
+          },
+          "cabinCategoryCode": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "Code of specific category used to determine category feature, location on ship and associated pricing programs.",
+            "example": "1A"
+          },
+          "cabinCategoryName": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Indicator of general location and type of cabin on the ship. (Ex.: [I,O,B,S] Inside = I, OceanView = O, Balcony = B, Suite = S)",
+            "nullable": true,
+            "example": "Ocean View"
+          },
+          "cabinTypeCode": {
+            "maxLength": 2,
+            "minLength": 1,
+            "type": "string",
+            "description": "Indicator of general location and type of cabin on the ship. (Ex.: [I,O,B,S] Inside = I, OceanView = O, Balcony = B, Suite = S)",
+            "nullable": true,
+            "example": "1B"
+          },
+          "departurePortId": {
+            "maxLength": 5,
+            "minLength": 0,
+            "type": "string",
+            "description": "It indicates departure port id.",
+            "nullable": true,
+            "example": "CHS"
+          },
+          "departurePortName": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "It indicates departure port name.",
+            "nullable": true,
+            "example": "Charleston, South Carolina"
+          },
+          "arrivalPortId": {
+            "maxLength": 5,
+            "minLength": 0,
+            "type": "string",
+            "description": "It indicates arrival port id.",
+            "nullable": true,
+            "example": "CHS"
+          },
+          "arrivalPortName": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "description": "It indicates arrival port name.",
+            "nullable": true,
+            "example": "Charleston, South Carolina"
+          },
+          "cruiseShipId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cruiseLineProviderID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CreateCruiseOrderRequest": {
+        "required": [
+          "cruiseOrderDetail",
+          "transitCode",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cruiseOrderDetail": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseOrderDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CreateOrderResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalTripId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.TourOrderDetail": {
+        "required": [
+          "bookingSourceId",
+          "description",
+          "destinationName",
+          "durationInNights",
+          "finalPaymentDueDate",
+          "isGds",
+          "passengerCount",
+          "priceBreakup",
+          "primaryPassenger",
+          "startDate",
+          "tourCode",
+          "vendorCode",
+          "vendorId"
+        ],
+        "type": "object",
+        "properties": {
+          "vendorCode": {
+            "maxLength": 15,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique Code that identifies a cruise line.",
+            "example": "CV"
+          },
+          "vendorName": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "description": "Name of the cruise line for the booking.",
+            "nullable": true,
+            "example": "Carnival"
+          },
+          "isGds": {
+            "type": "boolean",
+            "description": "Global Distribution System.",
+            "example": true
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Date of departure (UTC). DateFormat yyyy-MM-dd.",
+            "format": "date-time",
+            "example": "2020-06-25T00:00:00.0000000"
+          },
+          "durationInNights": {
+            "maximum": 400,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of nights of the cruise.",
+            "format": "int32",
+            "example": 7
+          },
+          "groupBookingId": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Id for the specific group, if booking is made into a cruise group.",
+            "nullable": true,
+            "example": "5"
+          },
+          "passengerCount": {
+            "maximum": 99,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of passengers in the specific cabin for this booking.",
+            "format": "int32",
+            "example": 1
+          },
+          "isAgentOverrideOFAC": {
+            "type": "boolean"
+          },
+          "primaryPassenger": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PrimaryPassenger"
+          },
+          "passengers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Passenger"
+            },
+            "nullable": true
+          },
+          "conversionRate": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "It is the currency conversion rate.",
+            "format": "double",
+            "example": 1
+          },
+          "priceBreakup": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PriceBreakup"
+          },
+          "promotions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Promotion"
+            },
+            "description": "List of promotions attached to this booking which need to be fulfilled by the agency of record.",
+            "nullable": true
+          },
+          "depositDueDate": {
+            "type": "string",
+            "description": "UTC Date timestamp indication time by which deposit payment is due and booking may be canceled by the cruise line. (usually midnight local to the cruise line.)\r\nDateFormat yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2019-09-25T00:00:00.0000000"
+          },
+          "finalPaymentDueDate": {
+            "type": "string",
+            "description": "UTC Date timestamp indication time by which final payment is due and booking may be canceled by the cruise line. (usually midnight local to the cruise line.)\r\nDateFormat yyyy-MM-dd'T'HH:mm:ss.SSS'Z'.",
+            "format": "date-time",
+            "example": "2020-04-25T00:00:00.0000000"
+          },
+          "description": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "vendorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activityCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "tourCode": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "bookingSourceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bookingSourceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "destinationName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "originName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CreateTourOrderRequest": {
+        "required": [
+          "tourOrderDetail",
+          "transitCode",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tourOrderDetail": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.TourOrderDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ProductType": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.BookingPaymentState": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.UpdateOrderRequest": {
+        "required": [
+          "bookingPaymentState",
+          "orderId",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "ID of the order in Connexions system.",
+            "example": "CA001822"
+          },
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Initial ID that TPS generates in their systems before the booking is confirmed.",
+            "nullable": true,
+            "example": "GOs1azyqbUKo7eQzZOlNFg"
+          },
+          "confirmationNumber": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Final Confirmation Number.",
+            "nullable": true,
+            "example": "9mPbKfxbGEm/yfY8VUS0/g"
+          },
+          "bookingPaymentState": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.BookingPaymentState"
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          },
+          "agentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "transitCode": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.UpdateOrderResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "Super PNR in Connexions system.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.BankCardType": {
+        "enum": [
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.PromotionStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.Provider": {
+        "enum": [
+          0,
+          150
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.SaveCruisePromotionRequest": {
+        "required": [
+          "clientId",
+          "currency",
+          "description",
+          "externalId",
+          "fulFilledDate",
+          "provider",
+          "termsId",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Promotion Id",
+            "format": "int32",
+            "example": 123
+          },
+          "externalId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique Identifier that identifies a promotion in TST systems.",
+            "example": "1234556"
+          },
+          "description": {
+            "maxLength": 75,
+            "minLength": 1,
+            "type": "string",
+            "description": "Descriptive text of the promotion.",
+            "example": "Test promotion"
+          },
+          "value": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Total Value of Promotion in USD",
+            "format": "double",
+            "example": 100
+          },
+          "termsId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Version identifier to specific T&C. for the promo.",
+            "example": "123"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "The order ID of the order system",
+            "nullable": true,
+            "example": "164ob6fydvr4"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creditCardType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.BankCardType"
+          },
+          "fulFilledBy": {
+            "type": "string",
+            "description": "Agent user id",
+            "nullable": true,
+            "example": "Test"
+          },
+          "promotionStatus": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PromotionStatus"
+          },
+          "fulFilledDate": {
+            "type": "string",
+            "description": "UTC FulFilledDate date",
+            "format": "date-time",
+            "example": "2019-09-25T00:00:00.0000000"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Provider"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Currency"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Number of quantity of promotions added to the order.",
+            "format": "int32",
+            "nullable": true,
+            "example": 1
+          },
+          "cardNumber": {
+            "maxLength": 19,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "superPnr": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.RefundType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.CancelOrderRequest": {
+        "required": [
+          "orderId",
+          "refundType"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "refundType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.RefundType"
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CancelOrderStatus": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.BookingStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.RefundStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.RefundAmount": {
+        "type": "object",
+        "properties": {
+          "cash": {
+            "type": "number",
+            "format": "double"
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "pointsCurrency": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Information": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "info": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Information"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CancelOrderItem": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.BookingStatus"
+          },
+          "refundStatus": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.RefundStatus"
+          },
+          "refundAmount": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.RefundAmount"
+          },
+          "error": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Error"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Information"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CancelOrderResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderStatus"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CancelOrderItem"
+            },
+            "nullable": true
+          },
+          "error": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Error"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Information"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CruiseCreateOrderRequest": {
+        "required": [
+          "cruiseOrderDetail",
+          "transitCode",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "nullable": true
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cruiseOrderDetail": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CruiseOrderDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.TenderType": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.OrderTender": {
+        "required": [
+          "amount",
+          "currency",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.TenderType"
+          },
+          "amount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "It indicates amount of currency provided.",
+            "format": "double",
+            "example": 5000
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Currency"
+          },
+          "currencyExchangeRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "programCurrencyCashValue": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "The exact cash value of the points redeemed. Required if TenderType = Rewards.",
+            "format": "double",
+            "nullable": true,
+            "example": 777
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ExpiryDate": {
+        "required": [
+          "month",
+          "year"
+        ],
+        "type": "object",
+        "properties": {
+          "month": {
+            "maximum": 12,
+            "minimum": 1,
+            "type": "integer",
+            "description": "Month of expiry date on a credit card.",
+            "format": "int32",
+            "example": 1
+          },
+          "year": {
+            "maximum": 9999,
+            "minimum": 2018,
+            "type": "integer",
+            "description": "Year of expiry date on a credit card.",
+            "format": "int32",
+            "example": 2022
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.PhoneType": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.Phone": {
+        "required": [
+          "countryCode",
+          "number",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PhoneType"
+          },
+          "number": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Phone number.",
+            "example": "1234567890"
+          },
+          "countryCode": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string",
+            "description": "Country Code.",
+            "example": "US"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ContactInformation": {
+        "required": [
+          "billingAddress"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "description": "Email address of card holder.",
+            "nullable": true,
+            "example": "xyz@gmail.com"
+          },
+          "billingAddress": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Address"
+          },
+          "phone": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Phone"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.CreditCard": {
+        "required": [
+          "contactInfo",
+          "cvv",
+          "expiry",
+          "holderName",
+          "issuedBy",
+          "number"
+        ],
+        "type": "object",
+        "properties": {
+          "number": {
+            "maxLength": 19,
+            "minLength": 1,
+            "type": "string",
+            "description": "Credit Card number.",
+            "example": "5555555555554444"
+          },
+          "cvv": {
+            "maxLength": 4,
+            "minLength": 1,
+            "type": "string",
+            "description": "Card Verification Value (CVV). Non raised code printed on back of credit card for use in verifying that the card is present for the transaction.",
+            "example": "123"
+          },
+          "expiry": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ExpiryDate"
+          },
+          "holderName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the card holder as printed on the card.",
+            "example": "Jane Smith"
+          },
+          "issuedBy": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.BankCardType"
+          },
+          "contactInfo": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ContactInformation"
+          },
+          "token": {
+            "type": "string",
+            "description": "It is used to send credit card number in form of Token.",
+            "nullable": true,
+            "example": "It is internal to the loyalty service gateway. Do not send this."
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ProcessPaymentRequest": {
+        "required": [
+          "orderId",
+          "orderTenders",
+          "transitCode",
+          "userAuthenticationData"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "description": "Unique identifier for customer session.",
+            "format": "uuid",
+            "example": "4fa2a312-5662-41b3-ae37-270273b87907"
+          },
+          "externalTripId": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Initial ID that TPS generates in their systems before the booking is confirmed.",
+            "nullable": true,
+            "example": "GOs1azyqbUKo7eQzZOlNFg"
+          },
+          "orderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Super PNR in Connexions system.",
+            "example": "CA001822"
+          },
+          "orderTenders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.OrderTender"
+            },
+            "description": "The OrderTenders Object contains information related to payment tenders associated with this Order. There can be one to many tenders associated with an Order."
+          },
+          "creditCardInformation": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreditCard"
+          },
+          "userAuthenticationData": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.UserAuthenticationData"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.ProductType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ProcessPaymentResponse": {
+        "required": [
+          "amount",
+          "currencyType",
+          "externalTripId",
+          "merchantName",
+          "orderId",
+          "paymentHeaderId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "ID of the order in Connexions system."
+          },
+          "externalTripId": {
+            "type": "string",
+            "description": "Initial ID that TPS generates in their systems before the booking is confirmed."
+          },
+          "paymentCard": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.CreditCard"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Charge Amount.",
+            "format": "double"
+          },
+          "currencyType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.Currency"
+          },
+          "paymentHeaderId": {
+            "type": "string",
+            "description": "Unique ID representing PaymentHeaderId / TransactionId used by Connexions."
+          },
+          "merchantName": {
+            "type": "string",
+            "description": "Merchant name."
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.PaymentActionType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardRequest": {
+        "required": [
+          "amount",
+          "clientId",
+          "currency",
+          "orderId",
+          "paymentDetailId",
+          "paymentHeaderId",
+          "profileId",
+          "transactionCode",
+          "transitCode",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "transitCode": {
+            "type": "string",
+            "description": "Unique identifier for customer session.",
+            "format": "uuid",
+            "example": "4fa2a312-5662-41b3-ae37-270273b87907"
+          },
+          "clientId": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "description": "The client ID of the order system",
+            "format": "int32",
+            "example": 103
+          },
+          "type": {
+            "type": "string",
+            "description": "Transaction action type i.e. Charge or Refund",
+            "example": "Refund"
+          },
+          "amount": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "number",
+            "description": "Amount to be refunded or Charged.",
+            "format": "double",
+            "example": 500
+          },
+          "currency": {
+            "maxLength": 25,
+            "minLength": 1,
+            "type": "string",
+            "description": "Currency used in Order system.",
+            "example": "USD"
+          },
+          "orderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Order Id of the product in Connexions system",
+            "example": "123456"
+          },
+          "profileId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Profile Id with this Payment request.",
+            "example": "12345"
+          },
+          "transactionCode": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Transaction Code used in Payment request.",
+            "example": "123456"
+          },
+          "paymentHeaderId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Payment Header Id used in Payment request.",
+            "example": "121542"
+          },
+          "paymentDetailId": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "Payment Detail Id used in Payment request.",
+            "example": "12345"
+          },
+          "paymentActionType": {
+            "$ref": "#/components/schemas/Tavisca.CruiseGateway.Contracts.PaymentActionType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.CruiseGateway.Contracts.ProcessPaymentExistingCardResponse": {
+        "required": [
+          "paymentHeaderId",
+          "transactionId"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Transaction ID of the  refund or charge transaction",
+            "example": "12345"
+          },
+          "paymentHeaderId": {
+            "type": "string",
+            "description": "Unique ID representing PaymentHeaderId used by Connexions",
+            "example": "123456"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
