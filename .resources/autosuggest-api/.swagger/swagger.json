@@ -1010,7 +1010,10 @@
             "nullable": true
           },
           "subLocations": {
-            "type": "string",
+            "type": "array",
+            "items":{
+              "type": "string"
+          },
             "description": "Represents the list of sub locations. e.g. Grouped airports",
             "nullable": true
           },
