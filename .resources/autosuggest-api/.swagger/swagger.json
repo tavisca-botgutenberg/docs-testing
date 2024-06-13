@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
     "title": "AutoSuggest API Documentation",
     "description": "When user types text in the search field on ORXe user interface, the Autosuggest API gets triggered. The Autosuggest API used two endpoints to search the indices using the searchTerm that user has entered. The request from Autosuggest API contains the consumer or product such as Hotel or Car. The results are filtered accordingly. There are two endpoints in Autosuggest API with subtle differences.",
@@ -7,7 +7,16 @@
   },
   "servers": [
     {
-      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com"
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "QA"
+    },
+    {
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "STAGE"
+    },
+    {
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "PROD"
     }
   ],
   "paths": {
@@ -19,15 +28,6 @@
         "summary": "Search by searchTerm.",
         "description": "This request allows you to asynchronously search for a City, Hotel, Airport, point-of-interest, Province Region, Neighborhood, or Airline based on the search term.",
         "parameters": [
-          {
-            "name": "content-type",
-            "in": "header",
-            "description": "content type should be application/json",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "accept-encoding",
             "in": "header",
@@ -472,15 +472,6 @@
             "name": "searchType",
             "in": "query",
             "description": "searchType should be city, airport, point-of-interest, hotel, arrival-airport, departure-airport, neighborhood, provinceregion",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content-type",
-            "in": "header",
-            "description": "content type should be application/json",
-            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1018,16 +1009,16 @@
             "description": "City code or airport code.<br />\r\n\t\t\t\tExample:- Can be used in car/flights search query E.g - 'LAX'",
             "nullable": true
           },
-          "timeZoneInformation": {
-            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation"
-          },
           "subLocations": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.Suggestion"
-            },
+            "items":{
+              "type": "string"
+          },
             "description": "Represents the list of sub locations. e.g. Grouped airports",
             "nullable": true
+          },
+          "timeZoneInformation": {
+            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation"
           },
           "stateCode": {
             "type": "string",
