@@ -1,0 +1,1117 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "AutoSuggest API Documentation",
+    "description": "When user types text in the search field on ORXe user interface, the Autosuggest API gets triggered. The Autosuggest API used two endpoints to search the indices using the searchTerm that user has entered. The request from Autosuggest API contains the consumer or product such as Hotel or Car. The results are filtered accordingly. There are two endpoints in Autosuggest API with subtle differences.",
+    "version": "V1"
+  },
+  "servers": [
+    {
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com"
+    }
+  ],
+  "paths": {
+    "/api/autosuggest/v1.0/search": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search by searchTerm.",
+        "description": "This request allows you to asynchronously search for a City, Hotel, Airport, point-of-interest, Province Region, Neighborhood, or Airline based on the search term.",
+        "parameters": [
+          {
+            "name": "content-type",
+            "in": "header",
+            "description": "content type should be application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accept-encoding",
+            "in": "header",
+            "description": "Example : gzip, deflate",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnx-sessionid",
+            "in": "header",
+            "description": "unique Session ID of the user \n Example : 50c37736-997b-42a9-b038-e64156723dfb ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "unique ID of the user \n Example :3e1go4ilxq8 ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchRequest"
+              },
+              "example": {
+                "sq": {
+                  "st": "las",
+                  "sf": [
+                    "city",
+                    "airport"
+                  ]
+                },
+                "c": "Hotels"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchRequest"
+              },
+              "example": {
+                "sq": {
+                  "st": "las",
+                  "sf": [
+                    "city",
+                    "airport"
+                  ]
+                },
+                "c": "Hotels"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchRequest"
+              },
+              "example": {
+                "sq": {
+                  "st": "las",
+                  "sf": [
+                    "city",
+                    "airport"
+                  ]
+                },
+                "c": "Hotels"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/autosuggest/v1.0/search/location": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Location Search By Location Id.",
+        "description": "This request allows to asynchronously search Hotel,Airport,point-of-interest,City,Province Region,Neighborhood search based on the list of Location Ids passed.",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "Location Id Example:- 691001",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "consumer",
+            "in": "query",
+            "description": "Consumer should be Hotels, Flights, Cars, Activities",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "searchType",
+            "in": "query",
+            "description": "searchType should be city, airport, point-of-interest, hotel, arrival-airport, departure-airport, neighborhood, provinceregion",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "content-type",
+            "in": "header",
+            "description": "content type should be application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accept-encoding",
+            "in": "header",
+            "description": "Example : gzip, deflate",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnx-sessionid",
+            "in": "header",
+            "description": "unique Session ID of the user \n Example : 50c37736-997b-42a9-b038-e64156723dfb ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "unique ID of the user \n Example :3e1go4ilxq8 ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse"
+                },
+                "example": {
+                  "s": [
+                    {
+                      "n": "Los Angeles",
+                      "d": "Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "City",
+                      "lId": "34524",
+                      "lat": 34.0522,
+                      "lng": -118.2437,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "Hollywood",
+                      "d": "Los Angeles Callifornia",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "PointOfInterest",
+                      "lId": "34524",
+                      "lat": 34.0928,
+                      "lng": -118.3287,
+                      "cd": "",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    },
+                    {
+                      "n": "LAX - Los Angeles, CA",
+                      "d": "Los Angeles Int'l Airport",
+                      "c": "United States",
+                      "cc": "US",
+                      "cn": "Los Angeles",
+                      "nbcn": "Los Angeles",
+                      "t": "Airport",
+                      "lId": "34524",
+                      "lat": 33.9416,
+                      "lng": -118.4085,
+                      "cd": "LAX",
+                      "tzi": {
+                        "tz": "Pacific Standard Time",
+                        "dt": "01/10/2020 08:58:01"
+                      },
+                      "sl": [],
+                      "sc": "NA",
+                      "iaa": false
+                    }
+                  ],
+                  "wrn": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Autosuggest.Models.ErrorMessages"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tavisca.Autosuggest.Models.ErrorMessages": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.NearByCity": {
+        "type": "object",
+        "properties": {
+          "airportCode": {
+            "type": "string",
+            "description": "Airport Code",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Near By City"
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.SearchQuery": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "searchTerm": {
+            "type": "string",
+            "description": "Signifies search term or keyword with which autosuggest will provide suggestions <br />\r\n\t\t\t    Example :- LAS",
+            "nullable": true
+          },
+          "searchFor": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Signifies what you are searching for <br />\r\n\t\t\t\tSupported values are city, airport, point-of-interest, address, airline, hotel,Province Region,Neighborhood",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Signifies search criteria for auto suggestions"
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.SearchRequest": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "searchQuery": {
+            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.SearchQuery"
+          },
+          "consumer": {
+            "type": "string",
+            "description": "Signifies consumer for which response will be driven <br />\r\n\t\t\t\tPossible values Hotels, Flights, Cars, Activities",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.SearchResponse": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.Suggestion"
+            },
+            "description": "                Suggestion for autosuggest \r\n\t\t\t\tBased on Search Term suggestions will be shown",
+            "nullable": true
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.Warning"
+            },
+            "description": "Warning is a collection of information, presented in a mostly fixed format,used to give warning code, message and info",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.Suggestion": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Primary text for the auto suggest.<br />\r\nIn case of city it will be city name.<br />\r\nIn case of airport it will be like \"LAX - Los Angeles, CA\".<br />\r\nIn case of PoI it will name of location \"Hollywood\".",
+            "nullable": true
+          },
+          "desc": {
+            "type": "string",
+            "description": "Secondary text for the auto suggest.<br />\r\nIn case of city it will be state name.<br />\r\nIn case of airport it will be name of the airport.<br />\r\nIn case of PoI it will be city name, state name.",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Label for the auto suggest.<br />\r\n\t\t\t    Example:- United States",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Country Code.<br />\r\n\t\t\t    Example :- US",
+            "nullable": true
+          },
+          "cityName": {
+            "type": "string",
+            "description": "Country Name.<br />\r\n\t\t\t\tExample:- Los Angeles",
+            "nullable": true
+          },
+          "nearByCityName": {
+            "type": "string",
+            "description": "Nearby city Name",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of Search.<br />\r\nExample:- City,Airport,POI(Point of interest),Hotel,Airline",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "description": "Used to search by Location Id.<br />\r\n\t\t\t\tExample:- 010360833011516670",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latituted for this location",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude for this location",
+            "format": "double"
+          },
+          "code": {
+            "type": "string",
+            "description": "City code or airport code.<br />\r\n\t\t\t\tExample:- Can be used in car/flights search query E.g - 'LAX'",
+            "nullable": true
+          },
+          "timeZoneInformation": {
+            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation"
+          },
+          "subLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.Suggestion"
+            },
+            "description": "Represents the list of sub locations. e.g. Grouped airports",
+            "nullable": true
+          },
+          "stateCode": {
+            "type": "string",
+            "description": "                State Code \r\n\t\t\t\tExample :- MH for maharashtra",
+            "nullable": true
+          },
+          "isAllAirports": {
+            "type": "boolean",
+            "description": "\tIs All Airport \r\n    For grouped airport"
+          },
+          "nearByCity": {
+            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.NearByCity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "timeZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateTime": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "TimeZone related information for this suggestion"
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.Warning": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "description": "This property will be used by client team to extend any parent property. When client team wants to add extra data in response, that data can be added as a key value pair in response as well as request",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "info": {
+            "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.WarningInfo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Autosuggest.Service.DataContracts.v1.WarningInfo": {
+        "type": "object",
+        "properties": {
+          "allowedCountries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "deniedCountries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
