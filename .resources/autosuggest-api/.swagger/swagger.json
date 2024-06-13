@@ -1014,9 +1014,7 @@
           },
           "subLocations": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.Suggestion"
-            },
+            "items": {},
             "description": "Represents the list of sub locations. e.g. Grouped airports",
             "nullable": true
           },
