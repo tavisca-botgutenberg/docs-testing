@@ -1009,6 +1009,12 @@
             "description": "City code or airport code.<br />\r\n\t\t\t\tExample:- Can be used in car/flights search query E.g - 'LAX'",
             "nullable": true
           },
+          "subLocations": {
+            "type": "array",
+            "items": {},
+            "description": "Represents the list of sub locations. e.g. Grouped airports",
+            "nullable": true
+          },
           "timeZoneInformation": {
             "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation"
           },
