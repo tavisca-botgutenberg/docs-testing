@@ -20,15 +20,6 @@
         "description": "This request allows you to asynchronously search for a City, Hotel, Airport, point-of-interest, Province Region, Neighborhood, or Airline based on the search term.",
         "parameters": [
           {
-            "name": "content-type",
-            "in": "header",
-            "description": "content type should be application/json",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "accept-encoding",
             "in": "header",
             "description": "Example : gzip, deflate",
@@ -472,15 +463,6 @@
             "name": "searchType",
             "in": "query",
             "description": "searchType should be city, airport, point-of-interest, hotel, arrival-airport, departure-airport, neighborhood, provinceregion",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content-type",
-            "in": "header",
-            "description": "content type should be application/json",
-            "required": true,
             "schema": {
               "type": "string"
             }
