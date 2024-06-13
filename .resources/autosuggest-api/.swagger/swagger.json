@@ -7,7 +7,16 @@
   },
   "servers": [
     {
-      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com"
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "QA"
+    },
+    {
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "STAGE"
+    },
+    {
+      "url": "https://autosuggest-orxe-service.stage.cnxloyalty.com",
+      "description": "PROD"
     }
   ],
   "paths": {
