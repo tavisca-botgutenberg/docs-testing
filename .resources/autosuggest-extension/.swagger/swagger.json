@@ -1,0 +1,502 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Autosuggest Extension API Documentation",
+    "version": "V1"
+  },
+  "servers": [
+    {
+      "url": "https://hotel-orxe-bff.stage.cnxloyalty.com",
+      "description": "QA"
+    },
+    {
+      "url": "https://hotel-orxe-bff.stage.cnxloyalty.com",
+      "description": "STAGE"
+    },
+    {
+      "url": "https://hotel-orxe-bff.stage.cnxloyalty.com",
+      "description": "PROD"
+    }
+  ],
+  "paths": {
+    "/api/hotel/v1.0/extensions/autosuggest/configurations": {
+      "get": {
+        "tags": [
+          "Autosuggest Settings"
+        ],
+        "summary": "Get Hotel Autosuggest settings",
+        "description": "Hotel Autosuggest settings API allows to get all settings related to autosuggest including `filterPreference`, `searchPreference`, `sortPreference`, `suggestionPreference`, `indexStrategy` which will be used to show autosuggest response on the UI",
+        "parameters": [
+          {
+            "name": "content-type",
+            "in": "header",
+            "description": "content type should be application/json",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accept-encoding",
+            "in": "header",
+            "description": "Encoding format.",
+            "example": "gzip, deflate",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "description": "Language accepted in the response",
+            "example": "en-US",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnx-sessionid",
+            "in": "header",
+            "description": "Unique ID of the user",
+            "example": "50c37736-997b-42a9-b038-e64156723dfb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.AutosuggestSettingsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.v1.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "headers": {
+              "content-type": {
+                "description": "application/json",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cnx-correlationid": {
+                "description": "8d98c58b-04f5-47b0-a135-6335d738e759",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.v1.Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.AttributeProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "weightage": {
+            "type": "number",
+            "format": "double"
+          },
+          "includeInResponse": {
+            "type": "boolean"
+          },
+          "enableSearch": {
+            "type": "boolean"
+          },
+          "enableExactMatch": {
+            "type": "boolean"
+          },
+          "typoTolerance": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.TypoTolerance"
+          },
+          "isOptionalForSearch": {
+            "type": "boolean"
+          },
+          "isNestedColumn": {
+            "type": "boolean"
+          },
+          "nestedPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.AutosuggestSettingsResponse": {
+        "type": "object",
+        "properties": {
+          "filterPreference": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterPreference"
+          },
+          "filterPreferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.ExtendedFilter"
+            },
+            "nullable": true
+          },
+          "searchPreference": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SearchPreference"
+          },
+          "sortPreference": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SortPreference"
+            },
+            "nullable": true
+          },
+          "indexStrategy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.IndexStrategy"
+            },
+            "nullable": true
+          },
+          "suggestionPreference": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SuggestionPreference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.ExtendedFilter": {
+        "type": "object",
+        "properties": {
+          "filterationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "filterItems": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "matchType": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "applyOnColumn": {
+            "type": "string",
+            "nullable": true
+          },
+          "isEnabled": {
+            "type": "boolean"
+          },
+          "isNestedColumn": {
+            "type": "boolean"
+          },
+          "nestedPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.Item"
+            },
+            "nullable": true
+          },
+          "isEnabled": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterPreference": {
+        "type": "object",
+        "properties": {
+          "countryCodes": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "stateCodes": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "cityName": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "locationId": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "names": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "codes": {
+            "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.FilterData"
+          },
+          "extendedFilter": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.ExtendedFilter"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.IndexStrategy": {
+        "type": "object",
+        "properties": {
+          "locationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "index": {
+            "type": "string",
+            "nullable": true
+          },
+          "defaultCulture": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributeProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.AttributeProperties"
+            },
+            "nullable": true
+          },
+          "additionalResponseAttributes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.Item": {
+        "type": "object",
+        "properties": {
+          "filterationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "filterItems": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "matchType": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SearchPreference": {
+        "type": "object",
+        "properties": {
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.Suggestions"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SortPreference": {
+        "type": "object",
+        "properties": {
+          "applyOnLocationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "applyOnColumn": {
+            "type": "string",
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "order": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderAt": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isNested": {
+            "type": "boolean"
+          },
+          "nestedPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.SuggestionPreference": {
+        "type": "object",
+        "properties": {
+          "showSuggestionsStartingEnteredText": {
+            "type": "boolean"
+          },
+          "shortenAirportName": {
+            "type": "boolean"
+          },
+          "groupAirports": {
+            "type": "boolean"
+          },
+          "isAirportsDisplayNearByCityNameEnabled": {
+            "type": "boolean"
+          },
+          "skipPointOfInterest": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.Suggestions": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "alternateType": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxSuggestions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.Extensions.AutosuggestSettings.TypoTolerance": {
+        "type": "object",
+        "properties": {
+          "isEnabled": {
+            "type": "boolean"
+          },
+          "limitToCharacters": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "matchingThreshold": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tavisca.Hotel.BFF.Contracts.v1.Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
