@@ -1012,12 +1012,6 @@
           "timeZoneInformation": {
             "$ref": "#/components/schemas/Tavisca.Autosuggest.Service.DataContracts.v1.TimeZoneInformation"
           },
-          "subLocations": {
-            "type": "array",
-            "items": {},
-            "description": "Represents the list of sub locations. e.g. Grouped airports",
-            "nullable": true
-          },
           "stateCode": {
             "type": "string",
             "description": "                State Code \r\n\t\t\t\tExample :- MH for maharashtra",
