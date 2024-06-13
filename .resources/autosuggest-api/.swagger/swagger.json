@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
     "title": "AutoSuggest API Documentation",
     "description": "When user types text in the search field on ORXe user interface, the Autosuggest API gets triggered. The Autosuggest API used two endpoints to search the indices using the searchTerm that user has entered. The request from Autosuggest API contains the consumer or product such as Hotel or Car. The results are filtered accordingly. There are two endpoints in Autosuggest API with subtle differences.",
