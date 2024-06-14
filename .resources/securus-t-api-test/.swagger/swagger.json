@@ -1,0 +1,762 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://tollgating-api.qa.cnxloyalty.com",
+      "description": "QA"
+    },
+    {
+      "url": "https://tollgating-api.stage.cnxloyalty.com",
+      "description": "STAGE"
+    },
+    {
+      "url": "https://tollgating-api.stage.cnxloyalty.com",
+      "description": "PROD"
+    }
+  ],
+  "paths": {
+    "/{requestId}": {
+      "get": {
+        "tags": [
+          "Entry Point"
+        ],
+        "summary": "Get Request Status",
+        "operationId": "get_request_status__requestId__get",
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Requestid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/requestDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "tags": [
+          "Entry Point"
+        ],
+        "summary": "Entry Point Function",
+        "operationId": "entry_point_function__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/globalJson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/sast": {
+      "post": {
+        "tags": [
+          "Sast"
+        ],
+        "summary": "Analyze Sast Scan Data",
+        "operationId": "analyze_sast_scan_data_sast_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/globalJson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/endpointDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/sast/deviation": {
+      "post": {
+        "tags": [
+          "Sast"
+        ],
+        "summary": "Check Sast Deviation Flow",
+        "operationId": "check_sast_deviation_flow_sast_deviation_get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/slaJson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deviationDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/sast/sla": {
+      "post": {
+        "tags": [
+          "Sast"
+        ],
+        "summary": "Check Sast Sla Flow",
+        "operationId": "check_sast_sla_flow_sast_sla_get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/globalJson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/slaJson"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/imgScan": {
+      "post": {
+        "tags": [
+          "Image Scan"
+        ],
+        "summary": "Analyze Imgscan Scan Data",
+        "operationId": "analyze_imgScan_scan_data_imgScan_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/imgScan_Global_Json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/endpointDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/imgScan/deviation": {
+      "post": {
+        "tags": [
+          "Image Scan"
+        ],
+        "summary": "Check Imgscan Deviation Flow",
+        "operationId": "check_imgScan_deviation_flow_imgScan_deviation_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/slaJson"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deviationDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    },
+    "/imgScan/sla": {
+      "post": {
+        "tags": [
+          "Image Scan"
+        ],
+        "summary": "Check Imgscan Sla Flow",
+        "operationId": "check_imgScan_sla_flow_imgScan_sla_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/imgScan_Global_Json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/slaJson"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "X-API-Key header": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "deviationDetails": {
+        "properties": {
+          "repository_id": {
+            "type": "string",
+            "title": "Repository Id"
+          },
+          "repository_name": {
+            "type": "string",
+            "title": "Repository Name"
+          },
+          "deviation_passed": {
+            "items": {},
+            "type": "array",
+            "title": "Deviation Passed"
+          },
+          "deviation_failed": {
+            "items": {},
+            "type": "array",
+            "title": "Deviation Failed"
+          },
+          "repo_name_flag": {
+            "items": {},
+            "type": "array",
+            "title": "Repo Name Flag"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repository_id",
+          "repository_name",
+          "deviation_passed",
+          "deviation_failed",
+          "repo_name_flag"
+        ],
+        "title": "deviationDetails"
+      },
+      "endpointDetails": {
+        "properties": {
+          "slaFailed": {
+            "items": {},
+            "type": "array",
+            "title": "Slafailed",
+            "default": [
+              {
+                "ticket_id": "",
+                "repository_id": "",
+                "repository_name": "",
+                "severity": "",
+                "source_path": "",
+                "created_date": "",
+                "resolved_date": "",
+                "status": ""
+              }
+            ]
+          },
+          "deviationFailed": {
+            "items": {},
+            "type": "array",
+            "title": "Deviationfailed",
+            "default": [
+              {
+                "ticket_id": "",
+                "repository_id": "",
+                "repository_name": "",
+                "severity": "",
+                "source_path": "",
+                "created_date": "",
+                "resolved_date": "",
+                "status": ""
+              }
+            ]
+          },
+          "deviationDetails": {
+            "items": {},
+            "type": "array",
+            "title": "Deviationdetails"
+          }
+        },
+        "type": "object",
+        "required": [
+          "deviationDetails"
+        ],
+        "title": "endpointDetails"
+      },
+      "globalJson": {
+        "properties": {
+          "repositoryId": {
+            "type": "string",
+            "title": "Repositoryid"
+          },
+          "repositoryName": {
+            "type": "string",
+            "title": "Repositoryname"
+          },
+          "tollgateType": {
+            "type": "string",
+            "title": "Tollgatetype"
+          },
+          "forcedScanFlag": {
+            "type": "string",
+            "title": "Forcedscanflag"
+          },
+          "deviationDetails": {
+            "type": "string",
+            "title": "Deviationdetails"
+          },
+          "data": {
+            "type": "string",
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repositoryId",
+          "repositoryName",
+          "tollgateType",
+          "forcedScanFlag",
+          "deviationDetails",
+          "data"
+        ],
+        "title": "globalJson"
+      },
+      "imgScan_Data": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "solution": {
+            "type": "string",
+            "title": "Solution"
+          },
+          "aqua_score": {
+            "type": "string",
+            "title": "Aqua Score"
+          },
+          "aqua_severity": {
+            "type": "string",
+            "title": "Aqua Severity"
+          },
+          "first_found_date": {
+            "type": "string",
+            "title": "First Found Date"
+          },
+          "last_found_date": {
+            "type": "string",
+            "title": "Last Found Date"
+          },
+          "resource_name": {
+            "type": "string",
+            "title": "Resource Name"
+          },
+          "resource_version": {
+            "type": "string",
+            "title": "Resource Version"
+          },
+          "image_name": {
+            "type": "string",
+            "title": "Image Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "solution",
+          "aqua_score",
+          "aqua_severity",
+          "first_found_date",
+          "last_found_date",
+          "resource_name",
+          "resource_version",
+          "image_name"
+        ],
+        "title": "imgScan_Data"
+      },
+      "imgScan_Global_Json": {
+        "properties": {
+          "repositoryId": {
+            "type": "string",
+            "title": "Repositoryid"
+          },
+          "repositoryName": {
+            "type": "string",
+            "title": "Repositoryname"
+          },
+          "tollgateType": {
+            "type": "string",
+            "title": "Tollgatetype"
+          },
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/imgScan_Data"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "deviationDetails": {
+            "type": "string",
+            "title": "Deviationdetails"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repositoryId",
+          "repositoryName",
+          "tollgateType",
+          "data",
+          "deviationDetails"
+        ],
+        "title": "imgScan_Global_Json"
+      },
+      "requestDetails": {
+        "properties": {
+          "requestId": {
+            "type": "integer",
+            "title": "Requestid"
+          },
+          "requestOutput": {
+            "$ref": "#/components/schemas/requestOutput"
+          },
+          "requestStatus": {
+            "type": "string",
+            "title": "Requeststatus"
+          },
+          "repositoryId": {
+            "type": "string",
+            "title": "Repositoryid"
+          }
+        },
+        "type": "object",
+        "required": [
+          "requestId",
+          "requestOutput",
+          "requestStatus",
+          "repositoryId"
+        ],
+        "title": "requestDetails"
+      },
+      "requestOutput": {
+        "properties": {
+          "slaFailed": {
+            "items": {},
+            "type": "array",
+            "title": "Slafailed"
+          },
+          "deviationFailed": {
+            "items": {},
+            "type": "array",
+            "title": "Deviationfailed"
+          },
+          "deviationDetails": {
+            "items": {},
+            "type": "array",
+            "title": "Deviationdetails"
+          },
+          "tollgatingStatus": {
+            "type": "string",
+            "title": "Tollgatingstatus"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slaFailed",
+          "deviationFailed",
+          "deviationDetails",
+          "tollgatingStatus"
+        ],
+        "title": "requestOutput"
+      },
+      "slaJson": {
+        "properties": {
+          "repositoryId": {
+            "type": "string",
+            "title": "Repositoryid"
+          },
+          "repositoryName": {
+            "type": "string",
+            "title": "Repositoryname"
+          },
+          "deviationIds": {
+            "items": {},
+            "type": "array",
+            "title": "Deviationids"
+          },
+          "slaPassed": {
+            "items": {},
+            "type": "array",
+            "title": "Slapassed"
+          },
+          "slaFailed": {
+            "items": {},
+            "type": "array",
+            "title": "Slafailed"
+          },
+          "gateType": {
+            "type": "string",
+            "title": "Gatetype"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "repositoryId",
+          "repositoryName",
+          "deviationIds",
+          "slaPassed",
+          "slaFailed",
+          "gateType",
+          "key"
+        ],
+        "title": "slaJson"
+      }
+    },
+    "securitySchemes": {
+      "X-API-Key header": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  }
+}
