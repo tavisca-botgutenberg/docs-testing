@@ -18,6 +18,11 @@
       "description": "PROD"
     }
   ],
+  "security": [
+    {
+      "X-API-Key-header": []
+    }
+  ],
   "paths": {
     "/{requestId}": {
       "get": {
@@ -26,11 +31,6 @@
         ],
         "summary": "Get Request Status",
         "operationId": "get_request_status__requestId__get",
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ],
         "parameters": [
           {
             "name": "requestId",
@@ -102,12 +102,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/sast": {
@@ -148,12 +143,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/sast/deviation": {
@@ -194,12 +184,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/sast/sla": {
@@ -240,12 +225,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/imgScan": {
@@ -286,12 +266,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/imgScan/deviation": {
@@ -332,12 +307,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     },
     "/imgScan/sla": {
@@ -378,12 +348,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "X-API-Key header": []
-          }
-        ]
+        }
       }
     }
   },
@@ -752,7 +717,7 @@
       }
     },
     "securitySchemes": {
-      "X-API-Key header": {
+      "X-API-Key-header": {
         "type": "apiKey",
         "in": "header",
         "name": "X-API-Key"
