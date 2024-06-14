@@ -18,11 +18,6 @@
       "description": "PROD"
     }
   ],
-  "security": [
-    {
-      "X-API-Key-header": []
-    }
-  ],
   "paths": {
     "/{requestId}": {
       "get": {
@@ -39,6 +34,15 @@
             "schema": {
               "type": "string",
               "title": "Requestid"
+            }
+          },
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
             }
           }
         ],
@@ -73,6 +77,17 @@
         ],
         "summary": "Entry Point Function",
         "operationId": "entry_point_function__post",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -112,6 +127,17 @@
         ],
         "summary": "Analyze Sast Scan Data",
         "operationId": "analyze_sast_scan_data_sast_post",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -153,6 +179,17 @@
         ],
         "summary": "Check Sast Deviation Flow",
         "operationId": "check_sast_deviation_flow_sast_deviation_get",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -194,6 +231,17 @@
         ],
         "summary": "Check Sast Sla Flow",
         "operationId": "check_sast_sla_flow_sast_sla_get",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -235,6 +283,17 @@
         ],
         "summary": "Analyze Imgscan Scan Data",
         "operationId": "analyze_imgScan_scan_data_imgScan_post",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -276,6 +335,17 @@
         ],
         "summary": "Check Imgscan Deviation Flow",
         "operationId": "check_imgScan_deviation_flow_imgScan_deviation_post",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -317,6 +387,17 @@
         ],
         "summary": "Check Imgscan Sla Flow",
         "operationId": "check_imgScan_sla_flow_imgScan_sla_post",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "api_Key"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
