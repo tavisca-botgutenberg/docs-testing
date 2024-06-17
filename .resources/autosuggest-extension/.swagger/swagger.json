@@ -272,6 +272,7 @@
           },
           "isEnabled": {
             "type": "boolean"
+            "example": true
           }
         },
         "additionalProperties": false
@@ -344,6 +345,7 @@
         "properties": {
           "filterationType": {
             "type": "string",
+            "example": include
             "nullable": true
           },
           "filterItems": {
