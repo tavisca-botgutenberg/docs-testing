@@ -4,6 +4,20 @@
     "title": "ReceptionDesk",
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "https://orxe-reception-desk.qa.cnxloyalty.com/api/v1.0/receptiondesk/session",
+      "description": "QA"
+    },
+    {
+      "url": "https://orxe-reception-desk.stage.cnxloyalty.com/api/v1.0/receptiondesk/session",
+      "description": "STAGE"
+    },
+    {
+      "url": "https://orxe-reception-desk.cnxloyalty.com/api/v1.0/receptiondesk/session",
+      "description": "PROD"
+    }
+  ],
   "paths": {
     "/api/v1.0/health": {
       "get": {
@@ -661,17 +675,17 @@
         "properties": {
           "userProfile": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           },
           "extendedData": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           },
           "marketingData": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {},
             "nullable": true
           }
         },
