@@ -667,7 +667,7 @@
       "Newtonsoft.Json.Linq.JToken": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Newtonsoft.Json.Linq.JToken"
+          "type": "string"
         }
       },
       "Orxe.Reception.Desk.Web.Models.PlatformSessionRequest": {
