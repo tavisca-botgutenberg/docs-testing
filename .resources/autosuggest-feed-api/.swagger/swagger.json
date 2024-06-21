@@ -1,0 +1,862 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Autosuggest Feed APIs",
+    "description": "This spec contains API documentation of all the Feed APIs that copy the feed from the changelog and other MongoDB Autosuggest Facade datastores.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://nextgen-autosuggest-feed-service.qa.cnxloyalty.com/",
+      "description": "prod"
+    }
+  ],
+  "paths": {
+    "/api/autosuggest-feed/v1.0/hotel": {
+      "post": {
+        "summary": "Autosuggest Hotel Feed API",
+        "description": "Autosuggest Hotel Feed API",
+        "parameters": [
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "Unique correlation ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "8cf78f59-3cc6-4bd3-ae12-eba60d21d7e3"
+          },
+          {
+            "name": "cnx-culture",
+            "in": "header",
+            "description": "Language supported in the request.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "en-US"
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "Unique tenant ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "default"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/hotelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/hotelResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/hotelResponseWithOnlyIds"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/autosuggest-feed/v1.0/location": {
+      "post": {
+        "summary": "Location Feed API",
+        "description": "Location Feed API",
+        "parameters": [
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "Unique correlation ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "8cf78f59-3cc6-4bd3-ae12-eba60d21d7e3"
+          },
+          {
+            "name": "cnx-culture",
+            "in": "header",
+            "description": "Language supported in the request.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "en-US"
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "Unique tenant ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "default"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/locationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/locationResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/locationResponseWithOnlyIds"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/autosuggest-feed/v1.0/airline": {
+      "post": {
+        "summary": "Airline Feed API",
+        "description": "Airline Feed API",
+        "parameters": [
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "Unique correlation ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "8cf78f59-3cc6-4bd3-ae12-eba60d21d7e3"
+          },
+          {
+            "name": "cnx-culture",
+            "in": "header",
+            "description": "Language supported in the request.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "en-US"
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "Unique tenant ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "default"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/airlineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/airlineResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/autosuggest-feed/v1.0/attribute": {
+      "post": {
+        "summary": "Attribute Feed API",
+        "description": "Attribute Feed API",
+        "parameters": [
+          {
+            "name": "cnx-correlationid",
+            "in": "header",
+            "description": "Unique correlation ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "8cf78f59-3cc6-4bd3-ae12-eba60d21d7e3"
+          },
+          {
+            "name": "cnx-culture",
+            "in": "header",
+            "description": "Language supported in the request.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "en-US"
+          },
+          {
+            "name": "cnx-tenantid",
+            "in": "header",
+            "description": "Unique tenant ID of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "default"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/attributeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/attributeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "hotelRequest": {
+        "type": "object",
+        "properties": {
+          "tickTime": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "number",
+                "example": 638238121080000000
+              },
+              "to": {
+                "type": "number",
+                "example": 638238121080000000
+              }
+            }
+          },
+          "filterCriteria": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "example": "active",
+                "enum": [
+                  "active",
+                  "inactive"
+                ]
+              },
+              "suppierFamily": {
+                "type": "string",
+                "example": "EPSRapid"
+              }
+            }
+          },
+          "include": {
+            "type": "array",
+            "properties": {
+              "ids": {
+                "type": "number"
+              },
+              "details": {
+                "type": "number"
+              }
+            },
+            "default": [
+              "ids, details"
+            ],
+            "enum": [
+              "ids, details",
+              "ids"
+            ]
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "pageSize": {
+                "type": "number",
+                "default": 100
+              },
+              "pageNumber": {
+                "type": "number",
+                "default": 1
+              }
+            }
+          }
+        }
+      },
+      "hotelResponse": {
+        "type": "object",
+        "description": "Returns all IDs and details of active and inactive hotels.",
+        "properties": {
+          "activeHotels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/hoteldetails"
+            }
+          },
+          "inActiveHotels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/hoteldetails"
+            }
+          }
+        }
+      },
+      "hotelResponseWithOnlyIds": {
+        "type": "object",
+        "description": "Return only active and inactive hotel IDs.",
+        "properties": {
+          "activeHotelIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "inactiveHotelIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "hoteldetails": {
+        "type": "object",
+        "properties": {
+          "hotelId": {
+            "type": "string",
+            "example": 8415
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "preference": {
+                "type": "number",
+                "example": 6341
+              }
+            }
+          },
+          "geoCode": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "string",
+                "example": 50.6937
+              },
+              "long": {
+                "type": "string",
+                "example": 3.17241
+              }
+            }
+          },
+          "propertyType": {
+            "type": "string",
+            "example": null
+          },
+          "suppliers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "supplierHotelId": {
+                  "type": "string",
+                  "example": 123343
+                },
+                "family": {
+                  "type": "string",
+                  "example": "hotelbedsapitude"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Kyriad Direct LILLE NORD - Roubaix"
+                },
+                "chain": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": 1455
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "All Louvre Hotels"
+                    }
+                  }
+                },
+                "starRating": {
+                  "type": "number",
+                  "example": 2
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "cityName": {
+                      "type": "string",
+                      "example": "Roubaix"
+                    },
+                    "stateCode": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "statename": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "countryCode": {
+                      "type": "string",
+                      "example": "FR"
+                    },
+                    "countryName": {
+                      "type": "string",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "timeZone": {
+            "type": "string",
+            "example": "Romance Standard Time"
+          },
+          "tripAdvisorRating": {
+            "type": "string",
+            "example": 4.5
+          }
+        }
+      },
+      "locationRequest": {
+        "type": "object",
+        "properties": {
+          "tickTime": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "number",
+                "example": 638238121080000000
+              },
+              "to": {
+                "type": "number",
+                "example": 638238121080000000
+              }
+            }
+          },
+          "filterCriteria": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "example": "active",
+                "enum": [
+                  "active",
+                  "inactive"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "example": "city",
+                "enum": [
+                  "city",
+                  "airport",
+                  "neighborhood",
+                  "pointofinterest",
+                  "provinceregion"
+                ]
+              }
+            }
+          },
+          "include": {
+            "type": "array",
+            "properties": {
+              "ids": {
+                "type": "number"
+              },
+              "details": {
+                "type": "number"
+              }
+            },
+            "default": [
+              "ids, details"
+            ],
+            "enum": [
+              "ids, details",
+              "ids"
+            ]
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "pageSize": {
+                "type": "number",
+                "default": 100
+              },
+              "pageNumber": {
+                "type": "number",
+                "default": 1
+              }
+            }
+          }
+        }
+      },
+      "locationResponse": {
+        "type": "object",
+        "description": "Returns all IDs and details of active and inactive locations.",
+        "properties": {
+          "activeLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/locationDetails"
+            }
+          },
+          "inActiveLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/locationDetails"
+            }
+          }
+        }
+      },
+      "locationResponseWithOnlyIds": {
+        "type": "object",
+        "description": "Return only active and inactive location IDs.",
+        "properties": {
+          "activeLocationIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "inactiveLocationIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "locationDetails": {
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string",
+            "example": 841533
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "preference": {
+                "type": "number",
+                "example": 6341
+              }
+            }
+          },
+          "geoCode": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "string",
+                "example": 50.6937
+              },
+              "long": {
+                "type": "string",
+                "example": 3.17241
+              }
+            }
+          },
+          "fullName": {
+            "type": "string",
+            "example": "Dövény, Borsod-Abauj-Zemplen, Hungary"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "cityName": {
+                "type": "string",
+                "example": "Roubaix"
+              },
+              "stateCode": {
+                "type": "string",
+                "example": null
+              },
+              "statename": {
+                "type": "string",
+                "example": null
+              },
+              "countryCode": {
+                "type": "string",
+                "example": "FR"
+              },
+              "countryName": {
+                "type": "string",
+                "example": null
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "Dövény"
+          },
+          "nearByCities": {
+            "type": "array",
+            "example": null
+          },
+          "timeZone": {
+            "type": "string",
+            "example": "Central Europe Standard Time"
+          },
+          "type": {
+            "type": "string",
+            "example": "city"
+          }
+        }
+      },
+      "airlineRequest": {
+        "type": "object",
+        "properties": {
+          "filterCriteria": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "example": "inactive",
+                "enum": [
+                  "active",
+                  "inactive"
+                ]
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "pageSize": {
+                "type": "number",
+                "default": 100
+              },
+              "pageNumber": {
+                "type": "number",
+                "default": null
+              }
+            }
+          }
+        }
+      },
+      "airlineResponse": {
+        "type": "object",
+        "description": "Returns details of active and inactive airlines.",
+        "properties": {
+          "activeAirlines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/airlinedetails"
+            }
+          },
+          "inActiveAirlines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/airlinedetails"
+            }
+          }
+        }
+      },
+      "airlinedetails": {
+        "type": "object",
+        "properties": {
+          "airlines": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "airlineCode": {
+                  "type": "string",
+                  "example": "2D"
+                },
+                "icaoCode": {
+                  "type": "string",
+                  "example": null
+                },
+                "fullName": {
+                  "type": "string",
+                  "example": "Albawings"
+                },
+                "shortName": {
+                  "type": "string",
+                  "example": "Albawings"
+                },
+                "categoryType": {
+                  "type": "string",
+                  "example": "I"
+                },
+                "contact": {
+                  "type": "object",
+                  "properties": {
+                    "phoneNumber": {
+                      "type": "string"
+                    },
+                    "website": {
+                      "type": "string",
+                      "example": "www.aerocondor.com"
+                    }
+                  }
+                },
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "preference": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "attributeRequest": {
+        "type": "object",
+        "properties": {
+          "contentIds": {
+            "type": "array",
+            "items": {
+              "properties": null,
+              "type": "string",
+              "example": 12123
+            }
+          },
+          "type": {
+            "type": "string",
+            "example": "city"
+          },
+          "filter": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "example": "active",
+                "enum": [
+                  "active",
+                  "inactive"
+                ]
+              },
+              "client": {
+                "type": "string",
+                "example": "Chase"
+              },
+              "product": {
+                "type": "string",
+                "example": "Hotel"
+              }
+            }
+          }
+        }
+      },
+      "attributeResponse": {
+        "type": "object",
+        "description": "Returns details of active and inactive attributes.",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "contentID": {
+                  "type": "string",
+                  "example": 122313
+                },
+                "client": {
+                  "type": "string",
+                  "example": "chase"
+                },
+                "product": {
+                  "type": "string",
+                  "example": "hotel"
+                },
+                "contentType": {
+                  "type": "string",
+                  "example": "city"
+                },
+                "key": {
+                  "type": "string",
+                  "example": "tag"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "romantic, beachside"
+                  }
+                },
+                "culture": {
+                  "type": "string",
+                  "example": "en-US"
+                },
+                "isActive": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "createdOn": {
+                  "type": "string",
+                  "example": "21-12-2023 14:49:42"
+                },
+                "updatedOn": {
+                  "type": "string",
+                  "example": "01-01-0001 00:00:00"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
